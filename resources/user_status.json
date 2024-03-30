@@ -5,43 +5,43 @@
     },
     "rookie": {
         "begin": 2,
-        "end": 5
+        "end": 4
     },
     "beginner": {
         "begin": 5,
-        "end": 10
+        "end": 9
     },
     "amateur": {
         "begin": 10,
-        "end": 15
+        "end": 14
     },
     "intermediate": {
         "begin": 15,
-        "end": 20
+        "end": 19
     },
     "proficient": {
         "begin": 20,
-        "end": 30
+        "end": 29
     },
     "experienced": {
         "begin": 30,
-        "end": 40
+        "end": 39
     },
     "advanced": {
         "begin": 40,
-        "end": 50
+        "end": 49
     },
     "senior": {
         "begin": 50,
-        "end": 65
+        "end": 64
     },
     "master": {
         "begin": 65,
-        "end": 80
+        "end": 79
     },
     "expert": {
         "begin": 80,
-        "end": 100
+        "end": 99
     },
     "legend": {
         "begin": 100,

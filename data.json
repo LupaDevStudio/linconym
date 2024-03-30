@@ -31,7 +31,7 @@
     },
     "settings": {
         "music_volume": 0.0,
-        "sound_volume": 0.7535545023696683,
+        "sound_volume": 0.6540284360189572,
         "current_theme_image": "japanese_etching",
         "current_music": "kids_party",
         "current_theme_colors": "japanese_etching"
@@ -42,8 +42,8 @@
             "colors": true
         },
         "retro_race": {
-            "image": true,
-            "colors": true
+            "image": false,
+            "colors": false
         },
         "westerlund_2": {
             "image": true,
