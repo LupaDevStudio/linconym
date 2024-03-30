@@ -6,16 +6,24 @@
     canvas.before:
         # Border
         Color:
-            rgba: (0,0,0,1)
+            rgba: (0,0,0,1) if self.mode == "line" else (0, 0, 0, 0)
         Line:
-            rounded_rectangle: [0,0,self.size[0],self.size[1],12*self.font_ratio]
+            rounded_rectangle: [0,0,self.size[0],self.size[1],self.radius*self.font_ratio]
             width: BUTTON_OUTLINE_WIDTH*self.font_ratio
+        
+        # White background
+        Color:
+            rgba: (0,0,0,0) if self.mode == "line" else self.background_color
+        RoundedRectangle:
+            size: self.size
+            pos: (0, 0)
+            radius: [self.radius*self.font_ratio]
 
     Image:
         id: coins_image
         source: PATH_ICONS + "coins.png"
         pos_hint: {"right":0.95,"center_y":0.5}
-        size_hint: (None,0.65)
+        size_hint: (None,0.55)
         width: self.height
         fit_mode: "contain"
     Label:

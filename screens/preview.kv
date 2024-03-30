@@ -10,14 +10,6 @@
         outline_color: TITLE_OUTLINE_COLOR
         color: TEXT_FONT_COLOR
 
-    # Coins counter
-    CoinsCounter:
-        size_hint: (0.6, 0.07)
-        pos_hint: {"center_x":0.5, "center_y":0.81}
-        font_ratio: root.font_ratio
-        coins_count: root.coins_count
-        release_function: root.go_to_boosters
-
     BottomBar:
         size_hint: (1, BOTTOM_BAR_HEIGHT)
         pos_hint: {"bottom":0,"left":0}
@@ -30,3 +22,96 @@
         height: self.width
         colors: root.primary_color
         release_function: root.go_backwards
+
+    # Coins counter
+    CoinsCounter:
+        size_hint: (0.6, 0.07)
+        pos_hint: {"center_x":0.5, "center_y":0.81}
+        font_ratio: root.font_ratio
+        coins_count: root.coins_count
+        release_function: root.go_to_boosters
+
+    # Primary color bubble
+    RoundButton:
+        id: primary_color_bubble
+        pos_hint: {"center_x":0.325, "y":0.6}
+        size_hint: (None,0.1)
+        width: self.height
+        color: root.primary_color
+        disable_button: True
+        line_width: 2
+        font_ratio: root.font_ratio
+
+    # Secondary color bubble
+    RoundButton:
+        id: secondary_color_bubble
+        pos_hint: {"center_x":0.675, "y":0.6}
+        size_hint: (None,0.1)
+        width: self.height
+        color: root.secondary_color
+        disable_button: True
+        line_width: 2
+        font_ratio: root.font_ratio
+
+    CustomButton:
+        size_hint: (0.2,None)
+        height: self.width
+        pos_hint: {"center_x":0.25, "y":0.32}
+        text:"Buy both"
+        font_size: BUTTON_FONT_SIZE
+        font_ratio: root.font_ratio
+        radius: 12
+        release_function: root.buy_both
+
+    CustomButton:
+        size_hint: (0.2,None)
+        height: self.width
+        pos_hint: {"center_x":0.5, "y":0.32}
+        text:"Buy image"
+        font_size: BUTTON_FONT_SIZE
+        font_ratio: root.font_ratio
+        radius: 12
+        release_function: root.buy_image
+
+    CustomButton:
+        size_hint: (0.2,None)
+        height: self.width
+        pos_hint: {"center_x":0.75, "y":0.32}
+        text:"Buy colors"
+        font_size: BUTTON_FONT_SIZE
+        font_ratio: root.font_ratio
+        radius: 12
+        release_function: root.buy_colors
+
+    # To buy both
+    BuyRectangleButton:
+        id: buy_both_button
+        price: root.both_price
+        pos_hint: {"center_x":0.25,"y":0.245}
+        size_hint: (0.2,0.06)
+        font_size: SMALL_BUYING_BUTTON_FONT_SIZE
+        font_ratio: root.font_ratio
+        disable_button: True
+        mode: "background"
+
+    # To buy the image
+    BuyRectangleButton:
+        id: buy_image_button
+        price: root.image_price
+        pos_hint: {"center_x":0.5,"y":0.245}
+        size_hint: (0.2,0.06)
+        font_size: SMALL_BUYING_BUTTON_FONT_SIZE
+        font_ratio: root.font_ratio
+        disable_button: True
+        mode: "background"
+
+    # To buy the colors
+    BuyRectangleButton:
+        id: buy_colors_button
+        price: root.colors_price
+        pos_hint: {"center_x":0.75,"y":0.245}
+        size_hint: (0.2,0.06)
+        font_size: SMALL_BUYING_BUTTON_FONT_SIZE
+        font_ratio: root.font_ratio
+        disable_button: True
+        mode: "background"

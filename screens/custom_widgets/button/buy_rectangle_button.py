@@ -14,7 +14,8 @@ from kivy.uix.behaviors import ButtonBehavior
 from kivy.properties import (
     StringProperty,
     NumericProperty,
-    BooleanProperty
+    BooleanProperty,
+    ColorProperty
 )
 
 ### Local imports ###
@@ -44,6 +45,9 @@ class BuyRectangleButton(ButtonBehavior, RelativeLayout):
     price = NumericProperty()
     price_text = StringProperty()
     disable_button = BooleanProperty(False)
+    background_color = ColorProperty(CUSTOM_BUTTON_BACKGROUND_COLOR)
+    mode = StringProperty("line")
+    radius = NumericProperty(12)
 
     def __init__(
             self,

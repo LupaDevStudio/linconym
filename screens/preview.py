@@ -42,9 +42,11 @@ class PreviewScreen(ImprovedScreen):
     secondary_color = ColorProperty((0, 0, 0, 1))
     theme_key = StringProperty()
     coins_count = NumericProperty()
+    colors_price = NumericProperty()
+    image_price = NumericProperty()
+    both_price = NumericProperty()
 
     def __init__(self, **kwargs) -> None:
-        # TODO : to change with the theme_key
         current_theme_image = USER_DATA.settings["current_theme_image"]
         super().__init__(
             back_image_path=PATH_BACKGROUNDS +
@@ -53,18 +55,27 @@ class PreviewScreen(ImprovedScreen):
 
     def reload_kwargs(self, dict_kwargs):
         self.theme_key = dict_kwargs["theme_key"]
+        self.set_back_image_path(back_image_path=PATH_BACKGROUNDS + THEMES_DICT[self.theme_key]["image"])
+        self.primary_color = THEMES_DICT[self.theme_key]["primary"]
+        self.secondary_color = THEMES_DICT[self.theme_key]["secondary"]
 
     def on_enter(self, *args):
         self.coins_count = USER_DATA.user_profile["coins"]
-        current_theme_image = USER_DATA.settings["current_theme_image"]
-        current_theme_colors = USER_DATA.settings["current_theme_colors"]
-        self.primary_color = THEMES_DICT[current_theme_colors]["primary"]
-        self.secondary_color = THEMES_DICT[current_theme_colors]["secondary"]
-        self.set_back_image_path(
-            PATH_BACKGROUNDS + THEMES_DICT[current_theme_image]["image"])
+        self.colors_price = THEMES_DICT[self.theme_key]["colors_price"]
+        self.image_price = THEMES_DICT[self.theme_key]["image_price"]
+        self.both_price = self.colors_price + self.image_price
         return super().on_enter(*args)
     
     def go_to_boosters(self):
         self.go_to_next_screen(
             screen_name="boosters",
             current_dict_kwargs={"theme_key": self.theme_key})
+        
+    def buy_both(self):
+        self.go_backwards()
+
+    def buy_image(self):
+        self.go_backwards()
+
+    def buy_colors(self):
+        self.go_backwards()

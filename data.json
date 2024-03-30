@@ -47,7 +47,7 @@
         },
         "westerlund_2": {
             "image": true,
-            "colors": true
+            "colors": false
         },
         "desert_sunset": {
             "image": true,
