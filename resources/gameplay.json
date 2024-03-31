@@ -177,23 +177,43 @@
         },
         "5": {
             "start_word": "deep",
-            "end_word": "diver"
+            "end_word": "diver",
+            "10k": null,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
         },
         "6": {
             "start_word": "diver",
-            "end_word": "water"
+            "end_word": "water",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
         },
         "7": {
             "start_word": "water",
-            "end_word": "journey"
+            "end_word": "journey",
+            "10k": 9,
+            "34k": 7,
+            "88k": 7,
+            "280k": 6
         },
         "8": {
             "start_word": "journey",
-            "end_word": "under"
+            "end_word": "under",
+            "10k": 7,
+            "34k": 6,
+            "88k": 5,
+            "280k": 5
         },
         "9": {
             "start_word": "under",
-            "end_word": "depth"
+            "end_word": "depth",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 4
         },
         "10": {
             "start_word": "depth",
