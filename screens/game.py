@@ -37,7 +37,6 @@ from screens import (
     ColoredRoundedButton
 )
 from tools.linconym import (
-    is_valid,
     level_has_saved_data,
     Game
 )
@@ -123,9 +122,8 @@ class GameScreen(LinconymScreen):
         Enable the submit button if the word entered is valid.
         """
 
-        if is_valid(
-                new_word=self.new_word.lower(),
-                current_word=self.current_word.lower()):
+        if self.game.is_valid_and_new_in_path(
+                new_word=self.new_word.lower()):
             self.enable_submit_button()
         else:
             self.disable_submit_button()
@@ -302,13 +300,13 @@ class GameScreen(LinconymScreen):
             self.build_word()
             self.check_disable_keyboard()
 
-        self.disable_submit_button()
+            self.disable_submit_button()
 
     def check_level_complete(self):
         # The level is complete
-        if self.new_word == self.end_word:
+        if self.new_word == self.end_word.upper():
             print("TODO YOU WIN afficher la popup")
-            self.current_word = self.start_word
+            self.current_word = self.start_word.upper()
             self.ids.keyboard_layout.disable_whole_keyboard()
             self.disable_submit_button()
             return True

@@ -499,7 +499,35 @@ class Game():
             for j in range(1, len(splitted_previous_pos)):
                 previous_pos += "," + splitted_previous_pos[j]
             word_path += [self.get_word(previous_pos)]
+
         return word_path
+
+    def get_next_words(self, position: str) -> list[str]:
+        """
+        Get the list of next words currently found.
+
+        Parameters
+        ----------
+        position : str
+            Current position.
+
+        Returns
+        -------
+        list[str]
+            List of the next words.
+        """
+
+        # Initialise the number of next words
+        next_words = []
+
+        # Iterate over all stored positions
+        for key in self.position_to_word_id:
+            if len(key.split(",")) == len(position.split(",")) + 1:
+                if key[:len(position)] == position:
+                    next_words.append(self.words_found[
+                        self.position_to_word_id[key]])
+
+        return next_words
 
     def get_nb_next_words(self, position: str) -> int:
         """
@@ -562,7 +590,11 @@ class Game():
             new_word, self.current_word, skip_dictionary_check)
         word_is_new_in_path: bool = not (
             new_word in self.get_word_path(self.current_position))
-        return word_is_valid and word_is_new_in_path
+
+        word_is_not_in_children = not (
+            new_word in self.get_next_words(self.current_position)
+        )
+        return word_is_valid and word_is_new_in_path and word_is_not_in_children
 
     def submit_word(self, new_word: str) -> None:
         """
