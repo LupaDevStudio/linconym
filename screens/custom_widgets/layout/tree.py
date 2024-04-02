@@ -315,6 +315,9 @@ class TreeLayout(RelativeLayout):
             word_button.outline_color = outline_color
             word_button.touch_color = touch_color
 
+            if is_selected:
+                widget_to_scroll_to = word_button
+
             # Apply the color changes to the word link
             if position in self.word_link_dict:
                 word_link = self.word_link_dict[position]
@@ -335,7 +338,7 @@ class TreeLayout(RelativeLayout):
         self.clear_widgets()
 
         # Add all widgets in the appropriate order
-        self.add_link_and_word_widgets()
+        self.add_link_and_word_widgets(widget_to_scroll_to=widget_to_scroll_to)
 
         # Call a parent function to update
         self.parent.on_change_word_position_on_tree()
@@ -489,9 +492,9 @@ class TreeLayout(RelativeLayout):
         # print("max vertical offset", self.max_vertical_offset)
 
         # Define the size of the layout
-        # Todo : make it depend on the size of the widget in pixels
-        self.size = (self.max_rank * 180 * self.font_ratio,
-                     self.max_vertical_offset * 60 * self.font_ratio)
+        # TODO : make it depend on the size of the widget in pixels
+        self.size = (self.max_rank * 160 * self.font_ratio,
+                     self.max_vertical_offset * 40 * self.font_ratio)
 
         # Define the initial vertical offset
         current_vertical_offset = 0

@@ -4,7 +4,7 @@
             "1": {
                 "nb_stars": 3,
                 "best_solution_nb_words": 5,
-                "current_position": "0",
+                "current_position": "0,1",
                 "words_found": [
                     "link",
                     "like",
