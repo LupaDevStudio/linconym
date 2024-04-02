@@ -35,11 +35,12 @@ from tools.path import (
     PATH_TEXT_FONT
 )
 from tools.constants import (
-    WORD_BUTTON_WIDTH_HINT,
-    WORD_BUTTON_HEIGHT_HINT,
     WORD_BUTTON_HSPACING,
     WORD_BUTTON_VSPACING,
-    WORD_BUTTON_SIDE_OFFSET
+    WORD_BUTTON_SIDE_HOFFSET,
+    WORD_BUTTON_SIDE_VOFFSET,
+    WORD_BUTTON_BLOCK_HEIGHT_HINT,
+    WORD_BUTTON_BLOCK_WIDTH_HINT
 )
 from tools.linconym import (
     get_parent_position,
@@ -312,13 +313,10 @@ class TreeLayout(RelativeLayout):
             Pos hint for the word button.
         """
 
-        top = 1 - \
-            (WORD_BUTTON_SIDE_OFFSET + (WORD_BUTTON_HEIGHT_HINT + WORD_BUTTON_VSPACING) * current_vertical_offset) /\
-            (WORD_BUTTON_SIDE_OFFSET + (WORD_BUTTON_HEIGHT_HINT + WORD_BUTTON_VSPACING) * self.max_vertical_offset) *\
-            (1 - WORD_BUTTON_HSPACING - WORD_BUTTON_HEIGHT_HINT / 2)
-        left = (WORD_BUTTON_SIDE_OFFSET + (WORD_BUTTON_WIDTH_HINT + WORD_BUTTON_HSPACING) * (current_rank - 1)) /\
-            (WORD_BUTTON_SIDE_OFFSET + (WORD_BUTTON_WIDTH_HINT + WORD_BUTTON_HSPACING) * self.max_rank) *\
-            (1 - WORD_BUTTON_SIDE_OFFSET - WORD_BUTTON_WIDTH_HINT / 2)
+        top = 1 - (self.side_voffset_hint +
+                   current_vertical_offset * self.block_height_hint)
+        left = self.side_hoffset_hint + \
+            (current_rank - 1) * self.block_width_hint
         pos_hint = {"top": top, "x": left}
 
         return pos_hint
@@ -349,20 +347,14 @@ class TreeLayout(RelativeLayout):
             Pos hint of the word link.
         """
 
-        top = 1 - \
-            (WORD_BUTTON_SIDE_OFFSET + WORD_BUTTON_HEIGHT_HINT / 2 + (WORD_BUTTON_HEIGHT_HINT + WORD_BUTTON_VSPACING) * parent_vertical_offset) /\
-            (WORD_BUTTON_SIDE_OFFSET + (WORD_BUTTON_HEIGHT_HINT + WORD_BUTTON_VSPACING) * self.max_vertical_offset) *\
-            (1 - WORD_BUTTON_HSPACING - WORD_BUTTON_HEIGHT_HINT / 2)
-        x = (WORD_BUTTON_SIDE_OFFSET + WORD_BUTTON_WIDTH_HINT + (WORD_BUTTON_WIDTH_HINT + WORD_BUTTON_HSPACING) * (parent_rank - 1)) /\
-            (WORD_BUTTON_SIDE_OFFSET + (WORD_BUTTON_WIDTH_HINT + WORD_BUTTON_HSPACING) * self.max_rank) *\
-            (1 - WORD_BUTTON_SIDE_OFFSET - WORD_BUTTON_WIDTH_HINT / 2)
-        y = top - (WORD_BUTTON_HEIGHT_HINT + WORD_BUTTON_VSPACING) * \
-            (current_vertical_offset - parent_vertical_offset) /\
-            (WORD_BUTTON_SIDE_OFFSET + (WORD_BUTTON_HEIGHT_HINT + WORD_BUTTON_VSPACING) * self.max_vertical_offset) *\
-            (1 - WORD_BUTTON_HSPACING - WORD_BUTTON_HEIGHT_HINT / 2)
-        right = (WORD_BUTTON_SIDE_OFFSET + (WORD_BUTTON_WIDTH_HINT + WORD_BUTTON_HSPACING) * (current_rank - 1)) /\
-            (WORD_BUTTON_SIDE_OFFSET + (WORD_BUTTON_WIDTH_HINT + WORD_BUTTON_HSPACING) * self.max_rank) *\
-            (1 - WORD_BUTTON_SIDE_OFFSET - WORD_BUTTON_WIDTH_HINT / 2)
+        top = 1 - (self.side_voffset_hint + parent_vertical_offset *
+                   self.block_height_hint + self.word_button_height_hint / 2)
+        x = self.side_hoffset_hint + \
+            (parent_rank - 1) * self.block_width_hint + \
+            self.word_button_width_hint
+        y = 1 - (self.side_voffset_hint + current_vertical_offset *
+                 self.block_height_hint + self.word_button_height_hint / 2)
+        right = x + WORD_BUTTON_HSPACING / self.rel_width
 
         pos_hint = {"top": top, "x": x}
         size_hint = (right - x, top - y)
@@ -406,21 +398,25 @@ class TreeLayout(RelativeLayout):
         max_rank = 0
         previous_rank = -1
         for position in sorted_positions_list:
-            current_rank = len(position.split(","))
+            current_splitted_pos = position.split(",")
+            current_rank = len(current_splitted_pos)
             if current_rank > max_rank:
                 max_rank = current_rank
-        self.max_rank = max_rank - 1
+        self.max_rank = max_rank
+        # print("max rank", self.max_rank)
 
         # Find the max vertical offset
-        current_vertical_offset = 0
+        current_vertical_offset = 1
         for position in sorted_positions_list:
             current_rank = len(position.split(","))
             if current_rank <= previous_rank:
                 current_vertical_offset += 1
             previous_rank = current_rank
         self.max_vertical_offset = current_vertical_offset
+        # print("max vertical offset", self.max_vertical_offset)
 
         # Define the size of the layout
+        # Todo : make it depend on the size of the widget in pixels
         self.size = (self.max_rank * 180 * self.font_ratio,
                      self.max_vertical_offset * 60 * self.font_ratio)
 
@@ -433,15 +429,19 @@ class TreeLayout(RelativeLayout):
         # Create a dict to store the grid positions to plot the links
         position_to_grid_position = {}
 
+        # Compute the relative size
+        self.rel_width = WORD_BUTTON_SIDE_HOFFSET * 2 + \
+            WORD_BUTTON_BLOCK_WIDTH_HINT * self.max_rank - WORD_BUTTON_HSPACING
+        self.rel_height = WORD_BUTTON_SIDE_VOFFSET * 2 + \
+            WORD_BUTTON_BLOCK_HEIGHT_HINT * self.max_vertical_offset - WORD_BUTTON_VSPACING
+
         # Compute the appropriate size
-        current_word_button_width_hint =\
-            WORD_BUTTON_WIDTH_HINT /\
-            (0.1 + (WORD_BUTTON_WIDTH_HINT + WORD_BUTTON_HSPACING) * self.max_rank) \
-            * (1 - WORD_BUTTON_HSPACING - WORD_BUTTON_WIDTH_HINT / 2)
-        current_word_button_height_hint =\
-            WORD_BUTTON_HEIGHT_HINT /\
-            (WORD_BUTTON_SIDE_OFFSET + (WORD_BUTTON_HEIGHT_HINT + WORD_BUTTON_VSPACING) * self.max_vertical_offset) *\
-            (1 - WORD_BUTTON_HSPACING - WORD_BUTTON_HEIGHT_HINT / 2)
+        self.word_button_width_hint = 1 / self.rel_width
+        self.word_button_height_hint = 1 / self.rel_height
+        self.block_width_hint = WORD_BUTTON_BLOCK_WIDTH_HINT / self.rel_width
+        self.block_height_hint = WORD_BUTTON_BLOCK_HEIGHT_HINT / self.rel_height
+        self.side_hoffset_hint = WORD_BUTTON_SIDE_HOFFSET / self.rel_width
+        self.side_voffset_hint = WORD_BUTTON_SIDE_VOFFSET / self.rel_height
 
         # Iterate over the positions to display the widgets
         for position in sorted_positions_list:
@@ -484,8 +484,8 @@ class TreeLayout(RelativeLayout):
                 background_color=main_color,
                 outline_color=outline_color,
                 touch_color=touch_color,
-                size_hint=(current_word_button_width_hint,
-                           current_word_button_height_hint),
+                size_hint=(self.word_button_width_hint,
+                           self.word_button_height_hint),
                 pos_hint=word_button_pos_hint,
                 font_ratio=self.font_ratio)
 

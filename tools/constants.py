@@ -202,6 +202,7 @@ TUTORIAL = load_json_file(PATH_RESOURCES + "tutorial.json")
 
 ### Colors ###
 
+
 class ColorPalette():
     """
     Class to store the colors used in the screens.
@@ -210,6 +211,7 @@ class ColorPalette():
     def __init__(self) -> None:
         self.PRIMARY = (0, 0, 0, 1)
         self.SECONDARY = (0, 0, 0, 1)
+
 
 CUSTOM_BUTTON_BACKGROUND_COLOR = (1, 1, 1, 0.7)
 DISABLE_BUTTON_COLOR = (0.15, 0.15, 0.15, 1)
@@ -263,11 +265,16 @@ LEVEL_BUTTON_SPACING = (1 - (MAX_NB_LEVELS_PER_BRANCH + 1)
                         * LEVEL_BUTTON_SIZE_HINT) / MAX_NB_LEVELS_PER_BRANCH
 LEVEL_BUTTON_SIDE_OFFSET = LEVEL_BUTTON_SIZE_HINT + LEVEL_BUTTON_SPACING
 
-WORD_BUTTON_WIDTH_HINT = 0.3
-WORD_BUTTON_HEIGHT_HINT = 0.1
-WORD_BUTTON_VSPACING = 0.05
-WORD_BUTTON_HSPACING = 0.1
-WORD_BUTTON_SIDE_OFFSET = 0.1
+# The spacing is expressed as a proportion of the size of a word button
+WORD_BUTTON_VSPACING = 0.25
+WORD_BUTTON_HSPACING = 0.33
+WORD_BUTTON_SIDE_VOFFSET = 0.33
+WORD_BUTTON_SIDE_HOFFSET = 0.33
+
+# Use the spacing to define the hint ref size of a block
+WORD_BUTTON_BLOCK_WIDTH_HINT = 1 + WORD_BUTTON_HSPACING
+WORD_BUTTON_BLOCK_HEIGHT_HINT = 1 + WORD_BUTTON_VSPACING
+
 
 ### Screens ###
 
