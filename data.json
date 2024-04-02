@@ -3,7 +3,24 @@
         "Act1": {
             "1": {
                 "nb_stars": 3,
-                "best_solution_nb_words": 5
+                "best_solution_nb_words": 5,
+                "current_position": "0",
+                "words_found": [
+                    "link",
+                    "like",
+                    "pink",
+                    "kill",
+                    "bill",
+                    "pill"
+                ],
+                "position_to_word_id": {
+                    "0": 0,
+                    "0,0": 1,
+                    "0,1": 2,
+                    "0,2": 3,
+                    "0,2,0": 4,
+                    "0,2,1": 5
+                }
             }
         }
     },

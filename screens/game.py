@@ -85,9 +85,24 @@ class GameScreen(LinconymScreen):
         self.check_enable_submit_button()
 
     def on_pre_leave(self, *args):
+        # Clear the keyboard
         self.ids.keyboard_layout.destroy_keyboard()
 
+        # Save the data
+        self.save_data()
+
         return super().on_leave(*args)
+
+    def save_data(self):
+
+        # Insert data in save dict
+        self.level_saved_data["current_position"] = self.game.current_position
+        self.level_saved_data["words_found"] = self.game.words_found
+        self.level_saved_data["position_to_word_id"] = self.game.position_to_word_id
+
+        # Push changes to user data
+        USER_DATA.classic_mode[self.current_act_id][self.current_level_id] = self.level_saved_data
+        USER_DATA.save_changes()
 
     def check_disable_keyboard(self):
 
@@ -106,15 +121,8 @@ class GameScreen(LinconymScreen):
     def check_enable_submit_button(self):
         """
         Enable the submit button if the word entered is valid.
-
-        Parameters
-        ----------
-        None
-
-        Returns
-        -------
-        None
         """
+
         if is_valid(
                 new_word=self.new_word.lower(),
                 current_word=self.current_word.lower()):
@@ -221,6 +229,13 @@ class GameScreen(LinconymScreen):
         # Recover the current word
         self.current_word = self.game.current_word.upper()
 
+        # Update the new word
+        self.new_word = self.new_word[:len(self.current_word) + 1]
+
+        # Update the keyboard and submit button
+        self.check_disable_keyboard()
+        self.check_enable_submit_button()
+
     def load_game_play(self):
 
         # Store the dict containing the user progress
@@ -286,7 +301,8 @@ class GameScreen(LinconymScreen):
             # Enable the keyboard and disable the submit button
             self.build_word()
             self.check_disable_keyboard()
-            self.check_enable_submit_button()
+
+        self.disable_submit_button()
 
     def check_level_complete(self):
         # The level is complete
@@ -299,11 +315,11 @@ class GameScreen(LinconymScreen):
         return False
 
     def enable_submit_button(self):
-        # self.ids.submit_button.opacity = 1
+        self.ids.submit_button.opacity = 1
         self.ids.submit_button.disable_button = False
 
     def disable_submit_button(self):
-        # self.ids.submit_button.opacity = 0
+        self.ids.submit_button.opacity = 0
         self.ids.submit_button.disable_button = True
 
     def go_to_quests_screen(self):

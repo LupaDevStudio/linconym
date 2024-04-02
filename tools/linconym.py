@@ -311,10 +311,7 @@ def find_solutions(start_word: str, end_word: str, english_words: list = ENGLISH
             return None
 
         current_word = words_found[position_to_word_id[current_position]]
-        # print(current_word, i)
-        # print(current_position)
         next_words = find_all_next_words(current_word, english_words)
-        # print(len(next_words))
         new_word_id = 0
 
         for word in next_words:
@@ -416,8 +413,8 @@ class Game():
             start_word: str,
             end_word: str,
             current_position: str = None,
-            words_found: str = None,
-            position_to_word_id: str = None,
+            words_found: list = None,
+            position_to_word_id: dict = None,
             quest_word: str = None) -> None:
         """
         Create a game instance.
@@ -430,9 +427,9 @@ class Game():
             _description_
         current_position : str, optional (default is None)
             _description_
-        words_found : str, optional (default is None)
+        words_found : list, optional (default is None)
             _description_
-        position_to_word_id : str, optional (default is None)
+        position_to_word_id : dict, optional (default is None)
             _description_
         quest_word : str, optional (default is None)
             _description_
@@ -525,7 +522,7 @@ class Game():
 
         # Iterate over all stored positions
         for key in self.position_to_word_id:
-            if len(key) == len(position) + 1:
+            if len(key.split(",")) == len(position.split(",")) + 1:
                 if key[:len(position)] == position:
                     nb_next_words += 1
 
@@ -838,7 +835,19 @@ class ClassicGame(Game):
 
 if __name__ == "__main__":
 
+    # To use to complete the solution
     fill_gameplay_dict_with_solutions()
+
+    # game = Game(
+    #     start_word="link",
+    #     end_word="pink",
+    #     current_position="0",
+    #     words_found=["link", "like"],
+    #     position_to_word_id={"0": 0, "0,0": 1}
+    # )
+
+    # game.submit_word("pink")
+
     # fill_daily_games_with_solutions()
     # print(is_valid("boy", "joy"))
     # find_solutions("Abyssal", "fiction", ENGLISH_WORDS_DICTS["10k"])
