@@ -48,7 +48,7 @@ from tools.basic_tools import (
 
 ### Version ###
 
-__version__ = "1.0.0"
+__version__ = "0.0.2"
 
 ### Mode ###
 
@@ -67,13 +67,9 @@ XP_PER_LEVEL: int = 10
 if not os.path.exists(PATH_USER_DATA):
     default_user_data = {
         "classic_mode": {
-            "Act1": {
+            "1": {
                 "1": {
-                    "nb_stars": 3,
-                    "best_solution_nb_words": 5,
-                    "words_found": [],
-                    "position_to_word_id": {},
-                    "current_position": ""
+                    "nb_stars": 0
                 }
             }
         },
@@ -83,7 +79,7 @@ if not os.path.exists(PATH_USER_DATA):
         },
         "achievements": {},
         "quests": {
-            "Act1": {}
+            "1": {}
         },
         "settings": {
             "sound_volume": 0.5,

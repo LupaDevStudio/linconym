@@ -102,6 +102,7 @@ class LevelButton(ButtonBehavior, RelativeLayout):
             self.get_root_window().children[0].get_screen(
                 "levels").open_game_screen(str(self.level_id))
 
+
 class LevelBranch(RelativeLayout):
 
     font_ratio = NumericProperty()
@@ -110,7 +111,7 @@ class LevelBranch(RelativeLayout):
 
     def __init__(
             self,
-            act_id="Act1",
+            act_id="1",
             branch_id=0,
             **kw):
         super().__init__(**kw)
@@ -281,7 +282,7 @@ class LevelLayout(MyScrollViewLayout):
 
     def __init__(
             self,
-            act_id="Act1",
+            act_id="1",
             **kw):
         super().__init__(**kw)
         self.act_id = act_id

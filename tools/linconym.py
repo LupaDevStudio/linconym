@@ -618,11 +618,6 @@ class Game():
 
             # Switch to the new position
             self.change_position(new_position)
-
-            # Check if the final word is reached
-            if self.current_word == self.end_word:
-                print("End word reached")
-
         else:
             print("Word not valid")
 
@@ -695,6 +690,9 @@ class Game():
         # This is supposed to be an abstract method. It'll be overridden by Game's subclasses.
 
         return
+
+    def on_level_completed(self):
+        pass
 
 
 class ClassicGame(Game):
@@ -792,77 +790,97 @@ class ClassicGame(Game):
         Saves the number of stars and the amount of XP earned in this level in the user's data, and increases the user's XP in their profile accordingly.
         """
 
-        # Only receive stars and xp if the level was completed
-        if (self.current_word == self.end_word):
+        # Solution found by the user
+        solution_found: list[str] = self.get_word_path(
+            self.current_position)
 
-            # Solution found by the user
-            solution_found: list[str] = self.get_word_path(
-                self.current_position)
+        # Stars
+        nb_words_found: int = len(solution_found)
+        nb_stars: int = self.get_nb_stars(nb_words_found)
 
-            # Stars
-            nb_words_found: int = len(solution_found)
-            nb_stars: int = self.get_nb_stars(nb_words_found)
+        # xp: get a percentage of a certain constant amount depending on the solution's quality...
+        xp_fraction: float = self.get_xp_fraction(nb_words_found)
+        # ... and get a bonus for passing through the quest word
+        quest_word_done: bool = (not (self.quest_word is None) and (
+            self.quest_word in solution_found))
 
-            # xp: get a percentage of a certain constant amount depending on the solution's quality...
-            xp_fraction: float = self.get_xp_fraction(nb_words_found)
-            # ... and get a bonus for passing through the quest word
-            quest_word_done: bool = (not (self.quest_word is None) and (
-                self.quest_word in solution_found))
+        # check that the current act has save data
+        if (not (self.act_id in USER_DATA.classic_mode)):
+            USER_DATA.classic_mode[self.act_id] = {}
 
-            # check that the current act has save data
-            if (not (self.act_id in USER_DATA.classic_mode)):
-                USER_DATA.classic_mode[self.act_id] = {}
+        # check that current level has save data
+        if (not (self.lvl_id in USER_DATA.classic_mode[self.act_id])):
+            USER_DATA.classic_mode[self.act_id][self.lvl_id] = {}
 
-            # check that current level has save data
-            if (not (self.lvl_id in USER_DATA.classic_mode[self.act_id])):
-                USER_DATA.classic_mode[self.act_id][self.lvl_id] = {}
+        # keys to access user data
+        NB_WORDS_KEY: str = "best_solution_nb_words"
+        STARS_KEY: str = "nb_stars"
+        XP_KEY: str = "experience"
+        QUEST_WORD_KEY: str = "quest_word_done"
 
-            # keys to access user data
-            NB_WORDS_KEY: str = "best_solution_nb_words"
-            STARS_KEY: str = "nb_stars"
-            XP_KEY: str = "experience"
-            QUEST_WORD_KEY: str = "quest_word_done"
+        # recover previous best number of words
+        nb_words_previous_best: int = 0
+        previous_best_exists: bool = False
+        if (NB_WORDS_KEY in USER_DATA.classic_mode[self.act_id][self.lvl_id]):
+            nb_words_previous_best = USER_DATA.classic_mode[self.act_id][self.lvl_id][NB_WORDS_KEY]
+            previous_best_exists = True
 
-            # recover previous best number of words
-            nb_words_previous_best: int = 0
-            previous_best_exists: bool = False
-            if (NB_WORDS_KEY in USER_DATA.classic_mode[self.act_id][self.lvl_id]):
-                nb_words_previous_best = USER_DATA.classic_mode[self.act_id][self.lvl_id][NB_WORDS_KEY]
-                previous_best_exists = True
+        # If the user did better than last time, overwrite everything
+        if ((nb_words_found < nb_words_previous_best) or not (previous_best_exists)):
+            # save best number of words
+            USER_DATA.classic_mode[self.act_id][self.lvl_id][NB_WORDS_KEY] = nb_words_found
+            # save stars
+            USER_DATA.classic_mode[self.act_id][self.lvl_id][STARS_KEY] = nb_stars
+            # recover previous xp fraction
+            previous_xp_fraction: float = 0.0
+            if (previous_best_exists):
+                previous_xp_fraction = self.get_xp_fraction(
+                    nb_words_previous_best)
+            # award newly acquired xp
+            USER_DATA.user_profile[XP_KEY] += int(
+                (xp_fraction - previous_xp_fraction) * XP_PER_LEVEL)
 
-            # If the user did better than last time, overwrite everything
-            if ((nb_words_found < nb_words_previous_best) or not (previous_best_exists)):
-                # save best number of words
-                USER_DATA.classic_mode[self.act_id][self.lvl_id][NB_WORDS_KEY] = nb_words_found
-                # save stars
-                USER_DATA.classic_mode[self.act_id][self.lvl_id][STARS_KEY] = nb_stars
-                # recover previous xp fraction
-                previous_xp_fraction: float = 0.0
-                if (previous_best_exists):
-                    previous_xp_fraction = self.get_xp_fraction(
-                        nb_words_previous_best)
-                # award newly acquired xp
-                USER_DATA.user_profile[XP_KEY] += int(
-                    (xp_fraction - previous_xp_fraction) * XP_PER_LEVEL)
+        # If the user passed through the quest word (if any) for the first time, award bonus xp
+        award_quest_word_xp: bool = False
+        if (QUEST_WORD_KEY in USER_DATA.classic_mode[self.act_id][self.lvl_id]):
+            already_did_quest_word: bool = USER_DATA.classic_mode[
+                self.act_id][self.lvl_id][QUEST_WORD_KEY]
+            award_quest_word_xp = quest_word_done and not (
+                already_did_quest_word)
+            USER_DATA.classic_mode[self.act_id][self.lvl_id][QUEST_WORD_KEY] = already_did_quest_word or quest_word_done
+        else:
+            award_quest_word_xp = quest_word_done
+            USER_DATA.classic_mode[self.act_id][self.lvl_id][QUEST_WORD_KEY] = quest_word_done
+        if (award_quest_word_xp):
+            USER_DATA.user_profile[XP_KEY] += XP_PER_LEVEL
 
-            # If the user passed through the quest word (if any) for the first time, award bonus xp
-            award_quest_word_xp: bool = False
-            if (QUEST_WORD_KEY in USER_DATA.classic_mode[self.act_id][self.lvl_id]):
-                already_did_quest_word: bool = USER_DATA.classic_mode[
-                    self.act_id][self.lvl_id][QUEST_WORD_KEY]
-                award_quest_word_xp = quest_word_done and not (
-                    already_did_quest_word)
-                USER_DATA.classic_mode[self.act_id][self.lvl_id][QUEST_WORD_KEY] = already_did_quest_word or quest_word_done
-            else:
-                award_quest_word_xp = quest_word_done
-                USER_DATA.classic_mode[self.act_id][self.lvl_id][QUEST_WORD_KEY] = quest_word_done
-            if (award_quest_word_xp):
-                USER_DATA.user_profile[XP_KEY] += XP_PER_LEVEL
+        # save changes
+        USER_DATA.save_changes()
 
-            # save changes
-            USER_DATA.save_changes()
+    def unlock_next_level(self):
+        """
+        Unlock the next level in same act or in the next act.
+        """
 
-        return
+        # Determine if there is other levels to unlock in the same act
+        next_lvl_id = str(int(self.lvl_id) + 1)
+        if next_lvl_id in GAMEPLAY_DICT[self.act_id]:
+            # Unlock the next level in the same act
+            USER_DATA.classic_mode[self.act_id][next_lvl_id] = {"nb_stars": 0}
+        else:
+            # Unlock the next act
+            next_act_id = str(int(self.act_id) + 1)
+            USER_DATA.classic_mode[next_act_id][1] = {"nb_stars": 0}
+
+        USER_DATA.save_changes()
+
+    def on_level_completed(self):
+        # Save the xp and stars
+
+        # Unlock the next level
+        self.unlock_next_level()
+
+        return {}
 
 
 if __name__ == "__main__":

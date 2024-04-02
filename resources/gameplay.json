@@ -1,5 +1,5 @@
 {
-    "Act1": {
+    "1": {
         "name": "Act 1 - Tutorial",
         "1": {
             "start_word": "link",
@@ -82,7 +82,7 @@
             "280k": 3
         }
     },
-    "Act2": {
+    "2": {
         "name": "Act 1 - Childhood",
         "1": {
             "start_word": "joy",
@@ -141,7 +141,7 @@
             "280k": 3
         }
     },
-    "Act3": {
+    "3": {
         "name": "Act 3 - 20.000 leagues under the sea",
         "1": {
             "start_word": "creature",
@@ -272,13 +272,13 @@
             "280k": 4
         }
     },
-    "Act4": {
+    "4": {
         "name": "Act 4 - Space Exploration"
     },
-    "Act5": {
+    "5": {
         "name": "Act 5 - Around the World"
     },
-    "Act6": {
+    "6": {
         "name": "Act 6 - My Little Poney"
     }
 }
