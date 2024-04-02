@@ -876,6 +876,7 @@ class ClassicGame(Game):
 
     def on_level_completed(self):
         # Save the xp and stars
+        # TODO
 
         # Unlock the next level
         self.unlock_next_level()

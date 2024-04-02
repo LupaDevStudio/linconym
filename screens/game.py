@@ -38,7 +38,7 @@ from screens import (
 )
 from tools.linconym import (
     level_has_saved_data,
-    Game
+    ClassicGame
 )
 from screens.custom_widgets import TreeLayout
 
@@ -236,6 +236,9 @@ class GameScreen(LinconymScreen):
 
     def load_game_play(self):
 
+        # Clean the new word
+        self.new_word = ""
+
         # Store the dict containing the user progress
         self.level_saved_data = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]
 
@@ -268,12 +271,16 @@ class GameScreen(LinconymScreen):
         self.current_level_name = "Act " + temp + " – " + self.current_level_id
 
         # Create a game instance
-        self.game = Game(
-            start_word=self.start_word,
-            end_word=self.end_word,
-            current_position=current_position,
-            words_found=words_found,
-            position_to_word_id=position_to_word_id)
+        # self.game = Game(
+        #     start_word=self.start_word,
+        #     end_word=self.end_word,
+        #     current_position=current_position,
+        #     words_found=words_found,
+        #     position_to_word_id=position_to_word_id)
+        self.game = ClassicGame(
+            act_id=self.current_act_id,
+            lvl_id=self.current_level_id
+        )
 
         # Build the tree
         self.build_tree_layout()
@@ -301,6 +308,8 @@ class GameScreen(LinconymScreen):
             self.check_disable_keyboard()
 
             self.disable_submit_button()
+        else:
+            self.game.on_level_completed()
 
     def check_level_complete(self):
         # The level is complete
