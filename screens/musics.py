@@ -49,13 +49,16 @@ class MusicsScreen(LinconymScreen):
 
     coins_count = NumericProperty()
 
-    def __init__(self, **kwargs) -> None:
-        super().__init__(**kwargs)
-        self.fill_scrollview()
-
     def on_pre_enter(self, *args):
         self.coins_count = USER_DATA.user_profile["coins"]
-        return super().on_pre_enter(*args)
+        super().on_pre_enter(*args)
+        self.fill_scrollview()
+
+    def on_leave(self, *args):
+        super().on_leave(*args)
+
+        # Reset scrollview
+        self.ids.scrollview_layout.reset_scrollview()
 
     def go_to_boosters(self):
         self.go_to_next_screen(screen_name="boosters")
@@ -74,7 +77,8 @@ class MusicsScreen(LinconymScreen):
                 primary_color=self.primary_color,
                 has_bought_music=has_bought_music,
                 is_using_music=is_using_music,
-                disable_button=True)
+                disable_button=True,
+                height=50)
             current_music_layout.update_display()
             self.MUSICS_LAYOUT_DICT[music] = current_music_layout
             scrollview_layout.add_widget(current_music_layout)
