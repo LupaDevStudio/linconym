@@ -106,6 +106,7 @@ def build_sorted_positions_list(position_to_word_id: Dict[str, int]):
 
 class WordLink(Widget):
     color = ColorProperty()
+    font_ratio = NumericProperty(1)
 
 
 class WordButton(ButtonBehavior, RelativeLayout):

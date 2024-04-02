@@ -10,7 +10,7 @@
         RoundedRectangle:
             pos:(0,0)
             size:self.size
-            radius:[20,]
+            radius:[20*self.font_ratio,]
 
     # Button title
     Label:
@@ -33,7 +33,7 @@
                 rgba: (0,0,0,1)
             Line:
                 ellipse:(self.width/2-self.height*CIRCLE_HEIGHT_RATIO/2,self.height/10,self.height*CIRCLE_HEIGHT_RATIO,self.height*CIRCLE_HEIGHT_RATIO)
-                width: 1.5
+                width: 1.5*root.font_ratio
 
     Image:
         id: activated_image

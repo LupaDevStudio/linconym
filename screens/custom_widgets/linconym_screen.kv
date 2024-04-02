@@ -1,0 +1,36 @@
+
+<LinconymScreen>:
+    Label:
+        id: title_label
+        text: root.title_screen
+        font_name: PATH_TITLE_FONT
+        font_size: TITLE_FONT_SIZE * root.font_ratio
+        pos_hint: {"center_x":0.5, "center_y":0.9}
+        outline_width: TITLE_OUTLINE_WIDTH
+        outline_color: TITLE_OUTLINE_COLOR
+        color: TEXT_FONT_COLOR
+
+    BottomBar:
+        id: bottom_bar
+        size_hint: (1, BOTTOM_BAR_HEIGHT)
+        pos_hint: {"bottom":0,"left":0}
+        selected: root.selected_bottom_bar
+
+    RoundedButtonImage:
+        id: back_arrow
+        image_path: PATH_ICONS + "left_arrow.png"
+        pos_hint: POS_HINT_LEFT_TOP_BUTTON
+        size_hint: (0.1, None)
+        height: self.width
+        colors: root.primary_color
+        release_function: root.go_backwards
+        font_ratio: root.font_ratio
+
+    RoundedButtonImage:
+        id: tutorial_button
+        image_path: PATH_ICONS + "tutorial.png"
+        pos_hint: POS_HINT_RIGHT_TOP_BUTTON
+        size_hint: (0.1, None)
+        height: self.width
+        colors: root.primary_color
+        font_ratio: root.font_ratio

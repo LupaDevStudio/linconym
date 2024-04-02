@@ -20,26 +20,13 @@
         RoundedRectangle:
             pos:(0, 0)
             size:self.size
+            radius: [12*root.font_ratio]
         # Border
         Color:
             rgba: root.outline_color
         Line:
-            dash_offset: 4
-            dash_length: 7
-            width: OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON
-            rounded_rectangle: (-OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON/2, -OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON/2, self.size[0]+OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON,self.size[1]+OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON, 12, 12, 12, 12)
-        # # Border 2
-        # Line:
-        #     dash_offset: 4
-        #     dash_length: 7
-        #     width: OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON
-        #     rounded_rectangle: (-OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON, -OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON, self.size[0]+OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON*2,self.size[1]+OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON*2, 12, 12, 12, 12)
-        # # Border 3
-        # Line:
-        #     dash_offset: 4
-        #     dash_length: 7
-        #     width: OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON
-        #     rounded_rectangle: (-3*OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON/2, -3*OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON/2, self.size[0]+OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON*3,self.size[1]+OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON*3, 12, 12, 12, 12)
+            width: OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON*root.font_ratio
+            rounded_rectangle: (-OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON/2, -OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON/2, self.size[0]+OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON,self.size[1]+OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON, 12*root.font_ratio, 12*root.font_ratio, 12*root.font_ratio, 12*root.font_ratio)
 
     # Main text
     Label:

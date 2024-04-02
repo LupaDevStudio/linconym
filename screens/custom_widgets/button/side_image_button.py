@@ -1,5 +1,5 @@
 """
-Module to create coins counter.
+Module to a button with an image on the side.
 """
 
 ###############
@@ -23,7 +23,7 @@ from tools.path import (
 from tools.constants import (
     CUSTOM_BUTTON_BACKGROUND_COLOR,
     OPACITY_ON_BUTTON_PRESS,
-    COINS_COUNT_FONT_SIZE,
+    MAIN_BUTTON_FONT_SIZE,
 )
 
 #############
@@ -39,7 +39,7 @@ class SideImageButton(ButtonBehavior, RelativeLayout):
     background_color = ColorProperty(CUSTOM_BUTTON_BACKGROUND_COLOR)
     text = StringProperty()
     coins_count = NumericProperty(-1)
-    font_size = NumericProperty(COINS_COUNT_FONT_SIZE)
+    font_size = NumericProperty(MAIN_BUTTON_FONT_SIZE)
     font_ratio = NumericProperty(1)
     side_image_source = StringProperty()
     icon_mode = BooleanProperty(False)

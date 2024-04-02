@@ -19,7 +19,8 @@ from kivy.properties import (
 from tools.constants import (
     SCREEN_TUTORIAL,
     SCREEN_BACK_ARROW,
-    USER_DATA
+    USER_DATA,
+    GAMEPLAY_DICT
 )
 from screens.custom_widgets import (
     LinconymScreen
@@ -63,9 +64,23 @@ class ConfigureTreeScreen(LinconymScreen):
     def on_pre_enter(self, *args):
         super().on_pre_enter(*args)
 
+        # Extract info from user data
         self.nb_stars = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["nb_stars"]
+        position_to_word_id = USER_DATA.classic_mode[self.current_act_id][
+            self.current_level_id]["position_to_word_id"]
+        current_position = USER_DATA.classic_mode[self.current_act_id][
+            self.current_level_id]["current_position"]
+        words_found = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["words_found"]
+        self.start_word = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]["start_word"].upper(
+        )
+        self.end_word = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]["end_word"].upper(
+        )
 
-        self.ids["tree_layout"].build_layout()
+        self.ids["tree_layout"].build_layout(
+            position_to_word_id=position_to_word_id,
+            words_found=words_found,
+            current_position=current_position
+        )
 
         # Create the title of the screen
         temp = self.current_act_id.replace("Act", "")
@@ -86,3 +101,9 @@ class ConfigureTreeScreen(LinconymScreen):
         Open the game screen.
         """
         self.manager.go_to_previous_screen()
+
+    def on_change_word_position_on_tree(self):
+        # Save the new current position
+        USER_DATA.classic_mode[self.current_act_id][self.current_level_id][
+            "current_position"] = self.ids["tree_layout"].current_position
+        USER_DATA.save_changes()

@@ -105,7 +105,7 @@ class LevelButton(ButtonBehavior, RelativeLayout):
 
 class LevelBranch(RelativeLayout):
 
-    font_ratio = NumericProperty()
+    font_ratio = NumericProperty(1)
     primary_color = ColorProperty((0.5, 0.5, 0.5, 1))
     secondary_color = ColorProperty((0.2, 0.2, 0.2, 1))
 
@@ -214,7 +214,8 @@ class LevelBranch(RelativeLayout):
                                        size_hint=(
                                            LEVEL_BUTTON_SIZE_HINT, LEVEL_BUTTON_RELATIVE_HEIGHT),
                                        primary_color=self.primary_color,
-                                       secondary_color=self.secondary_color)
+                                       secondary_color=self.secondary_color,
+                                       font_ratio=self.font_ratio)
             self.add_widget(level_button)
             # Create the branch
             if level_id < nb_levels:
@@ -279,6 +280,7 @@ class LevelLayout(MyScrollViewLayout):
     primary_color = ColorProperty((0.5, 0.5, 0.5, 1))
     secondary_color = ColorProperty((0.2, 0.2, 0.2, 1))
     nb_branches = NumericProperty()
+    font_ratio = NumericProperty(1)
 
     def __init__(
             self,
@@ -297,5 +299,6 @@ class LevelLayout(MyScrollViewLayout):
                 act_id=self.act_id,
                 branch_id=branch_id,
                 primary_color=self.primary_color,
-                secondary_color=self.secondary_color)
+                secondary_color=self.secondary_color,
+                font_ratio=self.font_ratio)
             self.add_widget(level_branch)

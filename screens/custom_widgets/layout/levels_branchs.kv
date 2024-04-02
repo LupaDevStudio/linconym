@@ -13,7 +13,7 @@
             RoundedRectangle:
                 pos:(0,0)
                 size:self.size
-                radius:[15,]
+                radius:[15*root.font_ratio,]
     
     Label:
         id: level_label
@@ -43,19 +43,9 @@
         Color:
             rgba: self.color
         Line:
-            # points: [(self.x,self.top),(self.right,self.top),(self.x,self.y),(self.right,self.y)]
             points: [self.x, self.center_y,self.right, self.center_y]
             width: 2
             cap: "none"
-
-
-# <LevelBranch>:
-#     canvas.before:
-#         Color:
-#             rgba: (1,1,1,0.5)
-#         Rectangle:
-#             pos:(0,0)
-#             size:self.size
 
 
 <CurveBranchTopLeft>:

@@ -54,15 +54,6 @@ class ColoredRoundedButtonImage(ButtonBehavior, RelativeLayout):
         self.release_function = release_function
         self.always_release = True
 
-        self.bind(disable_button=self.bind_function)
-        self.bind(color_image=self.bind_function)
-        self.bind(background_color=self.bind_function)
-        self.bind(touch_color=self.bind_function)
-        self.bind(image_path=self.bind_function)
-
-    def bind_function(self, base_widget, value):
-        pass
-
     def on_press(self):
         if not self.disable_button:
             self.temp_color = self.background_color

@@ -251,16 +251,6 @@ class GameScreen(LinconymScreen):
         self.start_to_end_label = (
             self.start_word + " > " + self.end_word).upper()
 
-        # Load the save data if some are provided
-        if level_has_saved_data(self.level_saved_data):
-            current_position = self.level_saved_data["current_position"]
-            words_found = self.level_saved_data["words_found"]
-            position_to_word_id = self.level_saved_data["position_to_word_id"]
-        else:
-            current_position = "0"
-            words_found = [self.start_word]
-            position_to_word_id = {"0": 0}
-
         self.transparent_secondary_color = [
             self.secondary_color[0], self.secondary_color[1], self.secondary_color[2], 0.3]
         self.ids.keyboard_layout.build_keyboard()
@@ -271,12 +261,6 @@ class GameScreen(LinconymScreen):
         self.current_level_name = "Act " + temp + " – " + self.current_level_id
 
         # Create a game instance
-        # self.game = Game(
-        #     start_word=self.start_word,
-        #     end_word=self.end_word,
-        #     current_position=current_position,
-        #     words_found=words_found,
-        #     position_to_word_id=position_to_word_id)
         self.game = ClassicGame(
             act_id=self.current_act_id,
             lvl_id=self.current_level_id

@@ -1,5 +1,5 @@
 #:kivy 2.2.1
-#:set OUTLINE_RECTANGLE 6
+#:set OUTLINE_RECTANGLE 3
 #:set TITLE_SIZE_HINT_WIDTH 0.25
 
 <-ThemeLayout>:
@@ -13,7 +13,7 @@
         RoundedRectangle:
             pos: self.pos
             size: self.size
-            radius: [40]
+            radius: [40*self.font_ratio]
         StencilUse
         Rectangle:
             texture: self.texture
@@ -23,16 +23,24 @@
         RoundedRectangle:
             pos: self.pos
             size: self.size
-            radius: [40]
+            radius: [40*self.font_ratio]
         StencilPop
 
-    canvas.before:
+    # canvas.before:
+    #     Color:
+    #         rgba: (0, 0, 0, 1)
+    #     RoundedRectangle:
+    #         pos: (self.pos[0]-OUTLINE_RECTANGLE//2, self.pos[1]-OUTLINE_RECTANGLE//2)
+    #         size: (self.size[0]+OUTLINE_RECTANGLE,self.size[1]+OUTLINE_RECTANGLE)
+    #         radius: [43*self.font_ratio]
+
+    canvas.after:
         Color:
-            rgba: (0, 0, 0, 1)
-        RoundedRectangle:
-            pos: (self.pos[0]-OUTLINE_RECTANGLE//2, self.pos[1]-OUTLINE_RECTANGLE//2)
-            size: (self.size[0]+OUTLINE_RECTANGLE,self.size[1]+OUTLINE_RECTANGLE)
-            radius: [43]
+            rgba: (0,0,0,1)
+        Line:
+            width: OUTLINE_RECTANGLE*root.font_ratio
+            rounded_rectangle: (self.pos[0]-OUTLINE_RECTANGLE/2, self.pos[1]-OUTLINE_RECTANGLE/2, self.size[0]+OUTLINE_RECTANGLE,self.size[1]+OUTLINE_RECTANGLE, 40*root.font_ratio, 40*root.font_ratio, 40*root.font_ratio, 40*root.font_ratio)
+
 
     RelativeLayout:
         pos: root.pos
@@ -84,7 +92,7 @@
         RoundButton:
             id: primary_color_bubble
             pos_hint: {"center_x":0.94, "center_y":0.66}
-            size_hint: (None,0.25)
+            size_hint: (None,0.2)
             width: self.height
             color: root.primary_color
             disable_button: True
@@ -93,7 +101,7 @@
         RoundButton:
             id: secondary_color_bubble
             pos_hint: {"center_x":0.94, "center_y":0.33}
-            size_hint: (None,0.25)
+            size_hint: (None,0.2)
             width: self.height  
             color: root.secondary_color
             disable_button: True

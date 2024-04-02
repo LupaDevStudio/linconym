@@ -25,8 +25,8 @@
     # Icon title
     Label:
         text: root.icon_title
-        pos_hint: {"x": 0.05 + icon_image.width/root.width,"center_y":0.5}
-        size_hint: 1 - 0.07 - icon_image.width/root.width, 1
+        pos_hint: {"x": 0.05 + icon_image.width/(root.width+1),"center_y":0.5}
+        size_hint: 1 - 0.07 - icon_image.width/(root.width+1), 1
         font_size: root.font_ratio * root.font_size
         font_name: root.text_font_name
         color: (0,0,0,1)

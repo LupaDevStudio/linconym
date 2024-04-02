@@ -80,9 +80,6 @@ class KeyboardLayout(RelativeLayout):
         self.text_font_name = text_font_name
         self.font_size = font_size
 
-    def bind_function(self, base_widget, value):
-        pass
-
     def update_padding(self, base_widget, value):
         # because maximum of 9 letters in line
         self.size_letter = (1 - self.horizontal_padding * 9) / 10
