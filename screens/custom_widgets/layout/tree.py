@@ -153,6 +153,9 @@ class TreeScrollview(ScrollView):
     primary_color = ListProperty([0.5, 0.5, 0.5, 1.])
     secondary_color = ListProperty([1., 1., 1., 1.])
 
+    def on_change_word_position_on_tree(self):
+        self.parent.on_change_word_position_on_tree()
+
 
 class TreeLayout(RelativeLayout):
     """
@@ -270,6 +273,9 @@ class TreeLayout(RelativeLayout):
 
         # Add all widgets in the appropriate order
         self.add_link_and_word_widgets()
+
+        # Call a parent function to update
+        self.parent.on_change_word_position_on_tree()
 
     def add_link_and_word_widgets(self):
         """

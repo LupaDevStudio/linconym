@@ -79,52 +79,7 @@ class GameScreen(LinconymScreen):
     def on_pre_enter(self, *args):
         super().on_pre_enter(*args)
 
-        # Store the dict containing the user progress
-        self.level_saved_data = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]
-
-        # Save the dict containing the level instructions
-        self.level_info = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]
-
-        # Extract start word and end word
-        self.start_word = self.level_info["start_word"]
-        self.end_word = self.level_info["end_word"]
-        self.start_to_end_label = (
-            self.start_word + " > " + self.end_word).upper()
-
-        # Load the save data if some are provided
-        if level_has_saved_data(self.level_saved_data):
-            current_position = self.level_saved_data["current_position"]
-            words_found = self.level_saved_data["words_found"]
-            position_to_word_id = self.level_saved_data["position_to_word_id"]
-        else:
-            current_position = "0"
-            words_found = [self.start_word]
-            position_to_word_id = {"0": 0}
-
-        # Create a game instance
-        game = Game(
-            start_word=self.start_word,
-            end_word=self.end_word,
-            current_position=current_position,
-            words_found=words_found,
-            position_to_word_id=position_to_word_id)
-
-        self.transparent_secondary_color = [
-            self.secondary_color[0], self.secondary_color[1], self.secondary_color[2], 0.3]
-        self.ids.keyboard_layout.build_keyboard()
-
-        self.nb_stars = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["nb_stars"]
-
-        # Build the tree with the saved data
-        self.ids["tree_layout"].build_layout(
-            position_to_word_id=position_to_word_id,
-            words_found=words_found,
-            current_position=current_position)
-
-        temp = self.current_act_id.replace("Act", "")
-        self.current_level_name = "Act " + temp + " – " + self.current_level_id
         self.load_game_play()
-        self.load_game_user()
         self.build_word()
         self.check_disable_keyboard()
         self.check_enable_submit_button()
@@ -258,14 +213,70 @@ class GameScreen(LinconymScreen):
             self.add_widget(letter_widget)
             self.list_widgets_letters.append(letter_widget)
 
-    def load_game_play(self):
-        pass
+    def on_change_word_position_on_tree(self):
 
-    def load_game_user(self):
-        pass
+        # Update the game to the new position
+        self.game.change_position(self.ids["tree_layout"].current_position)
+
+        # Recover the current word
+        self.current_word = self.game.current_word.upper()
+
+    def load_game_play(self):
+
+        # Store the dict containing the user progress
+        self.level_saved_data = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]
+
+        # Save the dict containing the level instructions
+        self.level_info = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]
+
+        # Extract start word and end word
+        self.start_word = self.level_info["start_word"]
+        self.end_word = self.level_info["end_word"]
+        self.start_to_end_label = (
+            self.start_word + " > " + self.end_word).upper()
+
+        # Load the save data if some are provided
+        if level_has_saved_data(self.level_saved_data):
+            current_position = self.level_saved_data["current_position"]
+            words_found = self.level_saved_data["words_found"]
+            position_to_word_id = self.level_saved_data["position_to_word_id"]
+        else:
+            current_position = "0"
+            words_found = [self.start_word]
+            position_to_word_id = {"0": 0}
+
+        self.transparent_secondary_color = [
+            self.secondary_color[0], self.secondary_color[1], self.secondary_color[2], 0.3]
+        self.ids.keyboard_layout.build_keyboard()
+
+        self.nb_stars = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["nb_stars"]
+
+        temp = self.current_act_id.replace("Act", "")
+        self.current_level_name = "Act " + temp + " – " + self.current_level_id
+
+        # Create a game instance
+        self.game = Game(
+            start_word=self.start_word,
+            end_word=self.end_word,
+            current_position=current_position,
+            words_found=words_found,
+            position_to_word_id=position_to_word_id)
+
+        # Build the tree
+        self.build_tree_layout()
+
+        # Define the current word
+        self.current_word = self.game.current_word.upper()
+
+    def build_tree_layout(self):
+        self.ids["tree_layout"].build_layout(
+            position_to_word_id=self.game.position_to_word_id,
+            words_found=self.game.words_found,
+            current_position=self.game.current_position)
 
     def submit_word(self):
-        print("TODO rajouter le nouveau mot dans l'arbre. Ce nouveau mot est forcément valide (on le sait), cela a déjà été vérifié avec la présence ou non du submit button.")
+        self.game.submit_word(self.new_word.lower())
+        self.build_tree_layout()
 
         # Change the current and new word
         if not self.check_level_complete():
