@@ -14,3 +14,6 @@ from screens.custom_widgets.layout.tree import TreeLayout, TreeScrollview
 from screens.custom_widgets.layout.music_layout import MusicLayout
 from screens.custom_widgets.layout.quests_layout import QuestsLayout
 from screens.custom_widgets.layout.achievements_layout import AchievementsLayout
+from screens.custom_widgets.layout.icon_credit_layout import IconCreditLayout
+from screens.custom_widgets.layout.general_licenses_layout import GeneralLicensesLayout
+from screens.custom_widgets.layout.images_credit_layout import ImagesCreditLayout

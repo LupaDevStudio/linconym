@@ -36,7 +36,10 @@ from screens.custom_widgets.layout import (
     TreeScrollview,
     MusicLayout,
     QuestsLayout,
-    AchievementsLayout
+    AchievementsLayout,
+    IconCreditLayout,
+    GeneralLicensesLayout,
+    ImagesCreditLayout
 )
 
 

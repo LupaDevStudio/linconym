@@ -1,5 +1,15 @@
 {
     "lupadevstudio": "",
+    "general_licenses": {
+        "kivy": {
+            "title": "Kivy library - 2010-2023 Kivy Team and other contributors",
+            "url": "https://kivy.org/"
+        },
+        "oxanium": {
+            "title": "Main font: Oxanium - Copyright 2019 Severin Meyer",
+            "url": "https://www.dafont.com/oxanium.font"
+        }
+    },
     "icons": {
         "check": "<a href=\"https://www.flaticon.com/free-icons/tick\" title=\"tick icons\">Tick icons created by Pixel perfect - Flaticon</a>",
         "coins": "<a href=\"https://www.flaticon.com/free-icons/coin\" title=\"coin icons\">Coin icons created by Muhazdinata - Flaticon</a>",
@@ -13,12 +23,37 @@
         "profile": "<a href=\"https://www.flaticon.com/free-icons/user\" title=\"user icons\">User icons created by Freepik - Flaticon</a>",
         "quests": "<a href=\"https://www.flaticon.com/free-icons/quest\" title=\"quest icons\">Quest icons created by Vitaly Gorbachev - Flaticon</a>",
         "settings": "<a href=\"https://www.flaticon.com/free-icons/settings\" title=\"settings icons\">Settings icons created by Freepik - Flaticon</a>",
+        "shrink": "<a href=\"https://www.flaticon.com/free-icons/shrink\" title=\"shrink icons\">Shrink icons created by Uniconlabs - Flaticon</a>",
         "star_full": "<a href=\"https://www.flaticon.com/fr/icones-gratuites/etoile\" title=\"étoile icônes\">Étoile icônes créées par Pixel perfect - Flaticon</a>",
-        "sucess": "<a href=\"https://www.flaticon.com/free-icons/achievement\" title=\"achievement icons\">Achievement icons created by VectorPortal - Flaticon</a>",
-        "tutorial": "<a href=\"https://www.flaticon.com/free-icons/info\" title=\"info icons\">Info icons created by Chanut - Flaticon</a>",
-        "badge": "<a href=\"https://www.flaticon.com/free-icons/medal\" title=\"medal icons\">Medal icons created by Vectors Market - Flaticon</a>",
-        "gem": "<a href=\"https://www.flaticon.com/free-icons/gem\" title=\"gem icons\">Gem icons created by Freepik - Flaticon</a>",
-        "shrink": "<a href=\"https://www.flaticon.com/free-icons/shrink\" title=\"shrink icons\">Shrink icons created by Uniconlabs - Flaticon</a>"
+        "success": "<a href=\"https://www.flaticon.com/free-icons/achievement\" title=\"achievement icons\">Achievement icons created by VectorPortal - Flaticon</a>",
+        "tutorial": "<a href=\"https://www.flaticon.com/free-icons/info\" title=\"info icons\">Info icons created by Chanut - Flaticon</a>"
+    },
+    "image": {
+        "badge": {
+            "title": "Medal icons created by Vectors Market - Flaticon",
+            "type": "icon",
+            "url": "https://www.flaticon.com/free-icons/medal"
+        },
+        "galaxy_messier_96": {
+            "title": "Galaxy Messier 96 - Nasa",
+            "type": "background",
+            "url": "https://science.nasa.gov/image-detail/41428774775-243864f71e-o/"
+        },
+        "gem": {
+            "title": "Gem icons created by Freepik - Flaticon",
+            "type": "icon",
+            "url": "https://www.flaticon.com/free-icons/gem"
+        },
+        "mystic_mountain": {
+            "title": "Mystic Mountain - Nasa",
+            "type": "background",
+            "url": "https://science.nasa.gov/image-detail/38426715186-1c2c403ca2-o/"
+        },
+        "westerlund_2": {
+            "title": "Westerlund 2 - Nasa",
+            "type": "background",
+            "url": "https://science.nasa.gov/image-detail/42916480792-cd4b5fcfdf-o/"
+        }
     },
     "musics": {
         "kids_party": {

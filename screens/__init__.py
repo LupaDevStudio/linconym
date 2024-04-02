@@ -20,7 +20,10 @@ from screens.custom_widgets import (
     ColoredRoundedButton,
     KeyboardLayout,
     ColoredRoundedButtonImage,
-    MusicLayout
+    MusicLayout,
+    IconCreditLayout,
+    GeneralLicensesLayout,
+    ImagesCreditLayout
 )
 
 # Import the screens

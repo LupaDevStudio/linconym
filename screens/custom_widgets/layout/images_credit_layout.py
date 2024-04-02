@@ -1,5 +1,5 @@
 """
-Module to create custom buttons with round transparent white background.
+Module to create the act button.
 """
 
 ###############
@@ -7,23 +7,25 @@ Module to create custom buttons with round transparent white background.
 ###############
 
 ### Kivy imports ###
+
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.properties import (
     StringProperty,
     NumericProperty,
-    BooleanProperty
+    BooleanProperty,
+    ObjectProperty
 )
 
 ### Local imports ###
+
 from tools.path import (
     PATH_TEXT_FONT
 )
 from tools.constants import (
     CUSTOM_BUTTON_BACKGROUND_COLOR,
-    OPACITY_ON_BUTTON_PRESS,
-    CONTENT_LABEL_FONT_SIZE,
-    LABEL_FONT_SIZE
+    LABEL_FONT_SIZE,
+    OPACITY_ON_BUTTON_PRESS
 )
 
 #############
@@ -31,28 +33,37 @@ from tools.constants import (
 #############
 
 
-class CustomContentButton(ButtonBehavior, RelativeLayout):
+class ImagesCreditLayout(ButtonBehavior, RelativeLayout):
     """
-    A custom button with a white round rectangle background.
+    The music layout with a white round rectangle background.
+    It is composed of a play/pause button on the left, a title.
+    It can all be comprised of a buy/select button on the right.
     """
 
     background_color = CUSTOM_BUTTON_BACKGROUND_COLOR
-    title = StringProperty()
-    content = StringProperty()
-    text_filling_ratio = NumericProperty(0.8)
-    font_size_title = NumericProperty(LABEL_FONT_SIZE)
-    font_size_content = NumericProperty(CONTENT_LABEL_FONT_SIZE)
+    image_title = StringProperty()
+    current_image = StringProperty()
+    font_size = NumericProperty(LABEL_FONT_SIZE)
     font_ratio = NumericProperty(1)
     text_font_name = StringProperty(PATH_TEXT_FONT)
+    radius = NumericProperty(40)
+    release_function = ObjectProperty()
     disable_button = BooleanProperty(False)
+    icon_mode = BooleanProperty(False)
 
     def __init__(
             self,
             release_function=lambda: 1 + 1,
+            font_ratio=None,
             **kwargs):
-        super().__init__(**kwargs)
+
+        if font_ratio is not None:
+            self.font_ratio = font_ratio
+
         self.release_function = release_function
         self.always_release = True
+
+        super().__init__(**kwargs)
 
     def on_press(self):
         if not self.disable_button:

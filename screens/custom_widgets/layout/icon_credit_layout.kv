@@ -1,0 +1,36 @@
+#:kivy 2.2.1
+
+<IconCreditLayout>:
+
+    # Background
+    canvas.before:
+        Color:
+            rgba: self.background_color
+        RoundedRectangle:
+            pos:(0, 0)
+            size: self.size
+            radius:[self.radius * self.font_ratio]
+
+    # Icon image
+    RoundedButtonImage:
+        id: icon_image
+        image_path: PATH_ICONS + root.current_icon + ".png"
+        size_hint: None, 0.85
+        width: self.height
+        pos_hint: {"x": 0.025, "center_y": 0.5}
+        colors: root.primary_color
+        background_color: (0, 0, 0, 0)
+        disabled: True
+
+    # Icon title
+    Label:
+        text: root.icon_title
+        pos_hint: {"x": 0.05 + icon_image.width/root.width,"center_y":0.5}
+        size_hint: 1 - 0.07 - icon_image.width/root.width, 1
+        font_size: root.font_ratio * root.font_size
+        font_name: root.text_font_name
+        color: (0,0,0,1)
+        text_size: (self.width, None)
+        halign: "left"
+        valign: "center"
+

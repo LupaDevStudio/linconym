@@ -11,7 +11,8 @@ from kivy.uix.relativelayout import RelativeLayout
 from kivy.properties import (
     StringProperty,
     NumericProperty,
-    ColorProperty
+    ColorProperty,
+    BooleanProperty
 )
 
 ### Local imports ###
@@ -39,26 +40,19 @@ class ExperienceCounter(RelativeLayout):
     label_experience_left = StringProperty()
     percentage_experience = NumericProperty()
     experience_left = NumericProperty()
-    font_size = NumericProperty()
+    font_size = NumericProperty(EXPERIENCE_FONT_SIZE)
+    text_font_name = StringProperty(PATH_TEXT_FONT)
     font_ratio = NumericProperty(1)
     theme_colors = StringProperty()
     primary_color = ColorProperty()
     secondary_color = ColorProperty()
+    disable_button = BooleanProperty()
 
-    def __init__(
-            self,
-            text_font_name=PATH_TEXT_FONT,
-            font_size=EXPERIENCE_FONT_SIZE,
-            font_ratio=None,
-            **kwargs):
-        if font_ratio is not None:
-            self.font_ratio = font_ratio
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.bind(percentage_experience=self.update_experience)
         self.bind(experience_left=self.update_experience)
         self.bind(theme_colors=self.update_colors)
-        self.text_font_name = text_font_name
-        self.font_size = font_size
 
     def update_colors(self, base_widget, value):
         self.primary_color = THEMES_DICT[self.theme_colors]["primary"]
@@ -68,10 +62,10 @@ class ExperienceCounter(RelativeLayout):
         self.label_experience_left = "+ " + str(self.experience_left) + " XP"
 
     def on_press(self):
-        if self.button_mode:
+        if not self.disable_button:
             self.opacity = OPACITY_ON_BUTTON_PRESS
 
     def on_release(self):
-        if self.button_mode:
+        if not self.disable_button:
             self.release_function()
             self.opacity = 1

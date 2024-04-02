@@ -1,0 +1,25 @@
+#:kivy 2.2.1
+
+<GeneralLicensesLayout>:
+
+    # Background
+    canvas.before:
+        Color:
+            rgba: self.background_color
+        RoundedRectangle:
+            pos:(0, 0)
+            size: self.size
+            radius:[self.radius * self.font_ratio]
+
+    # Icon title
+    Label:
+        text: root.license_title
+        pos_hint: {"center_x": 0.5,"center_y":0.5}
+        size_hint: 0.9, 1
+        font_size: root.font_ratio * root.font_size
+        font_name: root.text_font_name
+        color: (0,0,0,1)
+        text_size: (self.width, None)
+        halign: "left"
+        valign: "center"
+
