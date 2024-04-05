@@ -25,7 +25,6 @@ from tools.path import (
 )
 from tools.constants import (
     CUSTOM_BUTTON_BACKGROUND_COLOR,
-    MUSICS_DICT,
     LABEL_FONT_SIZE,
     OPACITY_ON_BUTTON_PRESS
 )
@@ -42,14 +41,14 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
     It can all be comprised of a buy/select button on the right.
     """
 
-    background_color = CUSTOM_BUTTON_BACKGROUND_COLOR
+    background_color = ColorProperty(CUSTOM_BUTTON_BACKGROUND_COLOR)
+    primary_color = ColorProperty()
     music_title = StringProperty()
     music_price = NumericProperty()
     font_size = NumericProperty(LABEL_FONT_SIZE)
     font_ratio = NumericProperty(1)
     text_font_name = StringProperty(PATH_TEXT_FONT)
-    primary_color = ColorProperty((1, 1, 1, 1))
-    radius = NumericProperty(40)
+    radius = NumericProperty(20)
     is_playing = BooleanProperty(False)
     has_bought_music = BooleanProperty(False)
     is_using_music = BooleanProperty(False)
@@ -59,11 +58,7 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
     def __init__(
             self,
             release_function=lambda: 1 + 1,
-            font_ratio=None,
             **kwargs):
-
-        if font_ratio is not None:
-            self.font_ratio = font_ratio
 
         self.release_function = release_function
         self.always_release = True

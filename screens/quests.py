@@ -66,7 +66,7 @@ class QuestsScreen(LinconymScreen):
     def fill_scrollview(self):
         scrollview_layout = self.ids.scrollview_layout
 
-        # Load the widgets
+        # Store the widgets
         self.QUESTS_LAYOUT_DICT = {}
         dict_act_quests = QUESTS_DICT[self.current_act_id]
 

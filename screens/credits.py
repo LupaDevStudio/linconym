@@ -70,7 +70,6 @@ class CreditsScreen(LinconymScreen):
 
     def fill_scrollview(self):
         # Load the widgets
-        self.number_lines_credits = 0
         scrollview_layout = self.ids["scrollview_layout"]
         line_height = 50
 
@@ -206,7 +205,6 @@ class CreditsScreen(LinconymScreen):
                 music_title=title,
                 font_ratio=self.font_ratio,
                 primary_color=self.primary_color,
-                radius=20,
                 font_size=CREDITS_CONTENT_SCROLLVIEW_FONT_SIZE,
                 size_hint_y = None,
                 height=line_height * self.font_ratio)
