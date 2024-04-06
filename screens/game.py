@@ -293,15 +293,18 @@ class GameScreen(LinconymScreen):
 
             self.disable_submit_button()
         else:
-            self.game.on_level_completed()
+            end_level_dict = self.game.on_level_completed()
+            print("TODO YOU WIN afficher la popup")
+            # Update the stars
+            self.nb_stars = end_level_dict["stars"]
 
     def check_level_complete(self):
         # The level is complete
         if self.new_word == self.end_word.upper():
-            print("TODO YOU WIN afficher la popup")
-            self.current_word = self.start_word.upper()
+            # self.current_word = self.start_word.upper()
             self.ids.keyboard_layout.disable_whole_keyboard()
             self.disable_submit_button()
+            self.new_word = ""
             return True
         return False
 

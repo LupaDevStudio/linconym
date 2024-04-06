@@ -796,7 +796,7 @@ class ClassicGame(Game):
 
         # Stars
         nb_words_found: int = len(solution_found)
-        nb_stars: int = self.get_nb_stars(nb_words_found)
+        self.nb_stars: int = self.get_nb_stars(nb_words_found)
 
         # xp: get a percentage of a certain constant amount depending on the solution's quality...
         xp_fraction: float = self.get_xp_fraction(nb_words_found)
@@ -830,7 +830,7 @@ class ClassicGame(Game):
             # save best number of words
             USER_DATA.classic_mode[self.act_id][self.lvl_id][NB_WORDS_KEY] = nb_words_found
             # save stars
-            USER_DATA.classic_mode[self.act_id][self.lvl_id][STARS_KEY] = nb_stars
+            USER_DATA.classic_mode[self.act_id][self.lvl_id][STARS_KEY] = self.nb_stars
             # recover previous xp fraction
             previous_xp_fraction: float = 0.0
             if (previous_best_exists):
@@ -876,12 +876,12 @@ class ClassicGame(Game):
 
     def on_level_completed(self):
         # Save the xp and stars
-        # TODO
+        self.award_stars_xp()
 
         # Unlock the next level
         self.unlock_next_level()
 
-        return {}
+        return {"stars": self.nb_stars}
 
 
 if __name__ == "__main__":
