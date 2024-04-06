@@ -47,8 +47,8 @@ class KeyboardLayout(RelativeLayout):
 
     font_size = NumericProperty()
     font_ratio = NumericProperty(1)
-    horizontal_padding = NumericProperty(0.2 / 9)
-    size_letter = NumericProperty(0.08)
+    horizontal_padding = NumericProperty(0.1 / 9)
+    size_letter = NumericProperty(0.09)
     text_font_name = StringProperty()
     background_color = ColorProperty([1, 1, 1, 1])
     touch_color = ColorProperty([0, 0, 0, 1])
