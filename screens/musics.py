@@ -16,7 +16,6 @@ from kivy.properties import (
 
 from tools.constants import (
     USER_DATA,
-    THEMES_DICT,
     MUSICS_DICT,
     SCREEN_TITLE,
     SCREEN_BACK_ARROW,
@@ -37,7 +36,7 @@ from screens import (
 
 class MusicsScreen(LinconymScreen):
     """
-    Class to manage the screen that contains the profile information.
+    Class to manage the screen that contains the customization for musics.
     """
 
     dict_type_screen = {
@@ -48,6 +47,9 @@ class MusicsScreen(LinconymScreen):
     }
 
     coins_count = NumericProperty()
+
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
 
     def on_pre_enter(self, *args):
         self.coins_count = USER_DATA.user_profile["coins"]
@@ -64,21 +66,24 @@ class MusicsScreen(LinconymScreen):
         self.go_to_next_screen(screen_name="boosters")
 
     def fill_scrollview(self):
-        scrollview_layout = self.ids["scrollview_layout"]
-        # Load the widgets
+        scrollview_layout = self.ids.scrollview_layout
+        layout_height = 75
+
+        # # Store the widgets
         self.MUSICS_LAYOUT_DICT = {}
         for music in MUSICS_DICT:
-            has_bought_music = USER_DATA.unlocked_musics[music]
+            has_bought_music = music in USER_DATA.unlocked_musics
             is_using_music = USER_DATA.settings["current_music"] == music
             current_music_layout = MusicLayout(
                 music_title=MUSICS_DICT[music]["name"],
                 music_price=MUSICS_DICT[music]["price"],
-                font_ratio=self.font_ratio * 0.8,
+                font_ratio=self.font_ratio*0.8,
                 primary_color=self.primary_color,
                 has_bought_music=has_bought_music,
                 is_using_music=is_using_music,
                 disable_button=True,
-                height=50)
+                size_hint_y=None,
+                height=layout_height*self.font_ratio)
             current_music_layout.update_display()
             self.MUSICS_LAYOUT_DICT[music] = current_music_layout
             scrollview_layout.add_widget(current_music_layout)

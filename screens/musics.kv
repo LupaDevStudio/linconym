@@ -23,8 +23,6 @@
         MyScrollViewLayout:
             id: scrollview_layout
             cols:1
-            spacing:40
-            #height:0.15*root.height * len(MUSICS_DICT)*1.08
-            height: self.minimum_height
-            padding: (0.05*root.width, 10,0.05*root.width,40)
+            spacing:40*root.font_ratio
+            padding: (0.05*root.width, 12*root.font_ratio, 0.05*root.width, 40*root.font_ratio)
 
