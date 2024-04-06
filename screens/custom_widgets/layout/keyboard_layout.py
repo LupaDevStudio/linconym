@@ -98,7 +98,7 @@ class KeyboardLayout(RelativeLayout):
         """
         self.list_letter_keys = []
 
-        vertical_padding = 0.05
+        vertical_padding = 0.04
         height_letter = (1 - vertical_padding * 3) / 3
 
         # Define the type of the keyboard
