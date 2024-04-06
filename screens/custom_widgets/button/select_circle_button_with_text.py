@@ -63,4 +63,5 @@ class SelectCircleButtonWithText(RelativeLayout):
         super().__init__(**kwargs)
 
     def on_release(self):
-        self.release_function()
+        if self.collide_point(self.last_touch.x, self.last_touch.y):
+            self.release_function()

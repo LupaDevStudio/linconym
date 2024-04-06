@@ -38,7 +38,8 @@ class RoundedButtonImage(ButtonBehavior, RelativeLayout):
 
     background_color = ColorProperty(CUSTOM_BUTTON_BACKGROUND_COLOR)
     image_path = StringProperty()
-    is_icon_color = BooleanProperty(True) # if it's an icon to be colored or not
+    # if it's an icon to be colored or not
+    is_icon_color = BooleanProperty(True)
     colors = ColorProperty((0, 0, 0, 1))
     font_ratio = NumericProperty(1)
     radius = NumericProperty(20)
@@ -56,5 +57,6 @@ class RoundedButtonImage(ButtonBehavior, RelativeLayout):
 
     def on_release(self):
         if not self.disable_button:
-            self.release_function()
+            if self.collide_point(self.last_touch.x, self.last_touch.y):
+                self.release_function()
             self.opacity = 1

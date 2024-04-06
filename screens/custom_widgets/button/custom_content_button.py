@@ -60,5 +60,6 @@ class CustomContentButton(ButtonBehavior, RelativeLayout):
 
     def on_release(self):
         if not self.disable_button:
-            self.release_function()
+            if self.collide_point(self.last_touch.x, self.last_touch.y):
+                self.release_function()
             self.opacity = 1

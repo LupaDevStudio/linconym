@@ -74,4 +74,5 @@ class ColoredRoundedButton(ButtonBehavior, RelativeLayout):
     def on_release(self):
         if not self.disable_button:
             self.background_color = self.temp_color
-            self.release_function()
+            if self.collide_point(self.last_touch.x, self.last_touch.y):
+                self.release_function()
