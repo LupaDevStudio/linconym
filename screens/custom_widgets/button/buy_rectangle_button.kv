@@ -30,7 +30,7 @@
 
     Label:
         text: root.price_text
-        size_hint: (1-coins_image.width/root.width-0.1,1)
+        size_hint: (1-coins_image.width/(root.width+1)-0.1, 1)
         pos_hint: {"x":0.05,"center_y":0.5}
         font_size: root.font_ratio * root.font_size
         font_name: root.text_font_name
