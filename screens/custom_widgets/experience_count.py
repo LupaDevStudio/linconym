@@ -47,6 +47,7 @@ class ExperienceCounter(RelativeLayout):
     primary_color = ColorProperty()
     secondary_color = ColorProperty()
     disable_button = BooleanProperty()
+    radius = NumericProperty(15)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
