@@ -28,9 +28,9 @@ class TwoButtonsPopup(CustomPopup):
 
     title = StringProperty()
     right_button_label = StringProperty()
-    right_release_function = ObjectProperty()
+    right_release_function = ObjectProperty(lambda: 1 + 1)
     left_button_label = StringProperty("Cancel")
-    left_release_function = ObjectProperty()
+    left_release_function = ObjectProperty(lambda: 1 + 1)
     center_label_text = StringProperty()
 
     def __init__(self, **kwargs):

@@ -45,7 +45,7 @@ class CoinsCounter(ButtonBehavior, RelativeLayout):
     display_plus = BooleanProperty(True)
     disable_button = BooleanProperty(False)
     radius = NumericProperty(15)
-    release_function = ObjectProperty()
+    release_function = ObjectProperty(lambda: 1 + 1)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

@@ -52,7 +52,7 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
     is_playing = BooleanProperty(False)
     has_bought_music = BooleanProperty(False)
     is_using_music = BooleanProperty(False)
-    release_function = ObjectProperty()
+    release_function = ObjectProperty(lambda: 1 + 1)
     disable_button = BooleanProperty(False)
 
     def __init__(self, **kwargs):

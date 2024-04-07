@@ -32,15 +32,12 @@ class CircleIconButton(ButtonBehavior, Image):
     """
 
     disable_button = BooleanProperty(False)
-    release_function = ObjectProperty()
+    release_function = ObjectProperty(lambda: 1 + 1)
 
-    def __init__(
-            self,
-            release_function=lambda: 1 + 1,
-            **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
         self.always_release = True
-        self.release_function = release_function
 
     def on_press(self):
         if not self.disable_button:

@@ -48,7 +48,7 @@ class ColoredRoundedButton(ButtonBehavior, RelativeLayout):
     disable_button = BooleanProperty(False)
     color_label = ColorProperty()
     text_font_name = StringProperty(PATH_TEXT_FONT)
-    release_function = ObjectProperty()
+    release_function = ObjectProperty(lambda: 1 + 1)
     outline_width = NumericProperty(OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON/2)
 
     def __init__(self, **kwargs):

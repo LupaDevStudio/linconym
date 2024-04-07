@@ -27,7 +27,7 @@ class MessagePopup(CustomPopup):
 
     ok_button_label = StringProperty("Cancel")
     center_label_text = StringProperty()
-    release_function = ObjectProperty()
+    release_function = ObjectProperty(lambda: 1 + 1)
 
     def __init__(self, **kwargs):
         if not "release_function" in kwargs:

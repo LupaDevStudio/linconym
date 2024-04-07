@@ -25,7 +25,7 @@ from screens.custom_widgets.custom_popup import CustomPopup
 class ImagePopup(CustomPopup):
 
     ok_button_label = StringProperty("Cancel")
-    release_function = ObjectProperty()
+    release_function = ObjectProperty(lambda: 1 + 1)
     image_source = StringProperty()
     mode = StringProperty()
 

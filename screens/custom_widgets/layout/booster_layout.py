@@ -41,9 +41,9 @@ class BoosterLayout(RelativeLayout):
     background_color = CUSTOM_BUTTON_BACKGROUND_COLOR
     mode = StringProperty()  # can be "ads" or "buy"
     booster_title = StringProperty()
-    font_size = NumericProperty()
+    font_size = NumericProperty(CUSTOMIZATION_LAYOUT_FONT_SIZE)
     font_ratio = NumericProperty(1)
-    text_font_name = StringProperty()
+    text_font_name = StringProperty(PATH_TITLE_FONT)
     list_ads_buy = ListProperty()
     first_color = ColorProperty((1, 1, 1, 1))
     second_color = ColorProperty((0, 0, 0, 1))
@@ -58,19 +58,9 @@ class BoosterLayout(RelativeLayout):
     second_amount_text = StringProperty()
     third_amount_text = StringProperty()
 
-    def __init__(
-            self,
-            text_font_name=PATH_TITLE_FONT,
-            font_size=CUSTOMIZATION_LAYOUT_FONT_SIZE,
-            font_ratio=None,
-            **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        if font_ratio is not None:
-            self.font_ratio = font_ratio
-
-        self.text_font_name = text_font_name
-        self.font_size = font_size
         self.bind(list_ads_buy=self.update_colors_disabled)
 
     def update_colors_disabled(self, base_widget, value):

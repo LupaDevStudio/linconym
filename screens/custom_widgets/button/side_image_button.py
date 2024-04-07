@@ -46,7 +46,7 @@ class SideImageButton(ButtonBehavior, RelativeLayout):
     icon_mode = BooleanProperty(False)
     disable_button = BooleanProperty(False)
     text_font_name = StringProperty(PATH_TEXT_FONT)
-    release_function = ObjectProperty()
+    release_function = ObjectProperty(lambda: 1 + 1)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

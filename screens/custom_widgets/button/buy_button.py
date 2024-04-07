@@ -18,7 +18,9 @@ from kivy.uix.behaviors import ButtonBehavior
 from kivy.properties import (
     StringProperty,
     NumericProperty,
-    BooleanProperty
+    BooleanProperty,
+    ObjectProperty,
+    ColorProperty
 )
 
 ### Local imports ###
@@ -42,43 +44,21 @@ class BuyButton(ButtonBehavior, RelativeLayout):
     A button for the customization screen to buy images or colors.
     """
 
-    background_color = CUSTOM_BUTTON_BACKGROUND_COLOR
+    background_color = ColorProperty(CUSTOM_BUTTON_BACKGROUND_COLOR)
     button_title = StringProperty()
-    font_size = NumericProperty()
+    font_size = NumericProperty(ACT_BUTTON_FONT_SIZE)
     font_ratio = NumericProperty(1)
     text_font_name = StringProperty(PATH_TEXT_FONT)
-    has_bought = BooleanProperty()
-    is_using = BooleanProperty()
-    price = NumericProperty()
-    price_text = StringProperty()
+    has_bought = BooleanProperty(False)
+    is_using = BooleanProperty(False)
+    price = NumericProperty(0)
+    price_text = StringProperty("0")
+    release_function = ObjectProperty(lambda: 1 + 1)
 
-    def __init__(
-            self,
-            button_title: str = None,
-            text_font_name=PATH_TEXT_FONT,
-            font_size=ACT_BUTTON_FONT_SIZE,
-            has_bought: bool = False,
-            is_using: bool = False,
-            price: int = 0,
-            release_function=lambda: 1 + 1,
-            font_ratio=None,
-            **kwargs):
-
-        if button_title is not None:
-            self.button_title = button_title
-        if font_ratio is not None:
-            self.font_ratio = font_ratio
-
-        self.release_function = release_function
-        self.has_bought = has_bought
-        self.is_using = is_using
-        self.price = price
-        self.price_text = str(self.price)
-        self.always_release = True
-
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.text_font_name = text_font_name
-        self.font_size = font_size
+
+        self.always_release = True
 
         # Bind the price to update the value in real time
         self.bind(price=self.update_price)

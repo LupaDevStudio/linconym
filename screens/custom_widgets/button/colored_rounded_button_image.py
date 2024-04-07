@@ -14,7 +14,8 @@ from kivy.properties import (
     StringProperty,
     NumericProperty,
     BooleanProperty,
-    ColorProperty
+    ColorProperty,
+    ObjectProperty
 )
 
 ### Local imports ###
@@ -42,16 +43,11 @@ class ColoredRoundedButtonImage(ButtonBehavior, RelativeLayout):
     disable_button = BooleanProperty(False)
     color_image = ColorProperty()
     text_font_name = StringProperty(PATH_TEXT_FONT)
+    release_function = ObjectProperty(lambda: 1 + 1)
 
-    def __init__(
-            self,
-            release_function=lambda: 1 + 1,
-            font_ratio=None,
-            **kwargs):
-        if font_ratio is not None:
-            self.font_ratio = font_ratio
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.release_function = release_function
+
         self.always_release = True
 
     def on_press(self):
