@@ -99,8 +99,9 @@ class LevelButton(ButtonBehavior, RelativeLayout):
     def on_release(self):
         if not self.disable_button:
             self.opacity = 1
-            self.get_root_window().children[0].get_screen(
-                "levels").open_game_screen(str(self.level_id))
+            if self.collide_point(self.last_touch.x, self.last_touch.y):
+                self.get_root_window().children[0].get_screen(
+                    "levels").open_game_screen(str(self.level_id))
 
 
 class LevelBranch(RelativeLayout):
