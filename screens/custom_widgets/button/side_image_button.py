@@ -13,7 +13,8 @@ from kivy.properties import (
     StringProperty,
     NumericProperty,
     BooleanProperty,
-    ColorProperty
+    ColorProperty,
+    ObjectProperty
 )
 
 ### Local imports ###
@@ -23,7 +24,7 @@ from tools.path import (
 from tools.constants import (
     CUSTOM_BUTTON_BACKGROUND_COLOR,
     OPACITY_ON_BUTTON_PRESS,
-    MAIN_BUTTON_FONT_SIZE,
+    BUTTON_FONT_SIZE
 )
 
 #############
@@ -39,19 +40,16 @@ class SideImageButton(ButtonBehavior, RelativeLayout):
     background_color = ColorProperty(CUSTOM_BUTTON_BACKGROUND_COLOR)
     text = StringProperty()
     coins_count = NumericProperty(-1)
-    font_size = NumericProperty(MAIN_BUTTON_FONT_SIZE)
+    font_size = NumericProperty(BUTTON_FONT_SIZE)
     font_ratio = NumericProperty(1)
     side_image_source = StringProperty()
     icon_mode = BooleanProperty(False)
     disable_button = BooleanProperty(False)
     text_font_name = StringProperty(PATH_TEXT_FONT)
+    release_function = ObjectProperty()
 
-    def __init__(
-            self,
-            release_function=lambda: 1 + 1,
-            **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.release_function = release_function
         self.always_release = True
 
     def on_press(self):
