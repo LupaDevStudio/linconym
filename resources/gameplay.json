@@ -162,7 +162,7 @@
         "3": {
             "start_word": "pressure",
             "end_word": "sailor",
-            "10k": null,
+            "10k": 10,
             "34k": 7,
             "88k": 7,
             "280k": 7
@@ -178,7 +178,7 @@
         "5": {
             "start_word": "deep",
             "end_word": "diver",
-            "10k": null,
+            "10k": 4,
             "34k": 4,
             "88k": 4,
             "280k": 4
@@ -266,7 +266,7 @@
         "16": {
             "start_word": "marine",
             "end_word": "submarine",
-            "10k": null,
+            "10k": 7,
             "34k": 5,
             "88k": 4,
             "280k": 4
