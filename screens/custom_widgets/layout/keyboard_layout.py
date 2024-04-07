@@ -123,7 +123,8 @@ class KeyboardLayout(RelativeLayout):
                 size_hint=(self.size_letter, height_letter),
                 color_label=(1, 1, 1, 1),
                 outline_color=(1, 1, 1, 1),
-                release_function=partial(self.touch_letter, letter)
+                release_function=partial(self.touch_letter, letter),
+                outline_width=0.5
             )
             self.add_widget(colored_rounded_button)
             self.list_letter_keys.append(colored_rounded_button)

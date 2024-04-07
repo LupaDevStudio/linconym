@@ -25,6 +25,7 @@ from tools.path import (
 )
 from tools.constants import (
     MAIN_BUTTON_FONT_SIZE,
+    OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON
 )
 
 #############
@@ -48,6 +49,7 @@ class ColoredRoundedButton(ButtonBehavior, RelativeLayout):
     color_label = ColorProperty()
     text_font_name = StringProperty(PATH_TEXT_FONT)
     release_function = ObjectProperty()
+    outline_width = NumericProperty(OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON/2)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

@@ -1,5 +1,5 @@
 #:kivy 2.2.1
-#:set OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON 1.5
+#:import OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON tools.constants.OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON
 
 <ColoredRoundedButton>:
 
@@ -16,16 +16,16 @@
             blur_radius: 20*self.font_ratio
         # Rounded rectangle
         Color:
-            rgba: root.background_color
+            rgba: self.background_color
         RoundedRectangle:
             pos:(0, 0)
             size:self.size
             radius: [12*root.font_ratio]
         # Border
         Color:
-            rgba: root.outline_color
+            rgba: self.outline_color
         Line:
-            width: OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON/2*root.font_ratio
+            width: self.outline_width*self.font_ratio
             rounded_rectangle: (-OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON/2, -OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON/2, self.size[0]+OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON,self.size[1]+OUTLINE_RECTANGLE_COLORED_ROUNDED_BUTTON, 12*root.font_ratio, 12*root.font_ratio, 12*root.font_ratio, 12*root.font_ratio)
 
     # Main text
