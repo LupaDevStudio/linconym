@@ -45,11 +45,11 @@ class KeyboardLayout(RelativeLayout):
     The keyboard layout.
     """
 
-    font_size = NumericProperty()
+    font_size = NumericProperty(CUSTOMIZATION_LAYOUT_FONT_SIZE)
     font_ratio = NumericProperty(1)
-    horizontal_padding = NumericProperty(0.1 / 9)
+    horizontal_padding = NumericProperty(1)
     size_letter = NumericProperty(0.09)
-    text_font_name = StringProperty()
+    text_font_name = StringProperty(PATH_TEXT_FONT)
     background_color = ColorProperty([1, 1, 1, 1])
     touch_color = ColorProperty([0, 0, 0, 1])
     type_keyboard = StringProperty("QWERTY")
@@ -57,31 +57,19 @@ class KeyboardLayout(RelativeLayout):
     delete_key = None
     list_letter_keys = []
 
-    def __init__(
-            self,
-            text_font_name=PATH_TEXT_FONT,
-            font_size=CUSTOMIZATION_LAYOUT_FONT_SIZE,
-            font_ratio=None,
-            **kwargs):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
-        if font_ratio is not None:
-            self.font_ratio = font_ratio
+        self.horizontal_padding = (1 - 10*self.size_letter) / 9
 
-        # self.bind(background_color=self.bind_function)
-        # self.bind(touch_color=self.bind_function)
-        # self.bind(type_keyboard=self.bind_function)
-        # self.bind(horizontal_padding=self.bind_function)
-        # self.bind(touch_function=self.bind_function)
+        self.bind(horizontal_padding=self.update_padding)
+        self.bind(size_letter=self.update_padding)
 
         self.disable_color = [self.background_color[0],
                               self.background_color[1], self.background_color[2], 0.5]
 
-        super().__init__(**kwargs)
-        self.text_font_name = text_font_name
-        self.font_size = font_size
-
     def update_padding(self, base_widget, value):
-        # because maximum of 9 letters in line
+        # Because maximum of 9 letters in line
         self.size_letter = (1 - self.horizontal_padding * 9) / 10
 
     def build_keyboard(self):
@@ -94,7 +82,7 @@ class KeyboardLayout(RelativeLayout):
 
         Returns
         -------
-        Nonee
+        None
         """
         self.list_letter_keys = []
 
