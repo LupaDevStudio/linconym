@@ -65,7 +65,7 @@
         pos_hint: {"center_x": 0.5,"y": 0.335}
         font_ratio: root.font_ratio
         font_size: LETTER_FONT_SIZE
-        size_hint: (len(root.current_word)*0.05, 0.05)
+        size_hint: (len(root.current_word)*0.05*root.font_ratio, 0.05)
         color_label: (0,0,0,1)
         outline_color: root.secondary_color
         disable_button: True

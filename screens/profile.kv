@@ -4,9 +4,10 @@
 
     # Badge for the status
     RoundedButtonImage:
+        id: badge_image
         image_path: root.user_status_image
-        pos_hint: {"center_x":0.2, "center_y":0.775}
-        size_hint: (None, 0.15)
+        pos_hint: {"x":0.1, "y":0.71}
+        size_hint: (None, 0.12)
         width: self.height
         radius: 100
         font_ratio: root.font_ratio
@@ -17,9 +18,10 @@
     Label:
         text: root.user_status
         font_name: PATH_TITLE_FONT
-        font_size: CONTENT_LABEL_FONT_SIZE * root.font_ratio
-        pos_hint: {"x":0.4, "center_y":0.85}
-        size_hint: (0.25, 0.1)
+        font_size: 16 * root.font_ratio
+        x: badge_image.width + 0.15 * root.width
+        pos_hint: {"y":0.8}
+        size_hint: (0.25, 0.05)
         text_size: self.size
         outline_width: TITLE_OUTLINE_WIDTH
         outline_color: TITLE_OUTLINE_COLOR
@@ -28,9 +30,9 @@
     Label:
         text: root.user_level
         font_name: PATH_TITLE_FONT
-        font_size: CONTENT_LABEL_FONT_SIZE * root.font_ratio
-        pos_hint: {"x":0.675, "center_y":0.85}
-        size_hint: (0.25, 0.1)
+        font_size: 16 * root.font_ratio
+        pos_hint: {"right":0.9, "y":0.8}
+        size_hint: (0.25, 0.05)
         text_size: self.size
         outline_width: TITLE_OUTLINE_WIDTH
         outline_color: TITLE_OUTLINE_COLOR
@@ -39,8 +41,10 @@
 
     # Experience counter
     ExperienceCounter:
-        size_hint: (0.525, 0.07)
-        pos_hint: {"x":0.4, "center_y":0.745}
+        size_hint: (None, 0.07)
+        x: badge_image.width + 0.15 * root.width
+        width: 0.9*root.width - self.x
+        pos_hint: {"y":0.71}
         font_ratio: root.font_ratio
         experience_left: 10
         percentage_experience: 0.7

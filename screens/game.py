@@ -59,10 +59,10 @@ class GameScreen(LinconymScreen):
     }
 
     nb_stars = NumericProperty()
-    start_word = StringProperty("boy")
+    start_word = StringProperty("")
     current_word = StringProperty("")
     new_word = StringProperty("")
-    end_word = StringProperty("toys")
+    end_word = StringProperty("")
     start_to_end_label = StringProperty("")
     list_widgets_letters = []
 
