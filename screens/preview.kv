@@ -55,9 +55,9 @@
         font_ratio: root.font_ratio
 
     CustomButton:
-        size_hint: (0.2,None)
+        size_hint: (0.25, None)
         height: self.width
-        pos_hint: {"center_x":0.25, "y":0.32}
+        pos_hint: {"center_x":0.2, "y":0.32}
         text:"Buy both"
         font_size: BUTTON_FONT_SIZE
         font_ratio: root.font_ratio
@@ -65,7 +65,7 @@
         release_function: root.buy_both
 
     CustomButton:
-        size_hint: (0.2,None)
+        size_hint: (0.25, None)
         height: self.width
         pos_hint: {"center_x":0.5, "y":0.32}
         text:"Buy image"
@@ -75,9 +75,9 @@
         release_function: root.buy_image
 
     CustomButton:
-        size_hint: (0.2,None)
+        size_hint: (0.25, None)
         height: self.width
-        pos_hint: {"center_x":0.75, "y":0.32}
+        pos_hint: {"center_x":0.8, "y":0.32}
         text:"Buy colors"
         font_size: BUTTON_FONT_SIZE
         font_ratio: root.font_ratio
@@ -88,8 +88,8 @@
     BuyRectangleButton:
         id: buy_both_button
         price: root.both_price
-        pos_hint: {"center_x":0.25,"y":0.245}
-        size_hint: (0.2,0.06)
+        pos_hint: {"center_x":0.2,"y":0.245}
+        size_hint: (0.25, 0.06)
         font_size: SMALL_BUYING_BUTTON_FONT_SIZE
         font_ratio: root.font_ratio
         disable_button: True
@@ -100,7 +100,7 @@
         id: buy_image_button
         price: root.image_price
         pos_hint: {"center_x":0.5,"y":0.245}
-        size_hint: (0.2,0.06)
+        size_hint: (0.25, 0.06)
         font_size: SMALL_BUYING_BUTTON_FONT_SIZE
         font_ratio: root.font_ratio
         disable_button: True
@@ -110,8 +110,8 @@
     BuyRectangleButton:
         id: buy_colors_button
         price: root.colors_price
-        pos_hint: {"center_x":0.75,"y":0.245}
-        size_hint: (0.2,0.06)
+        pos_hint: {"center_x":0.8,"y":0.245}
+        size_hint: (0.25, 0.06)
         font_size: SMALL_BUYING_BUTTON_FONT_SIZE
         font_ratio: root.font_ratio
         disable_button: True
