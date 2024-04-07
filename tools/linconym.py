@@ -251,11 +251,15 @@ def is_valid(new_word: str, current_word: str, skip_in_english_words: bool = Fal
     return valid_bool
 
 
-def find_all_next_words(current_word: str, english_words):
+def find_all_next_words(current_word: str, end_word: str, english_words: list):
     next_words = []
     for word in english_words:
         if is_valid(word, current_word, skip_in_english_words=True):
             next_words.append(word)
+
+    # Add the end word if not in english dictionnary but still valid
+    if is_valid(end_word, current_word, skip_in_english_words=True) and end_word not in next_words:
+        next_words.append(end_word)
 
     return next_words
 
@@ -311,7 +315,8 @@ def find_solutions(start_word: str, end_word: str, english_words: list = ENGLISH
             return None
 
         current_word = words_found[position_to_word_id[current_position]]
-        next_words = find_all_next_words(current_word, english_words)
+        next_words = find_all_next_words(
+            current_word=current_word, end_word=end_word, english_words=english_words)
         new_word_id = 0
 
         for word in next_words:
