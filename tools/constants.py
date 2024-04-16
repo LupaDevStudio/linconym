@@ -48,7 +48,7 @@ from tools.basic_tools import (
 
 ### Version ###
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 
 ### Mode ###
 
@@ -165,6 +165,23 @@ class UserData():
     def change_boosters(self, number):
         USER_DATA.ads[str(number)] = True
         self.save_changes()
+
+    def get_nb_total_stars(self):
+        """
+        Compute the total number of stars gathered by the user.
+
+        Returns
+        -------
+        int
+            Number of stars gathered by the user.
+        """
+
+        total_nb_stars = 0
+        for act in USER_DATA.classic_mode:
+            for level in USER_DATA.classic_mode[act]:
+                total_nb_stars += USER_DATA.classic_mode[act][level]["nb_stars"]
+
+        return total_nb_stars
 
     def buy_item(self, theme, item_type, price):
         if self.user_profile["coins"] >= price:
