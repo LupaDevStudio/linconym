@@ -12,7 +12,8 @@ from kivy.uix.behaviors import ButtonBehavior
 from kivy.properties import (
     StringProperty,
     NumericProperty,
-    BooleanProperty
+    BooleanProperty,
+    ObjectProperty
 )
 
 ### Local imports ###
@@ -45,13 +46,10 @@ class CustomContentButton(ButtonBehavior, RelativeLayout):
     font_ratio = NumericProperty(1)
     text_font_name = StringProperty(PATH_TEXT_FONT)
     disable_button = BooleanProperty(False)
+    release_function = ObjectProperty(lambda: 1 + 1)
 
-    def __init__(
-            self,
-            release_function=lambda: 1 + 1,
-            **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.release_function = release_function
         self.always_release = True
 
     def on_press(self):

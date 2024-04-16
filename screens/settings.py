@@ -8,8 +8,6 @@ Module to create the settings screen.
 
 ### Python imports ###
 
-import os
-import random
 import webbrowser
 
 ### Kivy imports ###
@@ -20,7 +18,6 @@ from kivy.properties import StringProperty
 
 from tools.constants import (
     USER_DATA,
-    THEMES_DICT,
     __version__,
     SCREEN_TITLE,
     SCREEN_BOTTOM_BAR,
@@ -28,9 +25,6 @@ from tools.constants import (
 )
 from screens.custom_widgets import (
     LinconymScreen
-)
-from tools.path import (
-    PATH_TEMP_IMAGES
 )
 from tools import (
     music_mixer,

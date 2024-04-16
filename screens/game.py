@@ -161,8 +161,8 @@ class GameScreen(LinconymScreen):
         number_mandatory_letters = len(self.current_word) - 1
         number_letters = number_mandatory_letters + 2
         next_letter_counter = len(self.new_word)
-        size_letter = 0.09 * self.font_ratio
-        horizontal_padding = (0.1 - size_letter) * self.font_ratio
+        size_letter = 0.09
+        horizontal_padding = 0.1 - size_letter
         height_letter = 0.05
         margin_left = 0
 

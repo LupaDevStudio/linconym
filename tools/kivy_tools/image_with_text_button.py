@@ -33,4 +33,4 @@ class ImageWithTextButton(Image):
     text_halign = "center"
     text_valign = "center"
     text_font_size = NumericProperty(15)
-    release_function = ObjectProperty()
+    release_function = ObjectProperty(lambda: 1 + 1)

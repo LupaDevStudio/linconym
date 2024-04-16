@@ -43,7 +43,7 @@ class RoundedButtonImage(ButtonBehavior, RelativeLayout):
     colors = ColorProperty((0, 0, 0, 1))
     font_ratio = NumericProperty(1)
     radius = NumericProperty(20)
-    release_function = ObjectProperty()
+    release_function = ObjectProperty(lambda: 1 + 1)
     disable_button = BooleanProperty(False)
 
     def __init__(self, **kwargs):

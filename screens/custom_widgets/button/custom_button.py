@@ -45,14 +45,9 @@ class CustomButton(ButtonBehavior, Widget):
     font_ratio = NumericProperty(1)
     radius = NumericProperty(25)
     disable_button = BooleanProperty(False)
-    release_function = ObjectProperty()
+    release_function = ObjectProperty(lambda: 1 + 1)
 
-    def __init__(
-            self,
-            font_ratio=None,
-            **kwargs):
-        if font_ratio is not None:
-            self.font_ratio = font_ratio
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.always_release = True
 

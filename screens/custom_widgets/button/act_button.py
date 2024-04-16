@@ -17,7 +17,8 @@ from kivy.uix.behaviors import ButtonBehavior
 from kivy.properties import (
     StringProperty,
     NumericProperty,
-    ColorProperty
+    ColorProperty,
+    ObjectProperty
 )
 
 ### Local imports ###
@@ -45,29 +46,22 @@ class ActButton(ButtonBehavior, RelativeLayout):
     act_title = StringProperty()
     completion_text = StringProperty()
     unlock_text = StringProperty()
-    font_size = NumericProperty()
-    font_ratio = NumericProperty()
+    font_size = NumericProperty(ACT_BUTTON_FONT_SIZE)
+    font_ratio = NumericProperty(1)
     nb_levels = NumericProperty()
     nb_completed_levels = NumericProperty()
-    nb_stars = NumericProperty()
     nb_stars_to_unlock = NumericProperty()
     nb_total_stars = NumericProperty()
+    nb_stars: Literal[0, 1, 2, 3] = NumericProperty()
     text_font_name = StringProperty(PATH_TEXT_FONT)
     primary_color = ColorProperty((1, 1, 1, 1))
     secondary_color = ColorProperty((0.5, 0.5, 0.5, 1))
+    release_function = ObjectProperty(lambda: 1 + 1)
 
-    def __init__(
-            self,
-            text_font_name=PATH_TEXT_FONT,
-            font_size=ACT_BUTTON_FONT_SIZE,
-            release_function=lambda: 1 + 1,
-            **kwargs):
+    def __init__(self, **kwargs):
 
         super().__init__(**kwargs)
-        self.release_function = release_function
         self.always_release = True
-        self.text_font_name = text_font_name
-        self.font_size = font_size
         self.bind(nb_completed_levels=self.update_nb_completed_levels)
         self.bind(nb_total_stars=self.update_unlock_stars)
         self.update_nb_completed_levels()

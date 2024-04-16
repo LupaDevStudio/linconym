@@ -13,7 +13,8 @@ from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.properties import (
     NumericProperty,
-    BooleanProperty
+    BooleanProperty,
+    ObjectProperty
 )
 
 ### Local imports ###
@@ -35,20 +36,12 @@ class SelectCircleButton(ButtonBehavior, RelativeLayout):
     font_ratio = NumericProperty(1)
     is_using = BooleanProperty(False)
     disable_button = BooleanProperty(False)
+    release_function = ObjectProperty(lambda: 1 + 1)
 
-    def __init__(
-            self,
-            release_function=lambda: 1 + 1,
-            font_ratio=None,
-            **kwargs):
-
-        if font_ratio is not None:
-            self.font_ratio = font_ratio
-
-        self.release_function = release_function
-        self.always_release = True
-
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        self.always_release = True
 
     def on_press(self):
         if not self.disable_button:

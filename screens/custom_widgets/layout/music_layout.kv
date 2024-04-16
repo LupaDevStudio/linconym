@@ -29,16 +29,17 @@
         size_hint: 1, 1
         font_size: root.font_ratio * root.font_size
         font_name: root.text_font_name
-        color: (0,0,0,1)
-        text_size: (self.width,None)
+        color: (0, 0, 0, 1)
+        text_size: (self.width, None)
         halign: "left"
         valign: "center"
 
     # To select the music
     SelectCircleButton:
         id: select_music_button
-        pos_hint: {"right":0.975,"center_y":0.5}
-        size_hint: (None,0.6)
+        pos_hint: {"right":0.95, "center_y":0.5}
+        size_hint: (None, 0.6)
+        width: self.height
         font_ratio: root.font_ratio
         is_using: root.is_using_music
         release_function: root.choose_music
@@ -48,7 +49,7 @@
         id: buy_music_button
         price: root.music_price
         pos_hint: {"right":0.95,"center_y":0.5}
-        size_hint: (0.25,0.6)
+        size_hint: (0.275, 0.6)
         font_size: BIG_BUYING_BUTTON_FONT_SIZE
         font_ratio: root.font_ratio
         release_function: root.buy_music

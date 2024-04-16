@@ -10,12 +10,12 @@ Module to create buy and enable buttons
 ### Kivy imports ###
 
 from kivy.uix.relativelayout import RelativeLayout
-from kivy.uix.behaviors import ButtonBehavior
 from kivy.properties import (
     StringProperty,
     NumericProperty,
     BooleanProperty,
-    ColorProperty
+    ColorProperty,
+    ObjectProperty
 )
 
 ### Local imports ###
@@ -24,8 +24,7 @@ from tools.path import (
     PATH_TITLE_FONT
 )
 from tools.constants import (
-    CUSTOM_BUTTON_BACKGROUND_COLOR,
-    OPACITY_ON_BUTTON_PRESS
+    CUSTOM_BUTTON_BACKGROUND_COLOR
 )
 
 #############
@@ -47,20 +46,12 @@ class SelectCircleButtonWithText(RelativeLayout):
     text = StringProperty()
     text_font_name = StringProperty(PATH_TITLE_FONT)
     radius = NumericProperty(25)
+    release_function = ObjectProperty(lambda: 1 + 1)
 
-    def __init__(
-            self,
-            release_function=lambda: 1 + 1,
-            font_ratio=None,
-            **kwargs):
-
-        if font_ratio is not None:
-            self.font_ratio = font_ratio
-
-        self.release_function = release_function
-        self.always_release = True
-
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        self.always_release = True
 
     def on_release(self):
         if self.collide_point(self.last_touch.x, self.last_touch.y):

@@ -12,7 +12,8 @@ from kivy.uix.widget import (
     Widget
 )
 from kivy.properties import (
-    ColorProperty
+    ColorProperty,
+    NumericProperty
 )
 
 #############
@@ -27,16 +28,7 @@ class CustomProgressBar(Widget):
 
     primary_color = ColorProperty()
     secondary_color = ColorProperty()
+    value = NumericProperty(0.5)
 
-    def __init__(
-            self,
-            value=0.5,
-            **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
-        self.bind(primary_color = self.bind_function)
-        self.bind(secondary_color = self.bind_function)
-        self.value = value
-
-    def bind_function(self, base_widget, value):
-        pass

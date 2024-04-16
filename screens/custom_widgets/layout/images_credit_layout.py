@@ -47,23 +47,13 @@ class ImagesCreditLayout(ButtonBehavior, RelativeLayout):
     font_ratio = NumericProperty(1)
     text_font_name = StringProperty(PATH_TEXT_FONT)
     radius = NumericProperty(40)
-    release_function = ObjectProperty()
+    release_function = ObjectProperty(lambda: 1 + 1)
     disable_button = BooleanProperty(False)
     icon_mode = BooleanProperty(False)
 
-    def __init__(
-            self,
-            release_function=lambda: 1 + 1,
-            font_ratio=None,
-            **kwargs):
-
-        if font_ratio is not None:
-            self.font_ratio = font_ratio
-
-        self.release_function = release_function
-        self.always_release = True
-
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.always_release = True
 
     def on_press(self):
         if not self.disable_button:
