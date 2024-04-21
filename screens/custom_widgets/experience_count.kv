@@ -11,9 +11,9 @@
             size: self.size
             radius: [self.radius*self.font_ratio,]
 
-    # Name
+    # Label on the left
     Label:
-        text: "Exp"
+        text: root.label_left
         font_size: root.font_ratio * root.font_size
         pos_hint: {"x":0.1, "center_y":0.7}
         size_hint: (1, None)
@@ -24,9 +24,9 @@
         halign: "left"
         valign: "middle"
 
-    # Experience left
+    # Label of the right
     Label:
-        text: root.label_experience_left
+        text: root.label_right
         font_size: root.font_ratio * root.font_size
         pos_hint: {"right":0.9, "center_y":0.7}
         size_hint: (1, None)
@@ -39,9 +39,8 @@
 
     # Experience progress bar
     CustomProgressBar:
-        primary_color: (1, 1, 0, 1)
         background_color: (0, 0, 0, 1)
-        value: root.percentage_experience
+        value: root.percentage_experience_before
         size_hint: (0.8, 0.3)
         pos_hint: {"center_x": 0.5, "center_y":0.3}
         primary_color: root.primary_color

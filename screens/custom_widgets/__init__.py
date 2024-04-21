@@ -49,7 +49,8 @@ from screens.custom_widgets.popup import (
     CustomPopup,
     MessagePopup,
     TutorialPopup,
-    TwoButtonsPopup
+    TwoButtonsPopup,
+    LevelCompletedPopup
 )
 
 ### Other widgets ###

@@ -23,7 +23,8 @@ from screens.custom_widgets import (
     MusicLayout,
     IconCreditLayout,
     GeneralLicensesLayout,
-    ImagesCreditLayout
+    ImagesCreditLayout,
+    LevelCompletedPopup
 )
 
 # Import the screens
