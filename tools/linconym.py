@@ -872,10 +872,6 @@ class ClassicGame(Game):
         if next_lvl_id in GAMEPLAY_DICT[self.act_id]:
             # Unlock the next level in the same act
             USER_DATA.classic_mode[self.act_id][next_lvl_id] = {"nb_stars": 0}
-        else:
-            # Unlock the next act
-            next_act_id = str(int(self.act_id) + 1)
-            USER_DATA.classic_mode[next_act_id][1] = {"nb_stars": 0}
 
         USER_DATA.save_changes()
 

@@ -254,6 +254,9 @@ class MyScrollViewLayout(GridLayout):
         self.size_hint_y = (None)
         self.bind(minimum_height=self.setter('height'))
 
+    def refill(self):
+        self.setter("height")
+
     def reset_scrollview(self):
         list_widgets = self.children[:]
         for element in list_widgets:

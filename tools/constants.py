@@ -183,6 +183,34 @@ class UserData():
 
         return total_nb_stars
 
+    def get_mean_nb_stars_on_act(self, act_id):
+        """
+        Compute the mean number of stars on the given act.
+
+        Parameters
+        ----------
+        act_id : str
+            Id of the act.
+
+        Returns
+        -------
+        int
+        """
+
+        # Check if the user has already played on the level
+        if act_id not in USER_DATA.classic_mode:
+            return 0
+
+        total_nb_stars = 0
+        nb_levels = 0
+
+        for level in GAMEPLAY_DICT[act_id]:
+            if level in USER_DATA.classic_mode[act_id]:
+                total_nb_stars += USER_DATA.classic_mode[act_id][level]["nb_stars"]
+            nb_levels += 1
+
+        return total_nb_stars / nb_levels
+
     def buy_item(self, theme, item_type, price):
         if self.user_profile["coins"] >= price:
             self.user_profile["coins"] = self.user_profile["coins"] - price
