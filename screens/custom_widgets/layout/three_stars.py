@@ -26,9 +26,9 @@ class ThreeStars(RelativeLayout):
     star_one_color = ListProperty([0.5, 0.5, 0.5, 1.])
     star_two_color = ListProperty([0.5, 0.5, 0.5, 1.])
     star_three_color = ListProperty([0.5, 0.5, 0.5, 1.])
-    star_color_dict = {1: star_one_color,
-                       2: star_two_color,
-                       3: star_three_color}
+    star_one_contour_opacity = NumericProperty(1)
+    star_two_contour_opacity = NumericProperty(1)
+    star_three_contour_opacity = NumericProperty(1)
     nb_stars = NumericProperty(-1)
     primary_color = ListProperty([0.5, 0.5, 0.5, 1.])
     secondary_color = ListProperty([1., 1., 1., 1.])
@@ -49,14 +49,20 @@ class ThreeStars(RelativeLayout):
 
         # self.nb_stars = nb_stars
         if self.nb_stars > 0:
-            self.star_one_color = self.primary_color
-        else:
             self.star_one_color = self.secondary_color
+            self.star_one_contour_opacity = 1
+        else:
+            self.star_one_color = (0, 0, 0, 0)
+            self.star_one_contour_opacity = 0
         if self.nb_stars > 1:
-            self.star_two_color = self.primary_color
-        else:
             self.star_two_color = self.secondary_color
-        if self.nb_stars > 2:
-            self.star_three_color = self.primary_color
+            self.star_two_contour_opacity = 1
         else:
+            self.star_two_color = (0, 0, 0, 0)
+            self.star_two_contour_opacity = 0
+        if self.nb_stars > 2:
             self.star_three_color = self.secondary_color
+            self.star_three_contour_opacity = 1
+        else:
+            self.star_three_color = (0, 0, 0, 0)
+            self.star_three_contour_opacity = 0
