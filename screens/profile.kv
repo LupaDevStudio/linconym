@@ -46,9 +46,11 @@
         width: 0.9*root.width - self.x
         pos_hint: {"y":0.71}
         font_ratio: root.font_ratio
-        experience_left: 10
-        percentage_experience: 0.7
-        theme_colors: root.theme_colors
+        label_left: "Exp"
+        experience_displayed: 10
+        percentage_experience_before: 0.7
+        primary_color: root.primary_color
+        secondary_color: root.secondary_color
 
     # Coins counter
     CoinsCounter:

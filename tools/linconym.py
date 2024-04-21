@@ -790,7 +790,7 @@ class ClassicGame(Game):
             xp_fraction = 1.0
         return xp_fraction
 
-    def award_stars_xp(self) -> None:
+    def award_stars_xp(self, solution_found) -> None:
         """
         Saves the number of stars and the amount of XP earned in this level in the user's data, and increases the user's XP in their profile accordingly.
         """
@@ -876,13 +876,17 @@ class ClassicGame(Game):
         USER_DATA.save_changes()
 
     def on_level_completed(self):
+        solution_found: list[str] = self.get_word_path(
+                    self.current_position)
+        nb_words_found: int = len(solution_found)
+
         # Save the xp and stars
-        self.award_stars_xp()
+        self.award_stars_xp(solution_found)
 
         # Unlock the next level
         self.unlock_next_level()
 
-        return {"stars": self.nb_stars}
+        return {"stars": self.nb_stars, "nb_words": nb_words_found}
 
 
 if __name__ == "__main__":

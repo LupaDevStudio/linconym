@@ -28,7 +28,8 @@ from tools.constants import (
     GAMEPLAY_DICT
 )
 from screens.custom_widgets import (
-    LinconymScreen
+    LinconymScreen,
+    LevelCompletedPopup
 )
 from tools import (
     music_mixer
@@ -37,10 +38,8 @@ from screens import (
     ColoredRoundedButton
 )
 from tools.linconym import (
-    level_has_saved_data,
     ClassicGame
 )
-from screens.custom_widgets import TreeLayout
 
 #############
 ### Class ###
@@ -295,9 +294,25 @@ class GameScreen(LinconymScreen):
             self.disable_submit_button()
         else:
             end_level_dict = self.game.on_level_completed()
-            print("TODO YOU WIN afficher la popup")
+            self.nb_words = end_level_dict["nb_words"]
             # Update the stars
             self.nb_stars = end_level_dict["stars"]
+            self.display_success_popup()
+
+    def display_success_popup(self):
+        current_level = 2 # TODO update with the correct value
+        popup = LevelCompletedPopup(
+            primary_color=self.primary_color,
+            secondary_color=self.secondary_color,
+            font_ratio=self.font_ratio,
+            top_label_text=f"Solution found in {self.nb_words} words.",
+            nb_stars=self.nb_stars,
+            current_level_text=f"Level {current_level}",
+            percentage_experience_before=0.2, # TODO change
+            percentage_experience_won=0.1, # TODO change
+            experience_displayed=10) # TODO change
+        popup.open()
+        pass
 
     def check_level_complete(self):
         # The level is complete
