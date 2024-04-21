@@ -27,7 +27,6 @@ from tools.path import (
     PATH_TEXT_FONT
 )
 from tools.constants import (
-    CUSTOM_BUTTON_BACKGROUND_COLOR,
     OPACITY_ON_BUTTON_PRESS,
     ACT_BUTTON_FONT_SIZE
 )
@@ -42,7 +41,6 @@ class ActButton(ButtonBehavior, RelativeLayout):
     A custom button with a white round rectangle background.
     """
 
-    background_color = CUSTOM_BUTTON_BACKGROUND_COLOR
     act_title = StringProperty()
     completion_text = StringProperty()
     unlock_text = StringProperty()
@@ -68,8 +66,7 @@ class ActButton(ButtonBehavior, RelativeLayout):
         self.update_unlock_stars()
 
     def update_nb_completed_levels(self, base_widget=None, value=None):
-        self.completion_text = str(
-            self.nb_completed_levels) + "/" + str(self.nb_levels)
+        self.completion_text = f"{self.nb_completed_levels}/{self.nb_levels} levels"
 
     def update_unlock_stars(self, base_widget=None, value=None):
         self.unlock_text = str(

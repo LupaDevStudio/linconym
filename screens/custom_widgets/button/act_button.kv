@@ -5,11 +5,16 @@
     # Background
     canvas.before:
         Color:
-            rgba: self.background_color
+            rgba: CUSTOM_BUTTON_BACKGROUND_COLOR if root.disabled is False else CLOUD_GREY_BACKGROUND_COLOR
         RoundedRectangle:
             pos:(0,0)
             size:self.size
             radius:[40*root.font_ratio,]
+        Color:
+            rgba: (0,0,0,1) if root.disabled is False else (0,0,0,0)
+        Line:
+            points: [self.width/2,self.height*1/8,self.width/2, self.height*3/8]
+            width: 1*root.font_ratio
 
     # Act title
     Label:
@@ -27,19 +32,20 @@
     # Stars
     ThreeStars:
         id: three_stars
-        pos_hint: {"center_x":0.35, "center_y":0.25}
-        size_hint: (0.5,0.45)
+        pos_hint: {"center_x":0.25, "center_y":0.25}
+        size_hint: (0.4,0.3)
         nb_stars: root.nb_stars
         primary_color: root.primary_color
         secondary_color: root.secondary_color
         opacity: 1 if root.disabled is False else 0
+        force_border: True
 
     # Completion
     Label:
         id: completion_label
         text: root.completion_text
-        pos_hint: {"center_x":0.8, "center_y":0.25}
-        size_hint: (0.3,0.5)
+        pos_hint: {"center_x":0.75, "center_y":0.25}
+        size_hint: (0.4,0.5)
         font_size: root.font_ratio * root.font_size
         font_name: root.text_font_name
         halign: "center"
@@ -51,10 +57,11 @@
     Image:
         id: lock_image
         source: PATH_ICONS + "lock.png"
-        pos_hint: {"center_x":0.35, "center_y":0.25}
-        size_hint: (0.4,0.4)
+        pos_hint: {"center_x":0.05, "center_y":0.95}
+        size_hint: (0.2,0.3)
         opacity: 0 if root.disabled is False else 1
-    
+        color: root.primary_color
+
     # Unlock
     Label:
         id: unlock_label
@@ -67,22 +74,35 @@
         valign: "center"
         color: (0,0,0,1)
         opacity: 0 if root.disabled is False else 1
-    
+
     # Star image
     Image:
-        id: star_one
-        pos_hint: {"center_x":0.65, "center_y":0.25}
-        size_hint: (0.5,0.4)
+        pos_hint: {"center_x":0.65, "center_y":0.275}
+        size_hint: (0.5,0.3)
         source: PATH_ICONS + "star_full.png"
         fit_mode: "contain"
-        color: root.primary_color
+        color: root.secondary_color
         opacity: 0 if root.disabled is False else 1
     Image:
-        id: star_one_contour
-        pos_hint: {"center_x":0.65, "center_y":0.25}
-        size_hint: (0.5,0.4)
+        pos_hint: {"center_x":0.65, "center_y":0.275}
+        size_hint: (0.5,0.3)
         source: PATH_ICONS + "star.png"
         fit_mode: "contain"
         color: (0,0,0,1)
         opacity: 0 if root.disabled is False else 1
-
+    
+    # Star image
+    Image:
+        pos_hint: {"center_x":0.35, "center_y":0.275}
+        size_hint: (0.5,0.3)
+        source: PATH_ICONS + "star_full.png"
+        fit_mode: "contain"
+        color: root.secondary_color
+        opacity: 0 if root.disabled is False else 1
+    Image:
+        pos_hint: {"center_x":0.35, "center_y":0.275}
+        size_hint: (0.5,0.3)
+        source: PATH_ICONS + "star.png"
+        fit_mode: "contain"
+        color: (0,0,0,1)
+        opacity: 0 if root.disabled is False else 1
