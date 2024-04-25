@@ -37,11 +37,18 @@
         halign: "right"
         valign: "middle"
 
-    # Experience progress bar
+    # The background color (3)
     CustomProgressBar:
-        background_color: (0, 0, 0, 1)
-        value: root.percentage_experience_before
+        value: 0
         size_hint: (0.8, 0.3)
-        pos_hint: {"center_x": 0.5, "center_y":0.3}
-        primary_color: root.primary_color
-        secondary_color: root.secondary_color
+        pos_hint: {"x": 0.1, "center_y":0.3}
+        primary_color: (0, 0, 0, 0)
+        secondary_color: (0, 0, 0, 1) if root.puzzle_mode else root.secondary_color
+
+    # First two colors (1 and 2)
+    CustomProgressBar:
+        value: 1 if root.new_level else root.percentage_experience_before
+        size_hint: (0.8 * (root.ratio_foreground_progress_bar), 0.3)
+        pos_hint: {"x": 0.1, "center_y":0.3}
+        primary_color: root.primary_color if (root.new_level or not root.puzzle_mode) else root.secondary_color
+        secondary_color: root.primary_color if root.puzzle_mode else root.secondary_color

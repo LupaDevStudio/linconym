@@ -13,7 +13,8 @@ from kivy.properties import (
     ObjectProperty,
     StringProperty,
     ColorProperty,
-    NumericProperty
+    NumericProperty,
+    BooleanProperty
 )
 
 ### Local imports ###
@@ -40,6 +41,7 @@ class LevelCompletedPopup(CustomPopup):
     percentage_experience_before = NumericProperty()
     percentage_experience_won = NumericProperty()
     experience_displayed = NumericProperty()
+    new_level = BooleanProperty(False)
 
     def __init__(self, **kwargs):
         if not "left_release_function" in kwargs:

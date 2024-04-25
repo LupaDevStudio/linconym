@@ -307,6 +307,7 @@ class GameScreen(LinconymScreen):
             font_ratio=self.font_ratio,
             top_label_text=f"Solution found in {self.nb_words} words.",
             nb_stars=self.nb_stars,
+            new_level=True,
             current_level_text=f"Level {current_level}",
             percentage_experience_before=0.2, # TODO change
             percentage_experience_won=0.1, # TODO change
