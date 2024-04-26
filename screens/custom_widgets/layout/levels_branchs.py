@@ -166,7 +166,6 @@ class LevelBranch(RelativeLayout):
         if self.branch_id > 0:
             previous_level_is_unlocked = str(self.branch_id * MAX_NB_LEVELS_PER_BRANCH) \
                 in USER_DATA.classic_mode[self.act_id]
-            print(self.branch_id, previous_level_is_unlocked)
             if previous_level_is_unlocked:
                 branch_color = self.primary_color
             else:

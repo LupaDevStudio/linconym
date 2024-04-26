@@ -51,7 +51,7 @@ class LevelsScreen(LinconymScreen):
     def reload_kwargs(self, dict_kwargs):
         self.current_act_id = dict_kwargs["current_act_id"]
 
-    def on_enter(self, *args):
+    def on_pre_enter(self, *args):
         self.ids.level_layout.act_id = self.current_act_id
         self.ids.level_layout.build_layout()
         self.current_act_name = "Act " + self.current_act_id
