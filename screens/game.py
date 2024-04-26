@@ -260,10 +260,23 @@ class GameScreen(LinconymScreen):
         temp = self.current_act_id.replace("Act", "")
         self.current_level_name = "Act " + temp + " – " + self.current_level_id
 
+        # Extract the tree data from the saved data
+        if "current_position" in self.level_saved_data and "words_found" in self.level_saved_data and "position_to_word_id" in self.level_saved_data:
+            current_position = self.level_saved_data["current_position"]
+            words_found = self.level_saved_data["words_found"]
+            position_to_word_id = self.level_saved_data["position_to_word_id"]
+        else:
+            current_position = None
+            words_found = None
+            position_to_word_id = None
+
         # Create a game instance
         self.game = ClassicGame(
             act_id=self.current_act_id,
-            lvl_id=self.current_level_id
+            lvl_id=self.current_level_id,
+            current_position=current_position,
+            position_to_word_id=position_to_word_id,
+            words_found=words_found
         )
 
         # Build the tree
@@ -273,10 +286,15 @@ class GameScreen(LinconymScreen):
         self.current_word = self.game.current_word.upper()
 
     def build_tree_layout(self):
+        """
+        Build the layout of the tree showing the words found.
+        """
+
         self.ids["tree_layout"].build_layout(
             position_to_word_id=self.game.position_to_word_id,
             words_found=self.game.words_found,
-            current_position=self.game.current_position)
+            current_position=self.game.current_position
+        )
 
     def submit_word(self):
         self.game.submit_word(self.new_word.lower())
@@ -300,7 +318,7 @@ class GameScreen(LinconymScreen):
             self.display_success_popup()
 
     def display_success_popup(self):
-        current_level = 2 # TODO update with the correct value
+        current_level = 2  # TODO update with the correct value
         popup = LevelCompletedPopup(
             primary_color=self.primary_color,
             secondary_color=self.secondary_color,
@@ -309,9 +327,9 @@ class GameScreen(LinconymScreen):
             nb_stars=self.nb_stars,
             new_level=True,
             current_level_text=f"Level {current_level}",
-            percentage_experience_before=0.2, # TODO change
-            percentage_experience_won=0.1, # TODO change
-            experience_displayed=10) # TODO change
+            percentage_experience_before=0.2,  # TODO change
+            percentage_experience_won=0.1,  # TODO change
+            experience_displayed=10)  # TODO change
         popup.open()
         pass
 

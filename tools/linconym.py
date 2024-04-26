@@ -701,7 +701,14 @@ class Game():
 
 
 class ClassicGame(Game):
-    def __init__(self, act_id: str, lvl_id: str, quest_word: str = None) -> None:
+    def __init__(
+            self,
+            act_id: str,
+            lvl_id: str,
+            current_position: str = None,
+            position_to_word_id: dict = None,
+            words_found: list = None,
+            quest_word: str = None) -> None:
         self.act_id: str = act_id
         self.lvl_id: str = lvl_id
 
@@ -732,8 +739,14 @@ class ClassicGame(Game):
             self.nb_words_first_sol = self.sol_data[self.first_sol_dict_id]
             self.nb_words_280k_sol = self.sol_data[DICT_ID_LIST[-1]]
 
-        super().__init__(self.sol_data["start_word"],
-                         self.sol_data["end_word"], quest_word)
+        super().__init__(
+            start_word=self.sol_data["start_word"],
+            end_word=self.sol_data["end_word"],
+            current_position=current_position,
+            position_to_word_id=position_to_word_id,
+            words_found=words_found,
+            quest_word=quest_word
+        )
 
     def get_nb_words_2nd_star(self) -> int:
         """
