@@ -869,7 +869,7 @@ class ClassicGame(Game):
 
         # Determine if there is other levels to unlock in the same act
         next_lvl_id = str(int(self.lvl_id) + 1)
-        if next_lvl_id in GAMEPLAY_DICT[self.act_id]:
+        if next_lvl_id in GAMEPLAY_DICT[self.act_id] and next_lvl_id not in USER_DATA.classic_mode[self.act_id]:
             # Unlock the next level in the same act
             USER_DATA.classic_mode[self.act_id][next_lvl_id] = {"nb_stars": 0}
 
@@ -877,7 +877,7 @@ class ClassicGame(Game):
 
     def on_level_completed(self):
         solution_found: list[str] = self.get_word_path(
-                    self.current_position)
+            self.current_position)
         nb_words_found: int = len(solution_found)
 
         # Save the xp and stars
