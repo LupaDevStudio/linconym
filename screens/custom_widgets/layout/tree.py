@@ -118,7 +118,7 @@ class WordButton(ButtonBehavior, RelativeLayout):
     touch_color = ColorProperty()
     outline_color = ColorProperty()
     text = StringProperty()
-    text_filling_ratio = NumericProperty()
+    text_filling_ratio = NumericProperty(0.8)
     font_size = NumericProperty()
     font_ratio = NumericProperty(1)
     disable_button = BooleanProperty(False)
@@ -127,15 +127,15 @@ class WordButton(ButtonBehavior, RelativeLayout):
     def __init__(
             self,
             text_font_name=PATH_TEXT_FONT,
-            text_filling_ratio=0.8,
             font_ratio=None,
+            current_position="",
             **kwargs):
         if font_ratio is not None:
             self.font_ratio = font_ratio
         super().__init__(**kwargs)
         self.always_release = True
         self.text_font_name = text_font_name
-        self.text_filling_ratio = text_filling_ratio
+        self.current_position = current_position
 
     def on_press(self):
         if not self.disable_button:
@@ -145,7 +145,7 @@ class WordButton(ButtonBehavior, RelativeLayout):
     def on_release(self):
         if not self.disable_button:
             self.background_color = self.temp_color
-            self.parent.change_to_word(self.text)
+            self.parent.change_to_word(self.current_position)
 
 
 class TreeScrollview(ScrollView):
@@ -257,7 +257,7 @@ class TreeLayout(RelativeLayout):
         self.transparent_secondary_color = change_color_opacity(
             self.secondary_color, 0.7)
 
-    def change_to_word(self, current_word):
+    def change_to_word(self, current_position):
         """
         Manage the word change when the user clicks on a word button on the tree.
 
@@ -267,8 +267,8 @@ class TreeLayout(RelativeLayout):
             New current word.
         """
 
-        current_position = get_word_position(
-            current_word, self.position_to_word_id, self.words_found)
+        # current_position = get_word_position(
+        #     current_word, self.position_to_word_id, self.words_found)
         if current_position is not None:
             self.change_current_position(current_position)
 
@@ -564,7 +564,9 @@ class TreeLayout(RelativeLayout):
                 size_hint=(self.word_button_width_hint,
                            self.word_button_height_hint),
                 pos_hint=word_button_pos_hint,
-                font_ratio=self.font_ratio)
+                font_ratio=self.font_ratio,
+                current_position=position
+            )
 
             if is_selected:
                 widget_to_scroll_to = word_button
