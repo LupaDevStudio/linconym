@@ -54,5 +54,4 @@ class SelectCircleButtonWithText(RelativeLayout):
         self.always_release = True
 
     def on_release(self):
-        if self.collide_point(self.last_touch.x, self.last_touch.y):
-            self.release_function()
+        self.release_function()

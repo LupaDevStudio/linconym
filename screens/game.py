@@ -82,6 +82,28 @@ class GameScreen(LinconymScreen):
         self.check_disable_keyboard()
         self.check_enable_submit_button()
 
+    def reload_for_level_change(self, new_level_id: str):
+        """
+        Reload the components of the screen to continue playing on a new level.
+
+        Parameters
+        ----------
+        new_level_id : str
+            Id of the new level
+        """
+
+        # Save the data of the previous level
+        self.save_data()
+
+        # Assign the id for the new level
+        self.current_level_id = new_level_id
+
+        # Reload the components of the game
+        self.load_game_play()
+        self.build_word()
+        self.check_disable_keyboard()
+        self.check_enable_submit_button()
+
     def on_pre_leave(self, *args):
         # Clear the keyboard
         self.ids.keyboard_layout.destroy_keyboard()
@@ -323,7 +345,12 @@ class GameScreen(LinconymScreen):
             self.display_success_popup()
 
     def display_success_popup(self):
-        current_level = 2  # TODO update with the correct value
+
+        # Check if there is a next level in the same act
+        next_lvl_id = str(int(self.current_level_id) + 1)
+        has_next_levels_in_act = next_lvl_id in GAMEPLAY_DICT[self.current_act_id]
+
+        # Create the popup for the completion
         popup = LevelCompletedPopup(
             primary_color=self.primary_color,
             secondary_color=self.secondary_color,
@@ -331,12 +358,15 @@ class GameScreen(LinconymScreen):
             top_label_text=f"Solution found in {self.nb_words} words.",
             nb_stars=self.nb_stars,
             new_level=True,
-            current_level_text=f"Level {current_level}",
+            current_level_text=f"Level {self.current_level_id}",
             percentage_experience_before=0.2,  # TODO change
             percentage_experience_won=0.1,  # TODO change
-            experience_displayed=10)  # TODO change
+            experience_displayed=10,  # TODO change
+            next_level_function=partial(
+                self.reload_for_level_change, next_lvl_id),
+            has_next_levels_in_act=has_next_levels_in_act
+        )
         popup.open()
-        pass
 
     def check_level_complete(self):
         # The level is complete
