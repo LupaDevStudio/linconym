@@ -116,6 +116,11 @@ class GameScreen(LinconymScreen):
         else:
             self.ids.keyboard_layout.activate_letters()
 
+        # Disable everything if the current word is the final word
+        if self.current_word.lower() == self.end_word:
+            self.ids.keyboard_layout.disable_letters()
+            self.ids.keyboard_layout.disable_delete_button()
+
     def check_enable_submit_button(self):
         """
         Enable the submit button if the word entered is valid.
