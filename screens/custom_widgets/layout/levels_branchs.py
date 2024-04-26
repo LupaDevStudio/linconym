@@ -164,13 +164,15 @@ class LevelBranch(RelativeLayout):
             nb_levels - self.branch_id * MAX_NB_LEVELS_PER_BRANCH, 4)
         # Add the first branch to link with the previous line
         if self.branch_id > 0:
+            previous_level_is_unlocked = str(self.branch_id * MAX_NB_LEVELS_PER_BRANCH) \
+                in USER_DATA.classic_mode[self.act_id]
+            print(self.branch_id, previous_level_is_unlocked)
+            if previous_level_is_unlocked:
+                branch_color = self.primary_color
+            else:
+                branch_color = self.secondary_color
             if self.branch_id % 2 == 1:
-                previous_level_is_unlocked = self.branch_id * \
-                    MAX_NB_LEVELS_PER_BRANCH in USER_DATA.classic_mode[self.act_id]
-                if previous_level_is_unlocked:
-                    branch_color = self.primary_color
-                else:
-                    branch_color = self.secondary_color
+
                 branch_pos_hint = {
                     "x": 1 - LEVEL_BUTTON_SIDE_OFFSET,
                     "top": 1 + (1 - LEVEL_BUTTON_RELATIVE_HEIGHT * 2) / 2}
@@ -181,12 +183,6 @@ class LevelBranch(RelativeLayout):
                     pos_hint=branch_pos_hint,
                     color=branch_color)
             else:
-                previous_level_is_unlocked = self.branch_id * \
-                    MAX_NB_LEVELS_PER_BRANCH in USER_DATA.classic_mode[self.act_id]
-                if previous_level_is_unlocked:
-                    branch_color = self.primary_color
-                else:
-                    branch_color = self.secondary_color
                 branch_pos_hint = {
                     "x": LEVEL_BUTTON_SIZE_HINT / 2,
                     "top": 1 + (1 - LEVEL_BUTTON_RELATIVE_HEIGHT * 2) / 2}
