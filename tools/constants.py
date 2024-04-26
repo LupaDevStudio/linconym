@@ -211,6 +211,35 @@ class UserData():
 
         return total_nb_stars / nb_levels
 
+    def get_nb_completed_levels_for_act(self, act_id: str):
+        """
+        Compute the number of completed levels on the given act.
+
+        Parameters
+        ----------
+        act_id : str
+            Id of the act.
+
+        Returns
+        -------
+        int
+            Number of levels already completed.
+        """
+
+        # Check if the user has already played on the level
+        if act_id not in USER_DATA.classic_mode:
+            return 0
+
+        # Allocate a variable for the output
+        nb_completed_levels = 0
+
+        # Iterate over the saved data to count the levels
+        for level_id in USER_DATA.classic_mode[act_id]:
+            if USER_DATA.classic_mode[act_id][level_id]["nb_stars"] > 0:
+                nb_completed_levels += 1
+
+        return nb_completed_levels
+
     def buy_item(self, theme, item_type, price):
         if self.user_profile["coins"] >= price:
             self.user_profile["coins"] = self.user_profile["coins"] - price

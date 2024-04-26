@@ -58,7 +58,8 @@ class ClassicModeScreen(LinconymScreen):
             mean_nb_stars = USER_DATA.get_mean_nb_stars_on_act(act)
             current_act_button.nb_stars = mean_nb_stars
             if act in USER_DATA.classic_mode:
-                nb_completed_levels = len(USER_DATA.classic_mode[act])
+                nb_completed_levels = USER_DATA.get_nb_completed_levels_for_act(
+                    act)
                 current_act_button.nb_completed_levels = nb_completed_levels
             nb_stars_to_unlock = 20 * (int(act) - 1)
             if nb_total_stars < nb_stars_to_unlock:
@@ -89,7 +90,8 @@ class ClassicModeScreen(LinconymScreen):
             nb_levels = len(GAMEPLAY_DICT[act]) - 1
             nb_stars_to_unlock = 20 * (int(act) - 1)
             if act in USER_DATA.classic_mode:
-                nb_completed_levels = len(USER_DATA.classic_mode[act])
+                nb_completed_levels = USER_DATA.get_nb_completed_levels_for_act(
+                    act)
             else:
                 nb_completed_levels = 0
                 disable_act_button = True
