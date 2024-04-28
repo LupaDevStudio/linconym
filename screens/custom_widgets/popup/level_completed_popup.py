@@ -45,6 +45,9 @@ class LevelCompletedPopup(CustomPopup):
     percentage_experience_won = NumericProperty()
     experience_displayed = NumericProperty()
     new_level = BooleanProperty(False)
+    win_linclues = BooleanProperty(False)
+    number_lincoins_won = NumericProperty(0)
+    number_linclues_won = NumericProperty(0)
 
     def __init__(self, has_next_levels_in_act: bool = False, next_level_function: Callable = lambda: 1 + 1, **kwargs):
         # Store parameter
@@ -60,3 +63,10 @@ class LevelCompletedPopup(CustomPopup):
                              right_release_function=right_release_function, **kwargs)
         else:
             super().__init__(right_release_function=right_release_function, **kwargs)
+
+        if "number_linclues_won" in kwargs:
+            self.number_linclues_won = kwargs["number_linclues_won"]
+            if self.number_linclues_won != 0:
+                self.win_linclues = True
+            else:
+                self.win_linclues = False

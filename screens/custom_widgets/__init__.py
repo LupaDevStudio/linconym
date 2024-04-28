@@ -39,7 +39,8 @@ from screens.custom_widgets.layout import (
     AchievementsLayout,
     IconCreditLayout,
     GeneralLicensesLayout,
-    ImagesCreditLayout
+    ImagesCreditLayout,
+    RewardFrame
 )
 
 

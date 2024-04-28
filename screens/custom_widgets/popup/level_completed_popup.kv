@@ -59,8 +59,8 @@
 
         # Experience indicator
         ExperienceCounter:
-            size_hint: (1, 0.1)
-            pos_hint: {"center_x": 0.5, "top":0.65}
+            size_hint: (0.9, 0.1) if root.new_level else (1, 0.1)
+            pos_hint: {"center_x": 0.55, "top":0.6} if root.new_level else {"center_x": 0.5, "top":0.6}
             font_ratio: root.font_ratio
             label_left: root.current_level_text
             experience_displayed: root.experience_displayed
@@ -70,3 +70,30 @@
             secondary_color: root.secondary_color
             puzzle_mode: True
             new_level: root.new_level
+
+        # Image for level up
+        Image:
+            source: PATH_ICONS + "level_up.png"
+            pos_hint: {"x": 0.05, "top": 0.6}
+            size_hint: (None, 0.1)
+            width: self.height
+            opacity: 1 if root.new_level else 0
+            color: root.primary_color
+
+        # Reward frame for Lincoins
+        RewardFrame:
+            pos_hint: {"center_x": 0.25, "top": 0.45} if root.win_linclues else {"center_x": 0.5, "top": 0.45}
+            size_hint: (0.35, 0.15)
+            text: "+ " + str(root.number_lincoins_won)
+            color: (0, 0, 0, 1)
+            font_ratio: root.font_ratio
+
+        # Reward frame for Linclues
+        RewardFrame:
+            pos_hint: {"center_x": 0.75, "top": 0.45}
+            size_hint: (0.35, 0.15)
+            text: "+ " + str(root.number_linclues_won)
+            color: (0, 0, 0, 1)
+            font_ratio: root.font_ratio
+            image_source: PATH_ICONS + "linclue.png"
+            opacity: 1 if root.win_linclues else 0

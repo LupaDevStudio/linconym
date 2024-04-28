@@ -62,7 +62,7 @@ class ThemesScreen(LinconymScreen):
         self.fill_scrollview()
 
     def on_pre_enter(self, *args):
-        self.coins_count = USER_DATA.user_profile["coins"]
+        self.coins_count = USER_DATA.user_profile["lincoins"]
         return super().on_pre_enter(*args)
 
     def on_resize(self, *args):
@@ -74,7 +74,7 @@ class ThemesScreen(LinconymScreen):
         self.go_to_next_screen(screen_name="boosters")
 
     def update_coins(self):
-        self.coins_count = USER_DATA.user_profile["coins"]
+        self.coins_count = USER_DATA.user_profile["lincoins"]
 
     def update_theme_layouts_display(self):
         """

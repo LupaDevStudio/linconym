@@ -54,7 +54,7 @@ class BoostersScreen(LinconymScreen):
         super().__init__(**kwargs)
 
     def on_enter(self, *args):
-        self.coins_count = USER_DATA.user_profile["coins"]
+        self.coins_count = USER_DATA.user_profile["lincoins"]
         self.build_list_ads()
         self.build_list_buy()
 

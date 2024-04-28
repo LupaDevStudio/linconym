@@ -58,7 +58,7 @@ class ProfileScreen(LinconymScreen):
         super().__init__(**kwargs)
 
     def on_enter(self, *args):
-        self.coins_count = USER_DATA.user_profile["coins"]
+        self.coins_count = USER_DATA.user_profile["lincoins"]
         self.user_level = "Level " + str(USER_DATA.user_profile["level"])
         self.theme_colors = USER_DATA.settings["current_theme_colors"]
         self.user_status = USER_DATA.user_profile["status"]
