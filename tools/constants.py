@@ -35,7 +35,8 @@ from tools.path import (
     PATH_RESOURCES,
     PATH_QUESTS,
     PATH_CREDITS,
-    PATH_ACHIEVEMENTS
+    PATH_ACHIEVEMENTS,
+    PATH_ICONS
 )
 from tools.basic_tools import (
     load_json_file,
@@ -434,3 +435,17 @@ ACHIEVEMENTS_DICT = load_json_file(PATH_ACHIEVEMENTS)
 CUSTOMIZATION_DICT = load_json_file(PATH_CUSTOMIZATION)
 THEMES_DICT = CUSTOMIZATION_DICT["themes"]
 MUSICS_DICT = CUSTOMIZATION_DICT["musics"]
+
+### Lincoins images given the amount of Lincoins ###
+
+def get_lincoin_image_amount(number_lincoins):
+    if number_lincoins <= 1000:
+        return PATH_ICONS + "lincoin_1.png"
+    if number_lincoins <= 2000:
+        return PATH_ICONS + "lincoin_2.png"
+    if number_lincoins <= 4000:
+        return PATH_ICONS + "lincoin_3.png"
+    if number_lincoins <= 6000:
+        return PATH_ICONS + "lincoin_4.png"
+    else:
+        return PATH_ICONS + "lincoin_5.png"

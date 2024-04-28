@@ -18,12 +18,14 @@ from kivy.properties import (
 
 ### Local imports ###
 from tools.path import (
-    PATH_TEXT_FONT
+    PATH_TEXT_FONT,
+    PATH_ICONS
 )
 from tools.constants import (
     CUSTOM_BUTTON_BACKGROUND_COLOR,
     OPACITY_ON_BUTTON_PRESS,
     COINS_COUNT_FONT_SIZE,
+    get_lincoin_image_amount
 )
 
 #############
@@ -46,6 +48,7 @@ class CoinsCounter(ButtonBehavior, RelativeLayout):
     disable_button = BooleanProperty(False)
     radius = NumericProperty(15)
     release_function = ObjectProperty(lambda: 1 + 1)
+    coins_image_source = StringProperty(PATH_ICONS + "lincoin_1.png")
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -54,6 +57,7 @@ class CoinsCounter(ButtonBehavior, RelativeLayout):
 
     def update_coins_count(self, base_widget, value):
         self.coins_count_text = str(self.coins_count)
+        self.coins_image_source = get_lincoin_image_amount(self.coins_count)
 
     def on_press(self):
         if not self.disable_button:
