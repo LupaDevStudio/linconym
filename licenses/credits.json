@@ -60,22 +60,64 @@
     },
     "musics": {
         "kids_party": {
-            "name": "Music 1",
+            "name": "Kids Party",
             "source": "kids_party.mp3",
-            "author": "Toto",
-            "license": "https://www.lupadevstudio.com"
+            "author": "ArturAravidiMusic",
+            "license": "https://pixabay.com/fr/music/airs-pour-enfants-heureux-kids-party-160360/"
         },
-        "music_2": {
-            "name": "Music 2",
-            "source": "kids_party.mp3",
-            "author": "Toto",
-            "license": "https://www.lupadevstudio.com"
+        "bathroom": {
+            "name": "Bathroom",
+            "source": "bathroom.mp3",
+            "author": "Chillmore",
+            "license": "https://pixabay.com/fr/music/ambiant-bathroom-chill-background-music-14977"
         },
-        "music_3": {
-            "name": "Music 3",
-            "source": "kids_party.mp3",
-            "author": "Toto",
-            "license": "https://www.lupadevstudio.com"
+        "atmosphere": {
+            "name": "Atmosphere",
+            "source": "atmosphere.mp3",
+            "author": "Oleksii Kaplunskyi",
+            "license": "https://pixabay.com/fr/music/groupe-acoustique-inspiring-atmosphere-125562/"
+        },
+        "walk": {
+            "name": "Walk",
+            "source": "walk.mp3",
+            "author": "Olexy",
+            "license": "https://pixabay.com/fr/music/groupe-acoustique-nature-walk-124997/"
+        },
+        "science": {
+            "name": "Science",
+            "source": "science.mp3",
+            "author": "Aleksey Chistilin",
+            "license": "https://pixabay.com/fr/music/construire-des-scenes-science-documentary-169621/"
+        },
+        "groovy_funk": {
+            "name": "Groovy Funk",
+            "source": "groovy_funk/mp3",
+            "author": "Moodmode",
+            "license": "https://pixabay.com/fr/music/trouille-groovy-ambient-funk-201745/"
+        },
+        "inspiring": {
+            "name": "Inspiring",
+            "source": "inspiring.mp3",
+            "author": "Aleksey Chistilin",
+            "license": "https://pixabay.com/fr/music/belles-pieces-inspiring-cinematic-ambient-116199/"
+        },
+        "separation": {
+            "name": "Separation",
+            "source": "separation.mp3",
+            "author": "William King",
+            "license": "https://pixabay.com/fr/music/guitare-solo-separation-185196/"
+        },
+        "reflected_light": {
+            "name": "Reflected Light",
+            "source": "reflected_light.mp3",
+            "author": "Sergii Pavkin",
+            "license": "https://pixabay.com/fr/music/belles-pieces-reflected-light-147979/"
+        },
+        "waterfall": {
+            "name": "Waterfall",
+            "source": "waterfall.mp3",
+            "author": "Roman Senyk",
+            "license": "https://pixabay.com/fr/music/aventure-waterfall-140894/"
         }
     }
 }

@@ -323,18 +323,53 @@
     },
     "musics": {
         "kids_party": {
-            "name": "Music 1",
+            "name": "Kids Party",
             "source": "kids_party.mp3",
             "price": 900
         },
-        "music_2": {
-            "name": "Music 2",
-            "source": "kids_party.mp3",
+        "bathroom": {
+            "name": "Bathroom",
+            "source": "bathroom.mp3",
             "price": 900
         },
-        "music_3": {
-            "name": "Music 3",
-            "source": "kids_party.mp3",
+        "atmosphere": {
+            "name": "Atmosphere",
+            "source": "atmosphere.mp3",
+            "price": 900
+        },
+        "walk": {
+            "name": "Walk",
+            "source": "walk.mp3",
+            "price": 900
+        },
+        "science": {
+            "name": "Science",
+            "source": "science.mp3",
+            "price": 900
+        },
+        "groovy_funk": {
+            "name": "Groovy Funk",
+            "source": "groovy_funk.mp3",
+            "price": 900
+        },
+        "inspiring": {
+            "name": "Inspiring",
+            "source": "inspiring.mp3",
+            "price": 900
+        },
+        "separation": {
+            "name": "Separation",
+            "source": "separation.mp3",
+            "price": 900
+        },
+        "reflected_light": {
+            "name": "Reflected Light",
+            "source": "reflected_light.mp3",
+            "price": 900
+        },
+        "waterfall": {
+            "name": "Waterfall",
+            "source": "waterfall.mp3",
             "price": 900
         }
     }
