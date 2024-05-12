@@ -35,7 +35,8 @@ from tools.path import (
     PATH_RESOURCES,
     PATH_QUESTS,
     PATH_CREDITS,
-    PATH_ACHIEVEMENTS
+    PATH_ACHIEVEMENTS,
+    PATH_ICONS
 )
 from tools.basic_tools import (
     load_json_file,
@@ -99,7 +100,7 @@ if not os.path.exists(PATH_USER_DATA):
             "status": "Beginner",
             "level": 1,
             "experience": 0,
-            "coins": 100000
+            "lincoins": 100000
         },
         "ads": {
             "1": False,
@@ -246,8 +247,8 @@ class UserData():
         return nb_completed_levels
 
     def buy_item(self, theme, item_type, price):
-        if self.user_profile["coins"] >= price:
-            self.user_profile["coins"] = self.user_profile["coins"] - price
+        if self.user_profile["lincoins"] >= price:
+            self.user_profile["lincoins"] = self.user_profile["lincoins"] - price
             if item_type == "music":
                 self.unlocked_musics[theme] = True
             elif item_type == "image":
@@ -439,3 +440,17 @@ ACHIEVEMENTS_DICT = load_json_file(PATH_ACHIEVEMENTS)
 CUSTOMIZATION_DICT = load_json_file(PATH_CUSTOMIZATION)
 THEMES_DICT = CUSTOMIZATION_DICT["themes"]
 MUSICS_DICT = CUSTOMIZATION_DICT["musics"]
+
+### Lincoins images given the amount of Lincoins ###
+
+def get_lincoin_image_amount(number_lincoins):
+    if number_lincoins <= 1000:
+        return PATH_ICONS + "lincoin_1.png"
+    if number_lincoins <= 2000:
+        return PATH_ICONS + "lincoin_2.png"
+    if number_lincoins <= 4000:
+        return PATH_ICONS + "lincoin_3.png"
+    if number_lincoins <= 6000:
+        return PATH_ICONS + "lincoin_4.png"
+    else:
+        return PATH_ICONS + "lincoin_5.png"

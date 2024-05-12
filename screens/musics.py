@@ -57,7 +57,7 @@ class MusicsScreen(LinconymScreen):
         super().__init__(**kwargs)
 
     def on_pre_enter(self, *args):
-        self.coins_count = USER_DATA.user_profile["coins"]
+        self.coins_count = USER_DATA.user_profile["lincoins"]
         super().on_pre_enter(*args)
         self.fill_scrollview()
 

@@ -367,7 +367,9 @@ class GameScreen(LinconymScreen):
             experience_displayed=10,  # TODO change
             next_level_function=partial(
                 self.reload_for_level_change, next_lvl_id),
-            has_next_levels_in_act=has_next_levels_in_act
+            has_next_levels_in_act=has_next_levels_in_act,
+            number_lincoins_won=10, # TODO change
+            number_linclues_won=1 # TODO change
         )
         popup.open()
 

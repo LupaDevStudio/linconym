@@ -60,7 +60,7 @@ class PreviewScreen(ImprovedScreen):
         self.secondary_color = THEMES_DICT[self.theme_key]["secondary"]
 
     def on_enter(self, *args):
-        self.coins_count = USER_DATA.user_profile["coins"]
+        self.coins_count = USER_DATA.user_profile["lincoins"]
         self.colors_price = THEMES_DICT[self.theme_key]["colors_price"]
         self.image_price = THEMES_DICT[self.theme_key]["image_price"]
         self.both_price = self.colors_price + self.image_price

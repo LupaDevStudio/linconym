@@ -1,35 +1,27 @@
 #:kivy 2.2.1
 
-<BuyRectangleButton>:
+<RewardFrame>:
 
     # Background
     canvas.before:
         # Border
         Color:
-            rgba: (0,0,0,1) if self.mode == "line" else (0, 0, 0, 0)
+            rgba: (0,0,0,1)
         Line:
             rounded_rectangle: [0,0,self.size[0],self.size[1],self.radius*self.font_ratio]
             width: BUTTON_OUTLINE_WIDTH*self.font_ratio
-        
-        # White background
-        Color:
-            rgba: (0,0,0,0) if self.mode == "line" else self.background_color
-        RoundedRectangle:
-            size: self.size
-            pos: (0, 0)
-            radius: [self.radius*self.font_ratio]
 
     Image:
         id: coins_image
-        source: PATH_ICONS + "lincoin.png"
+        source: root.image_source
         pos_hint: {"right":0.95,"center_y":0.5}
-        size_hint: (None,0.55)
+        size_hint: (None,0.85)
         width: self.height
         fit_mode: "contain"
         color: (0,0,0,1)
 
     Label:
-        text: root.price_text
+        text: root.text
         size_hint: (1-coins_image.width/(root.width+1)-0.1, 1)
         pos_hint: {"x":0.05,"center_y":0.5}
         font_size: root.font_ratio * root.font_size

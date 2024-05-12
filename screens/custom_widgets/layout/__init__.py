@@ -17,3 +17,4 @@ from screens.custom_widgets.layout.achievements_layout import AchievementsLayout
 from screens.custom_widgets.layout.icon_credit_layout import IconCreditLayout
 from screens.custom_widgets.layout.general_licenses_layout import GeneralLicensesLayout
 from screens.custom_widgets.layout.images_credit_layout import ImagesCreditLayout
+from screens.custom_widgets.layout.reward_frame import RewardFrame
