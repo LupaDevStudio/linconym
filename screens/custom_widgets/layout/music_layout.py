@@ -34,7 +34,8 @@ from tools.path import (
 from tools.constants import (
     CUSTOM_BUTTON_BACKGROUND_COLOR,
     LABEL_FONT_SIZE,
-    OPACITY_ON_BUTTON_PRESS
+    OPACITY_ON_BUTTON_PRESS,
+    USER_DATA
 )
 from tools import (
     music_mixer
@@ -69,6 +70,7 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
     def __init__(
             self,
             music_source: str,
+            music_id:str,
             stop_playing_other_layouts: Callable,
             play_current_user_music: Callable,
             change_current_user_music: Callable,
@@ -77,6 +79,7 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
         super().__init__(**kwargs)
 
         self.music_source = music_source
+        self.music_id = music_id
         self.stop_playing_other_layouts = stop_playing_other_layouts
         self.change_current_user_music = change_current_user_music
         self.play_current_user_music = play_current_user_music
@@ -119,7 +122,12 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
             music_mixer.play(self.music_source, loop=True)
 
     def buy_music(self):
-        self.has_bought_music = True
+        bought_successfully = USER_DATA.buy_item(
+                self.music_id, "music", self.music_price)
+        if bought_successfully:
+            self.get_root_window().children[0].get_screen(
+                "musics").update_coins()
+            self.has_bought_music = True
         self.update_display()
 
     def choose_music(self):

@@ -112,6 +112,7 @@ class MusicsScreen(LinconymScreen):
                 music_title=MUSICS_DICT[music]["name"],
                 music_price=MUSICS_DICT[music]["price"],
                 music_source=MUSICS_DICT[music]["source"].replace(".mp3", ""),
+                music_id=music,
                 font_ratio=self.font_ratio * 0.8,
                 primary_color=self.primary_color,
                 has_bought_music=has_bought_music,
@@ -127,3 +128,6 @@ class MusicsScreen(LinconymScreen):
             current_music_layout.update_display()
             self.MUSICS_LAYOUT_DICT[music] = current_music_layout
             scrollview_layout.add_widget(current_music_layout)
+
+    def update_coins(self):
+        self.coins_count = USER_DATA.user_profile["lincoins"]

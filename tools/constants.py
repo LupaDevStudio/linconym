@@ -250,7 +250,7 @@ class UserData():
         if self.user_profile["lincoins"] >= price:
             self.user_profile["lincoins"] = self.user_profile["lincoins"] - price
             if item_type == "music":
-                self.unlocked_musics[theme] = True
+                self.unlocked_musics.append(theme)
             elif item_type == "image":
                 if theme not in self.unlocked_themes:
                     self.unlocked_themes[theme] = {
