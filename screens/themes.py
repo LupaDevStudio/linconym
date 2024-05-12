@@ -63,6 +63,9 @@ class ThemesScreen(LinconymScreen):
 
     def on_pre_enter(self, *args):
         self.coins_count = USER_DATA.user_profile["lincoins"]
+        for theme_layout_id in self.THEME_LAYOUT_DICT:
+            theme_layout:ThemeLayout = self.THEME_LAYOUT_DICT[theme_layout_id]
+            theme_layout.update_display()
         return super().on_pre_enter(*args)
 
     def on_resize(self, *args):

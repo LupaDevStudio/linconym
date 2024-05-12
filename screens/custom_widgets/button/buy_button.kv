@@ -24,25 +24,28 @@
         valign: "center"
         color: (0,0,0,1)
 
-    Widget:
-        id: selection_circle
-        size: root.size
-        pos: (0,0)
-        canvas.before:
-            Color:
-                rgba: (0,0,0,1)
-            Line:
-                ellipse:(self.width/2-self.height*CIRCLE_HEIGHT_RATIO/2,self.height/10,self.height*CIRCLE_HEIGHT_RATIO,self.height*CIRCLE_HEIGHT_RATIO)
-                width: 1.5*root.font_ratio
+    
 
     Image:
         id: activated_image
-        y: self.height/10 + self.height*CIRCLE_HEIGHT_RATIO/2
-        pos_hint: {"center_x":0.5}
+        pos_hint: {"center_x":0.5, "center_y":0.4}
         size_hint: (0.4,0.4)
         source: PATH_ICONS + "check.png"
         fit_mode: "contain"
         color: (0,0,0,1)
+    
+    Widget:
+        id: selection_circle
+        size_hint: (0.8,0.5)
+        # height: self.width
+        # size_hint_max_x: 0.5
+        pos_hint: {"center_x":0.5, "center_y":0.4}
+        canvas:
+            Color:
+                rgba: (0,0,0,1)
+            Line:
+                circle:(root.width*0.5 ,root.height*0.4,min(self.height,root.width*0.8)/2)
+                width: 1.5*root.font_ratio
 
     Label:
         id: price_label

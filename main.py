@@ -58,9 +58,9 @@ class WindowManager(ScreenManager):
         self.add_widget(current_screen)
         self.current = "temp"
 
-    def change_all_background_images(self, new_image_path):
+    def change_all_background_images(self, new_image_path, include_themes_screen= False):
         for screen_name in self.screen_names:
-            if screen_name != "temp" and screen_name != "themes":
+            if screen_name != "temp" and (screen_name != "themes" or include_themes_screen):
                 screen = self.get_screen(screen_name)
                 screen.set_back_image_path(new_image_path)
 
