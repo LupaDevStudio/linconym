@@ -327,6 +327,9 @@ class GameScreen(LinconymScreen):
         self.game.submit_word(self.new_word.lower())
         self.build_tree_layout()
 
+        # Save the data
+        self.save_data()
+
         # Change the current and new word
         if not self.check_level_complete():
             self.current_word = self.new_word

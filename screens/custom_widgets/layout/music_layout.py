@@ -6,8 +6,15 @@ Module to create the act button.
 ### Imports ###
 ###############
 
+### Python imports ###
+
+from typing import (
+    Callable
+)
+
 ### Kivy imports ###
 
+from kivy.core.audio import SoundLoader
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.properties import (
@@ -21,12 +28,16 @@ from kivy.properties import (
 ### Local imports ###
 
 from tools.path import (
-    PATH_TEXT_FONT
+    PATH_TEXT_FONT,
+    PATH_MUSICS
 )
 from tools.constants import (
     CUSTOM_BUTTON_BACKGROUND_COLOR,
     LABEL_FONT_SIZE,
     OPACITY_ON_BUTTON_PRESS
+)
+from tools import (
+    music_mixer
 )
 
 #############
@@ -55,8 +66,21 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
     release_function = ObjectProperty(lambda: 1 + 1)
     disable_button = BooleanProperty(False)
 
-    def __init__(self, **kwargs):
+    def __init__(
+            self,
+            music_source: str,
+            stop_playing_other_layouts: Callable,
+            play_current_user_music: Callable,
+            change_current_user_music: Callable,
+            deselect_all_musics: Callable,
+            **kwargs):
         super().__init__(**kwargs)
+
+        self.music_source = music_source
+        self.stop_playing_other_layouts = stop_playing_other_layouts
+        self.change_current_user_music = change_current_user_music
+        self.play_current_user_music = play_current_user_music
+        self.deselect_all_musics = deselect_all_musics
 
         self.always_release = True
 
@@ -77,33 +101,31 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
     def disable_buy_select(self):
         """
         Disable the right part of the layout (for the credits screen).
-
-        Parameters
-        ----------
-        None
-
-        Returns
-        -------
-        None
         """
         self.remove_widget(self.ids.buy_music_button)
         self.remove_widget(self.ids.select_music_button)
 
     def play_sound(self):
         if self.is_playing:
-            # TODO play the former music
+            self.play_current_user_music()
             self.is_playing = False
         else:
-            # TODO play the new music
+            self.stop_playing_other_layouts()
             self.is_playing = True
+            if self.music_source not in music_mixer.musics:
+                new_music = SoundLoader.load(
+                    PATH_MUSICS + self.music_source + ".mp3")
+                music_mixer.add_sound(new_music, self.music_source)
+            music_mixer.play(self.music_source, loop=True)
 
     def buy_music(self):
-        print("Buy music")
         self.has_bought_music = True
         self.update_display()
 
     def choose_music(self):
-        # TODO change the checks and update the music
+        self.deselect_all_musics()
+        self.stop_playing_other_layouts()
+        self.change_current_user_music(self.music_source)
         self.is_using_music = True
 
     def on_press(self):

@@ -88,8 +88,13 @@ if not os.path.exists(PATH_USER_DATA):
             "current_music": "kids_party",
             "current_theme_colors": "japanese_etching"
         },
-        "unlocked_themes": {},
-        "unlocked_musics": {},
+        "unlocked_themes": {
+            "japanese_etching": {
+                "image": True,
+                "colors": True
+            }
+        },
+        "unlocked_musics": ["kids_party"],
         "user_profile": {
             "status": "Beginner",
             "level": 1,
