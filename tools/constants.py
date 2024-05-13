@@ -215,7 +215,9 @@ class UserData():
                 total_nb_stars += USER_DATA.classic_mode[act_id][level]["nb_stars"]
             nb_levels += 1
 
-        return total_nb_stars / nb_levels
+        mean = total_nb_stars / nb_levels
+
+        return int(mean)
 
     def get_nb_completed_levels_for_act(self, act_id: str):
         """
@@ -442,6 +444,7 @@ THEMES_DICT = CUSTOMIZATION_DICT["themes"]
 MUSICS_DICT = CUSTOMIZATION_DICT["musics"]
 
 ### Lincoins images given the amount of Lincoins ###
+
 
 def get_lincoin_image_amount(number_lincoins):
     if number_lincoins <= 1000:

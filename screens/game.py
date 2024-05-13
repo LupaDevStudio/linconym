@@ -354,18 +354,17 @@ class GameScreen(LinconymScreen):
             self.disable_submit_button()
         else:
             end_level_dict = self.game.on_level_completed()
-            self.nb_words = end_level_dict["nb_words"]
             # Update the stars
-            self.nb_stars = end_level_dict["stars"]
+            self.nb_stars = max(end_level_dict["stars"], self.nb_stars)
             # Clear the new word field
             self.new_word = ""
             self.build_word()
             # Switch back to first word
             self.ids.tree_layout.change_current_position("0")
             # Display the popup for the level completion
-            self.display_success_popup()
+            self.display_success_popup(end_level_dict=end_level_dict)
 
-    def display_success_popup(self):
+    def display_success_popup(self, end_level_dict):
 
         # Check if there is a next level in the same act
         next_lvl_id = str(int(self.current_level_id) + 1)
@@ -376,8 +375,8 @@ class GameScreen(LinconymScreen):
             primary_color=self.primary_color,
             secondary_color=self.secondary_color,
             font_ratio=self.font_ratio,
-            top_label_text=f"Solution found in {self.nb_words} words.",
-            nb_stars=self.nb_stars,
+            top_label_text=f"Solution found in {end_level_dict['nb_words']} words.",
+            nb_stars=end_level_dict["stars"],
             new_level=True,
             current_level_text=f"Level {self.current_level_id}",
             percentage_experience_before=0.2,  # TODO change
