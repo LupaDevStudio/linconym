@@ -239,12 +239,24 @@ class GameScreen(LinconymScreen):
                 size_hint=(size_letter, height_letter),
                 color_label=(0, 0, 0, 1),
                 outline_color=outline_color,
-                disable_button=True,
-                outline_width=0.5
+                outline_width=0.5,
+                release_function=partial(self.pop_letter, counter_letter)
             )
 
             self.add_widget(letter_widget)
             self.list_widgets_letters.append(letter_widget)
+
+    def pop_letter(self, letter_id):
+        if letter_id < len(self.new_word):
+            self.new_word = self.new_word[:letter_id] + \
+                self.new_word[letter_id + 1:]
+
+            # Disable/Enable the keyboard and the submit button in consequence
+            self.check_disable_keyboard()
+            self.check_enable_submit_button()
+
+            # Rebuild the display of the word
+            self.build_word()
 
     def on_change_word_position_on_tree(self):
 
@@ -368,8 +380,8 @@ class GameScreen(LinconymScreen):
             next_level_function=partial(
                 self.reload_for_level_change, next_lvl_id),
             has_next_levels_in_act=has_next_levels_in_act,
-            number_lincoins_won=10, # TODO change
-            number_linclues_won=1 # TODO change
+            number_lincoins_won=10,  # TODO change
+            number_linclues_won=1  # TODO change
         )
         popup.open()
 
