@@ -57,7 +57,8 @@ class ProfileScreen(LinconymScreen):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
 
-    def on_enter(self, *args):
+    def on_pre_enter(self, *args):
+        super().on_pre_enter(*args)
         self.coins_count = USER_DATA.user_profile["lincoins"]
         self.user_level = "Level " + str(USER_DATA.user_profile["level"])
         self.theme_colors = USER_DATA.settings["current_theme_colors"]
@@ -68,8 +69,6 @@ class ProfileScreen(LinconymScreen):
             14, 1, 32)
         self.daily_mode_achievements = "Completed levels: %i\n\nClick to see all achievements." % (
             14)
-
-        return super().on_enter(*args)
 
     def go_to_boosters(self):
         self.go_to_next_screen(screen_name="boosters")

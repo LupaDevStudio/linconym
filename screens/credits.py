@@ -69,6 +69,9 @@ class CreditsScreen(LinconymScreen):
         # Reset scrollview
         self.ids.scrollview_layout.reset_scrollview()
 
+        # Play default music again
+        self.play_current_user_music()
+
     def fill_scrollview(self):
         # Load the widgets
         scrollview_layout = self.ids["scrollview_layout"]
@@ -212,23 +215,6 @@ class CreditsScreen(LinconymScreen):
                 font_size=CREDITS_CONTENT_SCROLLVIEW_FONT_SIZE,
                 size_hint_y=None,
                 height=line_height * self.font_ratio)
-            # current_music_layout = MusicLayout(
-            #     music_title=MUSICS_DICT[music]["name"],
-            #     music_price=MUSICS_DICT[music]["price"],
-            #     music_source=MUSICS_DICT[music]["source"].replace(".mp3", ""),
-            #     music_id=music,
-            #     font_ratio=self.font_ratio * 0.8,
-            #     primary_color=self.primary_color,
-            #     has_bought_music=has_bought_music,
-            #     is_using_music=is_using_music,
-            #     disable_button=True,
-            #     size_hint_y=None,
-            #     height=layout_height * self.font_ratio,
-            #     stop_playing_other_layouts=self.stop_playing_all_musics,
-            #     change_current_user_music=self.change_current_user_music,
-            #     play_current_user_music=self.play_current_user_music,
-            #     deselect_all_musics=self.deselect_all_musics
-            # )
             music_credit_layout.disable_buy_select()
             music_credit_layout.release_function = partial(
                 self.open_url, musics_dict[music]["license"])

@@ -59,7 +59,7 @@
         Color:
             rgba: self.color
         Line:
-            width: 2
+            width: 2*self.font_ratio
             bezier: [self.x, self.top,self.center_x, self.top,self.center_x, self.y]
             cap: "none"
 
@@ -68,7 +68,7 @@
         Color:
             rgba: self.color
         Line:
-            width: 2
+            width: 2*self.font_ratio
             bezier: [self.right, self.top,self.center_x, self.top,self.center_x, self.y]
             cap: "none"
 
@@ -83,7 +83,7 @@
         Color:
             rgba: self.color
         Line:
-            width: 2
+            width: 2*self.font_ratio
             bezier: [self.right, self.y,self.center_x, self.y,self.center_x, self.top]
             cap: "none"
 
@@ -98,6 +98,6 @@
         Color:
             rgba: self.color
         Line:
-            width: 2
+            width: 2*self.font_ratio
             bezier: [self.x, self.y,self.center_x, self.y,self.center_x, self.top]
             cap: "none"

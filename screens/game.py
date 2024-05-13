@@ -348,7 +348,8 @@ class GameScreen(LinconymScreen):
         self.ids["tree_layout"].build_layout(
             position_to_word_id=self.game.position_to_word_id,
             words_found=self.game.words_found,
-            current_position=self.game.current_position
+            current_position=self.game.current_position,
+            # font_ratio=self.font_ratio
         )
 
     def submit_word(self):

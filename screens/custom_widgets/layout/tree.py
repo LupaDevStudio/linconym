@@ -442,7 +442,9 @@ class TreeLayout(RelativeLayout):
             self,
             position_to_word_id: Dict[str, int] = test_position_to_word_id,
             words_found: List[str] = test_words_found,
-            current_position: str = "0,0,1,0"):
+            current_position: str = "0,0,1,0",
+            font_ratio: float = None,
+    ):
         """
         Build the layout of the tree.
 
@@ -455,6 +457,10 @@ class TreeLayout(RelativeLayout):
         current_position : str
             _description_
         """
+
+        # Update the font ratio
+        if font_ratio is not None:
+            self.font_ratio = font_ratio
 
         # Store the tree infos
         self.position_to_word_id = position_to_word_id
@@ -587,7 +593,9 @@ class TreeLayout(RelativeLayout):
                 word_link = WordLink(
                     color=main_color,
                     pos_hint=word_link_pos_hint,
-                    size_hint=word_link_size_hint)
+                    size_hint=word_link_size_hint,
+                    font_ratio=self.font_ratio
+                )
                 self.word_link_dict[position] = word_link
 
             self.word_button_dict[position] = word_button

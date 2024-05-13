@@ -142,6 +142,6 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
 
     def on_release(self):
         if not self.disable_button:
-            if self.collide_point(self.last_touch.x, self.last_touch.y):
+            if self.collide_point(self.last_touch.x, self.last_touch.y) and not (self.ids.play_pause_button.collide_point(self.last_touch.x, self.last_touch.y)):
                 self.release_function()
             self.opacity = 1

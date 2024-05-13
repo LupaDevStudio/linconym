@@ -46,22 +46,27 @@ from tools.constants import (
 
 class StraightBranch(Widget):
     color = ColorProperty()
+    font_ratio = NumericProperty(1)
 
 
 class CurveBranchTopLeft(Widget):
     color = ColorProperty()
+    font_ratio = NumericProperty(1)
 
 
 class CurveBranchTopRight(Widget):
     color = ColorProperty()
+    font_ratio = NumericProperty(1)
 
 
 class CurveBranchBottomRight(Widget):
     color = ColorProperty()
+    font_ratio = NumericProperty(1)
 
 
 class CurveBranchBottomLeft(Widget):
     color = ColorProperty()
+    font_ratio = NumericProperty(1)
 
 
 class LevelButton(ButtonBehavior, RelativeLayout):
@@ -180,7 +185,9 @@ class LevelBranch(RelativeLayout):
                 branch = CurveBranchBottomLeft(
                     size_hint=branch_size_hint,
                     pos_hint=branch_pos_hint,
-                    color=branch_color)
+                    color=branch_color,
+                    font_ratio=self.font_ratio
+                )
             else:
                 branch_pos_hint = {
                     "x": LEVEL_BUTTON_SIZE_HINT / 2,
@@ -190,7 +197,9 @@ class LevelBranch(RelativeLayout):
                 branch = CurveBranchBottomRight(
                     size_hint=branch_size_hint,
                     pos_hint=branch_pos_hint,
-                    color=branch_color)
+                    color=branch_color,
+                    font_ratio=self.font_ratio
+                )
             self.add_widget(branch)
         for local_id in range(self.local_nb_levels):
             # Create the level button
@@ -230,7 +239,9 @@ class LevelBranch(RelativeLayout):
                         branch = StraightBranch(
                             size_hint=branch_size_hint,
                             pos_hint=branch_pos_hint,
-                            color=branch_color)
+                            color=branch_color,
+                            font_ratio=self.font_ratio
+                        )
                     elif local_id + 2 == MAX_NB_LEVELS_PER_BRANCH:
                         branch_pos_hint = {
                             "x": level_pos_hint["center_x"] + LEVEL_BUTTON_SIZE_HINT / 2,
@@ -240,7 +251,9 @@ class LevelBranch(RelativeLayout):
                         branch = CurveBranchTopLeft(
                             size_hint=branch_size_hint,
                             pos_hint=branch_pos_hint,
-                            color=branch_color)
+                            color=branch_color,
+                            font_ratio=self.font_ratio
+                        )
                     else:
                         continue
                     self.add_widget(branch)
@@ -254,7 +267,9 @@ class LevelBranch(RelativeLayout):
                         branch = StraightBranch(
                             size_hint=branch_size_hint,
                             pos_hint=branch_pos_hint,
-                            color=branch_color)
+                            color=branch_color,
+                            font_ratio=self.font_ratio
+                        )
                     elif local_id + 2 == MAX_NB_LEVELS_PER_BRANCH:
                         branch_pos_hint = {
                             "right": level_pos_hint["center_x"] - LEVEL_BUTTON_SIZE_HINT / 2,
@@ -264,7 +279,9 @@ class LevelBranch(RelativeLayout):
                         branch = CurveBranchTopRight(
                             size_hint=branch_size_hint,
                             pos_hint=branch_pos_hint,
-                            color=branch_color)
+                            color=branch_color,
+                            font_ratio=self.font_ratio
+                        )
                     else:
                         continue
                     self.add_widget(branch)

@@ -49,7 +49,7 @@ from tools.basic_tools import (
 
 ### Version ###
 
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 
 ### Mode ###
 
@@ -100,7 +100,7 @@ if not os.path.exists(PATH_USER_DATA):
             "status": "Beginner",
             "level": 1,
             "experience": 0,
-            "lincoins": 100000
+            "lincoins": 0
         },
         "ads": {
             "1": False,
