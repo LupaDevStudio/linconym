@@ -70,11 +70,11 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
     def __init__(
             self,
             music_source: str,
-            music_id:str,
             stop_playing_other_layouts: Callable,
             play_current_user_music: Callable,
-            change_current_user_music: Callable,
-            deselect_all_musics: Callable,
+            change_current_user_music: Callable = None,
+            deselect_all_musics: Callable = None,
+            music_id: str = "",
             **kwargs):
         super().__init__(**kwargs)
 
@@ -123,7 +123,7 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
 
     def buy_music(self):
         bought_successfully = USER_DATA.buy_item(
-                self.music_id, "music", self.music_price)
+            self.music_id, "music", self.music_price)
         if bought_successfully:
             self.get_root_window().children[0].get_screen(
                 "musics").update_coins()

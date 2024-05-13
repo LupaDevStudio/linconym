@@ -16,7 +16,7 @@ import webbrowser
 from kivy.uix.label import Label
 
 ### Local imports ###
-
+from tools import music_mixer
 from tools.constants import (
     CREDITS_DICT,
     SCREEN_TITLE,
@@ -25,7 +25,8 @@ from tools.constants import (
     CREDITS_CONTENT_SCROLLVIEW_FONT_SIZE,
     CREDITS_SCROLLVIEW_FONT_SIZE,
     TITLE_OUTLINE_COLOR,
-    BUTTON_OUTLINE_WIDTH
+    BUTTON_OUTLINE_WIDTH,
+    USER_DATA
 )
 from tools.path import (
     PATH_TITLE_FONT
@@ -77,8 +78,8 @@ class CreditsScreen(LinconymScreen):
 
         # Add LupaDevStudio's team
         custom_content = CustomContentButton(
-            title = "LupaDevStudio's Team",
-            content = "Name 1 \nName 2 \nName 3 \nName 4",
+            title="LupaDevStudio's Team",
+            content="Name 1 \nName 2 \nName 3 \nName 4",
             font_size_title=CREDITS_SCROLLVIEW_FONT_SIZE,
             font_size_content=CREDITS_CONTENT_SCROLLVIEW_FONT_SIZE,
             disable_button=True,
@@ -91,15 +92,15 @@ class CreditsScreen(LinconymScreen):
         # Add the "copyright licenses" title
         title = "General licenses"
         my_label = Label(
-            text = title,
-            font_size = CREDITS_SCROLLVIEW_FONT_SIZE * self.font_ratio,
-            color = (0, 0, 0, 1),
+            text=title,
+            font_size=CREDITS_SCROLLVIEW_FONT_SIZE * self.font_ratio,
+            color=(0, 0, 0, 1),
             outline_width=BUTTON_OUTLINE_WIDTH * self.font_ratio,
             outline_color=TITLE_OUTLINE_COLOR,
             font_name=PATH_TITLE_FONT,
-            size_hint_y = None,
+            size_hint_y=None,
             height=line_height * self.font_ratio)
-                         
+
         scrollview_layout.add_widget(my_label)
 
         # Add the general licenses
@@ -107,29 +108,29 @@ class CreditsScreen(LinconymScreen):
         for license in license_dict:
             title = license_dict[license]["title"]
             my_license = GeneralLicensesLayout(
-                license_title = title,
-                font_size = CREDITS_CONTENT_SCROLLVIEW_FONT_SIZE,
+                license_title=title,
+                font_size=CREDITS_CONTENT_SCROLLVIEW_FONT_SIZE,
                 font_ratio=self.font_ratio,
                 radius=20,
-                size_hint_y = None,
+                size_hint_y=None,
                 height=line_height * self.font_ratio)
             licence_url = license_dict[license]["url"]
             my_license.release_function = partial(self.open_url, licence_url)
-                  
+
             scrollview_layout.add_widget(my_license)
 
         # Add the "copyright images" title
         title = "Copyrights for images"
         my_label = Label(
-            text = title,
-            font_size = CREDITS_SCROLLVIEW_FONT_SIZE * self.font_ratio,
-            color = (0, 0, 0, 1),
+            text=title,
+            font_size=CREDITS_SCROLLVIEW_FONT_SIZE * self.font_ratio,
+            color=(0, 0, 0, 1),
             outline_width=BUTTON_OUTLINE_WIDTH * self.font_ratio,
             outline_color=TITLE_OUTLINE_COLOR,
             font_name=PATH_TITLE_FONT,
-            size_hint_y = None,
+            size_hint_y=None,
             height=line_height * self.font_ratio)
-                         
+
         scrollview_layout.add_widget(my_label)
 
         # Add the images
@@ -137,15 +138,15 @@ class CreditsScreen(LinconymScreen):
         for image in images_dict:
             title = images_dict[image]["title"]
             url = images_dict[image]["url"]
-            type = True if images_dict[image]["type"]=="icon" else False
+            type = True if images_dict[image]["type"] == "icon" else False
             image_credit_layout = ImagesCreditLayout(
                 image_title=title,
-                current_image = image,
-                icon_mode = type,
+                current_image=image,
+                icon_mode=type,
                 font_ratio=self.font_ratio,
                 radius=20,
                 font_size=CREDITS_CONTENT_SCROLLVIEW_FONT_SIZE,
-                size_hint_y = None,
+                size_hint_y=None,
                 height=line_height * self.font_ratio)
             image_credit_layout.release_function = partial(self.open_url, url)
             self.CREDITS_LAYOUT_DICT[image] = image_credit_layout
@@ -154,13 +155,13 @@ class CreditsScreen(LinconymScreen):
         # Add the "copyright icons" title
         title = "Copyrights for icons"
         my_label = Label(
-            text = title,
-            font_size = CREDITS_SCROLLVIEW_FONT_SIZE * self.font_ratio,
-            color = (0, 0, 0, 1),
+            text=title,
+            font_size=CREDITS_SCROLLVIEW_FONT_SIZE * self.font_ratio,
+            color=(0, 0, 0, 1),
             outline_width=BUTTON_OUTLINE_WIDTH * self.font_ratio,
             outline_color=TITLE_OUTLINE_COLOR,
             font_name=PATH_TITLE_FONT,
-            size_hint_y = None,
+            size_hint_y=None,
             height=line_height * self.font_ratio)
 
         scrollview_layout.add_widget(my_label)
@@ -172,12 +173,12 @@ class CreditsScreen(LinconymScreen):
             url = icons_dict[icon].split("\"")[1]
             icon_credit_layout = IconCreditLayout(
                 icon_title=title,
-                current_icon = icon,
+                current_icon=icon,
                 font_ratio=self.font_ratio,
                 primary_color=self.primary_color,
                 radius=20,
                 font_size=CREDITS_CONTENT_SCROLLVIEW_FONT_SIZE,
-                size_hint_y = None,
+                size_hint_y=None,
                 height=line_height * self.font_ratio)
             icon_credit_layout.release_function = partial(self.open_url, url)
             self.CREDITS_LAYOUT_DICT[icon] = icon_credit_layout
@@ -186,13 +187,13 @@ class CreditsScreen(LinconymScreen):
         # add the "copyright music" title
         title = "Copyrights for musics"
         my_label = Label(
-            text = title,
-            font_size = CREDITS_SCROLLVIEW_FONT_SIZE * self.font_ratio,
+            text=title,
+            font_size=CREDITS_SCROLLVIEW_FONT_SIZE * self.font_ratio,
             color=(0, 0, 0, 1),
             outline_width=BUTTON_OUTLINE_WIDTH * self.font_ratio,
             outline_color=TITLE_OUTLINE_COLOR,
             font_name=PATH_TITLE_FONT,
-            size_hint_y = None,
+            size_hint_y=None,
             height=line_height * self.font_ratio)
         scrollview_layout.add_widget(my_label)
 
@@ -203,11 +204,31 @@ class CreditsScreen(LinconymScreen):
                 " – " + musics_dict[music]["author"]
             music_credit_layout = MusicLayout(
                 music_title=title,
+                music_source=musics_dict[music]["source"].replace(".mp3", ""),
+                stop_playing_other_layouts=self.stop_playing_all_musics,
+                play_current_user_music=self.play_current_user_music,
                 font_ratio=self.font_ratio,
                 primary_color=self.primary_color,
                 font_size=CREDITS_CONTENT_SCROLLVIEW_FONT_SIZE,
-                size_hint_y = None,
+                size_hint_y=None,
                 height=line_height * self.font_ratio)
+            # current_music_layout = MusicLayout(
+            #     music_title=MUSICS_DICT[music]["name"],
+            #     music_price=MUSICS_DICT[music]["price"],
+            #     music_source=MUSICS_DICT[music]["source"].replace(".mp3", ""),
+            #     music_id=music,
+            #     font_ratio=self.font_ratio * 0.8,
+            #     primary_color=self.primary_color,
+            #     has_bought_music=has_bought_music,
+            #     is_using_music=is_using_music,
+            #     disable_button=True,
+            #     size_hint_y=None,
+            #     height=layout_height * self.font_ratio,
+            #     stop_playing_other_layouts=self.stop_playing_all_musics,
+            #     change_current_user_music=self.change_current_user_music,
+            #     play_current_user_music=self.play_current_user_music,
+            #     deselect_all_musics=self.deselect_all_musics
+            # )
             music_credit_layout.disable_buy_select()
             music_credit_layout.release_function = partial(
                 self.open_url, musics_dict[music]["license"])
@@ -228,3 +249,15 @@ class CreditsScreen(LinconymScreen):
         None
         """
         webbrowser.open(url, 2)
+
+    def stop_playing_all_musics(self):
+        musics_dict = CREDITS_DICT["musics"]
+        for key in self.CREDITS_LAYOUT_DICT:
+            if key in musics_dict:
+                music_layout: MusicLayout = self.CREDITS_LAYOUT_DICT[key]
+                music_layout.is_playing = False
+
+    def play_current_user_music(self):
+        current_music = USER_DATA.settings["current_music"]
+        if music_mixer.musics[current_music].state == "stop":
+            music_mixer.play(current_music, loop=True)
