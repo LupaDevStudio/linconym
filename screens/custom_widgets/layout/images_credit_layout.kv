@@ -15,14 +15,14 @@
     Image:
         id: image_image
         source: PATH_ICONS + root.current_image + ".png" if root.icon_mode else PATH_BACKGROUNDS + root.current_image + ".jpg"
-        size_hint: None, 0.85
+        size_hint: None, 0.7
         width: self.height
-        pos_hint: {"x": 0.025, "center_y": 0.5}
+        pos_hint: {"x": 0.05, "center_y": 0.5}
 
     # Image title
     Label:
         text: root.image_title
-        pos_hint: {"x": 0.05 + image_image.width/(root.width+1),"center_y":0.5}
+        pos_hint: {"x": 0.075 + image_image.width/(root.width+1),"center_y":0.5}
         size_hint: 1 - 0.07 - image_image.width/(root.width+1), 1
         font_size: root.font_ratio * root.font_size
         font_name: root.text_font_name
