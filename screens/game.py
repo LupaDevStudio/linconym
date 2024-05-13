@@ -357,6 +357,12 @@ class GameScreen(LinconymScreen):
             self.nb_words = end_level_dict["nb_words"]
             # Update the stars
             self.nb_stars = end_level_dict["stars"]
+            # Clear the new word field
+            self.new_word = ""
+            self.build_word()
+            # Switch back to first word
+            self.ids.tree_layout.change_current_position("0")
+            # Display the popup for the level completion
             self.display_success_popup()
 
     def display_success_popup(self):
