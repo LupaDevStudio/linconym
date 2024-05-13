@@ -33,6 +33,7 @@
         secondary_color: root.secondary_color
 
 <StraightBranch>:
+    opacity: 0.8
     # canvas.before:
     #     Color:
     #         rgba: (1,1,1,0.5)
@@ -44,11 +45,12 @@
             rgba: self.color
         Line:
             points: [self.x, self.center_y,self.right, self.center_y]
-            width: 2
+            width: 2*self.font_ratio
             cap: "none"
 
 
 <CurveBranchTopLeft>:
+    opacity: 0.8
     # canvas.before:
     #     Color:
     #         rgba: (1,1,1,0.5)
@@ -64,6 +66,7 @@
             cap: "none"
 
 <CurveBranchTopRight>:
+    opacity: 0.8
     canvas:
         Color:
             rgba: self.color
@@ -73,6 +76,7 @@
             cap: "none"
 
 <CurveBranchBottomRight>:
+    opacity: 0.8
     # canvas.before:
     #     Color:
     #         rgba: (1,1,1,0.5)
@@ -88,6 +92,7 @@
             cap: "none"
 
 <CurveBranchBottomLeft>:
+    opacity: 0.8
     # canvas.before:
     #     Color:
     #         rgba: (1,1,1,0.5)
