@@ -15,7 +15,8 @@ from typing import Literal
 
 from kivy.properties import (
     StringProperty,
-    NumericProperty
+    NumericProperty,
+    BooleanProperty
 )
 
 ### Local imports ###
@@ -63,6 +64,7 @@ class GameScreen(LinconymScreen):
     new_word = StringProperty("")
     end_word = StringProperty("")
     start_to_end_label = StringProperty("")
+    allow_delete_current_word = BooleanProperty(False)
     list_widgets_letters = []
 
     def __init__(self, **kwargs) -> None:
@@ -81,6 +83,7 @@ class GameScreen(LinconymScreen):
         self.build_word()
         self.check_disable_keyboard()
         self.check_enable_submit_button()
+        self.check_delete_current_word()
 
     def reload_for_level_change(self, new_level_id: str):
         """
@@ -246,6 +249,18 @@ class GameScreen(LinconymScreen):
             self.add_widget(letter_widget)
             self.list_widgets_letters.append(letter_widget)
 
+    def check_delete_current_word(self):
+        """
+        Verify if the current word can be deleted.
+        """
+
+        if self.game.get_nb_next_words(self.game.current_position) == 0\
+                and self.current_word != self.start_word.upper() \
+            and self.current_word != self.end_word.upper():
+            self.allow_delete_current_word = True
+        else:
+            self.allow_delete_current_word = False
+
     def pop_letter(self, letter_id):
         if letter_id < len(self.new_word):
             self.new_word = self.new_word[:letter_id] + \
@@ -272,6 +287,7 @@ class GameScreen(LinconymScreen):
         # Update the keyboard and submit button
         self.check_disable_keyboard()
         self.check_enable_submit_button()
+        self.check_delete_current_word()
 
     def load_game_play(self):
 
@@ -363,6 +379,8 @@ class GameScreen(LinconymScreen):
             self.ids.tree_layout.change_current_position("0")
             # Display the popup for the level completion
             self.display_success_popup(end_level_dict=end_level_dict)
+
+        self.check_delete_current_word()
 
     def display_success_popup(self, end_level_dict):
 

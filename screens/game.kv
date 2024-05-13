@@ -60,6 +60,7 @@
 
     # Previous word
     ColoredRoundedButton:
+        id: previous_word_label
         text: root.current_word
         background_color: (1,1,1,1)
         pos_hint: {"center_x": 0.5,"y": 0.335}
@@ -101,3 +102,15 @@
         colors: root.primary_color
         release_function: root.go_to_quests_screen
         font_ratio: root.font_ratio
+    
+    RoundedButtonImage:
+        id: delete_word_button
+        image_path: PATH_ICONS + "bin.png"
+        pos_hint: {"x":0.55 + root.ids.previous_word_label.size_hint_x/2,"y":0.335}
+        size_hint_y: root.ids.previous_word_label.size_hint_y
+        size_hint_x: None
+        width: self.height
+        colors: root.primary_color
+        font_ratio: root.font_ratio
+        disable_button: not(root.allow_delete_current_word)
+        opacity: 1 if root.allow_delete_current_word else 0
