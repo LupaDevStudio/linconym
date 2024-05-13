@@ -55,6 +55,7 @@ class LevelsScreen(LinconymScreen):
         self.ids.level_layout.act_id = self.current_act_id
         self.ids.level_layout.build_layout()
         self.current_act_name = "Act " + self.current_act_id
+        return super().on_pre_enter(*args)
 
     def on_leave(self, *args):
         self.ids.level_layout.clear_widgets()
