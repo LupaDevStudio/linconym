@@ -18,6 +18,7 @@ from kivy.properties import (
     NumericProperty,
     BooleanProperty
 )
+from kivy.clock import Clock
 
 ### Local imports ###
 
@@ -118,7 +119,6 @@ class GameScreen(LinconymScreen):
         return super().on_leave(*args)
 
     def save_data(self):
-        print("save")
 
         # Insert data in save dict
         self.level_saved_data["current_position"] = self.game.current_position
@@ -251,17 +251,21 @@ class GameScreen(LinconymScreen):
             self.add_widget(letter_widget)
             self.list_widgets_letters.append(letter_widget)
 
-    def check_delete_current_word(self):
+    def check_delete_current_word(self, *_):
         """
         Verify if the current word can be deleted.
         """
 
         if self.game.get_nb_next_words(self.game.current_position) == 0\
                 and self.current_word != self.start_word.upper() \
-            and self.current_word != self.end_word.upper():
+        and self.current_word != self.end_word.upper():
             self.allow_delete_current_word = True
+            self.ids.delete_word_button.opacity = 1
         else:
             self.allow_delete_current_word = False
+            self.ids.delete_word_button.opacity = 0
+
+        print("check can delete", self.allow_delete_current_word)
 
     def pop_letter(self, letter_id):
         if letter_id < len(self.new_word):
@@ -351,7 +355,6 @@ class GameScreen(LinconymScreen):
             position_to_word_id=self.game.position_to_word_id,
             words_found=self.game.words_found,
             current_position=self.game.current_position,
-            # font_ratio=self.font_ratio
         )
 
     def submit_word(self):
@@ -384,6 +387,9 @@ class GameScreen(LinconymScreen):
             self.display_success_popup(end_level_dict=end_level_dict)
 
         self.check_delete_current_word()
+
+        # Save the data
+        self.save_data()
 
     def display_success_popup(self, end_level_dict):
 
@@ -448,3 +454,28 @@ class GameScreen(LinconymScreen):
             screen_name="configure_tree",
             current_dict_kwargs=dict_kwargs,
             next_dict_kwargs=dict_kwargs)
+
+    def delete_current_word(self):
+        """
+        Delete the current word.
+        """
+
+        # Delete the current word in game instance
+        self.game.delete_current_word()
+
+        # Reset the new word
+        self.new_word = ""
+
+        # Load the parent word
+        self.current_word = self.game.current_word.upper()
+
+        # Enable the keyboard and disable the submit button
+        self.build_word()
+        self.build_tree_layout()
+        self.check_disable_keyboard()
+        self.check_enable_submit_button()
+
+        # Save the data
+        self.save_data()
+
+        Clock.schedule_once(self.check_delete_current_word)

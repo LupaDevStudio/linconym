@@ -112,5 +112,6 @@
         width: self.height
         colors: root.primary_color
         font_ratio: root.font_ratio
-        disable_button: not(root.allow_delete_current_word)
-        opacity: 1 if root.allow_delete_current_word else 0
+        disabled: not(root.allow_delete_current_word)
+        opacity: 1 if root.allow_delete_current_word else 0 # does not work because button press is overriding
+        release_function: root.delete_current_word

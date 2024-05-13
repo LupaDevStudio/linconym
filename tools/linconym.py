@@ -626,6 +626,24 @@ class Game():
         else:
             print("Word not valid")
 
+    def delete_current_word(self):
+        """
+        Delete the current word.
+
+        Warning
+        -------
+        Do not use this function if the current word has children.
+        """
+
+        # Remove word from position to word_id
+        self.position_to_word_id.pop(self.current_position)
+
+        # Get the position of the parent
+        new_position = get_parent_position(self.current_position)
+
+        # Move to the position of the parent
+        self.change_position(new_position)
+
     def get_nb_words_2nd_star(self) -> int:
         """
         Returns
