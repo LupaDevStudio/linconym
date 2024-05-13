@@ -40,7 +40,7 @@ class CoinsCounter(ButtonBehavior, RelativeLayout):
 
     background_color = CUSTOM_BUTTON_BACKGROUND_COLOR
     coins_count_text = StringProperty()
-    coins_count = NumericProperty(0)
+    coins_count = NumericProperty(-1)
     font_size = NumericProperty(COINS_COUNT_FONT_SIZE)
     text_font_name = StringProperty(PATH_TEXT_FONT)
     font_ratio = NumericProperty(1)
