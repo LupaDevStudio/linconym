@@ -84,6 +84,7 @@ class GameScreen(LinconymScreen):
         self.check_disable_keyboard()
         self.check_enable_submit_button()
         self.check_delete_current_word()
+        self.save_data()
 
     def reload_for_level_change(self, new_level_id: str):
         """
@@ -117,6 +118,7 @@ class GameScreen(LinconymScreen):
         return super().on_leave(*args)
 
     def save_data(self):
+        print("save")
 
         # Insert data in save dict
         self.level_saved_data["current_position"] = self.game.current_position
