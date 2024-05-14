@@ -36,7 +36,8 @@ from tools.path import (
     PATH_QUESTS,
     PATH_CREDITS,
     PATH_ACHIEVEMENTS,
-    PATH_ICONS
+    PATH_ICONS,
+    PATH_USER_STATUS
 )
 from tools.basic_tools import (
     load_json_file,
@@ -62,7 +63,7 @@ BACK_ARROW_SIZE = 0.2
 ### Data loading ###
 
 # scale for experience awarded to the user
-XP_PER_LEVEL: int = 10
+XP_PER_LEVEL: int = 100
 
 # Create the user data json if it does not exist
 if not os.path.exists(PATH_USER_DATA):
@@ -98,7 +99,7 @@ if not os.path.exists(PATH_USER_DATA):
         "unlocked_musics": ["inspiring"],
         "user_profile": {
             "status": "novice",
-            "level": 0,
+            "level": 1,
             "experience": 0,
             "lincoins": 0,
             "linclues": 0
@@ -446,6 +447,9 @@ MUSICS_DICT = CUSTOMIZATION_DICT["musics"]
 THEMES_CATEGORY_DICT = CUSTOMIZATION_DICT["categories"]
 NB_LINCOINS_PER_STAR = int(
     THEMES_CATEGORY_DICT["common"]["image_price"] / 30) + 1
+
+### User status ###
+USER_STATUS_DICT = load_json_file(PATH_USER_STATUS)
 
 ### Lincoins images given the amount of Lincoins ###
 
