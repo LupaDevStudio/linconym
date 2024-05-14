@@ -97,8 +97,8 @@ if not os.path.exists(PATH_USER_DATA):
         },
         "unlocked_musics": ["inspiring"],
         "user_profile": {
-            "status": "Beginner",
-            "level": 1,
+            "status": "novice",
+            "level": 0,
             "experience": 0,
             "lincoins": 0,
             "linclues": 0
@@ -443,6 +443,9 @@ ACHIEVEMENTS_DICT = load_json_file(PATH_ACHIEVEMENTS)
 CUSTOMIZATION_DICT = load_json_file(PATH_CUSTOMIZATION)
 THEMES_DICT = CUSTOMIZATION_DICT["themes"]
 MUSICS_DICT = CUSTOMIZATION_DICT["musics"]
+THEMES_CATEGORY_DICT = CUSTOMIZATION_DICT["categories"]
+NB_LINCOINS_PER_STAR = int(
+    THEMES_CATEGORY_DICT["common"]["image_price"] / 30) + 1
 
 ### Lincoins images given the amount of Lincoins ###
 

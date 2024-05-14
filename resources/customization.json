@@ -388,5 +388,27 @@
             "source": "waterfall.mp3",
             "price": 900
         }
+    },
+    "categories": {
+        "common": {
+            "name": "Common",
+            "image_price": 2500,
+            "colors_price": 2500
+        },
+        "rare": {
+            "name": "Rare",
+            "image_price": 5000,
+            "colors_price": 2500
+        },
+        "epic": {
+            "name": "Epic",
+            "image_price": 7500,
+            "colors_price": 2500
+        },
+        "secret": {
+            "name": "Secret",
+            "image_price": 9999,
+            "colors_price": 2500
+        }
     }
 }

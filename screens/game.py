@@ -265,8 +265,6 @@ class GameScreen(LinconymScreen):
             self.allow_delete_current_word = False
             self.ids.delete_word_button.opacity = 0
 
-        print("check can delete", self.allow_delete_current_word)
-
     def pop_letter(self, letter_id):
         if letter_id < len(self.new_word):
             self.new_word = self.new_word[:letter_id] + \
@@ -376,13 +374,17 @@ class GameScreen(LinconymScreen):
             self.disable_submit_button()
         else:
             end_level_dict = self.game.on_level_completed()
+
             # Update the stars
             self.nb_stars = max(end_level_dict["stars"], self.nb_stars)
+
             # Clear the new word field
             self.new_word = ""
             self.build_word()
+
             # Switch back to first word
             self.ids.tree_layout.change_current_position("0")
+
             # Display the popup for the level completion
             self.display_success_popup(end_level_dict=end_level_dict)
 
@@ -408,11 +410,12 @@ class GameScreen(LinconymScreen):
             current_level_text=f"Level {self.current_level_id}",
             percentage_experience_before=0.2,  # TODO change
             percentage_experience_won=0.1,  # TODO change
-            experience_displayed=10,  # TODO change
+            experience_displayed=end_level_dict["xp_earned"],  # TODO change
             next_level_function=partial(
                 self.reload_for_level_change, next_lvl_id),
             has_next_levels_in_act=has_next_levels_in_act,
-            number_lincoins_won=10,  # TODO change
+            # TODO change
+            number_lincoins_won=end_level_dict["lincoins_earned"],
             number_linclues_won=1  # TODO change
         )
         popup.open()

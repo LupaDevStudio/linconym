@@ -29,7 +29,8 @@ from tools.constants import (
     GAMEPLAY_DICT,
     USER_DATA,
     XP_PER_LEVEL,
-    DICT_ID_LIST
+    DICT_ID_LIST,
+    NB_LINCOINS_PER_STAR
 )
 from tools.basic_tools import (
     dichotomy,
@@ -852,6 +853,7 @@ class ClassicGame(Game):
         NB_WORDS_KEY: str = "best_solution_nb_words"
         STARS_KEY: str = "nb_stars"
         XP_KEY: str = "experience"
+        LINCOINS_KEY: str = "lincoins"
         QUEST_WORD_KEY: str = "quest_word_done"
 
         # recover previous best number of words
@@ -867,14 +869,21 @@ class ClassicGame(Game):
             USER_DATA.classic_mode[self.act_id][self.lvl_id][NB_WORDS_KEY] = nb_words_found
             # save stars
             USER_DATA.classic_mode[self.act_id][self.lvl_id][STARS_KEY] = self.nb_stars
-            # recover previous xp fraction
+            # recover previous xp fraction and stars
             previous_xp_fraction: float = 0.0
+            previous_nb_stars: int = 0
             if (previous_best_exists):
                 previous_xp_fraction = self.get_xp_fraction(
                     nb_words_previous_best)
+                previous_nb_stars = self.get_nb_stars(nb_words_previous_best)
             # award newly acquired xp
-            USER_DATA.user_profile[XP_KEY] += int(
+            self.xp_earned = int(
                 (xp_fraction - previous_xp_fraction) * XP_PER_LEVEL)
+            USER_DATA.user_profile[XP_KEY] += self.xp_earned
+            # Award newly acquired lincoins
+            self.lincoins_earned = (
+                self.nb_stars - previous_nb_stars) * NB_LINCOINS_PER_STAR
+            USER_DATA.user_profile[LINCOINS_KEY] += self.lincoins_earned
 
         # If the user passed through the quest word (if any) for the first time, award bonus xp
         award_quest_word_xp: bool = False
@@ -917,7 +926,15 @@ class ClassicGame(Game):
         # Unlock the next level
         self.unlock_next_level()
 
-        return {"stars": self.nb_stars, "nb_words": nb_words_found}
+        # Create a dict to return the data
+        end_level_dict = {
+            "stars": self.nb_stars,
+            "nb_words": nb_words_found,
+            "xp_earned": self.xp_earned,
+            "lincoins_earned": self.lincoins_earned
+        }
+
+        return end_level_dict
 
 
 if __name__ == "__main__":
