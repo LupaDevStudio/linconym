@@ -70,6 +70,28 @@ def get_rank(level: int):
     return ValueError("Rank not found.")
 
 
+def compute_xp_to_level_up(current_level: int):
+    """
+    Compute the amount of xp to go to the next level from the current given level.
+
+    Parameters
+    ----------
+    current_level : int
+        Current level.
+
+    Returns
+    -------
+    int
+        Amount of xp required to go to the next level.
+    """
+
+    current_rank = get_rank(current_level)
+    current_rank_id = convert_rank_name_to_int(current_rank)
+    xp_required = (1 + 2 * current_rank_id) * XP_PER_LEVEL
+
+    return xp_required
+
+
 def get_level(total_xp: int, get_remaining_xp: bool = False):
     """
     Compute the level given the amount of experience.
@@ -90,10 +112,8 @@ def get_level(total_xp: int, get_remaining_xp: bool = False):
 
     # Convert xp to levels progressively
     while total_xp >= 0:
-        current_rank = get_rank(level)
-        current_rank_id = convert_rank_name_to_int(current_rank)
         remaining_xp = total_xp
-        total_xp -= (1 + 2 * current_rank_id) * XP_PER_LEVEL
+        total_xp -= compute_xp_to_level_up(level)
         if total_xp >= 0:
             level += 1
 
@@ -102,6 +122,29 @@ def get_level(total_xp: int, get_remaining_xp: bool = False):
         return level
     else:
         return level, remaining_xp
+
+
+def compute_progression(total_xp: int):
+    """
+    Compute the progression of the user between the two given xp values.
+
+    Parameters
+    ----------
+    total_xp : int
+        Total amount of xp.
+
+    Returns
+    -------
+    tuple
+        Tuple containing info on progression.
+    """
+
+    level, remaining_xp = get_level(total_xp)
+    xp_required_to_level_up = compute_xp_to_level_up(level)
+    progress_on_next_level = remaining_xp / \
+        xp_required_to_level_up
+
+    return level, progress_on_next_level
 
 
 if __name__ == "__main__":
