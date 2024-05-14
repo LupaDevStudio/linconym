@@ -1,5 +1,21 @@
 {
     "themes": {
+        "lupa": {
+            "primary": [
+                0.90,
+                0.07,
+                0.39
+            ],
+            "secondary": [
+                0.27,
+                0.51,
+                0.71
+            ],
+            "image": "lupa.jpg",
+            "image_price": 0,
+            "colors_price": 0,
+            "name": "LupaDevStudio"
+        },
         "japanese_etching": {
             "primary": [
                 1,
@@ -322,6 +338,11 @@
         }
     },
     "musics": {
+        "inspiring": {
+            "name": "Inspiring",
+            "source": "inspiring.mp3",
+            "price": 0
+        },
         "kids_party": {
             "name": "Kids Party",
             "source": "kids_party.mp3",
@@ -350,11 +371,6 @@
         "groovy_funk": {
             "name": "Groovy Funk",
             "source": "groovy_funk.mp3",
-            "price": 900
-        },
-        "inspiring": {
-            "name": "Inspiring",
-            "source": "inspiring.mp3",
             "price": 900
         },
         "separation": {

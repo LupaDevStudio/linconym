@@ -10,7 +10,8 @@ Module to create the bottom bar with the buttons.
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.properties import (
     StringProperty,
-    ObjectProperty
+    ObjectProperty,
+    ColorProperty
 )
 
 #############
@@ -22,9 +23,10 @@ class BottomBar(RelativeLayout):
     """
     Class to create a bottom bar to quickly select a screen.
     """
-    background_color = (0, 0, 0, 0.5)
-    separation_color = (1, 1, 1, 1)
-    selected_color = (0.3, 0.3, 0.3, 0.7)
+    background_color = ColorProperty((0.1, 0.1, 0.1, 0.5))
+    separation_color = ColorProperty((1, 1, 1, 1))
+    # selected_color = (0.3, 0.3, 0.3, 0.7)
+    selected_color = ColorProperty((0.1, 0.1, 0.1, 0.7))
     separation_height = 3
     button_width = 0.15
     button_height = 0.7

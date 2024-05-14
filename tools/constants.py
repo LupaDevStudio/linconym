@@ -85,22 +85,23 @@ if not os.path.exists(PATH_USER_DATA):
         "settings": {
             "sound_volume": 0.5,
             "music_volume": 0.5,
-            "current_theme_image": "japanese_etching",
-            "current_music": "kids_party",
-            "current_theme_colors": "japanese_etching"
+            "current_theme_image": "lupa",
+            "current_music": "inspiring",
+            "current_theme_colors": "lupa"
         },
         "unlocked_themes": {
-            "japanese_etching": {
+            "lupa": {
                 "image": True,
                 "colors": True
             }
         },
-        "unlocked_musics": ["kids_party"],
+        "unlocked_musics": ["inspiring"],
         "user_profile": {
             "status": "Beginner",
             "level": 1,
             "experience": 0,
-            "lincoins": 0
+            "lincoins": 0,
+            "linclues": 0
         },
         "ads": {
             "1": False,
