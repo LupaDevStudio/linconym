@@ -17,6 +17,7 @@ from kivy.properties import (
 )
 
 ### Local imports ###
+
 from tools.path import (
     PATH_TEXT_FONT,
     PATH_ICONS

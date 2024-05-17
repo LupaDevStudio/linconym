@@ -11,20 +11,34 @@
         display_plus: False
         disable_button: True
 
-    # Ads boosters
+    # Daily ads boosters
     BoosterLayout:
-        mode: "ads"
-        booster_title: "Watch ads videos"
-        pos_hint: {"center_x": 0.5, "center_y": 0.6}
-        size_hint: 0.8, 0.25
-        list_ads_buy: root.list_ads
+        booster_title: "Daily ads"
+        pos_hint: {"center_x": 0.5, "center_y": 0.65}
+        size_hint: 0.9, 0.19
+        list_infos: root.list_daily_ads
+        font_ratio: root.font_ratio
+
+    # Weekly ads boosters
+    BoosterLayout:
+        booster_title: "Weekly ad"
+        pos_hint: {"center_x": 0.25, "center_y": 0.45}
+        size_hint: 0.4, 0.19
+        list_infos: root.list_weekly_ads
+        font_ratio: root.font_ratio
+
+    # Conversion booster
+    BoosterLayout:
+        booster_title: "Conversion"
+        pos_hint: {"center_x": 0.75, "center_y": 0.45}
+        size_hint: 0.4, 0.19
+        list_infos: root.list_conversion
         font_ratio: root.font_ratio
 
     # Buy boosters
     BoosterLayout:
-        mode: "buy"
         booster_title: "Purchases"
-        pos_hint: {"center_x": 0.5, "center_y": 0.3}
-        size_hint: 0.8, 0.25
-        list_ads_buy: root.list_buy
+        pos_hint: {"center_x": 0.5, "center_y": 0.25}
+        size_hint: 0.9, 0.19
+        list_infos: root.list_buy
         font_ratio: root.font_ratio

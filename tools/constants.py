@@ -17,6 +17,7 @@ MOBILE_MODE : bool
 ### Python imports ###
 
 import os
+from typing import Literal
 
 ### Kivy imports ###
 
@@ -105,9 +106,10 @@ if not os.path.exists(PATH_USER_DATA):
             "linclues": 0
         },
         "ads": {
-            "1": False,
-            "2": False,
-            "3": False
+            "current_day_date": "06/09/2024",
+            "current_week_date": "06/03/2024",
+            "number_daily_ads_left": 3,
+            "number_weekly_ads_left": 1
         }
     }
     save_json_file(PATH_USER_DATA, default_user_data)
@@ -170,8 +172,8 @@ class UserData():
         USER_DATA.settings["current_theme_colors"] = theme
         self.save_changes()
 
-    def change_boosters(self, number):
-        USER_DATA.ads[str(number)] = True
+    def change_boosters(self, mode: Literal["daily", "weekly"]):
+        USER_DATA.ads[f"number_{mode}_ads_left"] -= 1
         self.save_changes()
 
     def get_nb_total_stars(self):
@@ -368,27 +370,45 @@ SCREEN_TUTORIAL = "has_tutorial"
 
 ### Ads code ###
 
-DICT_AMOUNT_ADS = {
-    "1": 100,
-    "2": 50,
-    "3": 30
-}
+AMOUNT_DAILY_ADS = [
+    {
+        "lincoin": 20
+    },
+    {
+        "lincoin": 10,
+        "linclue": 1
+    },
+    {
+        "linclue": 2
+    }
+]
+AMOUNT_WEEKLY_AD = [{
+    "lincoin": 120,
+    "linclue": 12
+}]
 REWARD_INTERSTITIAL = ""
 INTERSTITIAL = ""
+
+### Conversion money ###
+
+DICT_CONVERSION_MONEY = {
+    "price_lincoins": 20,
+    "reward_linclues": 1
+}
 
 ### Buy items ###
 
 DICT_AMOUNT_BUY = {
     "1": {
-        "amount": 1000,
+        "reward": 1000,
         "price": 1
     },
     "2": {
-        "amount": 6000,
+        "reward": 6000,
         "price": 5
     },
     "3": {
-        "amount": 15000,
+        "reward": 15000,
         "price": 10
     }
 }

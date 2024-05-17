@@ -1,0 +1,29 @@
+#:kivy 2.2.1
+
+<MoneyLayout>:
+
+    # Coins image
+    Image:
+        id: coin_icon
+        source: root.coins_image_source
+        pos_hint: {"center_y":0.5}
+        x: amount_label.x + amount_label.size[0] + 3*root.font_ratio
+        size_hint: (None,0.6)
+        width: self.height
+        fit_mode: "contain"
+        color: (0,0,0,1)
+
+    # Amount
+    Label:
+        id: amount_label
+        text: root.coins_count_text
+        font_size: root.font_ratio * root.font_size
+        font_name: root.text_font_name
+        pos_hint: {"center_y":0.5}
+        size_hint: (None, None)
+        x: root.width//2 - amount_label.size[0]//2 - coin_icon.width//2
+        size: self.texture_size
+        line_height: 1
+        color: (0,0,0,1)
+        halign: "right"
+        valign: "middle"
