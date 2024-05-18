@@ -37,6 +37,20 @@ from tools.basic_tools import (
     save_json_file,
     load_json_file
 )
+from tools.levels import (
+    compute_progression
+)
+
+#################
+### Constants ###
+#################
+
+# keys to access user data
+NB_WORDS_KEY: str = "best_solution_nb_words"
+STARS_KEY: str = "nb_stars"
+XP_KEY: str = "experience"
+LINCOINS_KEY: str = "lincoins"
+QUEST_WORD_KEY: str = "quest_word_done"
 
 #################
 ### Functions ###
@@ -849,13 +863,6 @@ class ClassicGame(Game):
         if (not (self.lvl_id in USER_DATA.classic_mode[self.act_id])):
             USER_DATA.classic_mode[self.act_id][self.lvl_id] = {}
 
-        # keys to access user data
-        NB_WORDS_KEY: str = "best_solution_nb_words"
-        STARS_KEY: str = "nb_stars"
-        XP_KEY: str = "experience"
-        LINCOINS_KEY: str = "lincoins"
-        QUEST_WORD_KEY: str = "quest_word_done"
-
         # recover previous best number of words
         nb_words_previous_best: int = 0
         previous_best_exists: bool = False
@@ -886,18 +893,18 @@ class ClassicGame(Game):
             USER_DATA.user_profile[LINCOINS_KEY] += self.lincoins_earned
 
         # If the user passed through the quest word (if any) for the first time, award bonus xp
-        award_quest_word_xp: bool = False
-        if (QUEST_WORD_KEY in USER_DATA.classic_mode[self.act_id][self.lvl_id]):
-            already_did_quest_word: bool = USER_DATA.classic_mode[
-                self.act_id][self.lvl_id][QUEST_WORD_KEY]
-            award_quest_word_xp = quest_word_done and not (
-                already_did_quest_word)
-            USER_DATA.classic_mode[self.act_id][self.lvl_id][QUEST_WORD_KEY] = already_did_quest_word or quest_word_done
-        else:
-            award_quest_word_xp = quest_word_done
-            USER_DATA.classic_mode[self.act_id][self.lvl_id][QUEST_WORD_KEY] = quest_word_done
-        if (award_quest_word_xp):
-            USER_DATA.user_profile[XP_KEY] += XP_PER_LEVEL
+        # award_quest_word_xp: bool = False
+        # if (QUEST_WORD_KEY in USER_DATA.classic_mode[self.act_id][self.lvl_id]):
+        #     already_did_quest_word: bool = USER_DATA.classic_mode[
+        #         self.act_id][self.lvl_id][QUEST_WORD_KEY]
+        #     award_quest_word_xp = quest_word_done and not (
+        #         already_did_quest_word)
+        #     USER_DATA.classic_mode[self.act_id][self.lvl_id][QUEST_WORD_KEY] = already_did_quest_word or quest_word_done
+        # else:
+        #     award_quest_word_xp = quest_word_done
+        #     USER_DATA.classic_mode[self.act_id][self.lvl_id][QUEST_WORD_KEY] = quest_word_done
+        # if (award_quest_word_xp):
+        #     USER_DATA.user_profile[XP_KEY] += XP_PER_LEVEL
 
         # save changes
         USER_DATA.save_changes()
@@ -926,12 +933,32 @@ class ClassicGame(Game):
         # Unlock the next level
         self.unlock_next_level()
 
+        # Compute the progression for level up
+        previous_level, previous_level_progress = compute_progression(
+            USER_DATA.user_profile[XP_KEY] - self.xp_earned)
+
+        current_level, current_level_progress = compute_progression(
+            USER_DATA.user_profile[XP_KEY])
+
+        if previous_level < current_level:
+            has_level_up = True
+            previous_level_progress = 0
+        else:
+            has_level_up = False
+
+        # Update level in saved data
+        USER_DATA.user_profile["level"] = current_level
+        USER_DATA.save_changes()
+
         # Create a dict to return the data
         end_level_dict = {
             "stars": self.nb_stars,
             "nb_words": nb_words_found,
             "xp_earned": self.xp_earned,
-            "lincoins_earned": self.lincoins_earned
+            "lincoins_earned": self.lincoins_earned,
+            "has_level_up": has_level_up,
+            "previous_level_progress": previous_level_progress,
+            "current_level_progress": current_level_progress
         }
 
         return end_level_dict
