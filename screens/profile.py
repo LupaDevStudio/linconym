@@ -27,6 +27,9 @@ from tools.constants import (
 from screens.custom_widgets import (
     LinconymScreen
 )
+from tools.levels import (
+    compute_progression
+)
 
 
 #############
@@ -48,6 +51,7 @@ class ProfileScreen(LinconymScreen):
     user_status = StringProperty()
     user_status_image = StringProperty()
     user_level = StringProperty()
+    percentage_experience = NumericProperty()
     coins_count = NumericProperty()
     theme_colors = StringProperty()
 
@@ -61,6 +65,8 @@ class ProfileScreen(LinconymScreen):
         super().on_pre_enter(*args)
         self.coins_count = USER_DATA.user_profile["lincoins"]
         self.user_level = "Level " + str(USER_DATA.user_profile["level"])
+        _, self.percentage_experience = compute_progression(
+            USER_DATA.user_profile["experience"])
         self.theme_colors = USER_DATA.settings["current_theme_colors"]
         self.user_status = USER_DATA.user_profile["status"]
         self.user_status_image = PATH_BADGES + self.user_status.lower() + ".png"

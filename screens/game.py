@@ -401,20 +401,21 @@ class GameScreen(LinconymScreen):
 
         # Create the popup for the completion
         popup = LevelCompletedPopup(
+            title=f"Puzzle {self.current_level_id} completed",
             primary_color=self.primary_color,
             secondary_color=self.secondary_color,
             font_ratio=self.font_ratio,
             top_label_text=f"Solution found in {end_level_dict['nb_words']} words.",
             nb_stars=end_level_dict["stars"],
-            new_level=True,
-            current_level_text=f"Level {self.current_level_id}",
-            percentage_experience_before=0.2,  # TODO change
-            percentage_experience_won=0.1,  # TODO change
-            experience_displayed=end_level_dict["xp_earned"],  # TODO change
+            new_level=end_level_dict["has_level_up"],
+            current_level_text=f"Level {USER_DATA.user_profile['level']}",
+            percentage_experience_before=end_level_dict["previous_level_progress"],
+            percentage_experience_won=end_level_dict["current_level_progress"] -
+            end_level_dict["previous_level_progress"],
+            experience_displayed=end_level_dict["xp_earned"],
             next_level_function=partial(
                 self.reload_for_level_change, next_lvl_id),
             has_next_levels_in_act=has_next_levels_in_act,
-            # TODO change
             number_lincoins_won=end_level_dict["lincoins_earned"],
             number_linclues_won=1  # TODO change
         )

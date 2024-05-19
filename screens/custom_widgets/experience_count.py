@@ -53,6 +53,7 @@ class ExperienceCounter(RelativeLayout):
     secondary_color = ColorProperty()
     radius = NumericProperty(15)
     ratio_foreground_progress_bar = NumericProperty()
+    progress = NumericProperty()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -63,11 +64,22 @@ class ExperienceCounter(RelativeLayout):
         self.bind(new_level=self.update_experience)
 
     def update_experience(self, base_widget, value):
-        self.label_right = "+ " + str(self.experience_displayed) + " XP"
+        if self.experience_displayed == 0:
+            self.label_right = ""
+        else:
+            self.label_right = "+ " + str(self.experience_displayed) + " XP"
         if self.puzzle_mode:
             if not self.new_level:
-                self.ratio_foreground_progress_bar = self.percentage_experience_before + self.percentage_experience_won
+                if self.percentage_experience_before == 0 and self.percentage_experience_won == 0:
+                    self.progress = 0
+                else:
+                    self.progress = 1 - self.percentage_experience_won / \
+                        (self.percentage_experience_won +
+                         self.percentage_experience_before)
+
             else:
-                self.ratio_foreground_progress_bar = self.percentage_experience_won
+                self.progress = 1
         else:
-            self.ratio_foreground_progress_bar = 1
+            self.progress = 1
+        self.ratio_foreground_progress_bar = self.percentage_experience_before + \
+            self.percentage_experience_won

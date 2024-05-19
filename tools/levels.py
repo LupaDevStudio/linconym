@@ -139,13 +139,17 @@ def compute_progression(total_xp: int):
         Tuple containing info on progression.
     """
 
-    level, remaining_xp = get_level(total_xp)
+    level, remaining_xp = get_level(total_xp, get_remaining_xp=True)
     xp_required_to_level_up = compute_xp_to_level_up(level)
     progress_on_next_level = remaining_xp / \
         xp_required_to_level_up
 
     return level, progress_on_next_level
 
+
+#############
+### Tests ###
+#############
 
 if __name__ == "__main__":
     print(get_level(401, get_remaining_xp=True))
