@@ -23,7 +23,8 @@ from tools.path import (
 )
 from tools.constants import (
     CONTENT_LABEL_FONT_SIZE,
-    OPACITY_ON_BUTTON_PRESS
+    OPACITY_ON_BUTTON_PRESS,
+    DICT_CONVERSION_MONEY
 )
 
 #############
@@ -36,6 +37,8 @@ class RoundButton(ButtonBehavior, RelativeLayout):
     A round button with a colored background and a label.
     """
 
+    icon_mode = BooleanProperty(False)
+    coins_count = NumericProperty(DICT_CONVERSION_MONEY["price_lincoins"]) # TODO c'est hardcodé moche car j'en ai marre
     color = ColorProperty([1, 1, 1, 1])
     line_width = NumericProperty(1)
     text = StringProperty()

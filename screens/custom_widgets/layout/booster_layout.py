@@ -68,15 +68,24 @@ class BoosterLayout(RelativeLayout):
         self.clear_layout()
 
         number_circles = len(self.list_infos)
-        list_positions_x = [i/(number_circles + 1) for i in range(1, number_circles + 1)]
+        list_positions_x = []
+        for i in range(1, number_circles + 1):
+            position = i/(number_circles + 1)
+            if position == 0.25:
+                position = 0.2
+            elif position == 0.75:
+                position = 0.8
+            list_positions_x.append(position)
         for counter in range(len(self.list_infos)):
 
             text = str(self.list_infos[counter]["price"]) if "price" in self.list_infos[counter] else ""
+
+            icon_mode = False
             if "price_unit" in self.list_infos[counter]:
                 if self.list_infos[counter]["price_unit"] not in ["lincoin", "linclue"]:
                     text += self.list_infos[counter]["price_unit"]
                 else:
-                    pass # TODO
+                    icon_mode = True
 
             disable_button = False
             if "disable_button" in self.list_infos[counter]:
@@ -88,6 +97,7 @@ class BoosterLayout(RelativeLayout):
                 color=self.list_infos[counter]["circle_color"],
                 line_width=2,
                 text=text,
+                icon_mode=icon_mode,
                 font_ratio=self.font_ratio,
                 release_function=self.list_infos[counter]["release_function"],
                 disable_button=disable_button
@@ -105,24 +115,27 @@ class BoosterLayout(RelativeLayout):
             list_rewards = self.list_infos[counter]["reward"]
             number_rewards = len(list_rewards)
 
-            print(list_rewards)
             list_positions_rewards_x = []
             for counter_reward in range(1, number_rewards + 1):
                 temp_list = []
                 central_position = counter_reward / (number_rewards + 1)
+                if central_position == 0.25:
+                    central_position = 0.2
+                elif central_position == 0.75:
+                    central_position = 0.8
 
                 number_units = len(list_rewards[counter_reward-1])
 
-                print(central_position)
+                if list_positions_x[counter] != 0.5:
+                    central_position = list_positions_x[counter]
+
                 if number_units == 1:
                     temp_list.append(central_position)
                 elif number_units == 2:
-                    temp_list.append(central_position - (1/(number_rewards+2))/2)
-                    temp_list.append(central_position + (1/(number_rewards+2))/2)
+                    temp_list.append(central_position - (1/(number_rewards+1.4))/2)
+                    temp_list.append(central_position + (1/(number_rewards+1.4))/2)
                 
                 list_positions_rewards_x.append(temp_list)
-
-            print(list_positions_rewards_x)
 
             for counter_reward in range(number_rewards):
                 dict_reward = list_rewards[counter_reward]
@@ -134,7 +147,7 @@ class BoosterLayout(RelativeLayout):
 
                     money_layout = MoneyLayout(
                         coins_count=amount,
-                        slash_mode=True if counter_unit > 0 else False,
+                        and_mode=True if counter_unit > 0 else False,
                         or_mode=True if counter_reward > 0 else False,
                         unit=unit,
                         font_ratio=self.font_ratio,
@@ -143,4 +156,5 @@ class BoosterLayout(RelativeLayout):
                     )
                     relative_layout.add_widget(money_layout)
 
+            self.list_widgets.append(relative_layout)
             self.add_widget(relative_layout)

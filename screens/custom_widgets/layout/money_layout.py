@@ -39,7 +39,7 @@ class MoneyLayout(RelativeLayout):
     coins_count = NumericProperty(0)
     unit = StringProperty("lincoin")
 
-    slash_mode = BooleanProperty(False)
+    and_mode = BooleanProperty(False)
     or_mode = BooleanProperty(False)
 
     coins_count_text = StringProperty()
@@ -56,8 +56,8 @@ class MoneyLayout(RelativeLayout):
 
     def update_coins_count(self):
         self.coins_count_text = ""
-        if self.slash_mode:
-            self.coins_count_text += " / "
+        if self.and_mode:
+            self.coins_count_text += "+ "
         elif self.or_mode:
             self.coins_count_text += " or "
         self.coins_count_text += str(self.coins_count)

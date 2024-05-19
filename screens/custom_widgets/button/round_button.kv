@@ -23,3 +23,11 @@
         font_size: root.font_ratio * root.font_size
         font_name: root.text_font_name
         color: (0,0,0,1)
+        opacity: 0 if root.icon_mode else 1
+
+    MoneyLayout:
+        coins_count: root.coins_count
+        font_size: root.font_ratio * root.font_size
+        size_hint: (0.7, 0.7)
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        opacity: 1 if root.icon_mode else 0
