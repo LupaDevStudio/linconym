@@ -2,12 +2,12 @@
 Main module of Linconym.
 """
 
-
 ###############
 ### Imports ###
 ###############
 
 ### Python imports ###
+
 import os
 
 ### Kivy imports ###
@@ -39,11 +39,9 @@ from tools.constants import (
 )
 import screens.opening
 
-
 ###############
 ### General ###
 ###############
-
 
 class WindowManager(ScreenManager):
     """

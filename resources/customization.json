@@ -358,21 +358,25 @@
     "categories": {
         "common": {
             "name": "Common",
+            "color": [0, 0.62, 0.01, 1],
             "image_price": 1000,
             "colors_price": 100
         },
         "rare": {
             "name": "Rare",
+            "color": [0, 0.48, 1, 1],
             "image_price": 2500,
             "colors_price": 250
         },
         "epic": {
             "name": "Epic",
+            "color": [0.62, 0.11, 0.89, 1],
             "image_price": 5000,
             "colors_price": 500
         },
         "secret": {
             "name": "Secret",
+            "color": [1, 0.78, 0, 1],
             "image_price": 9999,
             "colors_price": 1000
         }

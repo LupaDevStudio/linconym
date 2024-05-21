@@ -10,6 +10,16 @@
         outline_color: TITLE_OUTLINE_COLOR
         color: TEXT_FONT_COLOR
 
+    RoundedButtonImage:
+        id: back_arrow
+        image_path: PATH_ICONS + "left_arrow.png"
+        pos_hint: POS_HINT_LEFT_TOP_BUTTON
+        size_hint: (0.1, None)
+        height: self.width
+        colors: root.primary_color
+        release_function: root.open_levels_screen
+        font_ratio: root.font_ratio
+
     # Stars
     ThreeStars:
         id: three_stars

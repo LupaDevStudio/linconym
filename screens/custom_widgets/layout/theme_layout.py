@@ -24,8 +24,7 @@ from tools.constants import (
     CUSTOMIZATION_LAYOUT_FONT_SIZE,
     USER_DATA,
     THEMES_DICT,
-    RARITY_THEMES_COLORS_DICT,
-    THEMES_CATEGORY_DICT
+    THEMES_RARITY_DICT
 )
 
 #############
@@ -62,10 +61,10 @@ class ThemeLayout(Image):
         self.theme_key = theme_key
         self.theme_title = THEMES_DICT[theme_key]["name"]
         theme_rarity_code = THEMES_DICT[theme_key]["rarity"]
-        self.theme_rarity = THEMES_CATEGORY_DICT[theme_rarity_code]["name"]
-        self.theme_rarity_color = RARITY_THEMES_COLORS_DICT[theme_rarity_code]
-        self.image_price = THEMES_CATEGORY_DICT[theme_rarity_code]["image_price"]
-        self.colors_price = THEMES_CATEGORY_DICT[theme_rarity_code]["colors_price"]
+        self.theme_rarity = THEMES_RARITY_DICT[theme_rarity_code]["name"]
+        self.theme_rarity_color = THEMES_RARITY_DICT[theme_rarity_code]["color"]
+        self.image_price = THEMES_RARITY_DICT[theme_rarity_code]["image_price"]
+        self.colors_price = THEMES_RARITY_DICT[theme_rarity_code]["colors_price"]
         self.primary_color = THEMES_DICT[theme_key]["primary"]
         self.secondary_color = THEMES_DICT[theme_key]["secondary"]
 

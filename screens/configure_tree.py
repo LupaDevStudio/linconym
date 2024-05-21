@@ -18,7 +18,6 @@ from kivy.properties import (
 
 from tools.constants import (
     SCREEN_TUTORIAL,
-    SCREEN_BACK_ARROW,
     USER_DATA,
     GAMEPLAY_DICT
 )
@@ -39,14 +38,8 @@ class ConfigureTreeScreen(LinconymScreen):
 
     current_level_name = StringProperty()
     dict_type_screen = {
-        SCREEN_BACK_ARROW: "",
         SCREEN_TUTORIAL: ""
     }
-    dict_type_screen = {
-        SCREEN_BACK_ARROW: "",
-        SCREEN_TUTORIAL: ""
-    }
-
     nb_stars = NumericProperty()
     start_word = StringProperty("BOY")
     end_word = StringProperty("TOYS")
@@ -107,3 +100,17 @@ class ConfigureTreeScreen(LinconymScreen):
         USER_DATA.classic_mode[self.current_act_id][self.current_level_id][
             "current_position"] = self.ids["tree_layout"].current_position
         USER_DATA.save_changes()
+
+    def open_levels_screen(self):
+        # Open the screen
+        next_dict_kwargs = {
+            "current_act_id": self.current_act_id
+        }
+        current_dict_kwargs = {
+            "current_act_id": self.current_act_id,
+            "current_level_id": self.current_level_id
+        }
+        self.go_to_next_screen(
+            screen_name="levels",
+            next_dict_kwargs=next_dict_kwargs,
+            current_dict_kwargs=current_dict_kwargs)
