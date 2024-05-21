@@ -32,7 +32,8 @@ from tools.constants import (
     SCREEN_TITLE
 )
 from screens.custom_widgets import (
-    LinconymScreen
+    LinconymScreen,
+    MessagePopup
 )
 
 
@@ -165,5 +166,13 @@ class BoostersScreen(LinconymScreen):
         """
         print("I spend", DICT_AMOUNT_BUY[str(number)]["price"], "Euros")
         print("I get", DICT_AMOUNT_BUY[str(number)]["reward"], "Lincoins")
-        USER_DATA.user_profile["lincoins"] += DICT_AMOUNT_BUY[str(number)]["reward"]
+        popup = MessagePopup(
+            title="Not implemented",
+            center_label_text="This functionality will be implemented in a future version.",
+            primary_color=self.primary_color,
+            secondary_color=self.secondary_color,
+            font_ratio=self.font_ratio
+        )
+        popup.open()
+        # USER_DATA.user_profile["lincoins"] += DICT_AMOUNT_BUY[str(number)]["reward"]
         self.update_all_widgets()
