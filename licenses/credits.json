@@ -1,5 +1,5 @@
 {
-    "lupadevstudio": "",
+    "lupadevstudio": "Paul, Agathe, Laure and Nathaël",
     "general_licenses": {
         "kivy": {
             "title": "Kivy library - 2010-2023 Kivy Team and other contributors",
@@ -59,6 +59,12 @@
         }
     },
     "musics": {
+        "inspiring": {
+            "name": "Inspiring",
+            "source": "inspiring.mp3",
+            "author": "Aleksey Chistilin",
+            "license": "https://pixabay.com/fr/music/belles-pieces-inspiring-cinematic-ambient-116199/"
+        },
         "kids_party": {
             "name": "Kids Party",
             "source": "kids_party.mp3",
@@ -94,12 +100,6 @@
             "source": "groovy_funk/mp3",
             "author": "Moodmode",
             "license": "https://pixabay.com/fr/music/trouille-groovy-ambient-funk-201745/"
-        },
-        "inspiring": {
-            "name": "Inspiring",
-            "source": "inspiring.mp3",
-            "author": "Aleksey Chistilin",
-            "license": "https://pixabay.com/fr/music/belles-pieces-inspiring-cinematic-ambient-116199/"
         },
         "separation": {
             "name": "Separation",

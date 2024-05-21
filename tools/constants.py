@@ -87,6 +87,7 @@ if not os.path.exists(PATH_USER_DATA):
         "settings": {
             "sound_volume": 0.5,
             "music_volume": 0.5,
+            "keyboard_mode": "QWERTY",
             "current_theme_image": "lupa",
             "current_music": "inspiring",
             "current_theme_colors": "lupa"
@@ -315,6 +316,8 @@ MAIN_BUTTON_FONT_SIZE = 25
 BUTTON_FONT_SIZE = 20
 SMALL_BUTTON_FONT_SIZE = 15
 BUTTON_OUTLINE_WIDTH = 1.5
+
+SPINNER_BUTTON_FONT_SIZE = 20
 
 ACT_BUTTON_FONT_SIZE = 22
 CUSTOMIZATION_LAYOUT_FONT_SIZE = 20

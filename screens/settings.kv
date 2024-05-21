@@ -8,7 +8,7 @@
         text: "Music volume"
         font_name: PATH_TITLE_FONT
         font_size: 20 * root.font_ratio
-        pos_hint: {"center_x":0.5, "center_y":0.8}
+        pos_hint: {"center_x":0.5, "center_y":0.82}
         outline_width: TITLE_OUTLINE_WIDTH
         outline_color: TITLE_OUTLINE_COLOR
         color: TEXT_FONT_COLOR
@@ -20,7 +20,7 @@
         value: USER_DATA.settings["music_volume"]
         slider_value: 0.5
         size_hint: (0.6, 0.03)
-        pos_hint: {"center_x":0.5, "center_y":0.74}
+        pos_hint: {"center_x":0.5, "center_y":0.78}
         font_ratio: root.font_ratio
         primary_color: root.primary_color
         secondary_color: root.secondary_color
@@ -29,7 +29,7 @@
         text: "Sound effects volume"
         font_name: PATH_TITLE_FONT
         font_size: 20 * root.font_ratio
-        pos_hint: {"center_x":0.5, "center_y":0.65}
+        pos_hint: {"center_x":0.5, "center_y":0.71}
         outline_width: TITLE_OUTLINE_WIDTH
         outline_color: TITLE_OUTLINE_COLOR
         color: TEXT_FONT_COLOR
@@ -40,27 +40,52 @@
         max: 1
         value: USER_DATA.settings["sound_volume"]
         size_hint: (0.6, 0.03)
-        pos_hint: {"center_x":0.5, "center_y":0.59}
+        pos_hint: {"center_x":0.5, "center_y":0.66}
         font_ratio: root.font_ratio
         primary_color: root.primary_color
         secondary_color: root.secondary_color
 
+    # Keyboard AZERTY QWERTY
+    Label:
+        text: "Keyboard"
+        font_name: PATH_TITLE_FONT
+        font_size: 20 * root.font_ratio
+        pos_hint: {"center_x":0.3, "center_y":0.57}
+        size_hint: (0.4,0.07)
+        outline_width: TITLE_OUTLINE_WIDTH
+        outline_color: TITLE_OUTLINE_COLOR
+        color: TEXT_FONT_COLOR
+
+    CustomSpinner:
+        id: keyboard_spinner
+        pos_hint: {"center_x":0.7, "center_y":0.57}
+        size_hint: (0.4,0.07)
+        text: root.keyboard_mode
+        values: ["QWERTY", "AZERTY"]
+        font_ratio: root.font_ratio
+        border_color: root.primary_color
+        text_color: root.primary_color
+        select_color: root.secondary_color
+        on_text: root.change_keyboard_mode()
+
+    # Credits
     CustomContentButton:
         size_hint: (0.8,0.2)
-        pos_hint: {"center_x":0.5, "center_y":0.425}
+        pos_hint: {"center_x":0.5, "center_y":0.4}
         font_ratio: root.font_ratio
         title:"Credits"
         content:"This game has been developed by LupaDevStudio.\n\nClick here to see the full credits."
         release_function: root.open_credits
 
     SideImageButton:
-        size_hint: (0.8,0.1)
-        pos_hint: {"center_x":0.5, "center_y":0.24}
+        size_hint: (0.8,0.08)
+        pos_hint: {"center_x":0.5, "center_y":0.23}
         text: "Visit our website"
         side_image_source: PATH_IMAGES + "lupa_logo.png"
         font_ratio: root.font_ratio
         release_function: root.open_lupa_website
 
+    # Version
     Label:
         text: root.version_text
         font_name: PATH_TITLE_FONT

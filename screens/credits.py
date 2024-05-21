@@ -80,17 +80,26 @@ class CreditsScreen(LinconymScreen):
         self.CREDITS_LAYOUT_DICT = {}
 
         # Add LupaDevStudio's team
-        custom_content = CustomContentButton(
-            title="LupaDevStudio's Team",
-            content="Name 1 \nName 2 \nName 3 \nName 4",
-            font_size_title=CREDITS_SCROLLVIEW_FONT_SIZE,
-            font_size_content=CREDITS_CONTENT_SCROLLVIEW_FONT_SIZE,
-            disable_button=True,
-            font_ratio=self.font_ratio,
+        title = "LupaDevStudio's Team"
+        my_label = Label(
+            text=title,
+            font_size=CREDITS_SCROLLVIEW_FONT_SIZE * self.font_ratio,
+            color=(0, 0, 0, 1),
+            outline_width=BUTTON_OUTLINE_WIDTH * self.font_ratio,
+            outline_color=TITLE_OUTLINE_COLOR,
+            font_name=PATH_TITLE_FONT,
             size_hint_y=None,
-            height=line_height * 2.5 * self.font_ratio
-        )
-        scrollview_layout.add_widget(custom_content)
+            height=line_height * self.font_ratio)
+        scrollview_layout.add_widget(my_label)
+        lupa_team = GeneralLicensesLayout(
+            license_title=CREDITS_DICT["lupadevstudio"],
+            font_size=CREDITS_CONTENT_SCROLLVIEW_FONT_SIZE,
+            font_ratio=self.font_ratio,
+            radius=20,
+            size_hint_y=None,
+            height=line_height * self.font_ratio,
+            disable_button=True)
+        scrollview_layout.add_widget(lupa_team)
 
         # Add the "copyright licenses" title
         title = "General licenses"

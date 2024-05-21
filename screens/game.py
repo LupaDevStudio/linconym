@@ -67,6 +67,7 @@ class GameScreen(LinconymScreen):
     start_to_end_label = StringProperty("")
     allow_delete_current_word = BooleanProperty(False)
     list_widgets_letters = []
+    keyboard_mode = StringProperty(USER_DATA.settings["keyboard_mode"])
 
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
@@ -79,6 +80,7 @@ class GameScreen(LinconymScreen):
 
     def on_pre_enter(self, *args):
         super().on_pre_enter(*args)
+        self.keyboard_mode = USER_DATA.settings["keyboard_mode"]
 
         self.load_game_play()
         self.build_word()

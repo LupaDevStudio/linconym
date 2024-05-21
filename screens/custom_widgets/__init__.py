@@ -61,3 +61,4 @@ from screens.custom_widgets.custom_slider import CustomSlider
 from screens.custom_widgets.experience_count import ExperienceCounter
 from screens.custom_widgets.coins_counter import CoinsCounter
 from screens.custom_widgets.linconym_screen import LinconymScreen
+from screens.custom_widgets.custom_spinner import CustomSpinner

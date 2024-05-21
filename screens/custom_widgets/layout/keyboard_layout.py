@@ -52,7 +52,7 @@ class KeyboardLayout(RelativeLayout):
     text_font_name = StringProperty(PATH_TEXT_FONT)
     background_color = ColorProperty([1, 1, 1, 1])
     touch_color = ColorProperty([0, 0, 0, 1])
-    type_keyboard = StringProperty("QWERTY")
+    keyboard_mode = StringProperty("QWERTY")
     touch_function = ObjectProperty()
     delete_key = None
     list_letter_keys = []
@@ -90,7 +90,7 @@ class KeyboardLayout(RelativeLayout):
         height_letter = (1 - vertical_padding * 3) / 3
 
         # Define the type of the keyboard
-        if self.type_keyboard == "QWERTY":
+        if self.keyboard_mode == "QWERTY":
             first_line_letters = ["Q", "W", "E",
                                   "R", "T", "Y", "U", "I", "O", "P"]
             second_line_letters = ["A", "S", "D", "F", "G", "H", "J", "K", "L"]
@@ -98,7 +98,7 @@ class KeyboardLayout(RelativeLayout):
             first_margin = 0
             second_margin = (self.size_letter + self.horizontal_padding) / 2
             third_margin = (self.size_letter + self.horizontal_padding) / 2
-        elif self.type_keyboard == "AZERTY":
+        elif self.keyboard_mode == "AZERTY":
             first_line_letters = ["A", "Z", "E",
                                   "R", "T", "Y", "U", "I", "O", "P"]
             second_line_letters = ["Q", "S", "D",

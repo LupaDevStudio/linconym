@@ -47,10 +47,12 @@ class SettingsScreen(LinconymScreen):
         SCREEN_TUTORIAL: ""
     }
     version_text = StringProperty()
+    keyboard_mode = StringProperty()
 
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
         self.version_text = "Version " + str(__version__)
+        self.keyboard_mode = USER_DATA.settings["keyboard_mode"]
         self.ids.sound_slider.bind(value=self.update_sound_volume)
         self.ids.music_slider.bind(value=self.update_music_volume)
 
@@ -70,6 +72,9 @@ class SettingsScreen(LinconymScreen):
         music_volume = value
         music_mixer.change_volume(music_volume)
         USER_DATA.settings["music_volume"] = music_volume
+
+    def change_keyboard_mode(self):
+        USER_DATA.settings["keyboard_mode"] = self.ids.keyboard_spinner.text
 
     def open_credits(self):
         self.manager.go_to_next_screen("credits")
