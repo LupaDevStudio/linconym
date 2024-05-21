@@ -79,7 +79,8 @@ class ConfigureTreeScreen(LinconymScreen):
         self.ids["tree_layout"].build_layout(
             position_to_word_id=position_to_word_id,
             words_found=words_found,
-            current_position=current_position
+            current_position=current_position,
+            end_word=self.end_word.lower()
         )
 
         # Create the title of the screen

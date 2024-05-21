@@ -48,7 +48,8 @@ from tools.constants import (
 from tools.linconym import (
     get_parent_position,
     is_parent_of,
-    get_word_position
+    get_word_position,
+    has_end_word_in_children
 )
 
 test_words_found = ["sea", "sale", "sell", "shell", "sail", "snail",
@@ -123,7 +124,7 @@ class WordButton(ButtonBehavior, RelativeLayout):
     font_ratio = NumericProperty(1)
     disable_button = BooleanProperty(False)
     text_font_name = StringProperty(PATH_TEXT_FONT)
-    has_check = BooleanProperty(True)
+    has_check = BooleanProperty(False)
 
     def __init__(
             self,
@@ -443,6 +444,7 @@ class TreeLayout(RelativeLayout):
             words_found: List[str] = test_words_found,
             current_position: str = "0,0,1,0",
             font_ratio: float = None,
+            end_word: str = ""
     ):
         """
         Build the layout of the tree.
@@ -558,6 +560,15 @@ class TreeLayout(RelativeLayout):
                 current_rank=current_rank,
                 current_vertical_offset=current_vertical_offset)
 
+            # Verify if it belongs to a completed branch
+            has_check = has_end_word_in_children(
+                current_position=position,
+                position_to_word_id=position_to_word_id,
+                words_found=words_found,
+                end_word=end_word
+            )
+            print(position, has_check)
+
             # Add the word widget
             word_button = WordButton(
                 text=word,
@@ -568,7 +579,8 @@ class TreeLayout(RelativeLayout):
                            self.word_button_height_hint),
                 pos_hint=word_button_pos_hint,
                 font_ratio=self.font_ratio,
-                current_position=position
+                current_position=position,
+                has_check=has_check
             )
 
             if is_selected:
