@@ -30,10 +30,18 @@ class TutorialPopup(CustomPopup):
     previous_button_label = StringProperty()
     next_button_disabled = BooleanProperty(False)
     previous_button_disabled = BooleanProperty(False)
+
     center_label_text = StringProperty()
+
     side_label_text = StringProperty()
     side_image_source = StringProperty()
     side_image_disabled = BooleanProperty()
+
+    top_label_text = StringProperty()
+    bottom_image_source = StringProperty()
+    bottom_image_disabled = BooleanProperty()
+
+    image_mode = StringProperty() # can be horizontal or vertical
 
     def __init__(self, tutorial_content, **kwargs):
         super().__init__(**kwargs)
@@ -56,20 +64,37 @@ class TutorialPopup(CustomPopup):
 
         # Switch on the type of content
         current_content = self.tutorial_content[self.page_id]
-        if len(current_content) == 2:
-            # Text + image
-            self.side_label_text = current_content[0]
-            self.side_image_source = current_content[1]
-            self.side_image_disabled = False
-            # Disable useless widgets
-            self.center_label_text = ""
+        
+        # Text + image mode
+        if len(current_content) == 3:
+            self.image_mode = current_content[1]
 
+            if self.image_mode == "vertical":
+                self.side_label_text = current_content[0]
+                self.side_image_source = current_content[2]
+                self.side_image_disabled = False
+                # Disable useless widgets
+                self.center_label_text = ""
+                self.top_label_text = ""
+                self.bottom_image_disabled = True
+
+            elif self.image_mode == "horizontal":
+                self.top_label_text = current_content[0]
+                self.bottom_image_source = current_content[2]
+                self.bottom_image_disabled = False
+                # Disable useless widgets
+                self.center_label_text = ""
+                self.side_label_text = ""
+                self.side_image_disabled = True
+
+        # Text mode
         else:
-            # Text
             self.center_label_text = current_content[0]
             # Disable useless widgets
             self.side_label_text = ""
             self.side_image_disabled = True
+            self.top_label_text = ""
+            self.bottom_image_disabled = True
 
     def go_to_next_page(self, *_):
         self.page_id += 1

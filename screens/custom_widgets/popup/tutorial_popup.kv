@@ -62,7 +62,21 @@
             color: (0,0,0,1)
             halign: "center"
             valign: "middle"
-        
+
+        Label:
+            id: top_label
+            size_hint: (0.8, 0.35)
+            pos_hint: {"center_x":0.5,"top":0.95}
+            font_size: SMALL_BUTTON_FONT_SIZE * root.font_ratio
+            font_name: PATH_TEXT_FONT
+            text: root.top_label_text
+            size: self.size
+            shorten: False
+            text_size: (self.width,None)
+            color: (0,0,0,1)
+            halign: "center"
+            valign: "middle"
+
         Image:
             id: side_image
             source: root.side_image_source
@@ -70,3 +84,11 @@
             pos_hint: {"center_x":0.75,"top":0.95}
             fit_mode: "contain"
             opacity: 1 if root.side_image_disabled is False else 0
+
+        Image:
+            id: bottom_image
+            source: root.bottom_image_source
+            size_hint: (0.8,0.35)
+            pos_hint: {"center_x":0.5,"y":0.25}
+            fit_mode: "contain"
+            opacity: 1 if root.bottom_image_disabled is False else 0

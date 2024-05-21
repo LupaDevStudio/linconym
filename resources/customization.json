@@ -272,22 +272,6 @@
             "colors_price": 100,
             "name": "Chalet"
         },
-        "space_clocks": {
-            "primary": [
-                0.788,
-                0.518,
-                0.212
-            ],
-            "secondary": [
-                0.737,
-                0.396,
-                0.459
-            ],
-            "image": "space_clocks.jpg",
-            "image_price": 100,
-            "colors_price": 100,
-            "name": "Space & Time"
-        },
         "sunflower": {
             "primary": [
                 0.420,
