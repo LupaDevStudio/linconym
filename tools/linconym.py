@@ -30,7 +30,7 @@ from tools.constants import (
     USER_DATA,
     XP_PER_LEVEL,
     DICT_ID_LIST,
-    NB_LINCOINS_PER_STAR
+    NB_LINCOINS_PER_STAR_DICT
 )
 from tools.basic_tools import (
     dichotomy,
@@ -888,8 +888,9 @@ class ClassicGame(Game):
                 (xp_fraction - previous_xp_fraction) * XP_PER_LEVEL)
             USER_DATA.user_profile[XP_KEY] += self.xp_earned
             # Award newly acquired lincoins
-            self.lincoins_earned = (
-                self.nb_stars - previous_nb_stars) * NB_LINCOINS_PER_STAR
+            lincoins_earned_before = NB_LINCOINS_PER_STAR_DICT[previous_nb_stars]
+            lincoins_now = NB_LINCOINS_PER_STAR_DICT[self.nb_stars]
+            self.lincoins_earned = lincoins_now - lincoins_earned_before
             USER_DATA.user_profile[LINCOINS_KEY] += self.lincoins_earned
 
         # If the user passed through the quest word (if any) for the first time, award bonus xp

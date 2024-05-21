@@ -474,8 +474,14 @@ RARITY_THEMES_COLORS_DICT = {
 }
 MUSICS_DICT = CUSTOMIZATION_DICT["musics"]
 THEMES_CATEGORY_DICT = CUSTOMIZATION_DICT["categories"]
-NB_LINCOINS_PER_STAR = int(
-    THEMES_CATEGORY_DICT["common"]["image_price"] / 30) + 1
+NB_LINCOINS_PER_STAR_DICT = {
+    3: 100,
+    2: 70,
+    1: 50,
+    0: 0
+}
+# NB_LINCOINS_PER_STAR = int(
+#     THEMES_CATEGORY_DICT["common"]["image_price"] / 30) + 1
 
 ### User status ###
 USER_STATUS_DICT = load_json_file(PATH_USER_STATUS)

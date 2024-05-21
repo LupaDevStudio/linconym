@@ -27,7 +27,8 @@ from tools.path import (
 )
 from tools.constants import (
     CUSTOMIZATION_LAYOUT_FONT_SIZE,
-    CUSTOM_BUTTON_BACKGROUND_COLOR
+    CUSTOM_BUTTON_BACKGROUND_COLOR,
+    CONTENT_LABEL_FONT_SIZE
 )
 from screens.custom_widgets import (
     RoundButton
@@ -86,6 +87,7 @@ class BoosterLayout(RelativeLayout):
                     text += self.list_infos[counter]["price_unit"]
                 else:
                     icon_mode = True
+                    text = ""
 
             disable_button = False
             if "disable_button" in self.list_infos[counter]:
@@ -97,7 +99,6 @@ class BoosterLayout(RelativeLayout):
                 color=self.list_infos[counter]["circle_color"],
                 line_width=2,
                 text=text,
-                icon_mode=icon_mode,
                 font_ratio=self.font_ratio,
                 release_function=self.list_infos[counter]["release_function"],
                 disable_button=disable_button
@@ -105,6 +106,16 @@ class BoosterLayout(RelativeLayout):
             round_button.bind(height=round_button.setter("width"))
             self.list_widgets.append(round_button)
             self.add_widget(round_button)
+
+            if icon_mode:
+                money_layout = MoneyLayout(
+                    coins_count=self.list_infos[counter]["price"],
+                    font_ratio=self.font_ratio,
+                    size_hint=(None, 0.25),
+                    font_size=CONTENT_LABEL_FONT_SIZE,
+                    pos_hint={"center_x": list_positions_x[counter], "center_y": 0.5}
+                )
+                self.add_widget(money_layout)
 
             # Money
             relative_layout = RelativeLayout(
