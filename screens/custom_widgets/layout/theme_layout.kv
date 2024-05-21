@@ -14,12 +14,12 @@
         RoundedRectangle:
             pos: (self.pos[0], self.pos[1]+(1-0.55/2)*self.size[1])
             size: (0.22*self.size[0], RARITY_TAG_HEIGHT*self.size[1])
-            radius: [inside_radius*self.font_ratio]
+            radius: [self.inside_radius*self.font_ratio]
         Color:
             rgba: (0, 0, 0, 1)
         Line:
             width: OUTLINE_RECTANGLE*root.font_ratio
-            rounded_rectangle: (self.pos[0]-OUTLINE_RECTANGLE/2, self.pos[1]+(1-0.55/2)*self.size[1]-OUTLINE_RECTANGLE/2, 0.22*self.size[0]+OUTLINE_RECTANGLE,RARITY_TAG_HEIGHT*self.size[1]+OUTLINE_RECTANGLE, inside_radius*root.font_ratio, inside_radius*root.font_ratio, inside_radius*root.font_ratio, inside_radius*root.font_ratio)
+            rounded_rectangle: (self.pos[0]-OUTLINE_RECTANGLE/2, self.pos[1]+(1-0.55/2)*self.size[1]-OUTLINE_RECTANGLE/2, 0.22*self.size[0]+OUTLINE_RECTANGLE,RARITY_TAG_HEIGHT*self.size[1]+OUTLINE_RECTANGLE, self.inside_radius*root.font_ratio, self.inside_radius*root.font_ratio, self.inside_radius*root.font_ratio, self.inside_radius*root.font_ratio)
         
         # Rounded Image
         Color:

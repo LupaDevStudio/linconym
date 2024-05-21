@@ -132,10 +132,10 @@ class ThemesScreen(LinconymScreen):
     def fill_scrollview(self):
         # Sort the themes with their scarcity
         dict_order_rarity = {
-            "Common": 1,
-            "Rare": 2,
-            "Epic": 3,
-            "Secret": 4
+            "common": 1,
+            "rare": 2,
+            "epic": 3,
+            "secret": 4
         }
         list_keys = list(THEMES_DICT.keys())
         list_keys.sort(key=lambda x: dict_order_rarity[THEMES_DICT[x]["rarity"]])
