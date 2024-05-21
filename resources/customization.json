@@ -14,7 +14,8 @@
             "image": "lupa.jpg",
             "image_price": 0,
             "colors_price": 0,
-            "name": "LupaDevStudio"
+            "name": "LupaDevStudio",
+            "rarity": "Common"
         },
         "japanese_etching": {
             "primary": [
@@ -30,7 +31,8 @@
             "image": "japanese_etching.jpg",
             "image_price": 100,
             "colors_price": 200,
-            "name": "Cherry Blossom"
+            "name": "Cherry Blossom",
+            "rarity": "Rare"
         },
         "beach_hammock": {
             "primary": [
@@ -46,7 +48,8 @@
             "image": "beach_hammock.jpg",
             "image_price": 210,
             "colors_price": 400,
-            "name": "Holidays"
+            "name": "Holidays",
+            "rarity": "Rare"
         },
         "flowered_garden": {
             "primary": [
@@ -62,7 +65,8 @@
             "image": "flowered_garden.jpg",
             "image_price": 10000,
             "colors_price": 100,
-            "name": "Garden"
+            "name": "Garden",
+            "rarity": "Epic"
         },
         "desert_sunset": {
             "primary": [
@@ -78,7 +82,8 @@
             "image": "desert_sunset.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Desert"
+            "name": "Desert",
+            "rarity": "Rare"
         },
         "beach_sunset": {
             "primary": [
@@ -94,7 +99,8 @@
             "image": "beach_sunset.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Beach"
+            "name": "Beach",
+            "rarity": "Common"
         },
         "diskopolys": {
             "primary": [
@@ -110,7 +116,8 @@
             "image": "diskopolys.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Diskopolys"
+            "name": "Diskopolys",
+            "rarity": "Epic"
         },
         "dream": {
             "primary": [
@@ -126,7 +133,8 @@
             "image": "dream.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Dream"
+            "name": "Dream",
+            "rarity": "Epic"
         },
         "galaxy_messier_96": {
             "primary": [
@@ -142,7 +150,8 @@
             "image": "galaxy_messier_96.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Galaxy"
+            "name": "Galaxy",
+            "rarity": "Common"
         },
         "japanese_temple": {
             "primary": [
@@ -158,7 +167,8 @@
             "image": "japanese_temple.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Temple"
+            "name": "Temple",
+            "rarity": "Common"
         },
         "london_street": {
             "primary": [
@@ -174,7 +184,8 @@
             "image": "london_street.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "London"
+            "name": "London",
+            "rarity": "Secret"
         },
         "magic_forest": {
             "primary": [
@@ -190,7 +201,8 @@
             "image": "magic_forest.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Magic forest"
+            "name": "Magic forest",
+            "rarity": "Secret"
         },
         "mushroom_planet": {
             "primary": [
@@ -206,7 +218,8 @@
             "image": "mushroom_planet.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Freotopia"
+            "name": "Freotopia",
+            "rarity": "Epic"
         },
         "mystic_mountain": {
             "primary": [
@@ -222,7 +235,8 @@
             "image": "mystic_mountain.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Mystic mountain"
+            "name": "Mystic mountain",
+            "rarity": "Common"
         },
         "polar_fox": {
             "primary": [
@@ -238,7 +252,8 @@
             "image": "polar_fox.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Polar fox"
+            "name": "Polar fox",
+            "rarity": "Rare"
         },
         "retro_race": {
             "primary": [
@@ -254,7 +269,8 @@
             "image": "retro_race.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Retro race"
+            "name": "Retro race",
+            "rarity": "Rare"
         },
         "snow_covered_chalet": {
             "primary": [
@@ -270,7 +286,8 @@
             "image": "snow_covered_chalet.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Chalet"
+            "name": "Chalet",
+            "rarity": "Rare"
         },
         "sunflower": {
             "primary": [
@@ -286,7 +303,8 @@
             "image": "sunflower.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Sunflowers"
+            "name": "Sunflowers",
+            "rarity": "Common"
         },
         "westerlund_2": {
             "primary": [
@@ -302,7 +320,8 @@
             "image": "westerlund_2.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Westerlund"
+            "name": "Westerlund",
+            "rarity": "Common"
         },
         "lake": {
             "primary": [
@@ -318,7 +337,8 @@
             "image": "lake.jpg",
             "image_price": 100,
             "colors_price": 100,
-            "name": "Lake"
+            "name": "Lake",
+            "rarity": "Common"
         }
     },
     "musics": {

@@ -130,10 +130,20 @@ class ThemesScreen(LinconymScreen):
         Clock.schedule_interval(self.change_background_opacity, 1 / FPS)
 
     def fill_scrollview(self):
+        # Sort the themes with their scarcity
+        dict_order_rarity = {
+            "Common": 1,
+            "Rare": 2,
+            "Epic": 3,
+            "Secret": 4
+        }
+        list_keys = list(THEMES_DICT.keys())
+        list_keys.sort(key=lambda x: dict_order_rarity[THEMES_DICT[x]["rarity"]])
+
         scrollview_layout = self.ids["scrollview_layout"]
         # Load the widgets
         self.THEME_LAYOUT_DICT = {}
-        for theme in THEMES_DICT:
+        for theme in list_keys:
             current_theme_button = ThemeLayout(
                 theme_key=theme,
                 source=PATH_BACKGROUNDS + THEMES_DICT[theme]["image"],

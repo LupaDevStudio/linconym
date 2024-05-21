@@ -466,6 +466,12 @@ ACHIEVEMENTS_DICT = load_json_file(PATH_ACHIEVEMENTS)
 
 CUSTOMIZATION_DICT = load_json_file(PATH_CUSTOMIZATION)
 THEMES_DICT = CUSTOMIZATION_DICT["themes"]
+RARITY_THEMES_COLORS_DICT = {
+    "Common": [1, 0, 1, 1],
+    "Rare": [0, 1, 1, 1],
+    "Epic": [1, 1, 0, 1],
+    "Secret": [1, 0, 0, 1]
+}
 MUSICS_DICT = CUSTOMIZATION_DICT["musics"]
 THEMES_CATEGORY_DICT = CUSTOMIZATION_DICT["categories"]
 NB_LINCOINS_PER_STAR = int(

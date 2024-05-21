@@ -23,7 +23,8 @@ from tools.path import (
 from tools.constants import (
     CUSTOMIZATION_LAYOUT_FONT_SIZE,
     USER_DATA,
-    THEMES_DICT
+    THEMES_DICT,
+    RARITY_THEMES_COLORS_DICT
 )
 
 #############
@@ -37,32 +38,30 @@ class ThemeLayout(Image):
     """
 
     theme_title = StringProperty()
-    font_size = NumericProperty()
-    font_ratio = NumericProperty()
-    text_font_name = StringProperty()
+    theme_rarity = StringProperty()
+    font_size = NumericProperty(CUSTOMIZATION_LAYOUT_FONT_SIZE)
+    font_ratio = NumericProperty(1)
+    text_font_name = StringProperty(PATH_TEXT_FONT)
     primary_color = ColorProperty([1, 1, 1, 1])
     secondary_color = ColorProperty([0, 0, 0, 1])
+    theme_rarity_color = ColorProperty([1, 1, 1, 1])
     has_bought_image = BooleanProperty()
     has_bought_colors = BooleanProperty()
     is_using_image = BooleanProperty()
     is_using_colors = BooleanProperty()
 
-    def __init__(
-            self,
-            theme_key: str = "",
-            text_font_name=PATH_TEXT_FONT,
-            font_size=CUSTOMIZATION_LAYOUT_FONT_SIZE,
-            font_ratio=None,
-            **kwargs):
+    outside_radius = NumericProperty(30)
+    inside_radius = NumericProperty(10)
 
-        if font_ratio is not None:
-            self.font_ratio = font_ratio
+    def __init__(self, theme_key: str = "", **kwargs):
 
         if theme_key not in THEMES_DICT:
             theme_key = THEMES_DICT.keys()[0]
 
         self.theme_key = theme_key
         self.theme_title = THEMES_DICT[theme_key]["name"]
+        self.theme_rarity = THEMES_DICT[theme_key]["rarity"]
+        self.theme_rarity_color = RARITY_THEMES_COLORS_DICT[self.theme_rarity]
         self.image_price = THEMES_DICT[theme_key]["image_price"]
         self.colors_price = THEMES_DICT[theme_key]["colors_price"]
         self.primary_color = THEMES_DICT[theme_key]["primary"]
@@ -71,8 +70,6 @@ class ThemeLayout(Image):
         self.update_variables()
 
         super().__init__(**kwargs)
-        self.text_font_name = text_font_name
-        self.font_size = font_size
 
     def update_variables(self):
         """
