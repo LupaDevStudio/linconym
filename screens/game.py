@@ -355,6 +355,7 @@ class GameScreen(LinconymScreen):
             position_to_word_id=self.game.position_to_word_id,
             words_found=self.game.words_found,
             current_position=self.game.current_position,
+            end_word=self.end_word.lower()
         )
 
     def submit_word(self):
