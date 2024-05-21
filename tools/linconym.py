@@ -133,6 +133,30 @@ def get_word_position(input_word: str, position_to_word_id: Dict[str, int], word
     return None
 
 
+def has_end_word_in_children(
+        current_position: str,
+        position_to_word_id: dict,
+        words_found: list,
+        end_word: str):
+    """
+    Verify if the end word is in the descendance.
+
+    Parameters
+    ----------
+    current_position : str
+        Current position on the tree.
+    position_to_word_id : dict
+        _description_
+    words_found : list
+        _description_
+    end_word : str
+        _description_
+
+    Returns
+    -------
+    """
+
+
 def is_in_english_words(word: str):
     """
     Indicates whether a word belongs to the english words dictionary or not.

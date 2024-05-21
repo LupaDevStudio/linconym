@@ -123,6 +123,7 @@ class WordButton(ButtonBehavior, RelativeLayout):
     font_ratio = NumericProperty(1)
     disable_button = BooleanProperty(False)
     text_font_name = StringProperty(PATH_TEXT_FONT)
+    has_check = BooleanProperty(True)
 
     def __init__(
             self,
@@ -267,8 +268,6 @@ class TreeLayout(RelativeLayout):
             New current word.
         """
 
-        # current_position = get_word_position(
-        #     current_word, self.position_to_word_id, self.words_found)
         if current_position is not None:
             self.change_current_position(current_position)
 
@@ -486,7 +485,6 @@ class TreeLayout(RelativeLayout):
             if current_rank > max_rank:
                 max_rank = current_rank
         self.max_rank = max_rank
-        # print("max rank", self.max_rank)
 
         # Find the max vertical offset
         current_vertical_offset = 1
@@ -496,7 +494,6 @@ class TreeLayout(RelativeLayout):
                 current_vertical_offset += 1
             previous_rank = current_rank
         self.max_vertical_offset = current_vertical_offset
-        # print("max vertical offset", self.max_vertical_offset)
 
         # Define the size of the layout
         # TODO : make it depend on the size of the widget in pixels

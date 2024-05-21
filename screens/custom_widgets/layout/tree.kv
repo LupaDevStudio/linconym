@@ -58,6 +58,14 @@
         line_height: 1
         color: (1,1,1,1)
 
+    # Check icon
+    Image:
+        pos_hint: {"center_x":0.95, "center_y":0.9}
+        size_hint:(0.2,0.8)
+        source: PATH_ICONS + "check.png"
+        fit_mode:"contain"
+        color: (1,1,1,1) if root.has_check else (0,0,0,0)
+
 
 <TreeScrollview>:
     bar_margin: 0
