@@ -35,38 +35,38 @@
         },
         "5": {
             "start_word": "brain",
-            "end_word": "crane",
-            "10k": null,
-            "34k": 3,
-            "88k": 3,
-            "280k": 3
+            "end_word": "bring",
+            "10k": 2,
+            "34k": 2,
+            "88k": 2,
+            "280k": 2
         },
         "6": {
-            "start_word": "crane",
-            "end_word": "chain",
+            "start_word": "bring",
+            "end_word": "ruins",
             "10k": 3,
             "34k": 3,
             "88k": 3,
             "280k": 3
         },
         "7": {
-            "start_word": "chain",
-            "end_word": "name",
-            "10k": 4,
+            "start_word": "ruins",
+            "end_word": "horn",
+            "10k": 5,
             "34k": 4,
             "88k": 4,
             "280k": 4
         },
         "8": {
-            "start_word": "name",
-            "end_word": "chance",
-            "10k": 5,
-            "34k": 5,
-            "88k": 4,
-            "280k": 4
+            "start_word": "horn",
+            "end_word": "hours",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
         },
         "9": {
-            "start_word": "chance",
+            "start_word": "hours",
             "end_word": "heart",
             "10k": 4,
             "34k": 4,

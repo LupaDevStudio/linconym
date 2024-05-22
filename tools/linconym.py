@@ -968,7 +968,7 @@ class ClassicGame(Game):
 if __name__ == "__main__":
 
     # To use to complete the solution
-    fill_gameplay_dict_with_solutions()
+    # fill_gameplay_dict_with_solutions()
 
     # game = Game(
     #     start_word="link",
@@ -981,5 +981,6 @@ if __name__ == "__main__":
     # game.submit_word("pink")
 
     # fill_daily_games_with_solutions()
-    # print(is_valid("boy", "joy"))
-    # find_solutions("Abyssal", "fiction", ENGLISH_WORDS_DICTS["10k"])
+    # print(is_valid("brain", "crane"))
+    # find_solutions("hours", "heart", ENGLISH_WORDS_DICTS["280k"])
+    pass

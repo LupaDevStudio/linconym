@@ -11,21 +11,10 @@
             rounded_rectangle: [0,0,self.size[0],self.size[1],self.radius*self.font_ratio]
             width: BUTTON_OUTLINE_WIDTH*self.font_ratio
 
-    Image:
-        id: coins_image
-        source: root.image_source
-        pos_hint: {"right":0.95,"center_y":0.5}
-        size_hint: (None,0.85)
-        width: self.height
-        fit_mode: "contain"
-        color: (0,0,0,1)
-
-    Label:
-        text: root.text
-        size_hint: (1-coins_image.width/(root.width+1)-0.1, 1)
-        pos_hint: {"x":0.05,"center_y":0.5}
-        font_size: root.font_ratio * root.font_size
-        font_name: root.text_font_name
-        halign: "right"
-        valign: "center"
-        color: (0,0,0,1)
+    MoneyLayout:
+        coins_count: root.reward
+        font_ratio: root.font_ratio
+        size_hint: (1, 1)
+        pos_hint: {"center_x": 0.5,"center_y":0.5}
+        unit: root.unit
+        and_mode: root.plus_mode

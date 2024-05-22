@@ -11,6 +11,7 @@
         }
     },
     "icons": {
+        "bin": "<a href=\"https://www.flaticon.com/free-icons/delete\" title=\"delete icons\">Delete icons created by Freepik - Flaticon</a>",
         "check": "<a href=\"https://www.flaticon.com/free-icons/tick\" title=\"tick icons\">Tick icons created by Pixel perfect - Flaticon</a>",
         "customization": "<a href=\"https://www.flaticon.com/free-icons/magic-wand\" title=\"magic wand icons\">Magic wand icons created by Graphix's Art - Flaticon</a>",
         "delete": "<a href=\"https://www.flaticon.com/free-icons/backspace\" title=\"backspace icons\">Backspace icons created by Icon Smart - Flaticon</a>",
@@ -18,18 +19,18 @@
         "home": "<a href=\"https://www.flaticon.com/free-icons/home-button\" title=\"home button icons\">Home button icons created by Freepik - Flaticon</a>",
         "left_arrow": "<a href=\"https://www.flaticon.com/free-icons/send\" title=\"send icons\">Send icons created by Pixel perfect - Flaticon</a>",
         "level_up": "<a href=\"https://www.flaticon.com/free-icons/upload\" title=\"upload icons\">Upload icons created by Kiranshastry - Flaticon</a>",
-        "linclue": "<a href=\"https://www.flaticon.com/free-icons/coin\" title=\"coin icons\">Coin icons created by kliwir art - Flaticon</a>",
+        "linclue": "<a href='https://www.flaticon.com/free-icons/coin' title='coin icons'>Coin icons created by kliwir art - Flaticon</a>",
         "lock": "<a href=\"https://www.flaticon.com/free-icons/lock\" title=\"lock icons\">Lock icons created by Those Icons - Flaticon</a>",
         "musical_note": "<a href=\"https://www.flaticon.com/free-icons/google-play-music\" title=\"google play music icons\">Google play music icons created by Pixel perfect - Flaticon</a>",
         "paint": "<a href=\"https://www.flaticon.com/free-icons/art\" title=\"art icons\">Art icons created by Freepik - Flaticon</a>",
         "profile": "<a href=\"https://www.flaticon.com/free-icons/user\" title=\"user icons\">User icons created by Freepik - Flaticon</a>",
+        "right_arrow": "<a href='https://www.flaticon.com/free-icons/next' title='next icons'>Next icons created by Roundicons - Flaticon</a>",
         "quests": "<a href=\"https://www.flaticon.com/free-icons/quest\" title=\"quest icons\">Quest icons created by Vitaly Gorbachev - Flaticon</a>",
         "settings": "<a href=\"https://www.flaticon.com/free-icons/settings\" title=\"settings icons\">Settings icons created by Freepik - Flaticon</a>",
         "shrink": "<a href=\"https://www.flaticon.com/free-icons/shrink\" title=\"shrink icons\">Shrink icons created by Uniconlabs - Flaticon</a>",
         "star_full": "<a href=\"https://www.flaticon.com/fr/icones-gratuites/etoile\" title=\"étoile icônes\">Étoile icônes créées par Pixel perfect - Flaticon</a>",
         "success": "<a href=\"https://www.flaticon.com/free-icons/achievement\" title=\"achievement icons\">Achievement icons created by VectorPortal - Flaticon</a>",
-        "tutorial": "<a href=\"https://www.flaticon.com/free-icons/info\" title=\"info icons\">Info icons created by Chanut - Flaticon</a>",
-        "bin": "<a href=\"https://www.flaticon.com/free-icons/delete\" title=\"delete icons\">Delete icons created by Freepik - Flaticon</a>"
+        "tutorial": "<a href=\"https://www.flaticon.com/free-icons/info\" title=\"info icons\">Info icons created by Chanut - Flaticon</a>"
     },
     "image": {
         "badge": {

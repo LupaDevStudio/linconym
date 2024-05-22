@@ -54,6 +54,9 @@ class MoneyLayout(RelativeLayout):
 
         self.update_coins_count()
         self.bind(coins_count=self.update_coins_count)
+        self.bind(and_mode=self.update_coins_count)
+        self.bind(or_mode=self.update_coins_count)
+        self.bind(unit=self.update_coins_count)
 
     def update_coins_count(self, *args):
         self.coins_count_text = ""

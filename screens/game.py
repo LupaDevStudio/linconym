@@ -31,7 +31,8 @@ from tools.constants import (
 )
 from screens.custom_widgets import (
     LinconymScreen,
-    LevelCompletedPopup
+    LevelCompletedPopup,
+    LincluesPopup
 )
 from tools import (
     music_mixer
@@ -485,3 +486,19 @@ class GameScreen(LinconymScreen):
         self.save_data()
 
         Clock.schedule_once(self.check_delete_current_word)
+
+    def ask_to_use_linclues(self):
+        number_linclues_to_use = 5 # TODO to change
+
+        popup = LincluesPopup(
+            primary_color=self.primary_color,
+            secondary_color=self.secondary_color,
+            font_ratio=self.font_ratio,
+            number_linclues_to_use=number_linclues_to_use,
+            number_linclues=USER_DATA.user_profile["linclues"],
+            yes_function=partial(self.use_linclues, number_linclues_to_use)
+        )
+        popup.open()
+
+    def use_linclues(self, number_linclues_to_use):
+        print("TODO I am using xxx Linclues", number_linclues_to_use)

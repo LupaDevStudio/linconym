@@ -342,6 +342,7 @@ BOTTOM_BAR_HEIGHT = 0.12
 # Pos hints for icon buttons
 POS_HINT_LEFT_TOP_BUTTON = {"x": 0.02, "top": 0.99}
 POS_HINT_RIGHT_TOP_BUTTON = {"right": 0.98, "top": 0.99}
+POS_HINT_LEFT_BOTTOM_BUTTON = {"x": 0.02, "y": 0.01}
 POS_HINT_RIGHT_BOTTOM_BUTTON = {"right": 0.98, "y": 0.01}
 
 # Levels configuration

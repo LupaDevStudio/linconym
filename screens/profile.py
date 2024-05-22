@@ -68,7 +68,7 @@ class ProfileScreen(LinconymScreen):
         _, self.percentage_experience = compute_progression(
             USER_DATA.user_profile["experience"])
         self.theme_colors = USER_DATA.settings["current_theme_colors"]
-        self.user_status = USER_DATA.user_profile["status"]
+        self.user_status = USER_DATA.user_profile["status"].capitalize()
         self.user_status_image = PATH_BADGES + self.user_status.lower() + ".png"
 
         self.classic_mode_achievements = "Completed levels: %i\nCompleted acts: %i\nStars won: %i\n\nClick to see all achievements." % (
