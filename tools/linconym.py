@@ -101,9 +101,14 @@ def is_parent_of(position, child_position):
         Boolean indication if the given position is parent or not.
     """
 
-    sliced_child_position = child_position[:len(position)]
+    # Convert both positions to tuple
+    t_child_pos = convert_str_pos_to_tuple_pos(child_position)
+    t_parent_pos = convert_str_pos_to_tuple_pos(position)
 
-    return sliced_child_position == position
+    # Check if the common branch match
+    res = t_child_pos[:len(t_parent_pos)] == t_parent_pos
+
+    return res
 
 
 def get_word_position(input_word: str, position_to_word_id: Dict[str, int], words_found: List[str]):
@@ -131,6 +136,84 @@ def get_word_position(input_word: str, position_to_word_id: Dict[str, int], word
         if index == word_index:
             return position
     return None
+
+
+def convert_str_pos_to_tuple_pos(position: str):
+    """
+    Convert a position described as a string to a position described as a tuple.
+    """
+
+    res = []
+    split_pos = position.split(",")
+    for el in split_pos:
+        res.append(int(el))
+
+    # print(position, res)
+
+    return tuple(res)
+
+
+def get_children(current_position: str, position_to_word_id: dict):
+    """
+    Find all the direct children of the given position.
+    """
+
+    # Create the list of children
+    res = []
+
+    # Iterate over the positions in the tree
+    for position in position_to_word_id:
+        if is_parent_of(current_position, position) and len(position) > len(current_position):
+            res.append(position)
+
+    return res
+
+
+def has_end_word_in_children(
+        current_position: str,
+        position_to_word_id: dict,
+        words_found: list,
+        end_word: str):
+    """
+    Verify if the end word is in the descendance.
+
+    Parameters
+    ----------
+    current_position : str
+        Current position on the tree.
+    position_to_word_id : dict
+        _description_
+    words_found : list
+        _description_
+    end_word : str
+        _description_
+
+    Returns
+    -------
+    """
+
+    # Initialize the pile
+    pile = [current_position]
+
+    # Iterate while there are children
+    while len(pile) > 0:
+        # Extract an element
+        current_position = pile.pop(0)
+        word_id = position_to_word_id[current_position]
+
+        # Check if it is the end word
+        if words_found[word_id] == end_word:
+            return True
+        else:
+            # Add its children to the pile
+            children = get_children(
+                current_position=current_position,
+                position_to_word_id=position_to_word_id
+            )
+            for child in children:
+                pile.append(child)
+
+    return False
 
 
 def is_in_english_words(word: str):
@@ -848,6 +931,10 @@ class ClassicGame(Game):
         # Stars
         nb_words_found: int = len(solution_found)
         self.nb_stars: int = self.get_nb_stars(nb_words_found)
+
+        # Awards
+        self.xp_earned: int = 0
+        self.lincoins_earned: int = 0
 
         # xp: get a percentage of a certain constant amount depending on the solution's quality...
         xp_fraction: float = self.get_xp_fraction(nb_words_found)
