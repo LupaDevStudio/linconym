@@ -49,14 +49,14 @@
         },
         "flowered_garden": {
             "primary": [
-                0.490,
-                0.561,
-                0.325
+                0.1,
+                0.33,
+                0
             ],
             "secondary": [
-                0.475,
-                0.290,
-                0.278
+                0.37,
+                0.22,
+                0.22
             ],
             "image": "flowered_garden.jpg",
             "name": "Garden of Delights",
@@ -169,9 +169,9 @@
         },
         "magic_forest": {
             "primary": [
-                0.494,
-                0.502,
-                0.212
+                0.87,
+                0.71,
+                0.18
             ],
             "secondary": [
                 0.129,
