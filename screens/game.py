@@ -32,7 +32,8 @@ from tools.constants import (
 from screens.custom_widgets import (
     LinconymScreen,
     LevelCompletedPopup,
-    LincluesPopup
+    LincluesPopup,
+    LevelUpPopup
 )
 from tools import (
     music_mixer
@@ -424,6 +425,15 @@ class GameScreen(LinconymScreen):
             number_linclues_won=1  # TODO change
         )
         popup.open()
+
+        # Create the popup for level up
+        if end_level_dict["has_level_up"]:
+            popup = LevelUpPopup(
+                primary_color=self.primary_color,
+                secondary_color=self.secondary_color,
+                number_lincoins_won=10 # TODO
+            )
+            popup.open()
 
     def check_level_complete(self):
         # The level is complete
