@@ -44,7 +44,6 @@ class BuyRectangleButton(ButtonBehavior, RelativeLayout):
     font_ratio = NumericProperty(1)
     text_font_name = StringProperty(PATH_TEXT_FONT)
     price = NumericProperty(0)
-    price_text = StringProperty("0")
     disable_button = BooleanProperty(False)
     background_color = ColorProperty(CUSTOM_BUTTON_BACKGROUND_COLOR)
     mode = StringProperty("line")
@@ -58,12 +57,6 @@ class BuyRectangleButton(ButtonBehavior, RelativeLayout):
         super().__init__(**kwargs)
 
         self.always_release = True
-
-        # Bind the price to update the value in real time
-        self.bind(price=self.update_price)
-
-    def update_price(self, base_widget, value):
-        self.price_text = str(self.price)
 
     def on_press(self):
         if not self.disable_button:

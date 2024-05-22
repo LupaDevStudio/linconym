@@ -474,8 +474,6 @@ NB_LINCOINS_PER_STAR_DICT = {
     1: 50,
     0: 0
 }
-# NB_LINCOINS_PER_STAR = int(
-#     THEMES_CATEGORY_DICT["common"]["image_price"] / 30) + 1
 
 ### User status ###
 USER_STATUS_DICT = load_json_file(PATH_USER_STATUS)
@@ -484,7 +482,7 @@ USER_STATUS_DICT = load_json_file(PATH_USER_STATUS)
 
 
 def get_lincoin_image_amount(number_lincoins):
-    if number_lincoins <= 1000:
+    if number_lincoins <= 800:
         return PATH_ICONS + "lincoin_1.png"
     if number_lincoins <= 2000:
         return PATH_ICONS + "lincoin_2.png"

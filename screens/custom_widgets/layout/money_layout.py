@@ -53,8 +53,9 @@ class MoneyLayout(RelativeLayout):
         super().__init__(**kwargs)
 
         self.update_coins_count()
+        self.bind(coins_count=self.update_coins_count)
 
-    def update_coins_count(self):
+    def update_coins_count(self, *args):
         self.coins_count_text = ""
         if self.and_mode:
             self.coins_count_text += "+ "

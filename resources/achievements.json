@@ -1,17 +1,142 @@
 {
-    "beginner": {
+    "status_novice": {
+        "achievement_title": "Novice",
+        "achievement_content": "Get Novice status.",
+        "series": "status",
+        "reward": 10,
+        "number_series": 1
+    },
+    "status_rookie": {
+        "achievement_title": "Rookie",
+        "achievement_content": "Get Rookie status.",
+        "series": "status",
+        "reward": 50,
+        "number_series": 2
+    },
+    "status_beginner": {
         "achievement_title": "Beginner",
-        "achievement_content": "Description de la quête qui est plus longue que les autres.",
-        "reward": 10
+        "achievement_content": "Get Beginner status.",
+        "series": "status",
+        "reward": 100,
+        "number_series": 3
     },
-    "ach2": {
-        "achievement_title": "Titre",
-        "achievement_content": "Description de la quête.",
-        "reward": 10
+    "status_amateur": {
+        "achievement_title": "Amateur",
+        "achievement_content": "Get Amateur status.",
+        "series": "status",
+        "reward": 300,
+        "number_series": 4
     },
-    "ach3": {
-        "achievement_title": "Titre",
-        "achievement_content": "Description de la quête qui est plus longue que les autres.",
-        "reward": 10
+    "status_intermediate": {
+        "achievement_title": "Intermediate",
+        "achievement_content": "Get Intermediate status.",
+        "series": "status",
+        "reward": 500,
+        "number_series": 5
+    },
+    "status_proficient": {
+        "achievement_title": "Proficient",
+        "achievement_content": "Get Proficient status.",
+        "series": "status",
+        "reward": 700,
+        "number_series": 6
+    },
+    "status_experienced": {
+        "achievement_title": "Experienced",
+        "achievement_content": "Get Experienced status.",
+        "series": "status",
+        "reward": 1000,
+        "number_series": 7
+    },
+    "status_advanced": {
+        "achievement_title": "Advanced",
+        "achievement_content": "Get Advanced status.",
+        "series": "status",
+        "reward": 1500,
+        "number_series": 8
+    },
+    "status_senior": {
+        "achievement_title": "Senior",
+        "achievement_content": "Get Senior status.",
+        "series": "status",
+        "reward": 2000,
+        "number_series": 9
+    },
+    "status_master": {
+        "achievement_title": "Master",
+        "achievement_content": "Get Master status.",
+        "series": "status",
+        "reward": 3000,
+        "number_series": 10
+    },
+    "status_expert": {
+        "achievement_title": "Expert",
+        "achievement_content": "Get Expert status.",
+        "series": "status",
+        "reward": 5000,
+        "number_series": 11
+    },
+    "status_legend": {
+        "achievement_title": "Legend",
+        "achievement_content": "Get Legend status.",
+        "series": "status",
+        "reward": 9999,
+        "number_series": 12
+    },
+    "customization_theme_1": {
+        "achievement_title": "Novice buyer - Themes",
+        "achievement_content": "Buy your first theme.",
+        "series": "customization_theme",
+        "reward": 50,
+        "number_series": 1
+    },
+    "customization_theme_5": {
+        "achievement_title": "Small buyer - Themes",
+        "achievement_content": "Buy 5 themes.",
+        "series": "customization_theme",
+        "reward": 100,
+        "number_series": 2
+    },
+    "customization_theme_10": {
+        "achievement_title": "Experienced buyer - Themes",
+        "achievement_content": "Buy 10 themes.",
+        "series": "customization_theme",
+        "reward": 500,
+        "number_series": 3
+    },
+    "customization_theme_20": {
+        "achievement_title": "Compulsive buyer - Themes",
+        "achievement_content": "Buy 20 themes.",
+        "series": "customization_theme",
+        "reward": 1000,
+        "number_series": 4
+    },
+    "customization_theme_50": {
+        "achievement_title": "Legendary buyer - Themes",
+        "achievement_content": "Buy 50 themes.",
+        "series": "customization_theme",
+        "reward": 5000,
+        "number_series": 5
+    },
+    "customization_secret_theme_1": {
+        "achievement_title": "Novice collector",
+        "achievement_content": "Buy your first secret theme.",
+        "series": "customization_secret_theme",
+        "reward": 500,
+        "number_series": 1
+    },
+    "customization_secret_theme_3": {
+        "achievement_title": "Proficient collector",
+        "achievement_content": "Buy 3 secret themes.",
+        "series": "customization_secret_theme",
+        "reward": 1000,
+        "number_series": 2
+    },
+    "customization_secret_theme_5": {
+        "achievement_title": "Legendary collector",
+        "achievement_content": "Buy 5 secret themes.",
+        "series": "customization_secret_theme",
+        "reward": 3000,
+        "number_series": 3
     }
 }

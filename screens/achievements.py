@@ -9,6 +9,7 @@ Module to create the quests screen.
 ### Python imports ###
 
 from typing import Literal
+from functools import partial
 
 ### Kivy imports ###
 
@@ -24,7 +25,9 @@ from tools.constants import (
     SCREEN_BACK_ARROW,
     SCREEN_TITLE,
     ACHIEVEMENTS_DICT,
-    USER_DATA
+    USER_DATA,
+    USER_STATUS_DICT,
+    THEMES_DICT
 )
 from screens.custom_widgets import (
     AchievementsLayout
@@ -56,6 +59,41 @@ class AchievementsScreen(LinconymScreen):
         super().on_pre_enter(*args)
         self.fill_scrollview()
 
+    def update_finished_achievements(self, achievement_id: str):
+        achievement = ACHIEVEMENTS_DICT[achievement_id]
+        series = achievement["series"]
+
+        if series == "status":
+            user_status = USER_DATA.user_profile["status"]
+            list_user_status_keys = list(USER_STATUS_DICT.keys())
+            user_id = list_user_status_keys.index(user_status)
+            current_id = list_user_status_keys.index(achievement_id.replace("status_", ""))
+            if user_id >= current_id:
+                USER_DATA.achievements[achievement_id] = False
+
+        if series == "customization_theme":
+            number_themes_to_buy = int(
+                achievement_id.replace("customization_theme_", ""))
+            number_bought_themes = 0
+            for theme in USER_DATA.unlocked_themes:
+                if USER_DATA.unlocked_themes[theme]["image"] and theme != "lupa":
+                    number_bought_themes += 1
+            if number_themes_to_buy <= number_bought_themes:
+                USER_DATA.achievements[achievement_id] = False
+
+        if series == "customization_secret_theme":
+            number_themes_to_buy = int(
+                achievement_id.replace("customization_secret_theme_", ""))
+            number_bought_themes = 0
+            for theme in USER_DATA.unlocked_themes:
+                if USER_DATA.unlocked_themes[theme]["image"]:
+                    if THEMES_DICT[theme]["rarity"] == "secret":
+                        number_bought_themes += 1
+            if number_themes_to_buy <= number_bought_themes:
+                USER_DATA.achievements[achievement_id] = False            
+
+        USER_DATA.save_changes()
+
     def fill_scrollview(self):
         scrollview_layout = self.ids.scrollview_layout
 
@@ -64,7 +102,14 @@ class AchievementsScreen(LinconymScreen):
         list_achievements_order = []
 
         for achievement_id in ACHIEVEMENTS_DICT:
+
+            # Check if the achievement has been reached meanwhile
+            if not achievement_id in USER_DATA.achievements:
+                self.update_finished_achievements(achievement_id)
+
             achievement = ACHIEVEMENTS_DICT[achievement_id]
+            series = achievement["series"]
+            reward = achievement["reward"]
 
             # Get the data of the user
             has_completed = False
@@ -75,31 +120,65 @@ class AchievementsScreen(LinconymScreen):
                     has_got_reward = True
 
             list_achievements_order.append([
-                has_got_reward, not has_completed, achievement_id])
+                has_got_reward, not has_completed, series, reward, achievement_id])
 
         # Sort the list of achievements
         list_achievements_order.sort()
 
         for tuple_achievement in list_achievements_order:
-            achievement_id = tuple_achievement[2]
+            achievement_id = tuple_achievement[4]
+            reward = tuple_achievement[3]
+            series = tuple_achievement[2]
             has_completed = not tuple_achievement[1]
             has_got_reward = tuple_achievement[0]
             achievement = ACHIEVEMENTS_DICT[achievement_id]
 
-            current_achievement_layout = AchievementsLayout(
-                achievement_title=achievement["achievement_title"],
-                description=achievement["achievement_content"],
-                reward=achievement["reward"],
-                font_ratio=self.font_ratio,
-                primary_color=self.primary_color,
-                secondary_color=self.secondary_color,
-                size_hint=(0.8, None),
-                height=150 * self.font_ratio)
-            current_achievement_layout.has_completed = has_completed
-            current_achievement_layout.has_got_reward = has_got_reward
+            display_condition_series = self.get_display_condition_series(achievement_id)
+            display_condition = has_completed or has_got_reward or display_condition_series
 
-            self.ACHIEVEMENTS_LAYOUT_DICT[achievement_id] = current_achievement_layout
-            scrollview_layout.add_widget(current_achievement_layout)
+            if display_condition:
+                current_achievement_layout = AchievementsLayout(
+                    achievement_title=achievement["achievement_title"],
+                    description=achievement["achievement_content"],
+                    reward=reward,
+                    font_ratio=self.font_ratio,
+                    primary_color=self.primary_color,
+                    secondary_color=self.secondary_color,
+                    size_hint=(0.8, None),
+                    height=150 * self.font_ratio)
+                current_achievement_layout.has_completed = has_completed
+                current_achievement_layout.has_got_reward = has_got_reward
+                current_achievement_layout.release_function = partial(
+                    self.get_reward, achievement_id)
+
+                self.ACHIEVEMENTS_LAYOUT_DICT[achievement_id] = current_achievement_layout
+                scrollview_layout.add_widget(current_achievement_layout)
+
+    def get_display_condition_series(self, achievement_id):
+        achievement = ACHIEVEMENTS_DICT[achievement_id]
+        series = achievement["series"]
+        number_series = achievement["number_series"]
+        series_achievements = []
+
+        for id in USER_DATA.achievements:
+            if series in id:
+                series_achievements.append(ACHIEVEMENTS_DICT[id]["number_series"])
+
+        user_in_series = max(series_achievements) if series_achievements != [] else 0
+
+        # Display only the next achievement
+        return user_in_series + 1 == number_series
+
+    def get_reward(self, achievement_id):
+        achievement = ACHIEVEMENTS_DICT[achievement_id]
+        reward = achievement["reward"]
+        USER_DATA.achievements[achievement_id] = True
+        USER_DATA.user_profile["lincoins"] += reward
+        USER_DATA.save_changes()
+
+        # Rebuild scrollview
+        self.ids.scrollview_layout.reset_scrollview()
+        self.fill_scrollview()
 
     def on_leave(self, *args):
         super().on_leave(*args)
