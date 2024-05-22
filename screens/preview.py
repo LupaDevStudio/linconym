@@ -22,7 +22,8 @@ from tools.path import (
 )
 from tools.constants import (
     USER_DATA,
-    THEMES_DICT
+    THEMES_DICT,
+    THEMES_RARITY_DICT
 )
 from tools.kivy_tools import (
     ImprovedScreen
@@ -66,8 +67,9 @@ class PreviewScreen(ImprovedScreen):
 
     def on_pre_enter(self, *args):
         self.coins_count = USER_DATA.user_profile["lincoins"]
-        self.colors_price = THEMES_DICT[self.theme_key]["colors_price"]
-        self.image_price = THEMES_DICT[self.theme_key]["image_price"]
+        theme_rarity_code = THEMES_DICT[self.theme_key]["rarity"]
+        self.image_price = THEMES_RARITY_DICT[theme_rarity_code]["image_price"]
+        self.colors_price = THEMES_RARITY_DICT[theme_rarity_code]["colors_price"]
         self.both_price = self.colors_price + self.image_price
         self.is_using_image = USER_DATA.settings["current_theme_image"] == self.theme_key
         self.is_using_colors = USER_DATA.settings["current_theme_colors"] == self.theme_key

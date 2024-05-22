@@ -14,7 +14,7 @@
             "image": "lupa.jpg",
             "image_price": 0,
             "colors_price": 0,
-            "name": "LupaDevStudio",
+            "name": "LupaDev Studio",
             "rarity": "common"
         },
         "japanese_etching": {
@@ -34,14 +34,14 @@
         },
         "beach_hammock": {
             "primary": [
-                0.310,
-                0.620,
-                0.741
-            ],
-            "secondary": [
                 0.867,
                 0.761,
                 0.663
+            ],
+            "secondary": [
+                0.310,
+                0.620,
+                0.741
             ],
             "image": "beach_hammock.jpg",
             "name": "Holidays",
@@ -59,7 +59,7 @@
                 0.278
             ],
             "image": "flowered_garden.jpg",
-            "name": "Garden",
+            "name": "Garden of Delights",
             "rarity": "epic"
         },
         "desert_sunset": {
@@ -74,22 +74,22 @@
                 0.224
             ],
             "image": "desert_sunset.jpg",
-            "name": "Desert",
+            "name": "Dunes of Twilight",
             "rarity": "rare"
         },
         "beach_sunset": {
             "primary": [
+                0.96,
+                0.83,
+                0.62
+            ],
+            "secondary": [
                 0.424,
                 0.573,
                 0.647
             ],
-            "secondary": [
-                0.557,
-                0.42,
-                0.522
-            ],
             "image": "beach_sunset.jpg",
-            "name": "Beach",
+            "name": "Serenity Coast",
             "rarity": "common"
         },
         "diskopolys": {
@@ -109,17 +109,17 @@
         },
         "dream": {
             "primary": [
-                0.973,
-                0.761,
-                0.592
+                0.855,
+                0.643,
+                0.827
             ],
             "secondary": [
-                0.102,
-                0.376,
-                0.525
+                0.616,
+                0.863,
+                0.918
             ],
             "image": "dream.jpg",
-            "name": "Dream",
+            "name": "Beyond Dreams",
             "rarity": "epic"
         },
         "galaxy_messier_96": {
@@ -134,22 +134,22 @@
                 0.608
             ],
             "image": "galaxy_messier_96.jpg",
-            "name": "Galaxy",
+            "name": "Galaxy M96",
             "rarity": "common"
         },
         "japanese_temple": {
             "primary": [
-                0.863,
-                0.706,
-                0.541
+                0.647,
+                0.698,
+                0.812
             ],
             "secondary": [
-                0.38,
-                0.086,
-                0.122
+                0.407,
+                0.051,
+                0.090
             ],
             "image": "japanese_temple.jpg",
-            "name": "Temple",
+            "name": "Red Pagoda",
             "rarity": "common"
         },
         "london_street": {
@@ -164,7 +164,7 @@
                 0.106
             ],
             "image": "london_street.jpg",
-            "name": "London",
+            "name": "Luminaria",
             "rarity": "secret"
         },
         "magic_forest": {
@@ -179,7 +179,7 @@
                 0.235
             ],
             "image": "magic_forest.jpg",
-            "name": "Magic forest",
+            "name": "Magic Forest",
             "rarity": "secret"
         },
         "mushroom_planet": {
@@ -254,22 +254,22 @@
                 0.157
             ],
             "image": "snow_covered_chalet.jpg",
-            "name": "Chalet",
+            "name": "Alpin Winter",
             "rarity": "rare"
         },
         "sunflower": {
             "primary": [
-                0.420,
-                0.173,
-                0.078
+                0.921,
+                0.737,
+                0.392
             ],
             "secondary": [
-                0.898,
-                0.565,
-                0.110
+                0.258,
+                0.106,
+                0.051
             ],
             "image": "sunflower.jpg",
-            "name": "Sunflowers",
+            "name": "Sun Flowers",
             "rarity": "common"
         },
         "westerlund_2": {
@@ -284,7 +284,7 @@
                 0.176
             ],
             "image": "westerlund_2.jpg",
-            "name": "Westerlund",
+            "name": "Wester Lund",
             "rarity": "common"
         },
         "lake": {
@@ -294,12 +294,12 @@
                 0.835
             ],
             "secondary": [
-                0.905,
-                0.647,
+                0.80,
+                0.29,
                 0.639
             ],
             "image": "lake.jpg",
-            "name": "Lake",
+            "name": "Sunset Sanctuary",
             "rarity": "common"
         }
     },
