@@ -248,7 +248,7 @@ class TreeLayout(RelativeLayout):
 
     def mask_completed_branches(self):
         self.hide_completed_branches = True
-        print(self.position_to_word_id)
+        self.current_position = "0"
         self.build_layout(
             position_to_word_id=self.position_to_word_id,
             words_found=self.words_found,
@@ -258,7 +258,6 @@ class TreeLayout(RelativeLayout):
 
     def show_completed_branches(self):
         self.hide_completed_branches = False
-        print(self.position_to_word_id)
         self.build_layout(
             position_to_word_id=self.position_to_word_id,
             words_found=self.words_found,

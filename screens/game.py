@@ -387,18 +387,14 @@ class GameScreen(LinconymScreen):
     def submit_word(self):
         self.game.submit_word(self.new_word.lower())
 
-        # Switch back to root if end reached
-        if self.new_word == self.end_word.upper():
-            self.game.current_position = "0"
-
-        # Rebuild layout
-        self.build_tree_layout()
-
         # Save the data
         self.save_data()
 
         # Change the current and new word
         if not self.check_level_complete():
+            # Rebuild layout
+            self.build_tree_layout()
+
             self.current_word = self.new_word
             self.new_word = ""
 
@@ -417,8 +413,11 @@ class GameScreen(LinconymScreen):
             self.new_word = ""
             self.build_word()
 
-            # Switch back to first word
-            self.ids.tree_layout.change_current_position("0")
+            # Switch back to root
+            self.game.current_position = "0"
+
+            # Rebuild layout
+            self.build_tree_layout()
 
             # Display the popup for the level completion
             self.display_success_popup(end_level_dict=end_level_dict)
