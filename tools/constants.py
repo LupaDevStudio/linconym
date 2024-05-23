@@ -106,6 +106,28 @@ if not os.path.exists(PATH_USER_DATA):
             "lincoins": 0,
             "linclues": 0
         },
+        "tutorial": {
+            "home": False,
+            "customization": False,
+            "profile": False,
+            "settings": False,
+            "classic_mode": False,
+            "levels": False,
+            "game": {
+                "change_letter": False,
+                "delete_letter": False,
+                "add_letter": False,
+                "practice": False,
+                "reorganize_letters": False,
+                "all_rules": False
+            },
+            "themes": False,
+            "boosters": False,
+            "musics": False,
+            "achievements": False,
+            "quests": False,
+            "configure_tree": False
+        },
         "ads": {
             "current_day_date": "06/09/2024",
             "current_week_date": "06/03/2024",
@@ -133,6 +155,7 @@ class UserData():
         self.unlocked_themes = data["unlocked_themes"]
         self.unlocked_musics = data["unlocked_musics"]
         self.user_profile = data["user_profile"]
+        self.tutorial = data["tutorial"]
         self.ads = data["ads"]
 
     def save_changes(self) -> None:
@@ -158,6 +181,7 @@ class UserData():
         data["unlocked_themes"] = self.unlocked_themes
         data["unlocked_musics"] = self.unlocked_musics
         data["user_profile"] = self.user_profile
+        data["tutorial"] = self.tutorial
         data["ads"] = self.ads
 
         # Save this dictionary
@@ -282,6 +306,13 @@ USER_DATA = UserData()
 ### Tutorial ###
 
 TUTORIAL = load_json_file(PATH_RESOURCES + "tutorial.json")
+GAME_TUTORIAL_DICT = {
+    "1": "change_letter",
+    "2": "delete_letter",
+    "3": "add_letter",
+    "4": "practice",
+    "5": "reorganize_letters"
+}
 
 ### Colors ###
 

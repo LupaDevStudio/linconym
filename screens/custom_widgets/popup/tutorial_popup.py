@@ -41,6 +41,8 @@ class TutorialPopup(CustomPopup):
     bottom_image_source = StringProperty()
     bottom_image_disabled = BooleanProperty()
 
+    bool_centered_button = BooleanProperty(False)
+
     image_mode = StringProperty() # can be horizontal or vertical
 
     def __init__(self, tutorial_content, **kwargs):
@@ -61,6 +63,15 @@ class TutorialPopup(CustomPopup):
             self.next_button_label = "Close"
         else:
             self.next_button_label = "Next"
+
+        if self.previous_button_label == self.next_button_label:
+            self.bool_centered_button = True
+            self.previous_button_disabled = True
+            self.next_button_disabled = True
+        else:
+            self.bool_centered_button = False
+            self.previous_button_disabled = False
+            self.next_button_disabled = False
 
         # Switch on the type of content
         current_content = self.tutorial_content[self.page_id]

@@ -27,13 +27,16 @@ from tools.constants import (
     LETTER_FONT_SIZE,
     SCREEN_BACK_ARROW,
     SCREEN_TUTORIAL,
-    GAMEPLAY_DICT
+    GAMEPLAY_DICT,
+    TUTORIAL,
+    GAME_TUTORIAL_DICT
 )
 from screens.custom_widgets import (
     LinconymScreen,
     LevelCompletedPopup,
     LincluesPopup,
-    LevelUpPopup
+    LevelUpPopup,
+    TutorialPopup
 )
 from tools import (
     music_mixer
@@ -91,6 +94,21 @@ class GameScreen(LinconymScreen):
         self.check_delete_current_word()
         self.save_data()
 
+    # Override tutorial to have a special tutorial at the beginning
+    def open_tutorial(self, screen_name):
+        tutorial_to_display = "all_rules"
+        if self.current_act_id == "1":
+            if self.current_level_id in GAME_TUTORIAL_DICT:
+                tutorial_to_display = GAME_TUTORIAL_DICT[self.current_level_id]
+
+        popup = TutorialPopup(
+            primary_color=self.primary_color,
+            secondary_color=self.secondary_color,
+            title=TUTORIAL[screen_name][tutorial_to_display]["title"],
+            tutorial_content=TUTORIAL[screen_name][tutorial_to_display]["tutorial_content"],
+            font_ratio=self.font_ratio)
+        popup.open()
+
     def reload_for_level_change(self, new_level_id: str):
         """
         Reload the components of the screen to continue playing on a new level.
@@ -112,6 +130,7 @@ class GameScreen(LinconymScreen):
         self.build_word()
         self.check_disable_keyboard()
         self.check_enable_submit_button()
+        self.check_tutorial_to_open()
 
     def on_pre_leave(self, *args):
         # Clear the keyboard

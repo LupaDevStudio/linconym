@@ -18,7 +18,8 @@
             touch_color: root.primary_color
             color_label: (1,1,1,1)
             release_function: root.go_to_next_page
-            opacity: 1 if root.next_button_disabled is False else 0
+            disabled: root.next_button_disabled
+            opacity: 0 if root.bool_centered_button else 1
         
         ColoredRoundedButton:
             id: previous_button
@@ -34,7 +35,24 @@
             color_label: (1,1,1,1)
             release_function: root.go_to_previous_page
             disabled: root.previous_button_disabled
+            opacity: 0 if root.bool_centered_button else 1
         
+        ColoredRoundedButton:
+            id: centered_button
+            size_hint: (0.4,0.15) if root.bool_centered_button else (0, 0.15)
+            pos_hint: {"center_x":0.5,"center_y":0.12}
+            font_ratio: root.font_ratio
+            font_size: SMALL_BUTTON_FONT_SIZE
+            text: "Close"
+            text_font_name: PATH_TEXT_FONT
+            outline_color: (1,1,1,1)
+            background_color: root.secondary_color
+            touch_color: root.primary_color
+            color_label: (1,1,1,1)
+            release_function: root.go_to_previous_page
+            disabled: not root.bool_centered_button
+            opacity: 1 if root.bool_centered_button else 0
+
         Label:
             id: center_label
             size_hint: (0.8,0.7)

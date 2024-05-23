@@ -27,7 +27,8 @@ from tools.constants import (
     SCREEN_BOTTOM_BAR,
     SCREEN_BACK_ARROW,
     SCREEN_TUTORIAL,
-    TUTORIAL
+    TUTORIAL,
+    GAME_TUTORIAL_DICT
 )
 from tools.path import (
     PATH_BACKGROUNDS
@@ -88,13 +89,30 @@ class LinconymScreen(ImprovedScreen):
                 self.open_tutorial, self.name)
 
     def on_pre_enter(self, *args):
-        # current_theme_image = USER_DATA.settings["current_theme_image"]
         current_theme_colors = USER_DATA.settings["current_theme_colors"]
         self.primary_color = THEMES_DICT[current_theme_colors]["primary"]
         self.secondary_color = THEMES_DICT[current_theme_colors]["secondary"]
-        # self.set_back_image_path(
-        #     PATH_BACKGROUNDS + THEMES_DICT[current_theme_image]["image"])
+
+        if SCREEN_TUTORIAL in self.dict_type_screen:
+            self.check_tutorial_to_open()
+
         return super().on_pre_enter(*args)
+
+    def check_tutorial_to_open(self):
+        if self.name != "game":
+            if not USER_DATA.tutorial[self.name]:
+                self.open_tutorial(screen_name=self.name)
+                USER_DATA.tutorial[self.name] = True
+                USER_DATA.save_changes()
+        else:
+            tutorial_to_display = "all_rules"
+            if self.current_act_id == "1":
+                if self.current_level_id in GAME_TUTORIAL_DICT:
+                    tutorial_to_display = GAME_TUTORIAL_DICT[self.current_level_id]
+            if not USER_DATA.tutorial[self.name][tutorial_to_display]:
+                self.open_tutorial(screen_name=self.name)
+                USER_DATA.tutorial[self.name][tutorial_to_display] = True
+                USER_DATA.save_changes()
 
     def open_tutorial(self, screen_name):
         popup = TutorialPopup(
