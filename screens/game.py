@@ -86,6 +86,8 @@ class GameScreen(LinconymScreen):
     def on_pre_enter(self, *args):
         super().on_pre_enter(*args)
         self.keyboard_mode = USER_DATA.settings["keyboard_mode"]
+        self.ids.tree_layout.hide_completed_branches = USER_DATA.settings[
+            "hide_completed_branches"]
 
         self.load_game_play()
         self.build_word()
@@ -281,7 +283,7 @@ class GameScreen(LinconymScreen):
 
         if self.game.get_nb_next_words(self.game.current_position) == 0\
                 and self.current_word != self.start_word.upper() \
-        and self.current_word != self.end_word.upper():
+            and self.current_word != self.end_word.upper():
             self.allow_delete_current_word = True
             self.ids.delete_word_button.opacity = 1
         else:
@@ -381,6 +383,12 @@ class GameScreen(LinconymScreen):
 
     def submit_word(self):
         self.game.submit_word(self.new_word.lower())
+
+        # Switch back to root if end reached
+        if self.new_word == self.end_word.upper():
+            self.game.current_position = "0"
+
+        # Rebuild layout
         self.build_tree_layout()
 
         # Save the data
@@ -450,7 +458,7 @@ class GameScreen(LinconymScreen):
             popup = LevelUpPopup(
                 primary_color=self.primary_color,
                 secondary_color=self.secondary_color,
-                number_lincoins_won=10 # TODO
+                number_lincoins_won=10  # TODO
             )
             popup.open()
 
@@ -518,7 +526,7 @@ class GameScreen(LinconymScreen):
         Clock.schedule_once(self.check_delete_current_word)
 
     def ask_to_use_linclues(self):
-        number_linclues_to_use = 5 # TODO to change
+        number_linclues_to_use = 5  # TODO to change
 
         popup = LincluesPopup(
             primary_color=self.primary_color,

@@ -90,7 +90,8 @@ if not os.path.exists(PATH_USER_DATA):
             "keyboard_mode": "QWERTY",
             "current_theme_image": "lupa",
             "current_music": "inspiring",
-            "current_theme_colors": "lupa"
+            "current_theme_colors": "lupa",
+            "hide_completed_branches": False
         },
         "unlocked_themes": {
             "lupa": {

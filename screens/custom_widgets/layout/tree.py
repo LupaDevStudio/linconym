@@ -243,6 +243,27 @@ class TreeLayout(RelativeLayout):
         self.bind(secondary_color=self.on_secondary_color_change)
         self.on_secondary_color_change()
 
+        # Add a variable to control if the completed branches are displayed or not
+        self.hide_completed_branches = False
+
+    def mask_completed_branches(self):
+        self.hide_completed_branches = True
+        self.build_layout(
+            position_to_word_id=self.position_to_word_id,
+            words_found=self.words_found,
+            current_position=self.current_position,
+            end_word=self.end_word
+        )
+
+    def show_completed_branches(self):
+        self.hide_completed_branches = False
+        self.build_layout(
+            position_to_word_id=self.position_to_word_id,
+            words_found=self.words_found,
+            current_position=self.current_position,
+            end_word=self.end_word
+        )
+
     def on_primary_color_change(self, base=None, widget=None, value=None):
         """
         Compute a transparent version of the primary color.
@@ -293,6 +314,10 @@ class TreeLayout(RelativeLayout):
 
         # Iterate over the stored positions
         for position in self.position_to_word_id.keys():
+            # Skip if not included in word buttons dict
+            if position not in self.word_button_dict:
+                continue
+
             # Determine if the word is in the main branch
             is_main_branch = is_parent_of(
                 position, child_position=current_position)
@@ -464,9 +489,22 @@ class TreeLayout(RelativeLayout):
             self.font_ratio = font_ratio
 
         # Store the tree infos
-        self.position_to_word_id = position_to_word_id
+        self.position_to_word_id = position_to_word_id.copy()
         self.words_found = words_found
         self.current_position = current_position
+        self.end_word = end_word
+
+        # Clean the position to word id dict if hide_completed_branches
+        if self.hide_completed_branches:
+            for key in list(position_to_word_id.keys()):
+                if has_end_word_in_children(
+                        current_position=key,
+                        position_to_word_id=position_to_word_id,
+                        words_found=words_found,
+                        end_word=end_word) and key != "0":
+                    position_to_word_id.pop(key)
+
+        print(position_to_word_id)
 
         # Init a word button pile
         self.word_button_dict = {}
@@ -561,13 +599,15 @@ class TreeLayout(RelativeLayout):
                 current_vertical_offset=current_vertical_offset)
 
             # Verify if it belongs to a completed branch
-            has_check = has_end_word_in_children(
-                current_position=position,
-                position_to_word_id=position_to_word_id,
-                words_found=words_found,
-                end_word=end_word
-            )
-            print(position, has_check)
+            if not self.hide_completed_branches:
+                has_check = has_end_word_in_children(
+                    current_position=position,
+                    position_to_word_id=position_to_word_id,
+                    words_found=words_found,
+                    end_word=end_word
+                )
+            else:
+                has_check = False
 
             # Add the word widget
             word_button = WordButton(
