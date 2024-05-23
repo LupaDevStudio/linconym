@@ -153,7 +153,8 @@ class GameScreen(LinconymScreen):
         self.level_saved_data["position_to_word_id"] = self.game.position_to_word_id
 
         # Push changes to user data
-        USER_DATA.classic_mode[self.current_act_id][self.current_level_id] = self.level_saved_data
+        USER_DATA.classic_mode[self.current_act_id][self.current_level_id] = self.level_saved_data.copy(
+        )
         USER_DATA.save_changes()
 
     def check_disable_keyboard(self):
@@ -285,7 +286,7 @@ class GameScreen(LinconymScreen):
 
         if self.game.get_nb_next_words(self.game.current_position) == 0\
                 and self.current_word != self.start_word.upper() \
-        and self.current_word != self.end_word.upper():
+            and self.current_word != self.end_word.upper():
             self.allow_delete_current_word = True
             self.ids.delete_word_button.opacity = 1
         else:
@@ -514,6 +515,7 @@ class GameScreen(LinconymScreen):
             "current_level_id": self.current_level_id,
             "current_act_id": self.current_act_id
         }
+        self.save_data()
         self.go_to_next_screen(
             screen_name="configure_tree",
             current_dict_kwargs=dict_kwargs,
