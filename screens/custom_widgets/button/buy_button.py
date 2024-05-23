@@ -7,10 +7,6 @@ Module to create buy and enable buttons
 ### Imports ###
 ###############
 
-### Python imports ###
-
-from typing import Literal
-
 ### Kivy imports ###
 
 from kivy.uix.relativelayout import RelativeLayout
@@ -31,7 +27,6 @@ from tools.path import (
 from tools.constants import (
     CUSTOM_BUTTON_BACKGROUND_COLOR,
     OPACITY_ON_BUTTON_PRESS,
-    ACT_BUTTON_FONT_SIZE,
     SMALL_BUYING_BUTTON_FONT_SIZE
 )
 
@@ -53,7 +48,6 @@ class BuyButton(ButtonBehavior, RelativeLayout):
     has_bought = BooleanProperty(False)
     is_using = BooleanProperty(False)
     price = NumericProperty(0)
-    price_text = StringProperty("0")
     release_function = ObjectProperty(lambda: 1 + 1)
 
     def __init__(self, **kwargs):
@@ -61,20 +55,12 @@ class BuyButton(ButtonBehavior, RelativeLayout):
 
         self.always_release = True
 
-        # Bind the price to update the value in real time
-        self.bind(price=self.update_price)
-
-    def update_price(self, base_widget, value):
-        self.price_text = str(self.price)
-
     def update_display(self):
         if self.has_bought:
-            self.ids["price_label"].opacity = 0
-            self.ids["coins_image"].opacity = 0
+            self.ids["money_layout"].opacity = 0
             self.ids["selection_circle"].opacity = 1
         else:
-            self.ids["price_label"].opacity = 1
-            self.ids["coins_image"].opacity = 1
+            self.ids["money_layout"].opacity = 1
             self.ids["selection_circle"].opacity = 0
         if self.is_using:
             self.ids["activated_image"].opacity = 1

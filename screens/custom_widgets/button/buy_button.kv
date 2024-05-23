@@ -47,21 +47,9 @@
                 circle:(root.width*0.5 ,root.height*0.4,min(self.height,root.width*0.8)/2)
                 width: 1.5*root.font_ratio
 
-    Label:
-        id: price_label
-        text: root.price_text
-        size_hint: (0.1,0.3)
-        pos_hint: { "right":0.4,"center_y":0.4}
-        font_size: root.font_ratio * root.font_size
-        font_name: root.text_font_name
-        halign: "right"
-        valign: "center"
-        color: (0,0,0,1)
-    
-    Image:
-        id: coins_image
-        source: PATH_ICONS + "lincoin.png"
-        pos_hint: { "center_x":0.75,"center_y":0.4}
-        size_hint: (0.3,0.3)
-        fit_mode: "contain"
-        color: (0,0,0,1)
+    MoneyLayout:
+        id: money_layout
+        coins_count: root.price
+        font_ratio: root.font_ratio
+        size_hint: (0.4, 0.4)
+        pos_hint: {"center_x": 0.5,"center_y":0.4}
