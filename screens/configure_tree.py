@@ -43,7 +43,7 @@ class ConfigureTreeScreen(LinconymScreen):
     nb_stars = NumericProperty()
     start_word = StringProperty("BOY")
     end_word = StringProperty("TOYS")
-    display_paths = BooleanProperty(False)
+    hide_completed_branches = BooleanProperty(False)
 
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
@@ -60,7 +60,7 @@ class ConfigureTreeScreen(LinconymScreen):
         # Extract info from user data
         self.nb_stars = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["nb_stars"]
         position_to_word_id = USER_DATA.classic_mode[self.current_act_id][
-            self.current_level_id]["position_to_word_id"]
+            self.current_level_id]["position_to_word_id"].copy()
         current_position = USER_DATA.classic_mode[self.current_act_id][
             self.current_level_id]["current_position"]
         words_found = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["words_found"]
@@ -68,9 +68,10 @@ class ConfigureTreeScreen(LinconymScreen):
         )
         self.end_word = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]["end_word"].upper(
         )
+        self.hide_completed_branches = USER_DATA.settings["hide_completed_branches"]
 
         self.ids["tree_layout"].build_layout(
-            position_to_word_id=position_to_word_id,
+            position_to_word_id=position_to_word_id.copy(),
             words_found=words_found,
             current_position=current_position,
             end_word=self.end_word.lower()
@@ -81,11 +82,14 @@ class ConfigureTreeScreen(LinconymScreen):
         self.current_level_name = "Act " + temp + " – " + self.current_level_id
 
     def display_hide_path(self):
-        # TODO save in the USER DATA
-        if self.display_paths:
-            self.display_paths = False
+        if self.hide_completed_branches:
+            self.hide_completed_branches = False
+            self.ids.tree_layout.show_completed_branches()
         else:
-            self.display_paths = True
+            self.hide_completed_branches = True
+            self.ids.tree_layout.mask_completed_branches()
+        USER_DATA.settings["hide_completed_branches"] = self.hide_completed_branches
+        USER_DATA.save_changes()
 
     def ask_reset_tree(self):
         print("TODO popup")

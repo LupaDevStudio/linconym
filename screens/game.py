@@ -78,6 +78,7 @@ class GameScreen(LinconymScreen):
         super().__init__(**kwargs)
         self.current_act_id: str
         self.current_level_id: str
+        self.level_saved_data = {}
 
     def reload_kwargs(self, dict_kwargs):
         self.current_act_id = dict_kwargs["current_act_id"]
@@ -97,6 +98,7 @@ class GameScreen(LinconymScreen):
         self.save_data()
 
     # Override tutorial to have a special tutorial at the beginning
+
     def open_tutorial(self, screen_name):
         tutorial_to_display = "all_rules"
         if self.current_act_id == "1":
@@ -283,7 +285,7 @@ class GameScreen(LinconymScreen):
 
         if self.game.get_nb_next_words(self.game.current_position) == 0\
                 and self.current_word != self.start_word.upper() \
-            and self.current_word != self.end_word.upper():
+        and self.current_word != self.end_word.upper():
             self.allow_delete_current_word = True
             self.ids.delete_word_button.opacity = 1
         else:
@@ -324,7 +326,8 @@ class GameScreen(LinconymScreen):
         self.new_word = ""
 
         # Store the dict containing the user progress
-        self.level_saved_data = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]
+        self.level_saved_data = USER_DATA.classic_mode[self.current_act_id][self.current_level_id].copy(
+        )
 
         # Save the dict containing the level instructions
         self.level_info = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]
@@ -375,7 +378,7 @@ class GameScreen(LinconymScreen):
         """
 
         self.ids["tree_layout"].build_layout(
-            position_to_word_id=self.game.position_to_word_id,
+            position_to_word_id=self.game.position_to_word_id.copy(),
             words_found=self.game.words_found,
             current_position=self.game.current_position,
             end_word=self.end_word.lower()
@@ -466,7 +469,8 @@ class GameScreen(LinconymScreen):
                 USER_DATA.user_profile["status"] = next_status
                 USER_DATA.save_changes()
 
-            size_hint_popup = (0.85, 0.6) if has_changed_status else (0.85, 0.3)
+            size_hint_popup = (
+                0.85, 0.6) if has_changed_status else (0.85, 0.3)
             popup = LevelUpPopup(
                 primary_color=self.primary_color,
                 secondary_color=self.secondary_color,
