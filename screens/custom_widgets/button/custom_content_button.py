@@ -40,7 +40,7 @@ class CustomContentButton(ButtonBehavior, RelativeLayout):
     background_color = CUSTOM_BUTTON_BACKGROUND_COLOR
     title = StringProperty()
     content = StringProperty()
-    text_filling_ratio = NumericProperty(0.8)
+    text_filling_ratio = NumericProperty(0.85)
     font_size_title = NumericProperty(LABEL_FONT_SIZE)
     font_size_content = NumericProperty(CONTENT_LABEL_FONT_SIZE)
     font_ratio = NumericProperty(1)

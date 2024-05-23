@@ -26,7 +26,7 @@ from tools.path import (
     PATH_TITLE_FONT
 )
 from tools.constants import (
-    CUSTOMIZATION_LAYOUT_FONT_SIZE,
+    SMALL_BUYING_BUTTON_FONT_SIZE,
     CUSTOM_BUTTON_BACKGROUND_COLOR,
     CONTENT_LABEL_FONT_SIZE
 )
@@ -48,7 +48,7 @@ class BoosterLayout(RelativeLayout):
     background_color = CUSTOM_BUTTON_BACKGROUND_COLOR
     mode = StringProperty()  # can be "ads" or "buy" or "conversion"
     booster_title = StringProperty()
-    font_size = NumericProperty(CUSTOMIZATION_LAYOUT_FONT_SIZE)
+    font_size = NumericProperty(SMALL_BUYING_BUTTON_FONT_SIZE)
     font_ratio = NumericProperty(1)
     text_font_name = StringProperty(PATH_TITLE_FONT)
 
@@ -163,6 +163,7 @@ class BoosterLayout(RelativeLayout):
                         unit=unit,
                         font_ratio=self.font_ratio,
                         size_hint=(1/number_rewards, 1),
+                        font_size=CONTENT_LABEL_FONT_SIZE,
                         pos_hint={"center_x":list_positions_rewards_x[counter_reward][counter_unit], "y":0}
                     )
                     relative_layout.add_widget(money_layout)

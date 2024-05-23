@@ -46,6 +46,7 @@ class ClassicModeScreen(LinconymScreen):
         self.fill_scrollview()
 
     def on_pre_enter(self, *args):
+        super().on_pre_enter(*args)
         # Recover the total nb of stars of the user
         nb_total_stars = USER_DATA.get_nb_total_stars()
 
@@ -67,8 +68,6 @@ class ClassicModeScreen(LinconymScreen):
             else:
                 disable_act_button = False
             current_act_button.disabled = disable_act_button
-
-        return super().on_pre_enter(*args)
 
     def on_resize(self, *args):
         for act in self.ACT_BUTTON_DICT:
