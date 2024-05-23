@@ -40,8 +40,8 @@ class CoinsCounter(ButtonBehavior, RelativeLayout):
     """
 
     background_color = CUSTOM_BUTTON_BACKGROUND_COLOR
-    coins_count_text = StringProperty()
-    coins_count = NumericProperty(-1)
+    coins_count = NumericProperty(0)
+    unit = StringProperty("lincoin")
     font_size = NumericProperty(COINS_COUNT_FONT_SIZE)
     text_font_name = StringProperty(PATH_TEXT_FONT)
     font_ratio = NumericProperty(1)
@@ -54,11 +54,6 @@ class CoinsCounter(ButtonBehavior, RelativeLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.always_release = True
-        self.bind(coins_count=self.update_coins_count)
-
-    def update_coins_count(self, base_widget, value):
-        self.coins_count_text = str(self.coins_count)
-        self.coins_image_source = get_lincoin_image_amount(self.coins_count)
 
     def on_press(self):
         if not self.disable_button:

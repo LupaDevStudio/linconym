@@ -2,12 +2,21 @@
 
 <BoostersScreen>:
 
-    # Coins counter
+    # Coins counters
     CoinsCounter:
         size_hint: (0.4, 0.07)
-        pos_hint: {"center_x":0.5, "center_y":0.81}
+        pos_hint: {"center_x":0.25, "center_y":0.81}
         font_ratio: root.font_ratio
-        coins_count: root.coins_count
+        coins_count: root.lincoins_count
+        unit: "lincoin"
+        display_plus: False
+        disable_button: True
+    CoinsCounter:
+        size_hint: (0.4, 0.07)
+        pos_hint: {"center_x":0.75, "center_y":0.81}
+        font_ratio: root.font_ratio
+        coins_count: root.linclues_count
+        unit: "linclue"
         display_plus: False
         disable_button: True
 

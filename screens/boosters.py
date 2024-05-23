@@ -54,7 +54,8 @@ class BoostersScreen(LinconymScreen):
         SCREEN_TUTORIAL: ""
     }
 
-    coins_count = NumericProperty()
+    lincoins_count = NumericProperty()
+    linclues_count = NumericProperty()
     list_daily_ads = ListProperty()
     list_weekly_ads = ListProperty()
     list_conversion = ListProperty()
@@ -68,7 +69,8 @@ class BoostersScreen(LinconymScreen):
         self.update_all_widgets()
 
     def update_all_widgets(self):
-        self.coins_count = USER_DATA.user_profile["lincoins"]
+        self.lincoins_count = USER_DATA.user_profile["lincoins"]
+        self.linclues_count = USER_DATA.user_profile["linclues"]
         self.build_list_daily_ads()
         self.build_list_weekly_ads()
         self.build_list_conversion()
@@ -104,7 +106,7 @@ class BoostersScreen(LinconymScreen):
         self.list_conversion = []
     
         # If the user has enough money to perform the conversion
-        enable_button = self.coins_count >= DICT_CONVERSION_MONEY["price_lincoins"]
+        enable_button = self.lincoins_count >= DICT_CONVERSION_MONEY["price_lincoins"]
         circle_color = self.primary_color if enable_button else self.secondary_color
     
         self.list_conversion.append({

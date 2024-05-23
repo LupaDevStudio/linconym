@@ -11,24 +11,12 @@
             size: self.size
             radius: [self.radius*self.font_ratio,]
 
-    # Counter
-    Label:
-        text: root.coins_count_text
-        font_size: root.font_ratio * root.font_size
-        pos_hint: {"center_x":0.5, "center_y":0.5} if root.display_plus else {"center_x":0.65, "center_y":0.5}
-        size_hint: (1, None)
-        font_name: root.text_font_name
-        line_height: 1
-        color: (0,0,0,1)
-
-    # Coins image
-    Image:
-        source: root.coins_image_source
-        pos_hint: {"center_x":0.2,"center_y":0.5}
-        size_hint: (None,0.6)
-        width: self.height
-        fit_mode: "contain"
-        color: (0,0,0,1)
+    MoneyLayout:
+        coins_count: root.coins_count
+        font_ratio: root.font_ratio
+        size_hint: (1, 1)
+        pos_hint: {"center_x": 0.5,"center_y":0.5}
+        unit: root.unit
 
     # Plus
     Label:

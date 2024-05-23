@@ -52,7 +52,8 @@ class ProfileScreen(LinconymScreen):
     user_status_image = StringProperty()
     user_level = StringProperty()
     percentage_experience = NumericProperty()
-    coins_count = NumericProperty()
+    lincoins_count = NumericProperty()
+    linclues_count = NumericProperty()
     theme_colors = StringProperty()
 
     classic_mode_achievements = StringProperty()
@@ -63,7 +64,8 @@ class ProfileScreen(LinconymScreen):
 
     def on_pre_enter(self, *args):
         super().on_pre_enter(*args)
-        self.coins_count = USER_DATA.user_profile["lincoins"]
+        self.lincoins_count = USER_DATA.user_profile["lincoins"]
+        self.linclues_count = USER_DATA.user_profile["linclues"]
         self.user_level = "Level " + str(USER_DATA.user_profile["level"])
         _, self.percentage_experience = compute_progression(
             USER_DATA.user_profile["experience"])

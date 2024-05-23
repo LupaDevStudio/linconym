@@ -59,9 +59,9 @@
         BoxShadow:
             pos: self.pos
             size: self.size
-            offset: 5, -5
-            spread_radius: -10, -10
-            blur_radius: 30
+            offset: 5*self.font_ratio, -5*self.font_ratio
+            spread_radius: -10*self.font_ratio, -10*self.font_ratio
+            blur_radius: 30*self.font_ratio
         # Border
         # Color:
         #     rgba: root.border_color
