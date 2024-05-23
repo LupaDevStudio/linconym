@@ -8,7 +8,7 @@
 
         ColoredRoundedButton:
             id: button
-            size_hint: (0.4,0.15)
+            size_hint: (0.4,0.15) if root.has_changed_status else (0.4, 0.3)
             pos_hint: {"center_x":0.5,"center_y":0.12}
             font_ratio: root.font_ratio
             font_size: SMALL_BUTTON_FONT_SIZE
@@ -21,7 +21,7 @@
       
         Label:
             id: top_label
-            size_hint: (0.9,0.1)
+            size_hint: (0.9,0.1)if root.has_changed_status else (0.9, 0.2)
             pos_hint: {"center_x":0.5,"top":0.95}
             font_size: SMALL_BUTTON_FONT_SIZE * root.font_ratio
             font_name: PATH_TEXT_FONT
@@ -35,9 +35,55 @@
 
         # Reward frame for Lincoins
         RewardFrame:
-            pos_hint: {"center_x": 0.5, "top": 0.7}
-            size_hint: (0.35, 0.15)
+            pos_hint: {"center_x": 0.5, "top": 0.7} if not root.has_changed_status else {"center_x": 0.5, "top": 0.775}
+            size_hint: (0.35, 0.15) if root.has_changed_status else (0.35, 0.3)
             reward: root.number_lincoins_won
             font_ratio: root.font_ratio
             plus_mode: True
 
+        # Badges images
+        Image:
+            source: PATH_BADGES + root.current_status + ".png"
+            pos_hint: {"center_x": 0.25, "center_y": 0.425}
+            size_hint: (None, 0.2)
+            width: self.height
+            opacity: 1 if root.has_changed_status else 0
+        Label:
+            text: root.current_status.capitalize()
+            pos_hint: {"center_x": 0.25, "center_y": 0.275}
+            size_hint: (0.4, 0.05)
+            font_size: root.font_ratio * SMALL_BUTTON_FONT_SIZE
+            font_name: PATH_TEXT_FONT
+            size: self.size
+            shorten: False
+            text_size: (self.width,None)
+            color: (0,0,0,1)
+            halign: "center"
+            valign: "middle"
+            opacity: 1 if root.has_changed_status else 0
+        Image:
+            source: PATH_ICONS + "right_arrow.png"
+            color: root.primary_color
+            pos_hint: {"center_x": 0.5, "center_y": 0.425}
+            size_hint: (None, 0.1)
+            width: self.height
+            opacity: 1 if root.has_changed_status else 0
+        Image:
+            source: PATH_BADGES + root.next_status + ".png"
+            pos_hint: {"center_x": 0.75, "center_y": 0.425}
+            size_hint: (None, 0.2)
+            width: self.height
+            opacity: 1 if root.has_changed_status else 0
+        Label:
+            text: root.next_status.capitalize()
+            pos_hint: {"center_x": 0.75, "center_y": 0.275}
+            size_hint: (0.4, 0.05)
+            font_size: root.font_ratio * SMALL_BUTTON_FONT_SIZE
+            font_name: PATH_TEXT_FONT
+            size: self.size
+            shorten: False
+            text_size: (self.width,None)
+            color: (0,0,0,1)
+            halign: "center"
+            valign: "middle"
+            opacity: 1 if root.has_changed_status else 0

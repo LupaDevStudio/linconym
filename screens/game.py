@@ -9,7 +9,6 @@ Module to create the game screen.
 ### Python imports ###
 
 from functools import partial
-from typing import Literal
 
 ### Kivy imports ###
 
@@ -29,7 +28,8 @@ from tools.constants import (
     SCREEN_TUTORIAL,
     GAMEPLAY_DICT,
     TUTORIAL,
-    GAME_TUTORIAL_DICT
+    GAME_TUTORIAL_DICT,
+    USER_STATUS_DICT
 )
 from screens.custom_widgets import (
     LinconymScreen,
@@ -427,7 +427,7 @@ class GameScreen(LinconymScreen):
 
     def display_success_popup(self, end_level_dict):
 
-        # Check if there is a next level in the same act
+        # Check if there is a next puzzle in the same act
         next_lvl_id = str(int(self.current_level_id) + 1)
         has_next_levels_in_act = next_lvl_id in GAMEPLAY_DICT[self.current_act_id]
 
@@ -455,10 +455,26 @@ class GameScreen(LinconymScreen):
 
         # Create the popup for level up
         if end_level_dict["has_level_up"]:
+            user_level = USER_DATA.user_profile['level']
+            current_status = USER_DATA.user_profile["status"]
+            has_changed_status = False
+            list_status = list(USER_STATUS_DICT.keys())
+            index_current_status = list_status.index(current_status)
+            next_status = list_status[index_current_status + 1]
+            if current_status != "legend" and user_level > USER_STATUS_DICT[current_status]["end"]:
+                has_changed_status = True
+                USER_DATA.user_profile["status"] = next_status
+                USER_DATA.save_changes()
+
+            size_hint_popup = (0.85, 0.6) if has_changed_status else (0.85, 0.3)
             popup = LevelUpPopup(
                 primary_color=self.primary_color,
                 secondary_color=self.secondary_color,
-                number_lincoins_won=10  # TODO
+                number_lincoins_won=10,  # TODO
+                has_changed_status=has_changed_status,
+                size_hint=size_hint_popup,
+                current_status=current_status,
+                next_status=next_status
             )
             popup.open()
 

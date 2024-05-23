@@ -38,6 +38,9 @@ class LevelUpPopup(CustomPopup):
     top_label_text = StringProperty("Congrats, you levelled up!")
     release_function = ObjectProperty(lambda: 1 + 1)
     number_lincoins_won = NumericProperty(0)
+    has_changed_status = BooleanProperty(False)
+    current_status = StringProperty()
+    next_status = StringProperty()
 
     def __init__(self, **kwargs):
         if not "release_function" in kwargs:
