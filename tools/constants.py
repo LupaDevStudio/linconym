@@ -51,7 +51,7 @@ from tools.basic_tools import (
 
 ### Version ###
 
-__version__ = "0.0.5"
+__version__ = "0.0.6"
 
 ### Mode ###
 
