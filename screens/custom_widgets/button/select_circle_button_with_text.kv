@@ -27,8 +27,9 @@
 
     # Button with check image
     SelectCircleButton:
+        id: circle_button
         pos_hint: {"center_x":0.82,"center_y":0.5}
         size_hint: (None,0.4)
         font_ratio: root.font_ratio
         is_using: root.is_using
-        release_function: root.on_release
+        release_function: root.release_function

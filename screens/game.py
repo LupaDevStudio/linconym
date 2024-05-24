@@ -78,6 +78,7 @@ class GameScreen(LinconymScreen):
         super().__init__(**kwargs)
         self.current_act_id: str
         self.current_level_id: str
+        self.level_saved_data = {}
 
     def reload_kwargs(self, dict_kwargs):
         self.current_act_id = dict_kwargs["current_act_id"]
@@ -97,6 +98,7 @@ class GameScreen(LinconymScreen):
         self.save_data()
 
     # Override tutorial to have a special tutorial at the beginning
+
     def open_tutorial(self, screen_name):
         tutorial_to_display = "all_rules"
         if self.current_act_id == "1":
@@ -151,7 +153,8 @@ class GameScreen(LinconymScreen):
         self.level_saved_data["position_to_word_id"] = self.game.position_to_word_id
 
         # Push changes to user data
-        USER_DATA.classic_mode[self.current_act_id][self.current_level_id] = self.level_saved_data
+        USER_DATA.classic_mode[self.current_act_id][self.current_level_id] = self.level_saved_data.copy(
+        )
         USER_DATA.save_changes()
 
     def check_disable_keyboard(self):
@@ -324,7 +327,8 @@ class GameScreen(LinconymScreen):
         self.new_word = ""
 
         # Store the dict containing the user progress
-        self.level_saved_data = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]
+        self.level_saved_data = USER_DATA.classic_mode[self.current_act_id][self.current_level_id].copy(
+        )
 
         # Save the dict containing the level instructions
         self.level_info = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]
@@ -375,7 +379,7 @@ class GameScreen(LinconymScreen):
         """
 
         self.ids["tree_layout"].build_layout(
-            position_to_word_id=self.game.position_to_word_id,
+            position_to_word_id=self.game.position_to_word_id.copy(),
             words_found=self.game.words_found,
             current_position=self.game.current_position,
             end_word=self.end_word.lower()
@@ -384,18 +388,14 @@ class GameScreen(LinconymScreen):
     def submit_word(self):
         self.game.submit_word(self.new_word.lower())
 
-        # Switch back to root if end reached
-        if self.new_word == self.end_word.upper():
-            self.game.current_position = "0"
-
-        # Rebuild layout
-        self.build_tree_layout()
-
         # Save the data
         self.save_data()
 
         # Change the current and new word
         if not self.check_level_complete():
+            # Rebuild layout
+            self.build_tree_layout()
+
             self.current_word = self.new_word
             self.new_word = ""
 
@@ -414,8 +414,11 @@ class GameScreen(LinconymScreen):
             self.new_word = ""
             self.build_word()
 
-            # Switch back to first word
-            self.ids.tree_layout.change_current_position("0")
+            # Switch back to root
+            self.game.current_position = "0"
+
+            # Rebuild layout
+            self.build_tree_layout()
 
             # Display the popup for the level completion
             self.display_success_popup(end_level_dict=end_level_dict)
@@ -466,7 +469,8 @@ class GameScreen(LinconymScreen):
                 USER_DATA.user_profile["status"] = next_status
                 USER_DATA.save_changes()
 
-            size_hint_popup = (0.85, 0.6) if has_changed_status else (0.85, 0.3)
+            size_hint_popup = (
+                0.85, 0.6) if has_changed_status else (0.85, 0.3)
             popup = LevelUpPopup(
                 primary_color=self.primary_color,
                 secondary_color=self.secondary_color,
@@ -511,6 +515,7 @@ class GameScreen(LinconymScreen):
             "current_level_id": self.current_level_id,
             "current_act_id": self.current_act_id
         }
+        self.save_data()
         self.go_to_next_screen(
             screen_name="configure_tree",
             current_dict_kwargs=dict_kwargs,

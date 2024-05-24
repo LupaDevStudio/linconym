@@ -72,16 +72,16 @@
         size_hint: (0.3,0.1)
         pos_hint: {"center_x":0.2, "y":0.025}
         release_function: root.ask_reset_tree
-        font_size: SMALL_LABEL_FONT_SIZE
+        font_size: LETTER_FONT_SIZE
         text_font_name: PATH_TITLE_FONT
         font_ratio: root.font_ratio
 
     # Display / hide completed paths
     SelectCircleButtonWithText:
-        text: "Completed paths"
+        text: "Hide completed paths"
         pos_hint: {"center_x":0.7,"y":0.025}
         size_hint: (0.5,0.1)
-        font_size: SMALL_LABEL_FONT_SIZE
+        font_size: LETTER_FONT_SIZE
         font_ratio: root.font_ratio
-        is_using: root.display_paths
+        is_using: root.hide_completed_branches
         release_function: root.display_hide_path

@@ -248,6 +248,7 @@ class TreeLayout(RelativeLayout):
 
     def mask_completed_branches(self):
         self.hide_completed_branches = True
+        self.current_position = "0"
         self.build_layout(
             position_to_word_id=self.position_to_word_id,
             words_found=self.words_found,
@@ -503,8 +504,6 @@ class TreeLayout(RelativeLayout):
                         words_found=words_found,
                         end_word=end_word) and key != "0":
                     position_to_word_id.pop(key)
-
-        print(position_to_word_id)
 
         # Init a word button pile
         self.word_button_dict = {}

@@ -10,6 +10,7 @@ Module to create buy and enable buttons
 ### Kivy imports ###
 
 from kivy.uix.relativelayout import RelativeLayout
+from kivy.uix.behaviors import ButtonBehavior
 from kivy.properties import (
     StringProperty,
     NumericProperty,
@@ -24,7 +25,8 @@ from tools.path import (
     PATH_TITLE_FONT
 )
 from tools.constants import (
-    CUSTOM_BUTTON_BACKGROUND_COLOR
+    CUSTOM_BUTTON_BACKGROUND_COLOR,
+    OPACITY_ON_BUTTON_PRESS
 )
 
 #############
@@ -32,7 +34,7 @@ from tools.constants import (
 #############
 
 
-class SelectCircleButtonWithText(RelativeLayout):
+class SelectCircleButtonWithText(ButtonBehavior, RelativeLayout):
     """
     A button for the customization screen to buy images or colors.
     """
@@ -53,5 +55,11 @@ class SelectCircleButtonWithText(RelativeLayout):
 
         self.always_release = True
 
+    def on_press(self):
+        if not self.disable_button:
+            self.opacity = OPACITY_ON_BUTTON_PRESS
+
     def on_release(self):
-        self.release_function()
+        if not self.disable_button:
+            self.release_function()
+            self.opacity = 1
