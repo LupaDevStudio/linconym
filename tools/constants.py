@@ -173,8 +173,6 @@ class UserData():
         -------
         None
         """
-        print("BORDEL WAS PASSIERT ?")
-        print(self.classic_mode["2"]["4"])
 
         # Create the dictionary of data
         data = {}

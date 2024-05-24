@@ -38,7 +38,6 @@ class OpeningScreen(ImprovedScreen):
             self.opacity_state = -self.opacity_state
 
     def on_enter(self, *args):
-        print("enter opening screen")
         # Schedule the update for the text opacity effect
         Clock.schedule_interval(self.update, 1 / 60)
 

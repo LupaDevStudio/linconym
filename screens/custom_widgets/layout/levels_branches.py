@@ -78,6 +78,8 @@ class LevelButton(ButtonBehavior, RelativeLayout):
     secondary_color = ColorProperty((0.2, 0.2, 0.2, 1))
     is_unlocked = BooleanProperty(False)
     disable_button = BooleanProperty(False)
+    has_chest = BooleanProperty(False)
+    bool_chest_open = BooleanProperty(False)
 
     def __init__(
             self,
@@ -209,18 +211,24 @@ class LevelBranch(RelativeLayout):
             if level_key in USER_DATA.classic_mode[self.act_id]:
                 level_is_unlocked = True
                 level_nb_stars = USER_DATA.classic_mode[self.act_id][level_key]["nb_stars"]
+                bool_chest_open = True
             else:
                 level_is_unlocked = False
                 level_nb_stars = 0
-            level_button = LevelButton(level_id=level_id,
-                                       is_unlocked=level_is_unlocked,
-                                       nb_stars=level_nb_stars,
-                                       pos_hint=level_pos_hint,
-                                       size_hint=(
-                                           LEVEL_BUTTON_SIZE_HINT, LEVEL_BUTTON_RELATIVE_HEIGHT),
-                                       primary_color=self.primary_color,
-                                       secondary_color=self.secondary_color,
-                                       font_ratio=self.font_ratio)
+                bool_chest_open = False
+            has_chest = "chest" in GAMEPLAY_DICT[self.act_id][level_key] and GAMEPLAY_DICT[self.act_id][level_key]["chest"]
+            level_button = LevelButton(
+                level_id=level_id,
+                is_unlocked=level_is_unlocked,
+                nb_stars=level_nb_stars,
+                pos_hint=level_pos_hint,
+                size_hint=(
+                    LEVEL_BUTTON_SIZE_HINT, LEVEL_BUTTON_RELATIVE_HEIGHT),
+                primary_color=self.primary_color,
+                secondary_color=self.secondary_color,
+                font_ratio=self.font_ratio,
+                has_chest=has_chest,
+                bool_chest_open=bool_chest_open)
             self.add_widget(level_button)
             # Create the branch
             if level_id < nb_levels:

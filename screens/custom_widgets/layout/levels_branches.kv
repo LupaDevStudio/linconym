@@ -32,6 +32,15 @@
         primary_color: root.primary_color
         secondary_color: root.secondary_color
 
+    # Chest above
+    Image:
+        id: chest
+        source: PATH_ICONS + "chest_open.png" if root.bool_chest_open else PATH_ICONS + "chest_close.png"
+        pos_hint: {"center_x": 0.5, "y": 1}
+        size_hint: (None, 0.6) if root.bool_chest_open else (None, 0.8)
+        color: root.primary_color if root.bool_chest_open else root.secondary_color
+        opacity: 1 if root.has_chest else 0
+
 <StraightBranch>:
     opacity: 0.8
     # canvas.before:
