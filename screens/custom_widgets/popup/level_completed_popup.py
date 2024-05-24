@@ -70,3 +70,5 @@ class LevelCompletedPopup(CustomPopup):
                 self.win_linclues = True
             else:
                 self.win_linclues = False
+        else:
+            self.win_linclues = False

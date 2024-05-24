@@ -175,6 +175,9 @@ class GameScreen(LinconymScreen):
         if self.current_word.lower() == self.end_word:
             self.ids.keyboard_layout.disable_letters()
             self.ids.keyboard_layout.disable_delete_button()
+            # Remove the letters widgets
+            for letter_widget in self.list_widgets_letters:
+                self.remove_widget(letter_widget)
 
     def check_enable_submit_button(self):
         """
@@ -317,6 +320,7 @@ class GameScreen(LinconymScreen):
         self.new_word = self.new_word[:len(self.current_word) + 1]
 
         # Update the keyboard and submit button
+        self.build_word()
         self.check_disable_keyboard()
         self.check_enable_submit_button()
         self.check_delete_current_word()

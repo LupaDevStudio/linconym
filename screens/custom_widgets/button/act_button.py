@@ -18,7 +18,8 @@ from kivy.properties import (
     StringProperty,
     NumericProperty,
     ColorProperty,
-    ObjectProperty
+    ObjectProperty,
+    BooleanProperty
 )
 
 ### Local imports ###
@@ -55,6 +56,7 @@ class ActButton(ButtonBehavior, RelativeLayout):
     primary_color = ColorProperty((1, 1, 1, 1))
     secondary_color = ColorProperty((0.5, 0.5, 0.5, 1))
     release_function = ObjectProperty(lambda: 1 + 1)
+    disable_button = BooleanProperty(False)
 
     def __init__(self, **kwargs):
 
@@ -73,9 +75,10 @@ class ActButton(ButtonBehavior, RelativeLayout):
             self.nb_total_stars) + "/" + str(self.nb_stars_to_unlock)
 
     def on_press(self):
-        self.opacity = OPACITY_ON_BUTTON_PRESS
+        if not self.disable_button:
+            self.opacity = OPACITY_ON_BUTTON_PRESS
 
     def on_release(self):
-        if self.collide_point(self.last_touch.x, self.last_touch.y):
+        if self.collide_point(self.last_touch.x, self.last_touch.y) and not self.disable_button:
             self.release_function()
         self.opacity = 1

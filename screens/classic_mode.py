@@ -67,7 +67,7 @@ class ClassicModeScreen(LinconymScreen):
                 disable_act_button = True
             else:
                 disable_act_button = False
-            current_act_button.disabled = disable_act_button
+            current_act_button.disable_button = disable_act_button
 
     def on_resize(self, *args):
         for act in self.ACT_BUTTON_DICT:
@@ -112,7 +112,7 @@ class ClassicModeScreen(LinconymScreen):
                 secondary_color=self.secondary_color,
                 nb_stars_to_unlock=nb_stars_to_unlock,
                 nb_total_stars=nb_total_stars,
-                disabled=disable_act_button)
+                disable_button=disable_act_button)
             self.ACT_BUTTON_DICT[act] = current_act_button
             scrollview_layout.add_widget(self.ACT_BUTTON_DICT[act])
 
