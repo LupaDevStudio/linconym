@@ -951,6 +951,7 @@ class ClassicGame(Game):
 
         # recover previous best number of words
         nb_words_previous_best: int = 0
+        previous_exists: bool = USER_DATA.classic_mode[self.act_id][self.lvl_id]["nb_stars"] > 0
         previous_best_exists: bool = False
         if (NB_WORDS_KEY in USER_DATA.classic_mode[self.act_id][self.lvl_id]):
             nb_words_previous_best = USER_DATA.classic_mode[self.act_id][self.lvl_id][NB_WORDS_KEY]
@@ -979,6 +980,16 @@ class ClassicGame(Game):
             self.lincoins_earned = lincoins_now - lincoins_earned_before
             USER_DATA.user_profile["lincoins"] += self.lincoins_earned
             USER_DATA.user_profile["cumulated_lincoins"] += self.lincoins_earned
+
+        # Set the number of Linclues won in chests
+        self.linclues_earned = 0
+        if "chest" in GAMEPLAY_DICT[self.act_id][self.lvl_id] and GAMEPLAY_DICT[self.act_id][self.lvl_id]["chest"]:
+            # If the user has not already opened the chest
+            if not previous_exists:
+                self.linclues_earned = 3
+                USER_DATA.user_profile["linclues"] += 3
+                USER_DATA.user_profile["cumulated_linclues"] += 3
+                USER_DATA.save_changes()
 
         # If the user passed through the quest word (if any) for the first time, award bonus xp
         # award_quest_word_xp: bool = False
@@ -1044,6 +1055,7 @@ class ClassicGame(Game):
             "nb_words": nb_words_found,
             "xp_earned": self.xp_earned,
             "lincoins_earned": self.lincoins_earned,
+            "linclues_earned": self.linclues_earned,
             "has_level_up": has_level_up,
             "previous_level_progress": previous_level_progress,
             "current_level_progress": current_level_progress

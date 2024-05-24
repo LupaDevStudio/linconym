@@ -147,15 +147,17 @@ class GameScreen(LinconymScreen):
 
     def save_data(self):
 
+        self.level_saved_data = {}
+        for key in USER_DATA.classic_mode[self.current_act_id][self.current_level_id]:
+            self.level_saved_data[key] = USER_DATA.classic_mode[self.current_act_id][self.current_level_id][key]
+
         # Insert data in save dict
         self.level_saved_data["current_position"] = self.game.current_position
         self.level_saved_data["words_found"] = self.game.words_found
         self.level_saved_data["position_to_word_id"] = self.game.position_to_word_id
-        self.level_saved_data["nb_stars"] = self.nb_stars
 
         # Push changes to user data
-        USER_DATA.classic_mode[self.current_act_id][self.current_level_id] = self.level_saved_data.copy(
-        )
+        USER_DATA.classic_mode[self.current_act_id][self.current_level_id] = self.level_saved_data.copy()
         USER_DATA.save_changes()
 
     def check_disable_keyboard(self):
@@ -439,14 +441,6 @@ class GameScreen(LinconymScreen):
         next_lvl_id = str(int(self.current_level_id) + 1)
         has_next_levels_in_act = next_lvl_id in GAMEPLAY_DICT[self.current_act_id]
 
-        # Set the number of Linclues won in chests
-        number_linclues_won = 0
-        if "chest" in GAMEPLAY_DICT[self.current_act_id][self.current_level_id] and GAMEPLAY_DICT[self.current_act_id][self.current_level_id]["chest"]:
-            number_linclues_won = 3
-            USER_DATA.user_profile["linclues"] += 3
-            USER_DATA.user_profile["cumulated_linclues"] += 3
-            USER_DATA.save_changes()
-
         # Create the popup for the completion
         popup = LevelCompletedPopup(
             title=f"Puzzle {self.current_level_id} completed",
@@ -465,7 +459,7 @@ class GameScreen(LinconymScreen):
                 self.reload_for_level_change, next_lvl_id),
             has_next_levels_in_act=has_next_levels_in_act,
             number_lincoins_won=end_level_dict["lincoins_earned"],
-            number_linclues_won=number_linclues_won
+            number_linclues_won=end_level_dict["linclues_earned"]
         )
         popup.open()
 
