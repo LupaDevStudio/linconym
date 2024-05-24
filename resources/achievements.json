@@ -118,6 +118,76 @@
         "reward": 5000,
         "number_series": 5
     },
+    "customization_colors_1": {
+        "achievement_title": "Novice buyer - Colors",
+        "achievement_content": "Buy your first set of colors.",
+        "series": "customization_colors",
+        "reward": 10,
+        "number_series": 1
+    },
+    "customization_colors_5": {
+        "achievement_title": "Small buyer - Colors",
+        "achievement_content": "Buy 5 sets of colors.",
+        "series": "customization_colors",
+        "reward": 50,
+        "number_series": 2
+    },
+    "customization_colors_10": {
+        "achievement_title": "Experienced buyer - Colors",
+        "achievement_content": "Buy 10 sets of colors.",
+        "series": "customization_colors",
+        "reward": 100,
+        "number_series": 3
+    },
+    "customization_colors_20": {
+        "achievement_title": "Compulsive buyer - Colors",
+        "achievement_content": "Buy 20 sets of colors.",
+        "series": "customization_colors",
+        "reward": 500,
+        "number_series": 4
+    },
+    "customization_colors_50": {
+        "achievement_title": "Legendary buyer - Colors",
+        "achievement_content": "Buy 50 sets of colors.",
+        "series": "customization_colors",
+        "reward": 1000,
+        "number_series": 5
+    },
+    "customization_music_1": {
+        "achievement_title": "Novice buyer - Musics",
+        "achievement_content": "Buy your first music.",
+        "series": "customization_music",
+        "reward": 10,
+        "number_series": 1
+    },
+    "customization_music_3": {
+        "achievement_title": "Small buyer - Musics",
+        "achievement_content": "Buy 3 musics.",
+        "series": "customization_music",
+        "reward": 50,
+        "number_series": 2
+    },
+    "customization_music_5": {
+        "achievement_title": "Experienced buyer - Musics",
+        "achievement_content": "Buy 5 musics.",
+        "series": "customization_music",
+        "reward": 100,
+        "number_series": 3
+    },
+    "customization_music_10": {
+        "achievement_title": "Compulsive buyer - Musics",
+        "achievement_content": "Buy 10 musics.",
+        "series": "customization_music",
+        "reward": 500,
+        "number_series": 4
+    },
+    "customization_music_20": {
+        "achievement_title": "Legendary buyer - Musics",
+        "achievement_content": "Buy 20 musics.",
+        "series": "customization_music",
+        "reward": 1000,
+        "number_series": 5
+    },
     "customization_secret_theme_1": {
         "achievement_title": "Novice collector",
         "achievement_content": "Buy your first secret theme.",
@@ -138,5 +208,159 @@
         "series": "customization_secret_theme",
         "reward": 3000,
         "number_series": 3
+    },
+    "cumulated_lincoins_1000": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 1 000 Lincoins.",
+        "series": "cumulated_lincoins",
+        "reward": 100,
+        "number_series": 1
+    },
+    "cumulated_lincoins_5000": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 5 000 Lincoins.",
+        "series": "cumulated_lincoins",
+        "reward": 500,
+        "number_series": 2
+    },
+    "cumulated_lincoins_10000": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 10 000 Lincoins.",
+        "series": "cumulated_lincoins",
+        "reward": 1000,
+        "number_series": 3
+    },
+    "cumulated_lincoins_50000": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 50 000 Lincoins.",
+        "series": "cumulated_lincoins",
+        "reward": 5000,
+        "number_series": 4
+    },
+    "cumulated_lincoins_100000": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 100 000 Lincoins.",
+        "series": "cumulated_lincoins",
+        "reward": 9999,
+        "number_series": 5
+    },
+    "cumulated_linclues_10": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 10 Linclues.",
+        "series": "cumulated_linclues",
+        "reward": 100,
+        "number_series": 1
+    },
+    "cumulated_linclues_50": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 50 Linclues.",
+        "series": "cumulated_linclues",
+        "reward": 500,
+        "number_series": 2
+    },
+    "cumulated_linclues_100": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 100 Linclues.",
+        "series": "cumulated_linclues",
+        "reward": 1000,
+        "number_series": 3
+    },
+    "cumulated_linclues_500": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 500 Linclues.",
+        "series": "cumulated_linclues",
+        "reward": 5000,
+        "number_series": 4
+    },
+    "cumulated_linclues_1000": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 1 000 Linclues.",
+        "series": "cumulated_linclues",
+        "reward": 9999,
+        "number_series": 5
+    },
+    "cumulated_stars_50": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 50 stars.",
+        "series": "cumulated_stars",
+        "reward": 100,
+        "number_series": 1
+    },
+    "cumulated_stars_100": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 100 stars.",
+        "series": "cumulated_stars",
+        "reward": 500,
+        "number_series": 2
+    },
+    "cumulated_stars_500": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 500 stars.",
+        "series": "cumulated_stars",
+        "reward": 1000,
+        "number_series": 3
+    },
+    "cumulated_stars_1000": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 1 000 stars.",
+        "series": "cumulated_stars",
+        "reward": 5000,
+        "number_series": 4
+    },
+    "cumulated_stars_5000": {
+        "achievement_title": "NOM",
+        "achievement_content": "Collect 5 000 stars.",
+        "series": "cumulated_stars",
+        "reward": 9999,
+        "number_series": 5
+    },
+    "acts_1": {
+        "achievement_title": "Act 1 completed",
+        "achievement_content": "Finish all puzzles of Act 1 - Tutorial.",
+        "series": "acts",
+        "reward": 100,
+        "number_series": 1
+    },
+    "acts_2": {
+        "achievement_title": "Act 2 completed",
+        "achievement_content": "Finish all puzzles of Act 2 - TODO.",
+        "series": "acts",
+        "reward": 200,
+        "number_series": 2
+    },
+    "acts_3": {
+        "achievement_title": "Act 3 completed",
+        "achievement_content": "Finish all puzzles of Act 3 - TODO.",
+        "series": "acts",
+        "reward": 300,
+        "number_series": 3
+    },
+    "acts_4": {
+        "achievement_title": "Act 4 completed",
+        "achievement_content": "Finish all puzzles of Act 4 - TODO.",
+        "series": "acts",
+        "reward": 400,
+        "number_series": 4
+    },
+    "acts_5": {
+        "achievement_title": "Act 5 completed",
+        "achievement_content": "Finish all puzzles of Act 5 - TODO.",
+        "series": "acts",
+        "reward": 500,
+        "number_series": 5
+    },
+    "acts_6": {
+        "achievement_title": "Act 6 completed",
+        "achievement_content": "Finish all puzzles of Act 6 - TODO.",
+        "series": "acts",
+        "reward": 600,
+        "number_series": 6
+    },
+    "acts_7": {
+        "achievement_title": "Act 7 completed",
+        "achievement_content": "Finish all puzzles of Act 7 - TODO.",
+        "series": "acts",
+        "reward": 700,
+        "number_series": 7
     }
 }

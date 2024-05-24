@@ -27,7 +27,8 @@ from tools.constants import (
     ACHIEVEMENTS_DICT,
     USER_DATA,
     USER_STATUS_DICT,
-    THEMES_DICT
+    THEMES_DICT,
+    GAMEPLAY_DICT
 )
 from screens.custom_widgets import (
     AchievementsLayout
@@ -91,6 +92,53 @@ class AchievementsScreen(LinconymScreen):
                         number_bought_themes += 1
             if number_themes_to_buy <= number_bought_themes:
                 USER_DATA.achievements[achievement_id] = False            
+
+        if series == "customization_colors":
+            number_themes_to_buy = int(
+                achievement_id.replace("customization_colors_", ""))
+            number_bought_themes = 0
+            for theme in USER_DATA.unlocked_themes:
+                if USER_DATA.unlocked_themes[theme]["colors"] and theme != "lupa":
+                    number_bought_themes += 1
+            if number_themes_to_buy <= number_bought_themes:
+                USER_DATA.achievements[achievement_id] = False
+
+        if series == "customization_music":
+            number_musics_to_buy = int(
+                achievement_id.replace("customization_music_", ""))
+            number_bought_musics = len(USER_DATA.unlocked_musics) - 1
+            if number_musics_to_buy <= number_bought_musics:
+                USER_DATA.achievements[achievement_id] = False
+
+        if series == "cumulated_lincoins":
+            number_lincoins_to_cumulate = int(
+                achievement_id.replace("cumulated_lincoins_", ""))
+            cumulated_lincoins = USER_DATA.user_profile["cumulated_lincoins"]
+            if number_lincoins_to_cumulate <= cumulated_lincoins:
+                USER_DATA.achievements[achievement_id] = False
+
+        if series == "cumulated_linclues":
+            number_linclues_to_cumulate = int(
+                achievement_id.replace("cumulated_linclues_", ""))
+            cumulated_linclues = USER_DATA.user_profile["cumulated_linclues"]
+            if number_linclues_to_cumulate <= cumulated_linclues:
+                USER_DATA.achievements[achievement_id] = False
+
+        if series == "cumulated_stars":
+            number_stars_to_win = int(
+                achievement_id.replace("cumulated_stars_", ""))
+            number_stars_won = USER_DATA.get_nb_total_stars()
+            if number_stars_to_win <= number_stars_won:
+                USER_DATA.achievements[achievement_id] = False
+
+        if series == "acts":
+            act_name = achievement_id.replace("acts_", "")
+            if act_name in USER_DATA.classic_mode:
+                nb_levels = len(GAMEPLAY_DICT[act_name]) - 1
+                nb_completed_levels = USER_DATA.get_nb_completed_levels_for_act(
+                    act_name)
+                if nb_completed_levels == nb_levels:
+                    USER_DATA.achievements[achievement_id] = False
 
         USER_DATA.save_changes()
 
@@ -166,14 +214,21 @@ class AchievementsScreen(LinconymScreen):
 
         user_in_series = max(series_achievements) if series_achievements != [] else 0
 
-        # Display only the next achievement
-        return user_in_series + 1 == number_series
+        # Display only the acts unlocked
+        if series == "acts":
+            act_name = achievement_id.replace("acts_", "")
+            return act_name in USER_DATA.classic_mode
+
+        # Display only the next achievement for most series
+        else:
+            return user_in_series + 1 == number_series
 
     def get_reward(self, achievement_id):
         achievement = ACHIEVEMENTS_DICT[achievement_id]
         reward = achievement["reward"]
         USER_DATA.achievements[achievement_id] = True
         USER_DATA.user_profile["lincoins"] += reward
+        USER_DATA.user_profile["cumulated_lincoins"] += reward
         USER_DATA.save_changes()
 
         # Rebuild scrollview

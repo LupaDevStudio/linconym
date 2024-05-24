@@ -105,7 +105,9 @@ if not os.path.exists(PATH_USER_DATA):
             "level": 1,
             "experience": 0,
             "lincoins": 0,
-            "linclues": 0
+            "linclues": 0,
+            "cumulated_lincoins": 0,
+            "cumulated_linclues": 0
         },
         "tutorial": {
             "home": False,

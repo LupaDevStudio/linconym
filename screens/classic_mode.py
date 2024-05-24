@@ -84,7 +84,7 @@ class ClassicModeScreen(LinconymScreen):
         self.ACT_BUTTON_DICT = {}
         for act in GAMEPLAY_DICT:
 
-            # Extract the act informationg
+            # Extract the act information
             act_title = GAMEPLAY_DICT[act]["name"]
             nb_levels = len(GAMEPLAY_DICT[act]) - 1
             nb_stars_to_unlock = 20 * (int(act) - 1)

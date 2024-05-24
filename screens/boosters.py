@@ -150,6 +150,7 @@ class BoostersScreen(LinconymScreen):
     def convert_lincoin_to_linclue(self):
         USER_DATA.user_profile["lincoins"] -= DICT_CONVERSION_MONEY["price_lincoins"]
         USER_DATA.user_profile["linclues"] += DICT_CONVERSION_MONEY["reward_linclues"]
+        USER_DATA.user_profile["cumulated_linclues"] += DICT_CONVERSION_MONEY["reward_linclues"]
         USER_DATA.save_changes()
         self.update_all_widgets()
 
@@ -177,4 +178,5 @@ class BoostersScreen(LinconymScreen):
         )
         popup.open()
         # USER_DATA.user_profile["lincoins"] += DICT_AMOUNT_BUY[str(number)]["reward"]
+        # USER_DATA.user_profile["cumulated_lincoins"] += DICT_AMOUNT_BUY[str(number)]["reward"]
         self.update_all_widgets()

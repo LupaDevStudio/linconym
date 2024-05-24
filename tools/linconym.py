@@ -49,7 +49,6 @@ from tools.levels import (
 NB_WORDS_KEY: str = "best_solution_nb_words"
 STARS_KEY: str = "nb_stars"
 XP_KEY: str = "experience"
-LINCOINS_KEY: str = "lincoins"
 QUEST_WORD_KEY: str = "quest_word_done"
 
 #################
@@ -978,7 +977,8 @@ class ClassicGame(Game):
             lincoins_earned_before = NB_LINCOINS_PER_STAR_DICT[previous_nb_stars]
             lincoins_now = NB_LINCOINS_PER_STAR_DICT[self.nb_stars]
             self.lincoins_earned = lincoins_now - lincoins_earned_before
-            USER_DATA.user_profile[LINCOINS_KEY] += self.lincoins_earned
+            USER_DATA.user_profile["lincoins"] += self.lincoins_earned
+            USER_DATA.user_profile["cumulated_lincoins"] += self.lincoins_earned
 
         # If the user passed through the quest word (if any) for the first time, award bonus xp
         # award_quest_word_xp: bool = False
