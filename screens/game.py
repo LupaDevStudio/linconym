@@ -151,6 +151,7 @@ class GameScreen(LinconymScreen):
         self.level_saved_data["current_position"] = self.game.current_position
         self.level_saved_data["words_found"] = self.game.words_found
         self.level_saved_data["position_to_word_id"] = self.game.position_to_word_id
+        self.level_saved_data["nb_stars"] = self.nb_stars
 
         # Push changes to user data
         USER_DATA.classic_mode[self.current_act_id][self.current_level_id] = self.level_saved_data.copy(
@@ -410,6 +411,7 @@ class GameScreen(LinconymScreen):
             self.disable_submit_button()
         else:
             end_level_dict = self.game.on_level_completed()
+            print("4")
 
             # Update the stars
             self.nb_stars = max(end_level_dict["stars"], self.nb_stars)
@@ -426,11 +428,13 @@ class GameScreen(LinconymScreen):
 
             # Display the popup for the level completion
             self.display_success_popup(end_level_dict=end_level_dict)
+            print("5")
 
         self.check_delete_current_word()
 
         # Save the data
         self.save_data()
+        print("6")
 
     def display_success_popup(self, end_level_dict):
 
@@ -482,14 +486,14 @@ class GameScreen(LinconymScreen):
                 has_changed_status=has_changed_status,
                 size_hint=size_hint_popup,
                 current_status=current_status,
-                next_status=next_status
+                next_status=next_status,
+                font_ratio=self.font_ratio
             )
             popup.open()
 
     def check_level_complete(self):
         # The level is complete
         if self.new_word == self.end_word.upper():
-            # self.current_word = self.start_word.upper()
             self.ids.keyboard_layout.disable_whole_keyboard()
             self.disable_submit_button()
             self.new_word = ""
@@ -565,3 +569,5 @@ class GameScreen(LinconymScreen):
 
     def use_linclues(self, number_linclues_to_use):
         print("TODO I am using xxx Linclues", number_linclues_to_use)
+        USER_DATA.user_profile["linclues"] -= number_linclues_to_use
+        USER_DATA.save_changes()

@@ -93,10 +93,13 @@ class LinconymScreen(ImprovedScreen):
         self.primary_color = THEMES_DICT[current_theme_colors]["primary"]
         self.secondary_color = THEMES_DICT[current_theme_colors]["secondary"]
 
+        return super().on_pre_enter(*args)
+
+    def on_enter(self, *args):
         if SCREEN_TUTORIAL in self.dict_type_screen:
             self.check_tutorial_to_open()
 
-        return super().on_pre_enter(*args)
+        return super().on_enter(*args)
 
     def check_tutorial_to_open(self):
         if self.name != "game":

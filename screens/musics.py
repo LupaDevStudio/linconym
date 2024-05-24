@@ -113,7 +113,7 @@ class MusicsScreen(LinconymScreen):
                 music_price=MUSICS_DICT[music]["price"],
                 music_source=MUSICS_DICT[music]["source"].replace(".mp3", ""),
                 music_id=music,
-                font_ratio=self.font_ratio * 0.8,
+                font_ratio=self.font_ratio,
                 primary_color=self.primary_color,
                 has_bought_music=has_bought_music,
                 is_using_music=is_using_music,

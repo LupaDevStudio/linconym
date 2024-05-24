@@ -994,7 +994,7 @@ class ClassicGame(Game):
         # if (award_quest_word_xp):
         #     USER_DATA.user_profile[XP_KEY] += XP_PER_LEVEL
 
-        # save changes
+        # Save changes
         USER_DATA.save_changes()
 
     def unlock_next_level(self):
@@ -1020,6 +1020,7 @@ class ClassicGame(Game):
 
         # Unlock the next level
         self.unlock_next_level()
+        print("1")
 
         # Compute the progression for level up
         previous_level, previous_level_progress = compute_progression(
@@ -1027,6 +1028,7 @@ class ClassicGame(Game):
 
         current_level, current_level_progress = compute_progression(
             USER_DATA.user_profile[XP_KEY])
+        print("2")
 
         if previous_level < current_level:
             has_level_up = True
@@ -1037,6 +1039,7 @@ class ClassicGame(Game):
         # Update level in saved data
         USER_DATA.user_profile["level"] = current_level
         USER_DATA.save_changes()
+        print("3")
 
         # Create a dict to return the data
         end_level_dict = {

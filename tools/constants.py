@@ -173,6 +173,8 @@ class UserData():
         -------
         None
         """
+        print("BORDEL WAS PASSIERT ?")
+        print(self.classic_mode["2"]["4"])
 
         # Create the dictionary of data
         data = {}
@@ -343,8 +345,8 @@ TITLE_OUTLINE_COLOR = (1, 1, 1, 1)
 TITLE_OUTLINE_WIDTH = 2
 
 LABEL_FONT_SIZE = 22
-SMALL_LABEL_FONT_SIZE = 22
-CONTENT_LABEL_FONT_SIZE = 15
+SMALL_LABEL_FONT_SIZE = 18
+CONTENT_LABEL_FONT_SIZE = 14
 
 MAIN_BUTTON_FONT_SIZE = 25
 BUTTON_FONT_SIZE = 20

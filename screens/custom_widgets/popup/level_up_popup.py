@@ -35,7 +35,7 @@ class LevelUpPopup(CustomPopup):
     title = StringProperty("Level up")
     color_label_button = ColorProperty((1, 1, 1, 1))
     button_label = StringProperty("Close")
-    top_label_text = StringProperty("Congrats, you levelled up!")
+    top_label_text = StringProperty("Congratulations, you levelled up!")
     release_function = ObjectProperty(lambda: 1 + 1)
     number_lincoins_won = NumericProperty(0)
     has_changed_status = BooleanProperty(False)

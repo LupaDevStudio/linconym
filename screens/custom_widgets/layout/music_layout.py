@@ -33,7 +33,7 @@ from tools.path import (
 )
 from tools.constants import (
     CUSTOM_BUTTON_BACKGROUND_COLOR,
-    LABEL_FONT_SIZE,
+    SMALL_LABEL_FONT_SIZE,
     OPACITY_ON_BUTTON_PRESS,
     USER_DATA
 )
@@ -57,7 +57,7 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
     primary_color = ColorProperty()
     music_title = StringProperty()
     music_price = NumericProperty()
-    font_size = NumericProperty(LABEL_FONT_SIZE)
+    font_size = NumericProperty(SMALL_LABEL_FONT_SIZE)
     font_ratio = NumericProperty(1)
     text_font_name = StringProperty(PATH_TEXT_FONT)
     radius = NumericProperty(20)
