@@ -66,7 +66,7 @@ class CustomSpinner(Spinner):
 
     font_ratio = NumericProperty(1)
     border_color = ColorProperty((0, 0, 0, 1))
-    background_color = ColorProperty((1, 1, 1, 1))
+    new_background_color = ColorProperty((1, 1, 1, 1))
     text_color = ColorProperty((0, 0, 0, 1))
     select_color = ColorProperty((0.5, 0.5, 0.5, 1))
 
@@ -74,6 +74,7 @@ class CustomSpinner(Spinner):
         super().__init__(**kwargs)
         self.dropdown_cls = CustomDropDown
         self.option_cls = CustomSpinnerOption
+        self.background_color = (0, 0, 0, 0)
 
     def on_press(self):
         # sound_mixer.play("click")
