@@ -14,7 +14,6 @@ from functools import partial
 
 from tools.constants import (
     USER_DATA,
-    SCREEN_TUTORIAL,
     GAMEPLAY_DICT,
     SCREEN_TITLE,
     SCREEN_BOTTOM_BAR
@@ -35,8 +34,7 @@ class ClassicModeScreen(LinconymScreen):
 
     dict_type_screen = {
         SCREEN_TITLE: "Classic Mode",
-        SCREEN_BOTTOM_BAR: "none",
-        SCREEN_TUTORIAL: ""
+        SCREEN_BOTTOM_BAR: "none"
     }
 
     def __init__(self, **kwargs) -> None:

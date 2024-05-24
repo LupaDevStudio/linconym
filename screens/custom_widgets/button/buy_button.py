@@ -27,7 +27,7 @@ from tools.path import (
 from tools.constants import (
     CUSTOM_BUTTON_BACKGROUND_COLOR,
     OPACITY_ON_BUTTON_PRESS,
-    SMALL_BUYING_BUTTON_FONT_SIZE
+    SMALL_BUTTON_FONT_SIZE
 )
 
 #############
@@ -42,7 +42,7 @@ class BuyButton(ButtonBehavior, RelativeLayout):
 
     background_color = ColorProperty(CUSTOM_BUTTON_BACKGROUND_COLOR)
     button_title = StringProperty()
-    font_size = NumericProperty(SMALL_BUYING_BUTTON_FONT_SIZE)
+    font_size = NumericProperty(SMALL_BUTTON_FONT_SIZE)
     font_ratio = NumericProperty(1)
     text_font_name = StringProperty(PATH_TEXT_FONT)
     has_bought = BooleanProperty(False)

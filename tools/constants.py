@@ -111,11 +111,9 @@ if not os.path.exists(PATH_USER_DATA):
         },
         "tutorial": {
             "home": False,
-            "customization": False,
             "profile": False,
             "settings": False,
-            "classic_mode": False,
-            "levels": False,
+            "levels": True,
             "game": {
                 "change_letter": False,
                 "delete_letter": False,
@@ -124,12 +122,12 @@ if not os.path.exists(PATH_USER_DATA):
                 "reorganize_letters": False,
                 "all_rules": False
             },
-            "themes": False,
+            "themes": True,
             "boosters": False,
-            "musics": False,
-            "achievements": False,
-            "quests": False,
-            "configure_tree": False
+            "musics": True,
+            "achievements": True,
+            "quests": True,
+            "configure_tree": True
         },
         "ads": {
             "current_day_date": "06/09/2024",
@@ -354,14 +352,13 @@ BUTTON_OUTLINE_WIDTH = 1.5
 SPINNER_BUTTON_FONT_SIZE = 20
 
 ACT_BUTTON_FONT_SIZE = 22
-CUSTOMIZATION_LAYOUT_FONT_SIZE = 20
-COINS_COUNT_FONT_SIZE = 22
+CUSTOMIZATION_LAYOUT_FONT_SIZE = 15
+COINS_COUNT_FONT_SIZE = 20
 EXPERIENCE_FONT_SIZE = 15
 LEVEL_ID_FONT_SIZE = 22
 LETTER_FONT_SIZE = 18
 
 BIG_BUYING_BUTTON_FONT_SIZE = 25
-SMALL_BUYING_BUTTON_FONT_SIZE = 18
 CREDITS_SCROLLVIEW_FONT_SIZE = 25
 CREDITS_CONTENT_SCROLLVIEW_FONT_SIZE = 15
 

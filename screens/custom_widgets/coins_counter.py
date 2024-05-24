@@ -25,8 +25,7 @@ from tools.path import (
 from tools.constants import (
     CUSTOM_BUTTON_BACKGROUND_COLOR,
     OPACITY_ON_BUTTON_PRESS,
-    COINS_COUNT_FONT_SIZE,
-    get_lincoin_image_amount
+    COINS_COUNT_FONT_SIZE
 )
 
 #############

@@ -3,31 +3,15 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue."
+                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue. TODO Laure, faire en sorte que Rune se présente et présente le jeu (le concept global)."
             ],
             [
-                "On the welcome screen, you can select the continent you want to play in using the arrows on the sides of the screen.",
+                "EXEMPLE HORIZONTAL",
                 "horizontal",
                 "resources/images/tutorial/home_screen_en.png"
             ],
             [
-                "On the welcome screen, you can select the continent you want to play in using the arrows on the sides of the screen.",
-                "vertical",
-                "resources/images/tutorial/home_screen_en.png"
-            ],
-            [
-                "Enjoy the game! \n \n LupaDevStudio's team"
-            ]
-        ]
-    },
-    "customization": {
-        "title": "Tutorial - Linconym",
-        "tutorial_content": [
-            [
-                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue."
-            ],
-            [
-                "On the welcome screen, you can select the continent you want to play in using the arrows on the sides of the screen.",
+                "EXEMPLE VERTICAL",
                 "vertical",
                 "resources/images/tutorial/home_screen_en.png"
             ],
@@ -40,15 +24,7 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue."
-            ],
-            [
-                "On the welcome screen, you can select the continent you want to play in using the arrows on the sides of the screen.",
-                "horizontal",
-                "resources/images/tutorial/home_screen_en.png"
-            ],
-            [
-                "Enjoy the game! \n \n LupaDevStudio's team"
+                "TODO Laure"
             ]
         ]
     },
@@ -56,31 +32,7 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue."
-            ],
-            [
-                "On the welcome screen, you can select the continent you want to play in using the arrows on the sides of the screen.",
-                "horizontal",
-                "resources/images/tutorial/home_screen_en.png"
-            ],
-            [
-                "Enjoy the game! \n \n LupaDevStudio's team"
-            ]
-        ]
-    },
-    "classic_mode": {
-        "title": "Tutorial - Linconym",
-        "tutorial_content": [
-            [
-                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue."
-            ],
-            [
-                "On the welcome screen, you can select the continent you want to play in using the arrows on the sides of the screen.",
-                "horizontal",
-                "resources/images/tutorial/home_screen_en.png"
-            ],
-            [
-                "Enjoy the game! \n \n LupaDevStudio's team"
+                "TODO Laure"
             ]
         ]
     },
@@ -88,15 +40,7 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue."
-            ],
-            [
-                "On the welcome screen, you can select the continent you want to play in using the arrows on the sides of the screen.",
-                "horizontal",
-                "resources/images/tutorial/home_screen_en.png"
-            ],
-            [
-                "Enjoy the game! \n \n LupaDevStudio's team"
+                "TODO Laure expliquer que les coffres sont positionnés à des puzzles plus compliqués et qu'ils permettent de gagner 3 linclues une fois le puzzle complété (utiliser le mot puzzle et pas level)"
             ]
         ]
     },
@@ -135,12 +79,12 @@
             "title": "Tutorial - Practice",
             "tutorial_content": [
                 [
-                    "You can apply only one of these three rules at each step. Let's practice them on a more complex puzzle: \"PAIN\" to \"BRAIN\"! Here, you have to find an intermediate word by applying a rule to \"PAIN\". With another rule applied to this new word, you'll create \"BRAIN\". \nClick \"Close\" to try yourself, or \"Next\" to see the solution.",
+                    "You can apply only one of these three rules at each step. Let's practice them on a more complex puzzle: \"PAIN\" to \"BRAIN\"! Here, you have to find an intermediate word by applying a rule to \"PAIN\". With another rule on this new word, you'll get \"BRAIN\". \nClick \"Close\" to try yourself, or \"Next\" to see the solution.",
                     "horizontal",
                     "resources/images/tutorial/game_practice.png"
                 ],
                 [
-                    "To link \"PAIN\" and \"BRAIN\", you need to create an intermediate word. From \"PAIN\", you can create the word \"RAIN\", by applying the first rule of changing a single letter. With the word \"RAIN\", you can create the target word \"BRAIN\" by adding the letter \"B\".",
+                    "From \"PAIN\", you can create the intermediate word \"RAIN\", by applying the first rule of changing a single letter. With the word \"RAIN\", you can create the target word \"BRAIN\" by adding the letter \"B\".",
                     "horizontal",
                     "resources/images/tutorial/game_practice_solution.png"
                 ]
@@ -163,7 +107,7 @@
             "title": "Tutorial - Game rules",
             "tutorial_content": [
                 [
-                    "Toutes les règles"
+                    "TODO Agathe Toutes les règles"
                 ]
             ]
         }
@@ -172,15 +116,7 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue."
-            ],
-            [
-                "On the welcome screen, you can select the continent you want to play in using the arrows on the sides of the screen.",
-                "horizontal",
-                "resources/images/tutorial/home_screen_en.png"
-            ],
-            [
-                "Enjoy the game! \n \n LupaDevStudio's team"
+                "TODO Laure"
             ]
         ]
     },
@@ -188,15 +124,7 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue."
-            ],
-            [
-                "On the welcome screen, you can select the continent you want to play in using the arrows on the sides of the screen.",
-                "horizontal",
-                "resources/images/tutorial/home_screen_en.png"
-            ],
-            [
-                "Enjoy the game! \n \n LupaDevStudio's team"
+                "TODO Laure"
             ]
         ]
     },
@@ -204,15 +132,7 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue."
-            ],
-            [
-                "On the welcome screen, you can select the continent you want to play in using the arrows on the sides of the screen.",
-                "horizontal",
-                "resources/images/tutorial/home_screen_en.png"
-            ],
-            [
-                "Enjoy the game! \n \n LupaDevStudio's team"
+                "TODO Laure"
             ]
         ]
     },
@@ -220,15 +140,7 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue."
-            ],
-            [
-                "On the welcome screen, you can select the continent you want to play in using the arrows on the sides of the screen.",
-                "horizontal",
-                "resources/images/tutorial/home_screen_en.png"
-            ],
-            [
-                "Enjoy the game! \n \n LupaDevStudio's team"
+                "TODO Laure"
             ]
         ]
     },
@@ -236,15 +148,7 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue."
-            ],
-            [
-                "On the welcome screen, you can select the continent you want to play in using the arrows on the sides of the screen.",
-                "horizontal",
-                "resources/images/tutorial/home_screen_en.png"
-            ],
-            [
-                "Enjoy the game! \n \n LupaDevStudio's team"
+                "TODO Laure"
             ]
         ]
     },
@@ -252,15 +156,7 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue."
-            ],
-            [
-                "On the welcome screen, you can select the continent you want to play in using the arrows on the sides of the screen.",
-                "horizontal",
-                "resources/images/tutorial/home_screen_en.png"
-            ],
-            [
-                "Enjoy the game! \n \n LupaDevStudio's team"
+                "TODO Laure"
             ]
         ]
     }

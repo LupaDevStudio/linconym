@@ -57,7 +57,7 @@
             id: rarity_label
             size_hint: (0.22, (1-0.55/2-RARITY_TAG_HEIGHT))
             pos_hint: {"x":0,"y":1}
-            font_size: SMALL_BUTTON_FONT_SIZE * root.font_ratio * 0.8
+            font_size: root.font_size * root.font_ratio * 0.9
             text: root.theme_rarity
             font_name: PATH_TEXT_FONT
             color: (0, 0, 0, 1)
@@ -80,7 +80,7 @@
             text: "Preview"
             pos_hint: {"center_x":0.175,"center_y":0.25}
             size_hint: (TITLE_SIZE_HINT_WIDTH, 0.3)
-            font_size: root.font_ratio * root.font_size * 0.8
+            font_size: root.font_ratio * root.font_size * 0.95
             radius:10*root.font_ratio
             release_function: root.open_preview
 
@@ -90,11 +90,9 @@
             BuyButton:
                 id: buy_image_button
                 button_title: "Image"
-                # pos_hint: {"center_x":0.45, "center_y":0.5}
                 pos_hint: {"x":0.0, "center_y":0.5}
-                # size_hint: (0.225,0.8)
                 size_hint: (0.45, 0.8)
-                font_size: 16
+                font_size: root.font_size
                 font_ratio: root.font_ratio
                 has_bought: root.has_bought_image
                 is_using: root.is_using_image
@@ -103,11 +101,9 @@
             BuyButton:
                 id: buy_colors_button
                 button_title: "Colors"
-                # pos_hint: {"center_x":0.75, "center_y":0.5}
                 pos_hint: {"right": 1, "center_y": 0.5}
-                # size_hint: (0.225,0.8)
                 size_hint: (0.45, 0.8)
-                font_size: 16
+                font_size: root.font_size
                 font_ratio: root.font_ratio
                 has_bought: root.has_bought_colors
                 is_using: root.is_using_colors

@@ -147,7 +147,7 @@ class ThemesScreen(LinconymScreen):
             current_theme_button = ThemeLayout(
                 theme_key=theme,
                 source=PATH_BACKGROUNDS + THEMES_DICT[theme]["image"],
-                font_ratio=self.font_ratio * 0.8,
+                font_ratio=self.font_ratio,
                 size_hint_y=None,
                 height=120*self.font_ratio)
             current_theme_button.update_display()

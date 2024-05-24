@@ -8,8 +8,7 @@ Module to create the customization screen.
 
 from tools.constants import (
     SCREEN_TITLE,
-    SCREEN_BOTTOM_BAR,
-    SCREEN_TUTORIAL
+    SCREEN_BOTTOM_BAR
 )
 from screens.custom_widgets import (
     LinconymScreen
@@ -31,8 +30,7 @@ class CustomizationScreen(LinconymScreen):
 
     dict_type_screen = {
         SCREEN_TITLE: "Customization",
-        SCREEN_BOTTOM_BAR: "customization",
-        SCREEN_TUTORIAL: ""
+        SCREEN_BOTTOM_BAR: "customization"
     }
 
     def open_musics_screen(self, *_):
