@@ -211,7 +211,10 @@ class LevelBranch(RelativeLayout):
             if level_key in USER_DATA.classic_mode[self.act_id]:
                 level_is_unlocked = True
                 level_nb_stars = USER_DATA.classic_mode[self.act_id][level_key]["nb_stars"]
-                bool_chest_open = True
+                if level_nb_stars > 0:
+                    bool_chest_open = True
+                else:
+                    bool_chest_open = False
             else:
                 level_is_unlocked = False
                 level_nb_stars = 0

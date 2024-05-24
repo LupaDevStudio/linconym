@@ -411,7 +411,6 @@ class GameScreen(LinconymScreen):
             self.disable_submit_button()
         else:
             end_level_dict = self.game.on_level_completed()
-            print("4")
 
             # Update the stars
             self.nb_stars = max(end_level_dict["stars"], self.nb_stars)
@@ -428,19 +427,25 @@ class GameScreen(LinconymScreen):
 
             # Display the popup for the level completion
             self.display_success_popup(end_level_dict=end_level_dict)
-            print("5")
 
         self.check_delete_current_word()
 
         # Save the data
         self.save_data()
-        print("6")
 
     def display_success_popup(self, end_level_dict):
 
         # Check if there is a next puzzle in the same act
         next_lvl_id = str(int(self.current_level_id) + 1)
         has_next_levels_in_act = next_lvl_id in GAMEPLAY_DICT[self.current_act_id]
+
+        # Set the number of Linclues won in chests
+        number_linclues_won = 0
+        if "chest" in GAMEPLAY_DICT[self.current_act_id][self.current_level_id] and GAMEPLAY_DICT[self.current_act_id][self.current_level_id]["chest"]:
+            number_linclues_won = 3
+            USER_DATA.user_profile["linclues"] += 3
+            USER_DATA.user_profile["cumulated_linclues"] += 3
+            USER_DATA.save_changes()
 
         # Create the popup for the completion
         popup = LevelCompletedPopup(
@@ -460,7 +465,7 @@ class GameScreen(LinconymScreen):
                 self.reload_for_level_change, next_lvl_id),
             has_next_levels_in_act=has_next_levels_in_act,
             number_lincoins_won=end_level_dict["lincoins_earned"],
-            number_linclues_won=1  # TODO change
+            number_linclues_won=number_linclues_won
         )
         popup.open()
 
