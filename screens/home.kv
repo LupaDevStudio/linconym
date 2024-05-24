@@ -4,13 +4,13 @@
 
     CustomButton:
         size_hint: (0.65,0.1)
-        pos_hint: {"center_x":0.5, "center_y":0.6}
-        text:"Classic Mode"
+        pos_hint: {"center_x":0.5, "center_y":0.55} # 0.6 for center_y if daily mode
+        text: "Classic Mode"
         release_function: root.open_classic_mode
         font_ratio: root.font_ratio
 
-    CustomButton:
-        size_hint: (0.65,0.1)
-        pos_hint: {"center_x":0.5, "center_y":0.45}
-        text:"Daily Mode"
-        font_ratio: root.font_ratio
+    # CustomButton:
+    #     size_hint: (0.65,0.1)
+    #     pos_hint: {"center_x":0.5, "center_y":0.45}
+    #     text: "Daily Mode"
+    #     font_ratio: root.font_ratio

@@ -57,7 +57,7 @@ class ProfileScreen(LinconymScreen):
     theme_colors = StringProperty()
 
     classic_mode_achievements = StringProperty()
-    daily_mode_achievements = StringProperty()
+    # daily_mode_achievements = StringProperty()
 
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
@@ -75,8 +75,8 @@ class ProfileScreen(LinconymScreen):
 
         self.classic_mode_achievements = "Completed levels: %i\nCompleted acts: %i\nStars won: %i\n\nClick to see all achievements." % (
             14, 1, 32)
-        self.daily_mode_achievements = "Completed levels: %i\n\nClick to see all achievements." % (
-            14)
+        # self.daily_mode_achievements = "Completed levels: %i\n\nClick to see all achievements." % (
+        #     14)
 
     def go_to_boosters(self):
         self.go_to_next_screen(screen_name="boosters")
