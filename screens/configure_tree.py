@@ -63,7 +63,6 @@ class ConfigureTreeScreen(LinconymScreen):
             self.current_level_id]["position_to_word_id"].copy()
         current_position = USER_DATA.classic_mode[self.current_act_id][
             self.current_level_id]["current_position"]
-        print(current_position)
         words_found = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["words_found"]
         self.start_word = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]["start_word"].upper(
         )
@@ -90,6 +89,8 @@ class ConfigureTreeScreen(LinconymScreen):
             self.hide_completed_branches = True
             self.ids.tree_layout.mask_completed_branches()
         USER_DATA.settings["hide_completed_branches"] = self.hide_completed_branches
+        USER_DATA.classic_mode[self.current_act_id][self.current_level_id][
+            "current_position"] = self.ids["tree_layout"].current_position
         USER_DATA.save_changes()
 
     def ask_reset_tree(self):
