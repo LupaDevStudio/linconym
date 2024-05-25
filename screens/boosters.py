@@ -64,9 +64,12 @@ class BoostersScreen(LinconymScreen):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
 
+    def on_pre_enter(self, *args):
+        super().on_pre_enter(*args)
+        self.update_all_widgets()
+
     def on_enter(self, *args):
         super().on_enter(*args)
-        self.update_all_widgets()
 
     def update_all_widgets(self):
         self.lincoins_count = USER_DATA.user_profile["lincoins"]
@@ -104,11 +107,11 @@ class BoostersScreen(LinconymScreen):
 
     def build_list_conversion(self):
         self.list_conversion = []
-    
+
         # If the user has enough money to perform the conversion
         enable_button = self.lincoins_count >= DICT_CONVERSION_MONEY["price_lincoins"]
         circle_color = self.primary_color if enable_button else self.secondary_color
-    
+
         self.list_conversion.append({
             "circle_color": circle_color,
             "reward": [{"linclue": DICT_CONVERSION_MONEY["reward_linclues"]}],
