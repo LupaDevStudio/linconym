@@ -908,10 +908,10 @@ class ClassicGame(Game):
 
         nb_words_3rd_star: int = 0
         if (self.first_sol_dict_id == DICT_ID_LIST[0]):
-            # In easy levels (those which have a solution in the 10k dict), the second star is awarded for doing as well as the 10k dict
+            # In easy levels (those which have a solution in the 10k dict), the third star is awarded for doing as well as the 10k dict
             nb_words_3rd_star = self.nb_words_first_sol
         else:
-            # In harder levels (no solution in the 10k dict), the second star is awarded for doing as well as the first solution dict + a small margin (10%)
+            # In harder levels (no solution in the 10k dict), the third star is awarded for doing as well as the first solution dict + a small margin (10%)
             nb_words_3rd_star = int(1.10 * self.nb_words_first_sol)
         return nb_words_3rd_star
 
