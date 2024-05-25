@@ -278,7 +278,6 @@ class GameScreen(LinconymScreen):
                 size_hint=(size_letter, height_letter),
                 color_label=(0, 0, 0, 1),
                 outline_color=outline_color,
-                outline_width=0.5,
                 release_function=partial(self.pop_letter, counter_letter)
             )
 
