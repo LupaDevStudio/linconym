@@ -11,9 +11,11 @@ Module to create the act button.
 from typing import (
     Callable
 )
+from threading import Thread
 
 ### Kivy imports ###
 
+from kivy.clock import Clock
 from kivy.core.audio import SoundLoader
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.behaviors import ButtonBehavior
@@ -40,6 +42,7 @@ from tools.constants import (
 from tools import (
     music_mixer
 )
+from screens.custom_widgets.popup import LoadingPopup
 
 #############
 ### Class ###
@@ -55,6 +58,7 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
 
     background_color = ColorProperty(CUSTOM_BUTTON_BACKGROUND_COLOR)
     primary_color = ColorProperty()
+    secondary_color = ColorProperty()
     music_title = StringProperty()
     music_price = NumericProperty()
     font_size = NumericProperty(SMALL_LABEL_FONT_SIZE)
@@ -86,6 +90,7 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
         self.deselect_all_musics = deselect_all_musics
 
         self.always_release = True
+        self.loading_popup = None
 
     def update_display(self):
         if self.has_bought_music:
@@ -108,7 +113,36 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
         self.remove_widget(self.ids.buy_music_button)
         self.remove_widget(self.ids.select_music_button)
 
-    def play_sound(self):
+    def load_sound(self):
+        # Load the sound
+        new_music = SoundLoader.load(
+            PATH_MUSICS + self.music_source + ".mp3")
+        music_mixer.add_sound(new_music, self.music_source)
+
+        # Play the sound after loading
+        Clock.schedule_once(self.play_sound)
+
+    def play_sound(self, *_):
+        # Close the loading popup if needed
+        if self.loading_popup is not None:
+            self.loading_popup.dismiss()
+            self.loading_popup = None
+
+        # Load the sound if needed
+        if self.music_source not in music_mixer.musics:
+            # Open a loading popup
+            self.loading_popup = LoadingPopup(
+                primary_color=self.primary_color,
+                secondary_color=self.secondary_color,
+                font_ratio=self.font_ratio
+            )
+            self.loading_popup.open()
+
+            # Create a thread to load the sound
+            background_thread = Thread(target=self.load_sound)
+            background_thread.start()
+            return
+
         if self.is_playing:
             self.play_current_user_music()
             self.is_playing = False
@@ -119,6 +153,7 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
                 new_music = SoundLoader.load(
                     PATH_MUSICS + self.music_source + ".mp3")
                 music_mixer.add_sound(new_music, self.music_source)
+            music_mixer.change_volume(USER_DATA.settings["music_volume"])
             music_mixer.play(self.music_source, loop=True)
 
     def buy_music(self):

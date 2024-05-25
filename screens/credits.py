@@ -221,6 +221,7 @@ class CreditsScreen(LinconymScreen):
                 play_current_user_music=self.play_current_user_music,
                 font_ratio=self.font_ratio,
                 primary_color=self.primary_color,
+                secondary_color=self.secondary_color,
                 font_size=CREDITS_CONTENT_SCROLLVIEW_FONT_SIZE,
                 size_hint_y=None,
                 height=line_height * self.font_ratio)

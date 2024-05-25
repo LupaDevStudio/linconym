@@ -115,6 +115,7 @@ class MusicsScreen(LinconymScreen):
                 music_id=music,
                 font_ratio=self.font_ratio,
                 primary_color=self.primary_color,
+                secondary_color=self.secondary_color,
                 has_bought_music=has_bought_music,
                 is_using_music=is_using_music,
                 disable_button=True,
