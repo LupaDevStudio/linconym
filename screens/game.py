@@ -9,6 +9,7 @@ Module to create the game screen.
 ### Python imports ###
 
 from functools import partial
+from threading import Thread
 
 ### Kivy imports ###
 
@@ -585,18 +586,31 @@ class GameScreen(LinconymScreen):
             USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["nb_hints_used"] += 1
 
         # Display a loading popup
-        loading_popup = LoadingPopup()
-        loading_popup.open()
+        self.loading_popup = LoadingPopup(
+            primary_color=self.primary_color,
+            secondary_color=self.secondary_color,
+            font_ratio=self.font_ratio
+        )
+        self.loading_popup.open()
 
+        # Create a thread
+        background_thread = Thread(target=self.search_hint_word)
+        background_thread.start()
+
+    def search_hint_word(self):
         # Get the solution word
         hint_word = self.game.get_hint()
+
+        # Schedule submission
+        Clock.schedule_once(partial(self.submit_hint_word, hint_word))
+
+    def submit_hint_word(self, hint_word: str, *_):
+        # Close the loading popup
+        self.loading_popup.dismiss()
 
         # Submit it
         self.new_word = hint_word.upper()
         self.submit_word()
-
-        # Close the loading popup
-        loading_popup.dismiss()
 
         # Save data
         USER_DATA.save_changes()

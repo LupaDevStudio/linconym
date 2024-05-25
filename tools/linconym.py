@@ -814,13 +814,13 @@ class Game():
     def on_level_completed(self):
         pass
 
-    def get_hint(self)-> str:
+    def get_hint(self) -> str:
         """
         Give a hint for the next word base on what has already been completed.
         """
 
         # Iterate over the different dictionaries
-        for resolution in DICT_ID_LIST:
+        for resolution in DICT_ID_LIST[1:]:
             # Remove the words founds from the dict
             current_words_dict = ENGLISH_WORDS_DICTS[resolution].copy()
             for word in self.words_found:
