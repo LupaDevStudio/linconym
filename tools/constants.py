@@ -120,7 +120,7 @@ if not os.path.exists(PATH_USER_DATA):
                 "add_letter": False,
                 "practice": False,
                 "reorganize_letters": False,
-                "all_rules": False
+                "all_rules": True
             },
             "themes": True,
             "boosters": False,

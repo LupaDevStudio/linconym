@@ -71,6 +71,14 @@
         outline_color: root.secondary_color
         disable_button: True
 
+    # Rune
+    Image:
+        source: PATH_IMAGES + "rune.png"
+        size_hint: (None, previous_word_label.size_hint_y)
+        width: self.height
+        pos_hint: {"right":0.45 -previous_word_label.size_hint_x/2, "y":0.335}
+
+    # Delete word
     RoundedButtonImage:
         id: delete_word_button
         image_path: PATH_ICONS + "bin.png"

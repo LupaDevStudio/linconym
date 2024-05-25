@@ -5,6 +5,13 @@
     RelativeLayout:
         id: popup_layout
 
+        Image:
+            source: PATH_IMAGES + "rune.png"
+            size_hint: (None, None)
+            height: 1.7 * root.title_size * root.font_ratio
+            width: self.height
+            pos_hint: {"right": 1, "y": 1.025}
+
         ColoredRoundedButton:
             id: next_button
             size_hint: (0.4,0.15)

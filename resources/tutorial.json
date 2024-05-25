@@ -8,12 +8,12 @@
             [
                 "EXEMPLE HORIZONTAL",
                 "horizontal",
-                "resources/images/tutorial/home_screen_en.png"
+                "resources/images/tutorial/banner.jpg"
             ],
             [
                 "EXEMPLE VERTICAL",
                 "vertical",
-                "resources/images/tutorial/home_screen_en.png"
+                "resources/images/tutorial/banner.jpg"
             ],
             [
                 "Enjoy the game! \n \n LupaDevStudio's team"
@@ -51,7 +51,7 @@
                 [
                     "The first rule to link words is to change one and only one letter of the start word to create a new one. \n\nFor instance, to link the words \"LINK\" and \"PINK\", you just have to replace the \"L\" with a \"P\". Let's try it!",
                     "horizontal",
-                    "resources/images/tutorial/game_change_letter.png"
+                    "resources/images/tutorial/game_change_letter.jpg"
                 ]
             ]
         },
@@ -61,7 +61,7 @@
                 [
                     "The second rule to link words is to delete one and only one letter of the start word to create a new one. \n\nFor instance, to link the words \"PINK\" and \"PIN\", you just have to delete the \"K\" of \"PINK\". Let's try it!",
                     "horizontal",
-                    "resources/images/tutorial/game_delete_letter.png"
+                    "resources/images/tutorial/game_delete_letter.jpg"
                 ]
             ]
         },
@@ -71,7 +71,7 @@
                 [
                     "The third rule to link words is to add one and only one letter to the start word to create a new one. \n\nFor instance, to link the words \"PIN\" and \"PAIN\", you just have to add an \"A\". Let's try it!",
                     "horizontal",
-                    "resources/images/tutorial/game_add_letter.png"
+                    "resources/images/tutorial/game_add_letter.jpg"
                 ]
             ]
         },
@@ -81,12 +81,12 @@
                 [
                     "You can apply only one of these three rules at each step. Let's practice them on a more complex puzzle: \"PAIN\" to \"BRAIN\"! Here, you have to find an intermediate word by applying a rule to \"PAIN\". With another rule on this new word, you'll get \"BRAIN\". \nClick \"Close\" to try yourself, or \"Next\" to see the solution.",
                     "horizontal",
-                    "resources/images/tutorial/game_practice.png"
+                    "resources/images/tutorial/game_practice.jpg"
                 ],
                 [
                     "From \"PAIN\", you can create the intermediate word \"RAIN\", by applying the first rule of changing a single letter. With the word \"RAIN\", you can create the target word \"BRAIN\" by adding the letter \"B\".",
                     "horizontal",
-                    "resources/images/tutorial/game_practice_solution.png"
+                    "resources/images/tutorial/game_practice_solution.jpg"
                 ]
             ]
         },
@@ -99,7 +99,7 @@
                 [
                     "For instance, to link the words \"BRAIN\" and \"BRING\", you have to apply the first rule by changing the letter \"A\" to \"G\", and reorganize the letters to create \"BRING\".",
                     "horizontal",
-                    "resources/images/tutorial/game_reorganize_letters.png"
+                    "resources/images/tutorial/game_reorganize_letters.jpg"
                 ]
             ]
         },
@@ -107,7 +107,35 @@
             "title": "Tutorial - Game rules",
             "tutorial_content": [
                 [
-                    "TODO Agathe Toutes les règles"
+                    "Let me remind you the main rules of Linconym!",
+                    "horizontal",
+                    "resources/images/tutorial/banner.jpg"
+                ],
+                [
+                    "The first rule to link words is to change one and only one letter of the start word to create a new one. \n\nFor instance, to link the words \"LINK\" and \"PINK\", you just have to replace the \"L\" with a \"P\".",
+                    "horizontal",
+                    "resources/images/tutorial/game_change_letter.jpg"
+                ],
+                [
+                    "The second rule to link words is to delete one and only one letter of the start word to create a new one. \n\nFor instance, to link the words \"PINK\" and \"PIN\", you just have to delete the \"K\" of \"PINK\".",
+                    "horizontal",
+                    "resources/images/tutorial/game_delete_letter.jpg"
+                ],
+                [
+                    "The third rule to link words is to add one and only one letter to the start word to create a new one. \n\nFor instance, to link the words \"PIN\" and \"PAIN\", you just have to add an \"A\".",
+                    "horizontal",
+                    "resources/images/tutorial/game_add_letter.jpg"
+                ],
+                [
+                    "At each step of the chain of words, you can apply only one of the three former rules. \n\nNevertheless, you are also allowed to reorganize all letters, i.e. change their order, while applying one of these rules."
+                ],
+                [
+                    "For instance, to link the words \"BRAIN\" and \"BRING\", you have to apply the first rule by changing the letter \"A\" to \"G\", and reorganize the letters to create \"BRING\".",
+                    "horizontal",
+                    "resources/images/tutorial/game_reorganize_letters.jpg"
+                ],
+                [
+                    "This is all for the rules of Linconym, have a nice game!"
                 ]
             ]
         }
