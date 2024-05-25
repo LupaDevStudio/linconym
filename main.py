@@ -43,6 +43,7 @@ import screens.opening
 ### General ###
 ###############
 
+
 class WindowManager(ScreenManager):
     """
     Screen manager, which allows the navigation between the different menus.
@@ -56,7 +57,7 @@ class WindowManager(ScreenManager):
         self.add_widget(current_screen)
         self.current = "temp"
 
-    def change_all_background_images(self, new_image_path, include_themes_screen= False):
+    def change_all_background_images(self, new_image_path, include_themes_screen=False):
         for screen_name in self.screen_names:
             if screen_name != "temp" and (screen_name != "themes" or include_themes_screen):
                 screen = self.get_screen(screen_name)
@@ -136,8 +137,9 @@ class MainApp(App, Widget):
 
         return super().on_start()
 
+
 # Run the application
 if __name__ == "__main__":
     if not MOBILE_MODE:
-        Window.size = (405, 720)
+        Window.size = (585, 1040)
     MainApp().run()

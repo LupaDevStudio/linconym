@@ -9,3 +9,4 @@ from screens.custom_widgets.popup.two_buttons_popup import TwoButtonsPopup
 from screens.custom_widgets.popup.level_completed_popup import LevelCompletedPopup
 from screens.custom_widgets.popup.linclues_popup import LincluesPopup
 from screens.custom_widgets.popup.level_up_popup import LevelUpPopup
+from screens.custom_widgets.popup.loading_popup import LoadingPopup

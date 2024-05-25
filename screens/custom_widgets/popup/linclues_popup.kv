@@ -31,6 +31,7 @@
             touch_color: root.primary_color
             color_label: root.color_label_button
             release_function: root.right_release_function
+            disabled: True if root.number_linclues_to_use > root.number_linclues else False
 
         Label:
             size_hint: (0.8, 0.1)

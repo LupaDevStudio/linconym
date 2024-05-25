@@ -36,7 +36,8 @@ from screens.custom_widgets import (
     LevelCompletedPopup,
     LincluesPopup,
     LevelUpPopup,
-    TutorialPopup
+    TutorialPopup,
+    LoadingPopup
 )
 from tools import (
     music_mixer
@@ -157,7 +158,8 @@ class GameScreen(LinconymScreen):
         self.level_saved_data["position_to_word_id"] = self.game.position_to_word_id
 
         # Push changes to user data
-        USER_DATA.classic_mode[self.current_act_id][self.current_level_id] = self.level_saved_data.copy()
+        USER_DATA.classic_mode[self.current_act_id][self.current_level_id] = self.level_saved_data.copy(
+        )
         USER_DATA.save_changes()
 
     def check_disable_keyboard(self):
@@ -553,8 +555,15 @@ class GameScreen(LinconymScreen):
         Clock.schedule_once(self.check_delete_current_word)
 
     def ask_to_use_linclues(self):
-        number_linclues_to_use = 5  # TODO to change
+        if "nb_hints_used" not in USER_DATA.classic_mode[self.current_act_id][self.current_level_id]:
+            nb_hints = 0
+        else:
+            nb_hints = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["nb_hints_used"]
 
+        # Compute the number of linclues to use
+        number_linclues_to_use = 1 + nb_hints
+
+        # Display the popup
         popup = LincluesPopup(
             primary_color=self.primary_color,
             secondary_color=self.secondary_color,
@@ -566,6 +575,28 @@ class GameScreen(LinconymScreen):
         popup.open()
 
     def use_linclues(self, number_linclues_to_use):
-        print("TODO I am using xxx Linclues", number_linclues_to_use)
+        # Decrease the amount of linclues
         USER_DATA.user_profile["linclues"] -= number_linclues_to_use
+
+        # Increase the number of hints used
+        if "nb_hints_used" not in USER_DATA.classic_mode[self.current_act_id][self.current_level_id]:
+            USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["nb_hints_used"] = 1
+        else:
+            USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["nb_hints_used"] += 1
+
+        # Display a loading popup
+        loading_popup = LoadingPopup()
+        loading_popup.open()
+
+        # Get the solution word
+        hint_word = self.game.get_hint()
+
+        # Submit it
+        self.new_word = hint_word.upper()
+        self.submit_word()
+
+        # Close the loading popup
+        loading_popup.dismiss()
+
+        # Save data
         USER_DATA.save_changes()
