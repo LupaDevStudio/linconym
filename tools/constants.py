@@ -404,10 +404,10 @@ SCREEN_TUTORIAL = "has_tutorial"
 
 AMOUNT_DAILY_ADS = [
     {
-        "lincoin": 20
+        "lincoin": 80
     },
     {
-        "lincoin": 10,
+        "lincoin": 40,
         "linclue": 1
     },
     {
@@ -415,7 +415,7 @@ AMOUNT_DAILY_ADS = [
     }
 ]
 AMOUNT_WEEKLY_AD = [{
-    "lincoin": 120,
+    "lincoin": 480,
     "linclue": 12
 }]
 REWARD_INTERSTITIAL = ""
@@ -424,7 +424,7 @@ INTERSTITIAL = ""
 ### Conversion money ###
 
 DICT_CONVERSION_MONEY = {
-    "price_lincoins": 20,
+    "price_lincoins": 50,
     "reward_linclues": 1
 }
 
@@ -505,10 +505,10 @@ NB_LINCOINS_PER_STAR_DICT = {
 }
 
 ### User status ###
+
 USER_STATUS_DICT = load_json_file(PATH_USER_STATUS)
 
 ### Lincoins images given the amount of Lincoins ###
-
 
 def get_lincoin_image_amount(number_lincoins):
     if number_lincoins <= 800:

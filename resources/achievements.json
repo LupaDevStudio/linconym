@@ -87,35 +87,35 @@
         "achievement_title": "Novice buyer - Themes",
         "achievement_content": "Buy your first theme.",
         "series": "customization_theme",
-        "reward": 50,
+        "reward": 250,
         "number_series": 1
     },
     "customization_theme_5": {
         "achievement_title": "Small buyer - Themes",
         "achievement_content": "Buy 5 themes.",
         "series": "customization_theme",
-        "reward": 100,
+        "reward": 500,
         "number_series": 2
     },
     "customization_theme_10": {
         "achievement_title": "Experienced buyer - Themes",
         "achievement_content": "Buy 10 themes.",
         "series": "customization_theme",
-        "reward": 500,
+        "reward": 1000,
         "number_series": 3
     },
     "customization_theme_20": {
         "achievement_title": "Compulsive buyer - Themes",
         "achievement_content": "Buy 20 themes.",
         "series": "customization_theme",
-        "reward": 1000,
+        "reward": 5000,
         "number_series": 4
     },
     "customization_theme_50": {
         "achievement_title": "Legendary buyer - Themes",
         "achievement_content": "Buy 50 themes.",
         "series": "customization_theme",
-        "reward": 5000,
+        "reward": 9999,
         "number_series": 5
     },
     "customization_colors_1": {
@@ -210,105 +210,105 @@
         "number_series": 3
     },
     "cumulated_lincoins_1000": {
-        "achievement_title": "NOM",
+        "achievement_title": "Novice investor",
         "achievement_content": "Collect 1 000 Lincoins.",
         "series": "cumulated_lincoins",
         "reward": 100,
         "number_series": 1
     },
     "cumulated_lincoins_5000": {
-        "achievement_title": "NOM",
+        "achievement_title": "Small investor",
         "achievement_content": "Collect 5 000 Lincoins.",
         "series": "cumulated_lincoins",
         "reward": 500,
         "number_series": 2
     },
     "cumulated_lincoins_10000": {
-        "achievement_title": "NOM",
+        "achievement_title": "Experienced investor",
         "achievement_content": "Collect 10 000 Lincoins.",
         "series": "cumulated_lincoins",
         "reward": 1000,
         "number_series": 3
     },
     "cumulated_lincoins_50000": {
-        "achievement_title": "NOM",
+        "achievement_title": "Compulsive investor",
         "achievement_content": "Collect 50 000 Lincoins.",
         "series": "cumulated_lincoins",
         "reward": 5000,
         "number_series": 4
     },
     "cumulated_lincoins_100000": {
-        "achievement_title": "NOM",
+        "achievement_title": "Legendary investor",
         "achievement_content": "Collect 100 000 Lincoins.",
         "series": "cumulated_lincoins",
         "reward": 9999,
         "number_series": 5
     },
     "cumulated_linclues_10": {
-        "achievement_title": "NOM",
+        "achievement_title": "Novice detective",
         "achievement_content": "Collect 10 Linclues.",
         "series": "cumulated_linclues",
         "reward": 100,
         "number_series": 1
     },
     "cumulated_linclues_50": {
-        "achievement_title": "NOM",
+        "achievement_title": "Small detective",
         "achievement_content": "Collect 50 Linclues.",
         "series": "cumulated_linclues",
         "reward": 500,
         "number_series": 2
     },
     "cumulated_linclues_100": {
-        "achievement_title": "NOM",
+        "achievement_title": "Experienced detective",
         "achievement_content": "Collect 100 Linclues.",
         "series": "cumulated_linclues",
         "reward": 1000,
         "number_series": 3
     },
     "cumulated_linclues_500": {
-        "achievement_title": "NOM",
+        "achievement_title": "Compulsive detective",
         "achievement_content": "Collect 500 Linclues.",
         "series": "cumulated_linclues",
         "reward": 5000,
         "number_series": 4
     },
     "cumulated_linclues_1000": {
-        "achievement_title": "NOM",
+        "achievement_title": "Legendary detective",
         "achievement_content": "Collect 1 000 Linclues.",
         "series": "cumulated_linclues",
         "reward": 9999,
         "number_series": 5
     },
     "cumulated_stars_50": {
-        "achievement_title": "NOM",
+        "achievement_title": "Novice stargazer",
         "achievement_content": "Collect 50 stars.",
         "series": "cumulated_stars",
         "reward": 100,
         "number_series": 1
     },
     "cumulated_stars_100": {
-        "achievement_title": "NOM",
+        "achievement_title": "Small stargazer",
         "achievement_content": "Collect 100 stars.",
         "series": "cumulated_stars",
         "reward": 500,
         "number_series": 2
     },
     "cumulated_stars_500": {
-        "achievement_title": "NOM",
+        "achievement_title": "Experienced stargazer",
         "achievement_content": "Collect 500 stars.",
         "series": "cumulated_stars",
         "reward": 1000,
         "number_series": 3
     },
     "cumulated_stars_1000": {
-        "achievement_title": "NOM",
+        "achievement_title": "Compulsive stargazer",
         "achievement_content": "Collect 1 000 stars.",
         "series": "cumulated_stars",
         "reward": 5000,
         "number_series": 4
     },
     "cumulated_stars_5000": {
-        "achievement_title": "NOM",
+        "achievement_title": "Legendary stargazer",
         "achievement_content": "Collect 5 000 stars.",
         "series": "cumulated_stars",
         "reward": 9999,
