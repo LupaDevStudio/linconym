@@ -57,6 +57,12 @@ class LevelsScreen(LinconymScreen):
         self.ids.level_layout.build_layout()
         self.current_act_name = "Act " + self.current_act_id
 
+    def on_pre_leave(self, *args):
+        # Take screenshot for adv
+        # self.export_to_png("test.png", scale=2.732)
+
+        return super().on_pre_leave(*args)
+
     def on_leave(self, *args):
         self.ids.level_layout.clear_widgets()
         return super().on_leave(*args)

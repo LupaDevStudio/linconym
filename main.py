@@ -33,7 +33,7 @@ from tools.path import (
     PATH_TEMP_IMAGES
 )
 from tools.constants import (
-    MOBILE_MODE,
+    ANDROID_MODE,
     FPS,
     MSAA_LEVEL
 )
@@ -122,7 +122,7 @@ class MainApp(App, Widget):
         return super().on_stop()
 
     def on_start(self):
-        if MOBILE_MODE:
+        if ANDROID_MODE:
             Window.update_viewport()
 
         # Open the opening screen
@@ -140,6 +140,7 @@ class MainApp(App, Widget):
 
 # Run the application
 if __name__ == "__main__":
-    if not MOBILE_MODE:
+    if not ANDROID_MODE:
         Window.size = (405, 720)
+        # Window.size = (750, 1000)
     MainApp().run()

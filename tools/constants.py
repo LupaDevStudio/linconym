@@ -6,7 +6,7 @@ Constants
 __version__ : str
     Version of the application.
 
-MOBILE_MODE : bool
+ANDROID_MODE : bool
     Whether the application is launched on mobile or not.
 """
 
@@ -19,9 +19,6 @@ MOBILE_MODE : bool
 import os
 from typing import Literal
 
-### Kivy imports ###
-
-from kivy import platform
 
 ### Local imports ###
 
@@ -38,7 +35,9 @@ from tools.path import (
     PATH_CREDITS,
     PATH_ACHIEVEMENTS,
     PATH_ICONS,
-    PATH_USER_STATUS
+    PATH_USER_STATUS,
+    IOS_MODE,
+    ANDROID_MODE
 )
 from tools.basic_tools import (
     load_json_file,
@@ -55,7 +54,7 @@ __version__ = "0.1.0"
 
 ### Mode ###
 
-MOBILE_MODE = platform == "android"
+
 DEBUG_MODE = False
 FPS = 30
 MSAA_LEVEL = 2
@@ -402,6 +401,9 @@ SCREEN_TUTORIAL = "has_tutorial"
 
 ### Ads code ###
 
+
+REWARD_INTERSTITIAL = "ca-app-pub-2909842258525517/9568354241"
+
 AMOUNT_DAILY_ADS = [
     {
         "lincoin": 80
@@ -509,6 +511,7 @@ NB_LINCOINS_PER_STAR_DICT = {
 USER_STATUS_DICT = load_json_file(PATH_USER_STATUS)
 
 ### Lincoins images given the amount of Lincoins ###
+
 
 def get_lincoin_image_amount(number_lincoins):
     if number_lincoins <= 800:

@@ -139,6 +139,9 @@ class GameScreen(LinconymScreen):
         self.check_tutorial_to_open()
 
     def on_pre_leave(self, *args):
+        # Take screenshot for adv
+        # self.export_to_png("test.png", scale=2.732)
+
         # Clear the keyboard
         self.ids.keyboard_layout.destroy_keyboard()
 
@@ -294,7 +297,7 @@ class GameScreen(LinconymScreen):
 
         if self.game.get_nb_next_words(self.game.current_position) == 0\
                 and self.current_word != self.start_word.upper() \
-            and self.current_word != self.end_word.upper():
+        and self.current_word != self.end_word.upper():
             self.allow_delete_current_word = True
             self.ids.delete_word_button.opacity = 1
         else:

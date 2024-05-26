@@ -10,6 +10,7 @@ Module to create the profile screen.
 
 from functools import partial
 from typing import Literal
+from random import randint
 
 ### Kivy imports ###
 
@@ -33,7 +34,11 @@ from tools.constants import (
 )
 from screens.custom_widgets import (
     LinconymScreen,
-    MessagePopup
+    MessagePopup,
+    RewardPopup
+)
+from tools.linconym import (
+    AD_CONTAINER
 )
 
 
@@ -142,12 +147,91 @@ class BoostersScreen(LinconymScreen):
         ----------
         mode : Literal["daily", "weekly"]
             Mode according to which it is a daily or weekly ad.
-
-        Returns
-        -------
-        None
         """
+
+        AD_CONTAINER.watch_ad(ad_callback=partial(
+            self.display_ad_award, mode), ad_fail=self.display_ad_not_found)
+
+    def display_ad_not_found(self):
+        """
+        Display a popup explaining that no ad could be found.
+        """
+
+        MessagePopup(
+            title="Unable to load ads",
+            center_label_text="The loading of the ads failed, please try again.",
+            primary_color=self.primary_color,
+            secondary_color=self.secondary_color,
+            font_ratio=self.font_ratio
+        )
+
+    def display_ad_award(self, mode: Literal["daily", "weekly"]):
+        """
+        Display a popup to show the reward.
+
+        Parameters
+        ----------
+        mode : Literal[&quot;daily&quot;, &quot;weekly&quot;]
+            Mode according to which it is a daily or weekly ad.
+        """
+
+        # Compute the reward.
+        if mode == "weekly":
+            nb_linclues = AMOUNT_WEEKLY_AD[0]["linclue"]
+            nb_lincoins = AMOUNT_WEEKLY_AD[0]["lincoin"]
+        else:
+            reward_id = randint(0, 2)
+            if "linclue" in AMOUNT_DAILY_ADS[reward_id]:
+                nb_linclues = AMOUNT_DAILY_ADS[reward_id]["linclue"]
+            else:
+                nb_linclues = 0
+            if "lincoin" in AMOUNT_DAILY_ADS[reward_id]:
+                nb_lincoins = AMOUNT_DAILY_ADS[reward_id]["lincoin"]
+            else:
+                nb_lincoins = 0
+
+        # Open a popup to show the reward
+        reward_function = partial(
+            self.give_ad_award,
+            mode=mode,
+            nb_linclues=nb_linclues,
+            nb_lincoins=nb_lincoins
+        )
+        reward_popup = RewardPopup(
+            reward_function=reward_function,
+            font_ratio=self.font_ratio,
+            primary_color=self.primary_color,
+            secondary_color=self.secondary_color,
+            number_lincoins_won=nb_lincoins,
+            number_linclues_won=nb_linclues,
+
+        )
+        reward_popup.open()
+
+    def give_ad_award(self, mode: Literal["daily", "weekly"], nb_linclues: int, nb_lincoins: int):
+        """
+        Give the reward from the ad and update the display.
+
+        Parameters
+        ----------
+        mode : Literal[&quot;daily&quot;, &quot;weekly&quot;]
+            Mode according to which it is a daily or weekly ad.
+        nb_linclues : int
+            Number of linclues to give.
+        nb_lincoins : int
+            Number of lincoins to give.
+        """
+
+        # Give the award
+        USER_DATA.user_profile["lincoins"] += nb_lincoins
+        USER_DATA.user_profile["cumulated_lincoins"] += nb_lincoins
+        USER_DATA.user_profile["linclues"] += nb_linclues
+        USER_DATA.user_profile["cumulated_linclues"] += nb_linclues
+
+        # Update number of ads left
         USER_DATA.change_boosters(mode)
+
+        # Update the display
         self.update_all_widgets()
 
     def convert_lincoin_to_linclue(self):

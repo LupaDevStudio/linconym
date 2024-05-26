@@ -15,8 +15,10 @@ if __name__ == "__main__":
 
 from typing import (
     Dict,
-    List
+    List,
+    Callable
 )
+import time
 
 ### Local imports ###
 
@@ -30,7 +32,10 @@ from tools.constants import (
     USER_DATA,
     XP_PER_LEVEL,
     DICT_ID_LIST,
-    NB_LINCOINS_PER_STAR_DICT
+    NB_LINCOINS_PER_STAR_DICT,
+    REWARD_INTERSTITIAL,
+    ANDROID_MODE,
+    IOS_MODE
 )
 from tools.basic_tools import (
     dichotomy,
@@ -40,6 +45,14 @@ from tools.basic_tools import (
 from tools.levels import (
     compute_progression
 )
+if ANDROID_MODE:
+    from tools.kivads import (
+        RewardedInterstitial
+    )
+
+if IOS_MODE:
+    from pyobjus import autoclass  # pylint: disable=import-error # type: ignore
+
 
 #################
 ### Constants ###
@@ -500,6 +513,60 @@ def fill_gameplay_dict_with_solutions():
 #############
 ### Class ###
 #############
+
+
+class AdContainer():
+
+    nb_max_reload = 3
+
+    def __init__(self) -> None:
+        self.current_ad = None
+        self.load_ad()
+        print("Ad container initialization")
+
+    def watch_ad(self, ad_callback: Callable, ad_fail: Callable = lambda: 1 + 1):
+        current_ad = self.current_ad
+        reload_id = 0
+        if ANDROID_MODE:
+            current_ad: RewardedInterstitial
+            print("try to show ads")
+            print("Ad state:", current_ad.is_loaded())
+
+            # Reload ads if fail
+            while not current_ad.is_loaded() and reload_id < self.nb_max_reload:
+                current_ad = None
+                self.load_ad()
+                time.sleep(0.2)
+                reload_id += 1
+                print("Reload ad", reload_id)
+
+            # Check if ads is finally loaded
+            if not current_ad.is_loaded():
+                ad_fail()
+                current_ad = None
+                self.load_ad()
+            else:
+                current_ad.on_reward = ad_callback
+                current_ad.show()
+        elif IOS_MODE:
+            current_ad.InterstitialView()
+            ad_callback()
+        else:
+            print("No ads to show outside mobile mode")
+            ad_callback()
+
+    def load_ad(self):
+        print("try to load ad")
+        if ANDROID_MODE:
+            self.current_ad = RewardedInterstitial(
+                REWARD_INTERSTITIAL, on_reward=None)
+        elif IOS_MODE:
+            self.current_ad = autoclass("adInterstitial").alloc().init()
+        else:
+            self.current_ad = None
+
+
+AD_CONTAINER = AdContainer()
 
 
 class Game():

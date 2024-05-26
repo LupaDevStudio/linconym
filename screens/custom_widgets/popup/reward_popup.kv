@@ -1,0 +1,51 @@
+#:kivy 2.2.1
+
+<RewardPopup>:
+    size_hint: (0.85, 0.3)
+    
+    RelativeLayout:
+        id: popup_layout
+
+        ColoredRoundedButton:
+            id: button
+            size_hint: (0.4, 0.3)
+            pos_hint: {"center_x":0.5,"center_y":0.12}
+            font_ratio: root.font_ratio
+            font_size: SMALL_BUTTON_FONT_SIZE
+            text: root.button_label
+            text_font_name: PATH_TEXT_FONT
+            background_color: root.secondary_color
+            touch_color: root.primary_color
+            color_label: root.color_label_button
+            release_function: root.release_function
+      
+        Label:
+            id: top_label
+            size_hint: (0.9, 0.2)
+            pos_hint: {"center_x":0.5,"top":0.95}
+            font_size: SMALL_BUTTON_FONT_SIZE * root.font_ratio
+            font_name: PATH_TEXT_FONT
+            text: root.top_label_text
+            size: self.size
+            shorten: False
+            text_size: (self.width,None)
+            color: (0,0,0,1)
+            halign: "center"
+            valign: "top"
+
+        # Reward frame for Lincoins
+        RewardFrame:
+            pos_hint: {"center_x": 0.25, "top": 0.7}
+            size_hint: (0.35, 0.3)
+            reward: root.number_lincoins_won
+            font_ratio: root.font_ratio
+            plus_mode: True
+
+        # Reward frame for Linclues
+        RewardFrame:
+            pos_hint: {"center_x": 0.75, "top": 0.7}
+            size_hint: (0.35, 0.3)
+            reward: root.number_linclues_won
+            font_ratio: root.font_ratio
+            unit: "linclue"
+            plus_mode: True

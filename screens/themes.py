@@ -64,9 +64,14 @@ class ThemesScreen(LinconymScreen):
     def on_pre_enter(self, *args):
         self.coins_count = USER_DATA.user_profile["lincoins"]
         for theme_layout_id in self.THEME_LAYOUT_DICT:
-            theme_layout:ThemeLayout = self.THEME_LAYOUT_DICT[theme_layout_id]
+            theme_layout: ThemeLayout = self.THEME_LAYOUT_DICT[theme_layout_id]
             theme_layout.update_display()
         return super().on_pre_enter(*args)
+
+    def on_pre_leave(self, *args):
+        # Take screenshot for adv
+        # self.export_to_png("test.png", scale=2.732)
+        return super().on_pre_leave(*args)
 
     def on_resize(self, *args):
         for act in self.THEME_LAYOUT_DICT:
@@ -138,7 +143,8 @@ class ThemesScreen(LinconymScreen):
             "secret": 4
         }
         list_keys = list(THEMES_DICT.keys())
-        list_keys.sort(key=lambda x: dict_order_rarity[THEMES_DICT[x]["rarity"]])
+        list_keys.sort(
+            key=lambda x: dict_order_rarity[THEMES_DICT[x]["rarity"]])
 
         scrollview_layout = self.ids["scrollview_layout"]
         # Load the widgets
@@ -149,7 +155,7 @@ class ThemesScreen(LinconymScreen):
                 source=PATH_BACKGROUNDS + THEMES_DICT[theme]["image"],
                 font_ratio=self.font_ratio,
                 size_hint_y=None,
-                height=120*self.font_ratio)
+                height=120 * self.font_ratio)
             current_theme_button.update_display()
             self.THEME_LAYOUT_DICT[theme] = current_theme_button
             scrollview_layout.add_widget(self.THEME_LAYOUT_DICT[theme])

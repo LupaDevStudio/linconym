@@ -60,6 +60,11 @@ class AchievementsScreen(LinconymScreen):
         super().on_pre_enter(*args)
         self.fill_scrollview()
 
+    def on_pre_leave(self, *args):
+        # Take screenshot for adv
+        # self.export_to_png("test.png", scale=2.732)
+        return super().on_pre_leave(*args)
+
     def update_finished_achievements(self, achievement_id: str):
         achievement = ACHIEVEMENTS_DICT[achievement_id]
         series = achievement["series"]
@@ -68,7 +73,8 @@ class AchievementsScreen(LinconymScreen):
             user_status = USER_DATA.user_profile["status"]
             list_user_status_keys = list(USER_STATUS_DICT.keys())
             user_id = list_user_status_keys.index(user_status)
-            current_id = list_user_status_keys.index(achievement_id.replace("status_", ""))
+            current_id = list_user_status_keys.index(
+                achievement_id.replace("status_", ""))
             if user_id >= current_id:
                 USER_DATA.achievements[achievement_id] = False
 
@@ -91,7 +97,7 @@ class AchievementsScreen(LinconymScreen):
                     if THEMES_DICT[theme]["rarity"] == "secret":
                         number_bought_themes += 1
             if number_themes_to_buy <= number_bought_themes:
-                USER_DATA.achievements[achievement_id] = False            
+                USER_DATA.achievements[achievement_id] = False
 
         if series == "customization_colors":
             number_themes_to_buy = int(
@@ -181,7 +187,8 @@ class AchievementsScreen(LinconymScreen):
             has_got_reward = tuple_achievement[0]
             achievement = ACHIEVEMENTS_DICT[achievement_id]
 
-            display_condition_series = self.get_display_condition_series(achievement_id)
+            display_condition_series = self.get_display_condition_series(
+                achievement_id)
             display_condition = has_completed or has_got_reward or display_condition_series
 
             if display_condition:
@@ -210,9 +217,11 @@ class AchievementsScreen(LinconymScreen):
 
         for id in USER_DATA.achievements:
             if series in id:
-                series_achievements.append(ACHIEVEMENTS_DICT[id]["number_series"])
+                series_achievements.append(
+                    ACHIEVEMENTS_DICT[id]["number_series"])
 
-        user_in_series = max(series_achievements) if series_achievements != [] else 0
+        user_in_series = max(
+            series_achievements) if series_achievements != [] else 0
 
         # Display only the acts unlocked
         if series == "acts":

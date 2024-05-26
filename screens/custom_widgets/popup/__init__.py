@@ -10,3 +10,4 @@ from screens.custom_widgets.popup.level_completed_popup import LevelCompletedPop
 from screens.custom_widgets.popup.linclues_popup import LincluesPopup
 from screens.custom_widgets.popup.level_up_popup import LevelUpPopup
 from screens.custom_widgets.popup.loading_popup import LoadingPopup
+from screens.custom_widgets.popup.reward_popup import RewardPopup
