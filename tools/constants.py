@@ -50,7 +50,7 @@ from tools.basic_tools import (
 
 ### Version ###
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 ### Mode ###
 
@@ -402,7 +402,8 @@ SCREEN_TUTORIAL = "has_tutorial"
 ### Ads code ###
 
 
-REWARD_INTERSTITIAL = "ca-app-pub-2909842258525517/9568354241"
+REWARD_AD = "ca-app-pub-2909842258525517/9568354241"
+REWARD_INTERSTITIAL = "ca-app-pub-2909842258525517/1405673632"
 
 AMOUNT_DAILY_ADS = [
     {
@@ -420,8 +421,6 @@ AMOUNT_WEEKLY_AD = [{
     "lincoin": 480,
     "linclue": 12
 }]
-REWARD_INTERSTITIAL = ""
-INTERSTITIAL = ""
 
 ### Conversion money ###
 

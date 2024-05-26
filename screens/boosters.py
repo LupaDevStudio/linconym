@@ -18,6 +18,7 @@ from kivy.properties import (
     NumericProperty,
     ListProperty
 )
+from kivy.clock import mainthread
 
 ### Local imports ###
 
@@ -152,19 +153,22 @@ class BoostersScreen(LinconymScreen):
         AD_CONTAINER.watch_ad(ad_callback=partial(
             self.display_ad_award, mode), ad_fail=self.display_ad_not_found)
 
+    @mainthread
     def display_ad_not_found(self):
         """
         Display a popup explaining that no ad could be found.
         """
 
-        MessagePopup(
+        popup = MessagePopup(
             title="Unable to load ads",
             center_label_text="The loading of the ads failed, please try again.",
             primary_color=self.primary_color,
             secondary_color=self.secondary_color,
             font_ratio=self.font_ratio
         )
+        popup.open()
 
+    @mainthread
     def display_ad_award(self, mode: Literal["daily", "weekly"]):
         """
         Display a popup to show the reward.

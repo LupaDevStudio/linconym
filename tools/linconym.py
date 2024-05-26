@@ -47,7 +47,9 @@ from tools.levels import (
 )
 if ANDROID_MODE:
     from tools.kivads import (
-        RewardedInterstitial
+        RewardedInterstitial,
+        RewardedAd,
+        TestID
     )
 
 if IOS_MODE:
@@ -525,31 +527,30 @@ class AdContainer():
         print("Ad container initialization")
 
     def watch_ad(self, ad_callback: Callable, ad_fail: Callable = lambda: 1 + 1):
-        current_ad = self.current_ad
         reload_id = 0
         if ANDROID_MODE:
-            current_ad: RewardedInterstitial
+            self.current_ad: RewardedAd
             print("try to show ads")
-            print("Ad state:", current_ad.is_loaded())
+            print("Ad state:", self.current_ad.is_loaded())
 
             # Reload ads if fail
-            while not current_ad.is_loaded() and reload_id < self.nb_max_reload:
-                current_ad = None
+            while not self.current_ad.is_loaded() and reload_id < self.nb_max_reload:
+                self.current_ad = None
                 self.load_ad()
-                time.sleep(0.2)
+                time.sleep(0.3)
                 reload_id += 1
                 print("Reload ad", reload_id)
 
             # Check if ads is finally loaded
-            if not current_ad.is_loaded():
+            if not self.current_ad.is_loaded():
                 ad_fail()
-                current_ad = None
+                self.current_ad = None
                 self.load_ad()
             else:
-                current_ad.on_reward = ad_callback
-                current_ad.show()
+                self.current_ad.on_reward = ad_callback
+                self.current_ad.show()
         elif IOS_MODE:
-            current_ad.InterstitialView()
+            self.current_ad.InterstitialView()
             ad_callback()
         else:
             print("No ads to show outside mobile mode")
@@ -558,8 +559,10 @@ class AdContainer():
     def load_ad(self):
         print("try to load ad")
         if ANDROID_MODE:
-            self.current_ad = RewardedInterstitial(
-                REWARD_INTERSTITIAL, on_reward=None)
+            self.current_ad = RewardedAd(
+                # REWARD_INTERSTITIAL,
+                TestID.REWARD,
+                on_reward=None)
         elif IOS_MODE:
             self.current_ad = autoclass("adInterstitial").alloc().init()
         else:
