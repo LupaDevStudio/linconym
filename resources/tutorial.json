@@ -3,20 +3,44 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue. TODO Laure, faire en sorte que Rune se présente et présente le jeu (le concept global)."
-            ],
-            [
-                "EXEMPLE HORIZONTAL",
+                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue.",
                 "horizontal",
                 "resources/images/tutorial/banner.jpg"
             ],
             [
-                "EXEMPLE VERTICAL",
-                "vertical",
-                "resources/images/tutorial/banner.jpg"
+                "I'm Rune, the guardian of the Linconym's world. \n \n Linconym is a word puzzle game where you have to link two words by applying simple rules. \n \n Let's start with the basics!",
+                "horizontal",
+                "resources/images/rune.png"
             ],
             [
-                "Enjoy the game! \n \n LupaDevStudio's team"
+                "First, let me present the game's money: Lincoins. \n \n You can earn Lincoins by completing puzzles, achievements and quests. \n \n You can use them to buy customization items and boosters. WIP",
+                "horizontal",
+                "resources/images/icons/lincoin_1.png"
+            ],
+            [
+                "Second, let me present the game's hints: Linclues. \n \n You can earn Linclues by completing puzzles, achievements and quests. \n \n You can use them to get hints on puzzles. WIP",
+                "horizontal",
+                "resources/images/icons/linclue.png"
+            ],
+            [
+                "Choose 'Classic Mode ' to play the game. \n \n In this mode, you have to link two words by applying simple rules. \n \n You'll discover them in the tutorial act !",
+                "horizontal",
+                "resources/images/rune.png"
+            ],
+            [
+                "By playing the game, you can earn XPs and level up. Leveling up allows you to earn more Lincoins and Linclues ! \n \n You can see your progress in your profile.",
+                "horizontal",
+                "resources/images/runes.png"
+            ],
+            [
+                "Use the bottom bar to navigate through the game's features. \n \n You can access the game, available customization, your profile and the settings.",
+                "horizontal",
+                "resources/images/rune.png"
+            ],
+            [
+                "Enjoy the game! \n \n LupaDevStudio's team",
+                "horizontal",
+                "resources/images/tutorial/banner.jpg"
             ]
         ]
     },
@@ -24,7 +48,9 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "TODO Laure"
+                "Welcome to your profile! \n \n Here, you can see your progress, your Linclues, your Lincoins and your achievements. Do not forget to consult your achievements to claim your rewards!",
+                "horizontal",
+                "resources/images/rune.png"
             ]
         ]
     },
@@ -32,7 +58,9 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "TODO Laure"
+                "Adjust the game's settings to your preferences. \n \n You can change the music and sound effects volume, and the keyboard's type.",
+                "horizontal",
+                "resources/images/rune.png"
             ]
         ]
     },
@@ -40,7 +68,9 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "TODO Laure expliquer que les coffres sont positionnés à des puzzles plus compliqués et qu'ils permettent de gagner 3 linclues une fois le puzzle complété (utiliser le mot puzzle et pas level)"
+                "Chests are positioned at more complex puzzles and allow you to win 3 Linclues once the puzzle is completed. \n \n Reminder : Linclues are hints that help you to find the solution of a puzzle.",
+                "horizontal",
+                "resources/images/tutorial/closed_to_open_chest.png"
             ]
         ]
     },
@@ -144,7 +174,17 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "TODO Laure"
+                "Welcome to the themes customization page! \n \n Here, you can choose the theme you want to play with. \n \n You can preview the theme by clicking on the preview button before buying it.",
+                "horizontal",
+                "resources/images/rune.png"
+            ],
+            [
+                "Themes have rareties: common, rare, epic and secret. \n \n The higher the rarity, the more expensive the theme. \n \n You can buy them with Lincoins. \n\n For each complete theme, you need to buy both the background and the colors of the game."
+            ],
+            [
+                "You can also customize the theme by choosing the background the colors of the game. \n \n Once bought, you can apply the theme by selecting them. \n \n Enjoy the game!",
+                "horizontal",
+                "resources/images/rune.png"
             ]
         ]
     },
@@ -152,7 +192,19 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "TODO Laure"
+                "Welcome to the boosters tutorial! \n \n Boosters are items that help you to solve puzzles and purchase customization items. \n \n You can buy them with Lincoins in Customization.",
+                "horizontal",
+                "resources/images/rune.png"
+            ],
+            [
+                "You can obtain Lincoins and Linclues by watching ads. \n \n Everyday, you can watch up to 3 ads to earn 80 Lincoins or 40 Lincoins and 1 Linclue or 2 Linclues.",
+                "horizontal",
+                "resources/images/rune.png"
+            ],
+            [
+                "A weekly ad is also available to earn 480 Lincoins and 12 Linclues ! \n\n You can also convert your Lincoins to Linclues if needed !",
+                "horizontal",
+                "resources/images/rune.png"
             ]
         ]
     },
@@ -160,7 +212,9 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "TODO Laure"
+                "Welcome to the musics customization page ! \n\n Here, you can choose the music you want to listen to while playing Linconym. \n\n You can listen to the music by clicking on the play button before buying it.",
+                "horizontal",
+                "resources/images/rune.png"
             ]
         ]
     },
@@ -168,7 +222,9 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "TODO Laure"
+                "Welcome to the achievements page! \n \n Here, you can see the achievements you have completed and the ones you have to complete. \n \n You can claim your rewards by clicking on the claim button.",
+                "horizontal",
+                "resources/images/rune.png"
             ]
         ]
     },
@@ -176,7 +232,9 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "TODO Laure"
+                "Welcome to the quests page! \n \n Here, you can see the quests you have to complete. \n \n Completing quests allows you to earn XPs, hence leveling up and earning rewards.",
+                "horizontal",
+                "resources/images/rune.png"
             ]
         ]
     },
