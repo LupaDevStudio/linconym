@@ -146,6 +146,14 @@ class AchievementsScreen(LinconymScreen):
                 if nb_completed_levels == nb_levels:
                     USER_DATA.achievements[achievement_id] = False
 
+        if series.startswith("word_"):
+            word_to_find = series.replace("word_", "")
+            number_of_words_to_find = int(achievement_id.replace(series + "_", ""))
+            number_of_words_found = USER_DATA.get_nb_words_all_puzzles(word_to_find)
+
+            if number_of_words_to_find <= number_of_words_found:
+                USER_DATA.achievements[achievement_id] = False
+
         USER_DATA.save_changes()
 
     def fill_scrollview(self):

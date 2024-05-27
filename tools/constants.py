@@ -327,6 +327,18 @@ class UserData():
 
         return nb_completed_levels
 
+    def get_nb_words_all_puzzles(self, word_to_find: str):
+        nb_words = 0
+
+        for act_id in self.classic_mode:
+            for puzzle in self.classic_mode[act_id]:
+                if puzzle != "name" and "words_found" in self.classic_mode[act_id][puzzle]:
+                    for word in self.classic_mode[act_id][puzzle]["words_found"]:
+                        if word == word_to_find:
+                            nb_words += 1
+
+        return nb_words
+
     def buy_item(self, theme, item_type, price):
         if self.user_profile["lincoins"] >= price:
             self.user_profile["lincoins"] = self.user_profile["lincoins"] - price

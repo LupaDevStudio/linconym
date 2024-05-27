@@ -362,5 +362,110 @@
         "series": "acts",
         "reward": 700,
         "number_series": 7
+    },
+    "word_rune_1": {
+        "achievement_title": "Looking for Rune",
+        "achievement_content": "Use the word \"RUNE\" once as an intermediate word the puzzles.",
+        "series": "word_rune",
+        "reward": 100,
+        "number_series": 1
+    },
+    "word_rune_5": {
+        "achievement_title": "Get to know Rune",
+        "achievement_content": "Use the word \"RUNE\" 5 times as an intermediate word the puzzles.",
+        "series": "word_rune",
+        "reward": 500,
+        "number_series": 2
+    },
+    "word_rune_10": {
+        "achievement_title": "Follow the Runes",
+        "achievement_content": "Use the word \"RUNE\" 10 times as an intermediate word the puzzles.",
+        "series": "word_rune",
+        "reward": 1000,
+        "number_series": 3
+    },
+    "word_rune_50": {
+        "achievement_title": "Surrounded by Runes",
+        "achievement_content": "Use the word \"RUNE\" 50 times as an intermediate word the puzzles.",
+        "series": "word_rune",
+        "reward": 5000,
+        "number_series": 4
+    },
+    "word_rune_100": {
+        "achievement_title": "One with the Runes",
+        "achievement_content": "Use the word \"RUNE\" 100 times as an intermediate word the puzzles.",
+        "series": "word_rune",
+        "reward": 9999,
+        "number_series": 5
+    },
+    "word_frog_1": {
+        "achievement_title": "NOM",
+        "achievement_content": "Use the word \"FROG\" once as an intermediate word the puzzles.",
+        "series": "word_frog",
+        "reward": 100,
+        "number_series": 1
+    },
+    "word_frog_5": {
+        "achievement_title": "NOM",
+        "achievement_content": "Use the word \"FROG\" 5 times as an intermediate word the puzzles.",
+        "series": "word_frog",
+        "reward": 500,
+        "number_series": 2
+    },
+    "word_frog_10": {
+        "achievement_title": "NOM",
+        "achievement_content": "Use the word \"FROG\" 10 times as an intermediate word the puzzles.",
+        "series": "word_frog",
+        "reward": 1000,
+        "number_series": 3
+    },
+    "word_frog_20": {
+        "achievement_title": "NOM",
+        "achievement_content": "Use the word \"FROG\" 20 times as an intermediate word the puzzles.",
+        "series": "word_frog",
+        "reward": 5000,
+        "number_series": 4
+    },
+    "word_frog_50": {
+        "achievement_title": "NOM",
+        "achievement_content": "Use the word \"FROG\" 50 times as an intermediate word the puzzles.",
+        "series": "word_frog",
+        "reward": 9999,
+        "number_series": 5
+    },
+    "word_wacky_1": {
+        "achievement_title": "NOM",
+        "achievement_content": "Use the word \"WACKY\" once as an intermediate word the puzzles.",
+        "series": "word_wacky",
+        "reward": 100,
+        "number_series": 1
+    },
+    "word_wacky_2": {
+        "achievement_title": "NOM",
+        "achievement_content": "Use the word \"WACKY\" 2 times as an intermediate word the puzzles.",
+        "series": "word_wacky",
+        "reward": 500,
+        "number_series": 2
+    },
+    "word_wacky_3": {
+        "achievement_title": "NOM",
+        "achievement_content": "Use the word \"WACKY\" 3 times as an intermediate word the puzzles.",
+        "series": "word_wacky",
+        "reward": 1000,
+        "number_series": 3
+    },
+    "word_wacky_5": {
+        "achievement_title": "NOM",
+        "achievement_content": "Use the word \"WACKY\" 5 times as an intermediate word the puzzles.",
+        "series": "word_wacky",
+        "reward": 5000,
+        "number_series": 4
+    },
+    "word_wacky_10": {
+        "achievement_title": "NOM",
+        "achievement_content": "Use the word \"WACKY\" 10 times as an intermediate word the puzzles.",
+        "series": "word_wacky",
+        "reward": 9999,
+        "number_series": 5
     }
 }
