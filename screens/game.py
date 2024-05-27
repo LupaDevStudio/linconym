@@ -445,12 +445,20 @@ class GameScreen(LinconymScreen):
         # Check if there is a next puzzle in the same act
         next_lvl_id = str(int(self.current_level_id) + 1)
         has_next_levels_in_act = next_lvl_id in GAMEPLAY_DICT[self.current_act_id]
+        if has_next_levels_in_act:
+            right_button_label = "Next puzzle"
+            next_level_function=partial(
+                self.reload_for_level_change, next_lvl_id)
+        else:
+            right_button_label = "Return to menu"
+            next_level_function = self.go_backwards
 
         # Create the popup for the completion
         popup = LevelCompletedPopup(
             title=f"Puzzle {self.current_level_id} completed",
             primary_color=self.primary_color,
             secondary_color=self.secondary_color,
+            right_button_label=right_button_label,
             font_ratio=self.font_ratio,
             top_label_text=f"Solution found in {end_level_dict['nb_words']} words.",
             nb_stars=end_level_dict["stars"],
@@ -460,9 +468,7 @@ class GameScreen(LinconymScreen):
             percentage_experience_won=end_level_dict["current_level_progress"] -
             end_level_dict["previous_level_progress"],
             experience_displayed=end_level_dict["xp_earned"],
-            next_level_function=partial(
-                self.reload_for_level_change, next_lvl_id),
-            has_next_levels_in_act=has_next_levels_in_act,
+            next_level_function=next_level_function,
             number_lincoins_won=end_level_dict["lincoins_earned"],
             number_linclues_won=end_level_dict["linclues_earned"]
         )

@@ -240,9 +240,10 @@ class UserData():
         nb_levels = 0
 
         for level in GAMEPLAY_DICT[act_id]:
-            if level in self.classic_mode[act_id]:
-                total_nb_stars += self.classic_mode[act_id][level]["nb_stars"]
-            nb_levels += 1
+            if level != "name":
+                if level in self.classic_mode[act_id]:
+                    total_nb_stars += self.classic_mode[act_id][level]["nb_stars"]
+                nb_levels += 1
 
         mean = total_nb_stars / nb_levels
 

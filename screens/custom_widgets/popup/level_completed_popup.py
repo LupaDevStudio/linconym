@@ -49,9 +49,7 @@ class LevelCompletedPopup(CustomPopup):
     number_lincoins_won = NumericProperty(0)
     number_linclues_won = NumericProperty(0)
 
-    def __init__(self, has_next_levels_in_act: bool = False, next_level_function: Callable = lambda: 1 + 1, **kwargs):
-        # Store parameter
-        self.has_next_levels_in_act = has_next_levels_in_act
+    def __init__(self, next_level_function: Callable = lambda: 1 + 1, **kwargs):
 
         # Define right function
         def right_release_function():

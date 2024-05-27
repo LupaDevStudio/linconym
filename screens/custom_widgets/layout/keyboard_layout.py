@@ -84,6 +84,7 @@ class KeyboardLayout(RelativeLayout):
         -------
         None
         """
+        self.destroy_keyboard()
         self.list_letter_keys = []
 
         vertical_padding = 0.04
@@ -201,7 +202,8 @@ class KeyboardLayout(RelativeLayout):
         """
         for letter in self.list_letter_keys:
             self.remove_widget(letter)
-        self.remove_widget(self.delete_key)
+        if self.delete_key is not None:
+            self.remove_widget(self.delete_key)
 
     def disable_delete_button(self):
         """
