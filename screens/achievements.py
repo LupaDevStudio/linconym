@@ -87,6 +87,8 @@ class AchievementsScreen(LinconymScreen):
                     number_bought_themes += 1
             if number_themes_to_buy <= number_bought_themes:
                 USER_DATA.achievements[achievement_id] = False
+            else:
+                return str(number_bought_themes) + " / " + str(number_themes_to_buy)
 
         if series == "customization_secret_theme":
             number_themes_to_buy = int(
@@ -98,6 +100,8 @@ class AchievementsScreen(LinconymScreen):
                         number_bought_themes += 1
             if number_themes_to_buy <= number_bought_themes:
                 USER_DATA.achievements[achievement_id] = False
+            else:
+                return str(number_bought_themes) + " / " + str(number_themes_to_buy)
 
         if series == "customization_colors":
             number_themes_to_buy = int(
@@ -108,6 +112,8 @@ class AchievementsScreen(LinconymScreen):
                     number_bought_themes += 1
             if number_themes_to_buy <= number_bought_themes:
                 USER_DATA.achievements[achievement_id] = False
+            else:
+                return str(number_bought_themes) + " / " + str(number_themes_to_buy)
 
         if series == "customization_music":
             number_musics_to_buy = int(
@@ -115,6 +121,8 @@ class AchievementsScreen(LinconymScreen):
             number_bought_musics = len(USER_DATA.unlocked_musics) - 1
             if number_musics_to_buy <= number_bought_musics:
                 USER_DATA.achievements[achievement_id] = False
+            else:
+                return str(number_bought_musics) + " / " + str(number_musics_to_buy)
 
         if series == "cumulated_lincoins":
             number_lincoins_to_cumulate = int(
@@ -122,6 +130,8 @@ class AchievementsScreen(LinconymScreen):
             cumulated_lincoins = USER_DATA.user_profile["cumulated_lincoins"]
             if number_lincoins_to_cumulate <= cumulated_lincoins:
                 USER_DATA.achievements[achievement_id] = False
+            else:
+                return str(cumulated_lincoins) + " / " + str(number_lincoins_to_cumulate)
 
         if series == "cumulated_linclues":
             number_linclues_to_cumulate = int(
@@ -129,6 +139,8 @@ class AchievementsScreen(LinconymScreen):
             cumulated_linclues = USER_DATA.user_profile["cumulated_linclues"]
             if number_linclues_to_cumulate <= cumulated_linclues:
                 USER_DATA.achievements[achievement_id] = False
+            else:
+                return str(cumulated_linclues) + " / " + str(number_linclues_to_cumulate)
 
         if series == "cumulated_stars":
             number_stars_to_win = int(
@@ -136,15 +148,21 @@ class AchievementsScreen(LinconymScreen):
             number_stars_won = USER_DATA.get_nb_total_stars()
             if number_stars_to_win <= number_stars_won:
                 USER_DATA.achievements[achievement_id] = False
+            else:
+                return str(number_stars_won) + " / " + str(number_stars_to_win)
 
         if series == "acts":
             act_name = achievement_id.replace("acts_", "")
+            nb_levels = len(GAMEPLAY_DICT[act_name]) - 1
             if act_name in USER_DATA.classic_mode:
-                nb_levels = len(GAMEPLAY_DICT[act_name]) - 1
                 nb_completed_levels = USER_DATA.get_nb_completed_levels_for_act(
                     act_name)
                 if nb_completed_levels == nb_levels:
                     USER_DATA.achievements[achievement_id] = False
+                else:
+                    return str(nb_completed_levels) + " / " + str(nb_levels)
+            else:
+                return "0 / " + str(nb_levels)
 
         if series.startswith("word_"):
             word_to_find = series.replace("word_", "")
@@ -153,8 +171,11 @@ class AchievementsScreen(LinconymScreen):
 
             if number_of_words_to_find <= number_of_words_found:
                 USER_DATA.achievements[achievement_id] = False
+            else:
+                return str(number_of_words_found) + " / " + str(number_of_words_to_find)
 
         USER_DATA.save_changes()
+        return ""
 
     def fill_scrollview(self):
         scrollview_layout = self.ids.scrollview_layout
@@ -166,8 +187,9 @@ class AchievementsScreen(LinconymScreen):
         for achievement_id in ACHIEVEMENTS_DICT:
 
             # Check if the achievement has been reached meanwhile
+            progression = ""
             if not achievement_id in USER_DATA.achievements:
-                self.update_finished_achievements(achievement_id)
+                progression = self.update_finished_achievements(achievement_id)
 
             achievement = ACHIEVEMENTS_DICT[achievement_id]
             series = achievement["series"]
@@ -182,12 +204,13 @@ class AchievementsScreen(LinconymScreen):
                     has_got_reward = True
 
             list_achievements_order.append([
-                has_got_reward, not has_completed, series, reward, achievement_id])
+                has_got_reward, not has_completed, series, reward, achievement_id, progression])
 
         # Sort the list of achievements
         list_achievements_order.sort()
 
         for tuple_achievement in list_achievements_order:
+            progression = tuple_achievement[5]
             achievement_id = tuple_achievement[4]
             reward = tuple_achievement[3]
             series = tuple_achievement[2]
@@ -208,7 +231,8 @@ class AchievementsScreen(LinconymScreen):
                     primary_color=self.primary_color,
                     secondary_color=self.secondary_color,
                     size_hint=(0.8, None),
-                    height=150 * self.font_ratio)
+                    height=150 * self.font_ratio,
+                    progression=progression)
                 current_achievement_layout.has_completed = has_completed
                 current_achievement_layout.has_got_reward = has_got_reward
                 current_achievement_layout.release_function = partial(

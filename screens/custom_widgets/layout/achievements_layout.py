@@ -53,6 +53,7 @@ class AchievementsLayout(RelativeLayout):
     has_completed = BooleanProperty(False)
     has_got_reward = BooleanProperty(False)
     reward = NumericProperty()
+    progression = StringProperty()
     release_function = ObjectProperty(lambda: 1 + 1)
 
     def __init__(self, **kwargs):
