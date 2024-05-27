@@ -73,9 +73,12 @@ class ProfileScreen(LinconymScreen):
         self.user_status = USER_DATA.user_profile["status"].capitalize()
         self.user_status_image = PATH_BADGES + self.user_status.lower() + ".png"
 
-        self.classic_mode_achievements = "Completed levels: %i\nCompleted acts: %i\nStars won: %i\n\nClick to see all achievements." % (
-            14, 1, 32)
-        # self.daily_mode_achievements = "Completed levels: %i\n\nClick to see all achievements." % (
+        completed_puzzles = USER_DATA.get_nb_completed_puzzles()
+        completed_acts = USER_DATA.get_nb_completed_acts()
+        stars_won = USER_DATA.get_nb_total_stars()
+        self.classic_mode_achievements = "Completed puzzles: %i\nCompleted acts: %i\nStars won: %i\n\nClick to see all achievements." % (
+            completed_puzzles, completed_acts, stars_won)
+        # self.daily_mode_achievements = "Completed puzzles: %i\n\nClick to see all achievements." % (
         #     14)
 
     def go_to_boosters(self):

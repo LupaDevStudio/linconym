@@ -240,13 +240,63 @@ class UserData():
         nb_levels = 0
 
         for level in GAMEPLAY_DICT[act_id]:
-            if level in USER_DATA.classic_mode[act_id]:
-                total_nb_stars += USER_DATA.classic_mode[act_id][level]["nb_stars"]
+            if level in self.classic_mode[act_id]:
+                total_nb_stars += self.classic_mode[act_id][level]["nb_stars"]
             nb_levels += 1
 
         mean = total_nb_stars / nb_levels
 
         return int(mean)
+
+    def get_nb_completed_puzzles(self):
+        """
+        Compute the number of completed puzzles.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        int
+            Number of puzzles already completed.
+        """
+        nb_completed_puzzles = 0
+
+        for act_id in self.classic_mode:
+            nb_completed_puzzles += self.get_nb_completed_levels_for_act(act_id)
+
+        return nb_completed_puzzles
+
+    def get_nb_completed_acts(self):
+        """
+        Compute the number of completed acts.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        int
+            Number of acts already completed.
+        """
+        nb_completed_acts = 0
+
+        for act_id in self.classic_mode:
+            has_finished_act = True
+
+            for puzzle in GAMEPLAY_DICT[act_id]:
+                if puzzle != "name":
+                    if puzzle not in self.classic_mode[act_id]:
+                        has_finished_act = False
+                    elif self.classic_mode[act_id][puzzle]["nb_stars"] == 0:
+                        has_finished_act = False
+
+            if has_finished_act:
+                nb_completed_acts += 1
+
+        return nb_completed_acts
 
     def get_nb_completed_levels_for_act(self, act_id: str):
         """
@@ -264,15 +314,15 @@ class UserData():
         """
 
         # Check if the user has already played on the level
-        if act_id not in USER_DATA.classic_mode:
+        if act_id not in self.classic_mode:
             return 0
 
         # Allocate a variable for the output
         nb_completed_levels = 0
 
         # Iterate over the saved data to count the levels
-        for level_id in USER_DATA.classic_mode[act_id]:
-            if USER_DATA.classic_mode[act_id][level_id]["nb_stars"] > 0:
+        for level_id in self.classic_mode[act_id]:
+            if self.classic_mode[act_id][level_id]["nb_stars"] > 0:
                 nb_completed_levels += 1
 
         return nb_completed_levels
