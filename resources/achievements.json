@@ -392,35 +392,35 @@
         "number_series": 5
     },
     "word_frog_1": {
-        "achievement_title": "NOM",
+        "achievement_title": "Ribbit?",
         "achievement_content": "Use the word \"FROG\" once as an intermediate word in the puzzles.",
         "series": "word_frog",
         "reward": 100,
         "number_series": 1
     },
     "word_frog_5": {
-        "achievement_title": "Ribbit!",
+        "achievement_title": "Ribbit Ribbit!",
         "achievement_content": "Use the word \"FROG\" 5 times as an intermediate word in the puzzles.",
         "series": "word_frog",
         "reward": 500,
         "number_series": 2
     },
     "word_frog_10": {
-        "achievement_title": "NOM",
+        "achievement_title": "Frog-tastic!",
         "achievement_content": "Use the word \"FROG\" 10 times as an intermediate word in the puzzles.",
         "series": "word_frog",
         "reward": 1000,
         "number_series": 3
     },
     "word_frog_20": {
-        "achievement_title": "Frog-tastic!",
+        "achievement_title": "Toadally Awesome!",
         "achievement_content": "Use the word \"FROG\" 20 times as an intermediate word in the puzzles.",
         "series": "word_frog",
         "reward": 5000,
         "number_series": 4
     },
     "word_frog_50": {
-        "achievement_title": "Toadally Awesome!",
+        "achievement_title": "Hoppity Ever After",
         "achievement_content": "Use the word \"FROG\" 50 times as an intermediate word in the puzzles.",
         "series": "word_frog",
         "reward": 9999,

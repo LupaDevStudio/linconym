@@ -96,7 +96,7 @@ class AchievementsScreen(LinconymScreen):
             number_bought_themes = 0
             for theme in USER_DATA.unlocked_themes:
                 if USER_DATA.unlocked_themes[theme]["image"]:
-                    if THEMES_DICT[theme]["rarity"] == "secret":
+                    if THEMES_DICT[theme]["rarity"] == "secret": # type: ignore
                         number_bought_themes += 1
             if number_themes_to_buy <= number_bought_themes:
                 USER_DATA.achievements[achievement_id] = False

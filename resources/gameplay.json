@@ -86,202 +86,175 @@
     "2": {
         "name": "Act 2 - Childhood",
         "1": {
-            "start_word": "joy",
-            "end_word": "toy",
-            "10k": 2,
-            "34k": 2,
-            "88k": 2,
-            "280k": 2
+            "start_word": "doll",
+            "end_word": "ball",
+            "10k": 4,
+            "34k": 4,
+            "88k": 3,
+            "280k": 3
         },
         "2": {
-            "start_word": "toy",
-            "end_word": "toys",
-            "10k": 2,
-            "34k": 2,
-            "88k": 2,
-            "280k": 2
-        },
-        "3": {
-            "start_word": "toys",
-            "end_word": "joy",
-            "10k": 3,
-            "34k": 3,
-            "88k": 3,
-            "280k": 3,
-            "chest": true
-        },
-        "4": {
             "start_word": "ball",
-            "end_word": "doll",
-            "10k": 4,
+            "end_word": "bear",
+            "10k": 3,
             "34k": 3,
             "88k": 3,
             "280k": 3
         },
-        "5": {
-            "start_word": "doll",
-            "end_word": "bear",
-            "10k": 5,
-            "34k": 5,
-            "88k": 5,
-            "280k": 5
-        },
-        "6": {
+        "3": {
             "start_word": "bear",
-            "end_word": "care",
-            "10k": 2,
-            "34k": 2,
-            "88k": 2,
-            "280k": 2,
-            "chest": true
+            "end_word": "girl",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
         },
-        "7": {
+        "4": {
+            "start_word": "girl",
+            "end_word": "care",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "5": {
             "start_word": "care",
             "end_word": "share",
             "10k": 3,
             "34k": 3,
             "88k": 3,
             "280k": 3
-        }
-    },
-    "3": {
-        "name": "Act 3 - 20.000 leagues under the sea",
-        "1": {
-            "start_word": "creature",
-            "end_word": "treasures",
-            "10k": 3,
-            "34k": 3,
-            "88k": 3,
-            "280k": 3
-        },
-        "2": {
-            "start_word": "treasures",
-            "end_word": "pressure",
-            "10k": 12,
-            "34k": 3,
-            "88k": 3,
-            "280k": 3
-        },
-        "3": {
-            "start_word": "pressure",
-            "end_word": "sailor",
-            "10k": 10,
-            "34k": 7,
-            "88k": 7,
-            "280k": 7
-        },
-        "4": {
-            "start_word": "sailor",
-            "end_word": "deep",
-            "10k": 7,
-            "34k": 7,
-            "88k": 7,
-            "280k": 7
-        },
-        "5": {
-            "start_word": "deep",
-            "end_word": "diver",
-            "10k": 4,
-            "34k": 4,
-            "88k": 4,
-            "280k": 4
         },
         "6": {
-            "start_word": "diver",
-            "end_word": "water",
+            "start_word": "share",
+            "end_word": "game",
             "10k": 4,
             "34k": 4,
             "88k": 4,
             "280k": 4
         },
         "7": {
-            "start_word": "water",
-            "end_word": "journey",
-            "10k": 9,
-            "34k": 7,
-            "88k": 7,
-            "280k": 6
+            "start_word": "game",
+            "end_word": "smile",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
         },
         "8": {
-            "start_word": "journey",
-            "end_word": "under",
-            "10k": 7,
-            "34k": 6,
+            "start_word": "smile",
+            "end_word": "toys",
+            "10k": 5,
+            "34k": 5,
             "88k": 5,
             "280k": 5
         },
         "9": {
-            "start_word": "under",
-            "end_word": "depth",
-            "10k": 5,
-            "34k": 5,
-            "88k": 5,
-            "280k": 4
+            "start_word": "toys",
+            "end_word": "boy",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
         },
         "10": {
-            "start_word": "depth",
-            "end_word": "coral",
-            "10k": 6,
-            "34k": 6,
-            "88k": 6,
-            "280k": 6
+            "start_word": "boy",
+            "end_word": "story",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
         },
         "11": {
-            "start_word": "coral",
-            "end_word": "captain",
-            "10k": 8,
-            "34k": 6,
-            "88k": 6,
-            "280k": 6
-        },
-        "12": {
-            "start_word": "captain",
-            "end_word": "sea",
-            "10k": 8,
-            "34k": 7,
-            "88k": 7,
-            "280k": 7
-        },
-        "13": {
-            "start_word": "sea",
-            "end_word": "world",
-            "10k": 6,
-            "34k": 6,
-            "88k": 6,
-            "280k": 6
-        },
-        "14": {
-            "start_word": "world",
-            "end_word": "ocean",
-            "10k": 6,
+            "start_word": "story",
+            "end_word": "play",
+            "10k": 5,
             "34k": 5,
             "88k": 5,
             "280k": 5
         },
-        "15": {
-            "start_word": "ocean",
-            "end_word": "marine",
+        "12": {
+            "start_word": "play",
+            "end_word": "dream",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5,
+            "chest": true
+        },
+        "13": {
+            "start_word": "dream",
+            "end_word": "wonder",
             "10k": 5,
             "34k": 4,
             "88k": 4,
             "280k": 4
         },
-        "16": {
-            "start_word": "marine",
-            "end_word": "submarine",
-            "10k": 7,
+        "14": {
+            "start_word": "wonder",
+            "end_word": "friend",
+            "10k": 4,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "15": {
+            "start_word": "friend",
+            "end_word": "teddy",
+            "10k": 6,
             "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "16": {
+            "start_word": "teddy",
+            "end_word": "candy",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 4
+        },
+        "17": {
+            "start_word": "candy",
+            "end_word": "child",
+            "10k": 8,
+            "34k": 5,
+            "88k": 5,
+            "280k": 4,
+            "chest": true
+        },
+        "18": {
+            "start_word": "child",
+            "end_word": "birth",
+            "10k": 6,
+            "34k": 4,
             "88k": 4,
             "280k": 4
+        },
+        "19": {
+            "start_word": "birth",
+            "end_word": "growth",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "20": {
+            "start_word": "growth",
+            "end_word": "magic",
+            "chest": true,
+            "10k": 8,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "21": {
+            "start_word": "magic",
+            "end_word": "happy",
+            "10k": 7,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
         }
-    },
-    "4": {
-        "name": "Act 4 - Space Exploration"
-    },
-    "5": {
-        "name": "Act 5 - Around the World"
-    },
-    "6": {
-        "name": "Act 6 - My Little Poney"
     }
 }
