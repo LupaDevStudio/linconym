@@ -63,12 +63,11 @@
     # Go to quest or claim reward
     ColoredRoundedButton:
         text: root.button_text
-        background_color: root.disable_color if root.has_got_reward else root.primary_color
         pos_hint: {"center_x": 0.7,"center_y": 0.25}
         font_ratio: root.font_ratio
         font_size: SMALL_BUTTON_FONT_SIZE
         size_hint: (0.4, 0.275)
         color_label: (1,1,1,1)
         outline_color: (1,1,1,1)
-        disable_button: True if root.has_got_reward else False
+        disabled: True if root.has_got_reward else False
         touch_color: root.secondary_color

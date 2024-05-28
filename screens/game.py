@@ -580,7 +580,8 @@ class GameScreen(LinconymScreen):
             font_ratio=self.font_ratio,
             number_linclues_to_use=number_linclues_to_use,
             number_linclues=USER_DATA.user_profile["linclues"],
-            yes_function=partial(self.use_linclues, number_linclues_to_use)
+            yes_function=partial(self.use_linclues, number_linclues_to_use),
+            game=self.game
         )
         popup.open()
 

@@ -38,7 +38,8 @@ from tools.constants import (
 from screens.custom_widgets import (
     LinconymScreen,
     MessagePopup,
-    RewardPopup
+    RewardPopup,
+    ConversionPopup
 )
 from tools.linconym import (
     AD_CONTAINER
@@ -155,7 +156,7 @@ class BoostersScreen(LinconymScreen):
             "price": DICT_CONVERSION_MONEY["price_lincoins"],
             "price_unit": "lincoin",
             "disable_button": not enable_button,
-            "release_function": self.convert_lincoin_to_linclue
+            "release_function": self.ask_convert_lincoin_to_linclue
         })
 
     def build_list_buy(self):
@@ -270,6 +271,15 @@ class BoostersScreen(LinconymScreen):
 
         # Update the display
         self.update_all_widgets()
+
+    def ask_convert_lincoin_to_linclue(self):
+        popup = ConversionPopup(
+            yes_function=self.convert_lincoin_to_linclue,
+            font_ratio=self.font_ratio,
+            primary_color=self.primary_color,
+            secondary_color=self.secondary_color
+        )
+        popup.open()
 
     def convert_lincoin_to_linclue(self):
         USER_DATA.user_profile["lincoins"] -= DICT_CONVERSION_MONEY["price_lincoins"]

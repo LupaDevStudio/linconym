@@ -1,0 +1,68 @@
+#:kivy 2.2.1
+
+
+<ConversionPopup>:
+
+    RelativeLayout:
+        id: popup_layout
+
+        ColoredRoundedButton:
+            id: left_button
+            size_hint: (0.4,0.15)
+            pos_hint: {"center_x":0.25,"center_y":0.12}
+            font_ratio: root.font_ratio
+            font_size: SMALL_BUTTON_FONT_SIZE
+            text: root.left_button_label
+            text_font_name: PATH_TEXT_FONT
+            background_color: root.secondary_color
+            touch_color: root.primary_color
+            color_label: root.color_label_button
+            release_function: root.left_release_function
+
+        ColoredRoundedButton:
+            id: right_button
+            size_hint: (0.4,0.15)
+            pos_hint: {"center_x":0.75,"center_y":0.12}
+            font_ratio: root.font_ratio
+            font_size: SMALL_BUTTON_FONT_SIZE
+            text: root.right_button_label
+            text_font_name: PATH_TEXT_FONT
+            background_color: root.secondary_color
+            touch_color: root.primary_color
+            color_label: root.color_label_button
+            release_function: root.right_release_function
+
+        Label:
+            size_hint: (0.8, 0.1)
+            pos_hint: {"center_x":0.5,"center_y":0.8}
+            font_size: SMALL_BUTTON_FONT_SIZE * root.font_ratio
+            font_name: PATH_TEXT_FONT
+            text: root.text
+            size: self.size
+            shorten: False
+            text_size: (self.width,None)
+            color: (0,0,0,1)
+            halign: "center"
+            valign: "top"
+
+        # Number of Lincoins
+        RewardFrame:
+            pos_hint: {"center_x": 0.25, "center_y": 0.45}
+            size_hint: (0.3, 0.15)
+            reward: root.number_lincoins
+            font_ratio: root.font_ratio
+            unit: "lincoin"
+
+        Image:
+            source: PATH_ICONS + "right_arrow.png"
+            pos_hint: {"center_x":0.5, "center_y":0.45}
+            size_hint: (0.1, 0.15)
+            color: root.primary_color
+
+        # Number of Linclues
+        RewardFrame:
+            pos_hint: {"center_x": 0.75, "center_y": 0.45}
+            size_hint: (0.3, 0.15)
+            reward: root.number_linclues
+            font_ratio: root.font_ratio
+            unit: "linclue"

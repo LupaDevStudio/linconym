@@ -27,7 +27,6 @@ from tools.path import (
     PATH_ICONS
 )
 from tools.constants import (
-    CUSTOMIZATION_LAYOUT_FONT_SIZE,
     LETTER_FONT_SIZE
 )
 from screens.custom_widgets import (
@@ -45,7 +44,7 @@ class KeyboardLayout(RelativeLayout):
     The keyboard layout.
     """
 
-    font_size = NumericProperty(CUSTOMIZATION_LAYOUT_FONT_SIZE)
+    font_size = NumericProperty(LETTER_FONT_SIZE)
     font_ratio = NumericProperty(1)
     horizontal_padding = NumericProperty(1)
     size_letter = NumericProperty(0.09)
@@ -119,7 +118,7 @@ class KeyboardLayout(RelativeLayout):
                 pos_hint={
                     "x": first_margin + counter * (self.horizontal_padding + self.size_letter),
                     "y": 2 * vertical_padding + 2 * height_letter},
-                font_size=LETTER_FONT_SIZE,
+                font_size=self.font_size,
                 font_ratio=self.font_ratio,
                 size_hint=(self.size_letter, height_letter),
                 color_label=(1, 1, 1, 1),
@@ -140,7 +139,7 @@ class KeyboardLayout(RelativeLayout):
                 pos_hint={
                     "x": second_margin + counter * (self.horizontal_padding + self.size_letter),
                     "y": vertical_padding + height_letter},
-                font_size=LETTER_FONT_SIZE,
+                font_size=self.font_size,
                 font_ratio=self.font_ratio,
                 size_hint=(self.size_letter, height_letter),
                 color_label=(1, 1, 1, 1),
@@ -161,7 +160,7 @@ class KeyboardLayout(RelativeLayout):
                 pos_hint={
                     "x": third_margin + counter * (self.horizontal_padding + self.size_letter),
                     "y": 0},
-                font_size=LETTER_FONT_SIZE,
+                font_size=self.font_size,
                 font_ratio=self.font_ratio,
                 size_hint=(self.size_letter, height_letter),
                 color_label=(1, 1, 1, 1),
@@ -218,8 +217,8 @@ class KeyboardLayout(RelativeLayout):
         None
         """
         # self.delete_key.background_color = DISABLE_BUTTON_COLOR
-        self.delete_key.opacity = 0.5
-        self.delete_key.disable_button = True
+        self.delete_key.opacity = 0.7
+        self.delete_key.disabled = True
 
     def activate_delete_button(self):
         """
@@ -234,7 +233,7 @@ class KeyboardLayout(RelativeLayout):
         None
         """
         self.delete_key.opacity = 1
-        self.delete_key.disable_button = False
+        self.delete_key.disabled = False
         # self.delete_key.background_color = self.background_color
 
     def disable_letters(self):
@@ -252,8 +251,8 @@ class KeyboardLayout(RelativeLayout):
         letter_key: ColoredRoundedButton
         for letter_key in self.list_letter_keys:
             # letter_key.background_color = DISABLE_BUTTON_COLOR
-            letter_key.disable_button = True
-            letter_key.opacity = 0.5
+            letter_key.disabled = True
+            # letter_key.opacity = 0.5
 
     def activate_letters(self):
         """
@@ -269,9 +268,9 @@ class KeyboardLayout(RelativeLayout):
         """
         letter_key: ColoredRoundedButton
         for letter_key in self.list_letter_keys:
-            letter_key.disable_button = False
+            letter_key.disabled = False
             # letter_key.background_color = self.background_color
-            letter_key.opacity = 1
+            # letter_key.opacity = 1
 
     def disable_whole_keyboard(self):
         """

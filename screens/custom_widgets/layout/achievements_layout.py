@@ -24,8 +24,7 @@ from tools.path import (
 from tools.constants import (
     CUSTOM_BUTTON_BACKGROUND_COLOR,
     LABEL_FONT_SIZE,
-    CONTENT_LABEL_FONT_SIZE,
-    DISABLE_BUTTON_COLOR
+    CONTENT_LABEL_FONT_SIZE
 )
 
 #############
@@ -41,7 +40,6 @@ class AchievementsLayout(RelativeLayout):
     background_color = ColorProperty(CUSTOM_BUTTON_BACKGROUND_COLOR)
     primary_color = ColorProperty()
     secondary_color = ColorProperty()
-    disable_color = ColorProperty(DISABLE_BUTTON_COLOR)
     text_filling_ratio = NumericProperty(0.8)
     text_font_name = StringProperty(PATH_TEXT_FONT)
     font_size_title = NumericProperty(LABEL_FONT_SIZE)
