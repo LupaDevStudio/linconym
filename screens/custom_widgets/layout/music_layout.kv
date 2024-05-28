@@ -24,6 +24,7 @@
 
     # Music title
     Label:
+        id: music_title_label
         text: root.music_title
         pos_hint: {"x":0.05 + play_pause_button.width/(root.width+1),"center_y":0.5}
         size_hint: (0.45, 1)
@@ -49,6 +50,6 @@
         id: buy_music_button
         price: root.music_price
         pos_hint: {"right":0.95,"center_y":0.5}
-        size_hint: (0.275, 0.6)
+        size_hint: (0.3, 0.6)
         font_ratio: root.font_ratio
         release_function: root.buy_music

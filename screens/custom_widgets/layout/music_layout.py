@@ -112,6 +112,7 @@ class MusicLayout(ButtonBehavior, RelativeLayout):
         """
         self.remove_widget(self.ids.buy_music_button)
         self.remove_widget(self.ids.select_music_button)
+        self.ids.music_title_label.size_hint = (0.8, 1)
 
     def load_sound(self):
         # Load the sound
