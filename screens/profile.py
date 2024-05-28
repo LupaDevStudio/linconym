@@ -81,6 +81,8 @@ class ProfileScreen(LinconymScreen):
         # self.daily_mode_achievements = "Completed puzzles: %i\n\nClick to see all achievements." % (
         #     14)
 
+        self.ids.exp_counter.update_experience(None, None)
+
     def go_to_boosters(self):
         self.go_to_next_screen(screen_name="boosters")
 
