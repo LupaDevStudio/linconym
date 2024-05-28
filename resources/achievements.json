@@ -427,28 +427,28 @@
         "number_series": 5
     },
     "word_wacky_1": {
-        "achievement_title": "An odd coincidence",
+        "achievement_title": "Coincidence? I think not",
         "achievement_content": "Use the word \"WACKY\" once as an intermediate word in the puzzles.",
         "series": "word_wacky",
         "reward": 100,
         "number_series": 1
     },
     "word_wacky_2": {
-        "achievement_title": "Coincidence or intentional?",
+        "achievement_title": "Whack the heck?",
         "achievement_content": "Use the word \"WACKY\" 2 times as an intermediate word in the puzzles.",
         "series": "word_wacky",
         "reward": 500,
         "number_series": 2
     },
     "word_wacky_3": {
-        "achievement_title": "Probably not a coincidence",
+        "achievement_title": "Whack the yacks!",
         "achievement_content": "Use the word \"WACKY\" 3 times as an intermediate word in the puzzles.",
         "series": "word_wacky",
         "reward": 1000,
         "number_series": 3
     },
     "word_wacky_5": {
-        "achievement_title": "",
+        "achievement_title": "GIGAWHACKS!",
         "achievement_content": "Use the word \"WACKY\" 5 times as an intermediate word in the puzzles.",
         "series": "word_wacky",
         "reward": 5000,
