@@ -314,6 +314,7 @@ class LevelLayout(MyScrollViewLayout):
         self.act_id = act_id
         self.cols = 1
         self.spacing = 0
+        self.padding = (0, 35*self.font_ratio, 0, 35*self.font_ratio)
 
     def build_layout(self):
         nb_levels = len(GAMEPLAY_DICT[self.act_id]) - 1

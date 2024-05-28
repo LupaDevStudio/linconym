@@ -256,5 +256,140 @@
             "88k": 6,
             "280k": 6
         }
+    },
+    "3": {
+        "name": "Act 3 - 20.000 leagues under the sea",
+        "1": {
+            "start_word": "creature",
+            "end_word": "treasures",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "2": {
+            "start_word": "treasures",
+            "end_word": "pressure",
+            "10k": 12,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "3": {
+            "start_word": "pressure",
+            "end_word": "sailor",
+            "10k": 10,
+            "34k": 7,
+            "88k": 7,
+            "280k": 7,
+            "chest": true
+        },
+        "4": {
+            "start_word": "sailor",
+            "end_word": "deep",
+            "10k": 7,
+            "34k": 7,
+            "88k": 7,
+            "280k": 7
+        },
+        "5": {
+            "start_word": "deep",
+            "end_word": "diver",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "6": {
+            "start_word": "diver",
+            "end_word": "water",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "7": {
+            "start_word": "water",
+            "end_word": "journey",
+            "10k": 9,
+            "34k": 7,
+            "88k": 7,
+            "280k": 6,
+            "chest": true
+        },
+        "8": {
+            "start_word": "journey",
+            "end_word": "under",
+            "10k": 7,
+            "34k": 6,
+            "88k": 5,
+            "280k": 5
+        },
+        "9": {
+            "start_word": "under",
+            "end_word": "depth",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 4
+        },
+        "10": {
+            "start_word": "depth",
+            "end_word": "coral",
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "11": {
+            "start_word": "coral",
+            "end_word": "captain",
+            "10k": 8,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6,
+            "chest": true
+        },
+        "12": {
+            "start_word": "captain",
+            "end_word": "sea",
+            "10k": 8,
+            "34k": 7,
+            "88k": 7,
+            "280k": 7
+        },
+        "13": {
+            "start_word": "sea",
+            "end_word": "world",
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "14": {
+            "start_word": "world",
+            "end_word": "ocean",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "15": {
+            "start_word": "ocean",
+            "end_word": "marine",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "16": {
+            "start_word": "marine",
+            "end_word": "submarine",
+            "10k": 7,
+            "34k": 5,
+            "88k": 4,
+            "280k": 4,
+            "chest": true
+        }
     }
 }
