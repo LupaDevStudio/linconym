@@ -11,6 +11,7 @@ Module to create the profile screen.
 from functools import partial
 from typing import Literal
 from random import randint
+import datetime
 
 ### Kivy imports ###
 
@@ -74,6 +75,22 @@ class BoostersScreen(LinconymScreen):
 
     def on_pre_enter(self, *args):
         super().on_pre_enter(*args)
+        last_day_date = USER_DATA.ads["current_day_date"]
+        last_week_date = USER_DATA.ads["current_week_date"]
+        current_day_date = datetime.date.today()
+        diff = current_day_date.weekday()
+        current_week_date = current_day_date - datetime.timedelta(days=diff)
+        current_day_date = current_day_date.strftime('%m/%d/%Y')
+        current_week_date = current_week_date.strftime('%m/%d/%Y')
+
+        if last_day_date != current_day_date:
+            USER_DATA.ads["current_day_date"] = current_day_date
+            USER_DATA.ads["number_daily_ads_left"] = 3
+
+        if last_week_date != current_week_date:
+            USER_DATA.ads["current_week_date"] = current_week_date
+            USER_DATA.ads["number_weekly_ads_left"] = 1
+
         self.update_all_widgets()
 
     def on_enter(self, *args):
@@ -106,7 +123,6 @@ class BoostersScreen(LinconymScreen):
         circle_color = self.primary_color
 
         self.list_unlimited_ads.append({
-            "price": 0,
             "reward": AMOUNT_UNLIMITED_ADS,
             "circle_color": circle_color,
             "disable_button": False,
@@ -229,14 +245,14 @@ class BoostersScreen(LinconymScreen):
         )
         reward_popup.open()
 
-    def give_ad_award(self, mode: Literal["daily", "weekly"], nb_linclues: int, nb_lincoins: int):
+    def give_ad_award(self, mode: Literal["daily", "weekly", "unlimited"], nb_linclues: int, nb_lincoins: int):
         """
         Give the reward from the ad and update the display.
 
         Parameters
         ----------
-        mode : Literal[&quot;daily&quot;, &quot;weekly&quot;]
-            Mode according to which it is a daily or weekly ad.
+        mode : Literal["daily", "unlimited", "weekly"]
+            Mode according to which it is a daily, unlimited or weekly ad.
         nb_linclues : int
             Number of linclues to give.
         nb_lincoins : int

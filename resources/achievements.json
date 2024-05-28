@@ -323,38 +323,10 @@
     },
     "acts_2": {
         "achievement_title": "Act 2 completed",
-        "achievement_content": "Finish all puzzles of Act 2 - TODO.",
+        "achievement_content": "Finish all puzzles of Act 2 - Childhood.",
         "series": "acts",
         "reward": 200,
         "number_series": 2
-    },
-    "acts_3": {
-        "achievement_title": "Act 3 completed",
-        "achievement_content": "Finish all puzzles of Act 3 - TODO.",
-        "series": "acts",
-        "reward": 300,
-        "number_series": 3
-    },
-    "acts_4": {
-        "achievement_title": "Act 4 completed",
-        "achievement_content": "Finish all puzzles of Act 4 - TODO.",
-        "series": "acts",
-        "reward": 400,
-        "number_series": 4
-    },
-    "acts_5": {
-        "achievement_title": "Act 5 completed",
-        "achievement_content": "Finish all puzzles of Act 5 - TODO.",
-        "series": "acts",
-        "reward": 500,
-        "number_series": 5
-    },
-    "acts_6": {
-        "achievement_title": "Act 6 completed",
-        "achievement_content": "Finish all puzzles of Act 6 - TODO.",
-        "series": "acts",
-        "reward": 600,
-        "number_series": 6
     },
     "word_rune_1": {
         "achievement_title": "Looking for Rune",

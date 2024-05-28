@@ -19,8 +19,7 @@ from kivy.properties import (
 ### Local imports ###
 
 from tools.path import (
-    PATH_TITLE_FONT,
-    PATH_ICONS
+    PATH_TITLE_FONT
 )
 from tools.constants import (
     CUSTOM_BUTTON_BACKGROUND_COLOR,

@@ -129,8 +129,8 @@ if not os.path.exists(PATH_USER_DATA):
             "configure_tree": True
         },
         "ads": {
-            "current_day_date": "06/09/2024",
-            "current_week_date": "06/03/2024",
+            "current_day_date": "",
+            "current_week_date": "",
             "number_daily_ads_left": 3,
             "number_weekly_ads_left": 1
         }
