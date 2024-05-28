@@ -27,27 +27,40 @@
         size_hint: 0.9, 0.19
         list_infos: root.list_daily_ads
         font_ratio: root.font_ratio
+        image_source: PATH_ICONS + "boosters_daily_ads.png"
+
+    # Unlimited ads boosters
+    BoosterLayout:
+        booster_title: "Unlimited ads"
+        pos_hint: {"x": 0.05, "center_y": 0.45}
+        size_hint: 0.425, 0.19
+        list_infos: root.list_unlimited_ads
+        font_ratio: root.font_ratio
+        image_source: PATH_ICONS + "boosters_unlimited_ads.png"
 
     # Weekly ads boosters
     BoosterLayout:
         booster_title: "Weekly ad"
-        pos_hint: {"center_x": 0.25, "center_y": 0.45}
-        size_hint: 0.4, 0.19
+        pos_hint: {"right": 0.95, "center_y": 0.45}
+        size_hint: 0.425, 0.19
         list_infos: root.list_weekly_ads
         font_ratio: root.font_ratio
+        image_source: PATH_ICONS + "boosters_weekly_ads.png"
 
     # Conversion booster
     BoosterLayout:
         booster_title: "Conversion"
-        pos_hint: {"center_x": 0.75, "center_y": 0.45}
-        size_hint: 0.4, 0.19
+        pos_hint: {"x": 0.05, "center_y": 0.25}
+        size_hint: 0.3, 0.19
         list_infos: root.list_conversion
         font_ratio: root.font_ratio
+        image_source: PATH_ICONS + "boosters_conversion.png"
 
     # Buy boosters
     BoosterLayout:
         booster_title: "Purchases"
-        pos_hint: {"center_x": 0.5, "center_y": 0.25}
-        size_hint: 0.9, 0.19
+        pos_hint: {"right": 0.95, "center_y": 0.25}
+        size_hint: 0.55, 0.19
         list_infos: root.list_buy
         font_ratio: root.font_ratio
+        image_source: PATH_ICONS + "boosters_buy.png"

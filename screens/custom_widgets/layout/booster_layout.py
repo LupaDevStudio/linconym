@@ -6,24 +6,21 @@ Module to create the act button.
 ### Imports ###
 ###############
 
-from functools import partial
-
 ### Kivy imports ###
 
-from kivy.uix.label import Label
 from kivy.uix.image import Image
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.properties import (
     StringProperty,
     NumericProperty,
-    ListProperty,
-    ColorProperty
+    ListProperty
 )
 
 ### Local imports ###
 
 from tools.path import (
-    PATH_TITLE_FONT
+    PATH_TITLE_FONT,
+    PATH_ICONS
 )
 from tools.constants import (
     CUSTOM_BUTTON_BACKGROUND_COLOR,
@@ -50,6 +47,7 @@ class BoosterLayout(RelativeLayout):
     font_size = NumericProperty(CONTENT_LABEL_FONT_SIZE)
     font_ratio = NumericProperty(1)
     text_font_name = StringProperty(PATH_TITLE_FONT)
+    image_source = StringProperty()
 
     list_widgets = []
     list_infos = ListProperty()
@@ -116,56 +114,64 @@ class BoosterLayout(RelativeLayout):
                 )
                 self.add_widget(money_layout)
 
-            # Money
-            relative_layout = RelativeLayout(
-                size_hint=(1, 0.3),
-                pos_hint={"center_x":0.5, "y":0}
-            )
+        image = Image(
+            source=self.image_source,
+            size_hint=(0.8, 0.2),
+            pos_hint={"center_x": 0.5, "y": 0.05}
+        )
+        self.list_widgets.append(image)
+        self.add_widget(image)
 
-            list_rewards = self.list_infos[counter]["reward"]
-            number_rewards = len(list_rewards)
+            # # Money
+            # relative_layout = RelativeLayout(
+            #     size_hint=(1, 0.3),
+            #     pos_hint={"center_x":0.5, "y":0}
+            # )
 
-            list_positions_rewards_x = []
-            for counter_reward in range(1, number_rewards + 1):
-                temp_list = []
-                central_position = counter_reward / (number_rewards + 1)
-                if central_position == 0.25:
-                    central_position = 0.2
-                elif central_position == 0.75:
-                    central_position = 0.8
+            # list_rewards = self.list_infos[counter]["reward"]
+            # number_rewards = len(list_rewards)
 
-                number_units = len(list_rewards[counter_reward-1])
+            # list_positions_rewards_x = []
+            # for counter_reward in range(1, number_rewards + 1):
+            #     temp_list = []
+            #     central_position = counter_reward / (number_rewards + 1)
+            #     if central_position == 0.25:
+            #         central_position = 0.2
+            #     elif central_position == 0.75:
+            #         central_position = 0.8
 
-                if list_positions_x[counter] != 0.5:
-                    central_position = list_positions_x[counter]
+            #     number_units = len(list_rewards[counter_reward-1])
 
-                if number_units == 1:
-                    temp_list.append(central_position)
-                elif number_units == 2:
-                    temp_list.append(central_position - (1/(number_rewards+1.4))/2)
-                    temp_list.append(central_position + (1/(number_rewards+1.4))/2)
+            #     if list_positions_x[counter] != 0.5:
+            #         central_position = list_positions_x[counter]
+
+            #     if number_units == 1:
+            #         temp_list.append(central_position)
+            #     elif number_units == 2:
+            #         temp_list.append(central_position - (1/(number_rewards+1.4))/2)
+            #         temp_list.append(central_position + (1/(number_rewards+1.4))/2)
                 
-                list_positions_rewards_x.append(temp_list)
+            #     list_positions_rewards_x.append(temp_list)
 
-            for counter_reward in range(number_rewards):
-                dict_reward = list_rewards[counter_reward]
-                number_units = len(dict_reward)
+            # for counter_reward in range(number_rewards):
+            #     dict_reward = list_rewards[counter_reward]
+            #     number_units = len(dict_reward)
 
-                for counter_unit in range(number_units):
-                    unit = list(dict_reward.keys())[counter_unit]
-                    amount = dict_reward[unit]
+            #     for counter_unit in range(number_units):
+            #         unit = list(dict_reward.keys())[counter_unit]
+            #         amount = dict_reward[unit]
 
-                    money_layout = MoneyLayout(
-                        coins_count=amount,
-                        and_mode=True if counter_unit > 0 else False,
-                        or_mode=True if counter_reward > 0 else False,
-                        unit=unit,
-                        font_ratio=self.font_ratio,
-                        size_hint=(1/number_rewards, 1),
-                        font_size=self.font_size,
-                        pos_hint={"center_x":list_positions_rewards_x[counter_reward][counter_unit], "y":0}
-                    )
-                    relative_layout.add_widget(money_layout)
+            #         money_layout = MoneyLayout(
+            #             coins_count=amount,
+            #             and_mode=True if counter_unit > 0 else False,
+            #             or_mode=True if counter_reward > 0 else False,
+            #             unit=unit,
+            #             font_ratio=self.font_ratio,
+            #             size_hint=(1/number_rewards, 1),
+            #             font_size=self.font_size,
+            #             pos_hint={"center_x":list_positions_rewards_x[counter_reward][counter_unit], "y":0}
+            #         )
+            #         relative_layout.add_widget(money_layout)
 
-            self.list_widgets.append(relative_layout)
-            self.add_widget(relative_layout)
+            # self.list_widgets.append(relative_layout)
+            # self.add_widget(relative_layout)

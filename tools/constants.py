@@ -197,9 +197,10 @@ class UserData():
         USER_DATA.settings["current_theme_colors"] = theme
         self.save_changes()
 
-    def change_boosters(self, mode: Literal["daily", "weekly"]):
-        USER_DATA.ads[f"number_{mode}_ads_left"] -= 1
-        self.save_changes()
+    def change_boosters(self, mode: Literal["daily", "weekly", "unlimited"]):
+        if mode != "unlimited":
+            USER_DATA.ads[f"number_{mode}_ads_left"] -= 1
+            self.save_changes()
 
     def get_nb_total_stars(self):
         """
@@ -480,6 +481,11 @@ AMOUNT_DAILY_ADS = [
         "linclue": 2
     }
 ]
+AMOUNT_UNLIMITED_ADS = [
+    {
+        "lincoin": 12
+    }
+]
 AMOUNT_WEEKLY_AD = [{
     "lincoin": 480,
     "linclue": 12
@@ -496,15 +502,11 @@ DICT_CONVERSION_MONEY = {
 
 DICT_AMOUNT_BUY = {
     "1": {
-        "reward": 1000,
+        "reward": 3000,
         "price": 1
     },
     "2": {
-        "reward": 6000,
-        "price": 5
-    },
-    "3": {
-        "reward": 15000,
+        "reward": 50000,
         "price": 10
     }
 }

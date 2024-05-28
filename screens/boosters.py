@@ -26,6 +26,7 @@ from tools.constants import (
     USER_DATA,
     SCREEN_TUTORIAL,
     AMOUNT_DAILY_ADS,
+    AMOUNT_UNLIMITED_ADS,
     AMOUNT_WEEKLY_AD,
     DICT_CONVERSION_MONEY,
     DICT_AMOUNT_BUY,
@@ -63,6 +64,7 @@ class BoostersScreen(LinconymScreen):
     lincoins_count = NumericProperty()
     linclues_count = NumericProperty()
     list_daily_ads = ListProperty()
+    list_unlimited_ads = ListProperty()
     list_weekly_ads = ListProperty()
     list_conversion = ListProperty()
     list_buy = ListProperty()
@@ -81,6 +83,7 @@ class BoostersScreen(LinconymScreen):
         self.lincoins_count = USER_DATA.user_profile["lincoins"]
         self.linclues_count = USER_DATA.user_profile["linclues"]
         self.build_list_daily_ads()
+        self.build_list_unlimited_ads()
         self.build_list_weekly_ads()
         self.build_list_conversion()
         self.build_list_buy()
@@ -96,6 +99,18 @@ class BoostersScreen(LinconymScreen):
             "circle_color": circle_color,
             "disable_button": not enable_button,
             "release_function": partial(self.see_ad, "daily")
+        })
+
+    def build_list_unlimited_ads(self):
+        self.list_unlimited_ads = []
+        circle_color = self.primary_color
+
+        self.list_unlimited_ads.append({
+            "price": 0,
+            "reward": AMOUNT_UNLIMITED_ADS,
+            "circle_color": circle_color,
+            "disable_button": False,
+            "release_function": partial(self.see_ad, "unlimited")
         })
 
     def build_list_weekly_ads(self):
@@ -130,7 +145,7 @@ class BoostersScreen(LinconymScreen):
     def build_list_buy(self):
         temp_list = []
         self.list_buy = []
-        for counter in range(1, 4):
+        for counter in range(1, len(DICT_AMOUNT_BUY)+1):
             temp_list.append({
                 "circle_color": self.primary_color,
                 "reward": [{"lincoin": DICT_AMOUNT_BUY[str(counter)]["reward"]}],
@@ -140,14 +155,14 @@ class BoostersScreen(LinconymScreen):
             })
         self.list_buy = temp_list
 
-    def see_ad(self, mode: Literal["daily", "weekly"]):
+    def see_ad(self, mode: Literal["daily", "weekly", "unlimited"]):
         """
         Launch the ad and update the display.
 
         Parameters
         ----------
-        mode : Literal["daily", "weekly"]
-            Mode according to which it is a daily or weekly ad.
+        mode : Literal["daily", "weekly", "unlimited"]
+            Mode according to which it is a daily, unlimited or weekly ad.
         """
 
         AD_CONTAINER.watch_ad(ad_callback=partial(
@@ -169,20 +184,23 @@ class BoostersScreen(LinconymScreen):
         popup.open()
 
     @mainthread
-    def display_ad_award(self, mode: Literal["daily", "weekly"]):
+    def display_ad_award(self, mode: Literal["daily", "weekly", "unlimited"]):
         """
         Display a popup to show the reward.
 
         Parameters
         ----------
-        mode : Literal[&quot;daily&quot;, &quot;weekly&quot;]
-            Mode according to which it is a daily or weekly ad.
+        mode : Literal["daily", "weekly", "unlimited"]
+            Mode according to which it is a daily, unlimited or weekly ad.
         """
 
         # Compute the reward.
         if mode == "weekly":
             nb_linclues = AMOUNT_WEEKLY_AD[0]["linclue"]
             nb_lincoins = AMOUNT_WEEKLY_AD[0]["lincoin"]
+        elif mode == "unlimited":
+            nb_lincoins = AMOUNT_UNLIMITED_ADS[0]["lincoin"]
+            nb_linclues = 0
         else:
             reward_id = randint(0, 2)
             if "linclue" in AMOUNT_DAILY_ADS[reward_id]:
@@ -207,8 +225,7 @@ class BoostersScreen(LinconymScreen):
             primary_color=self.primary_color,
             secondary_color=self.secondary_color,
             number_lincoins_won=nb_lincoins,
-            number_linclues_won=nb_linclues,
-
+            number_linclues_won=nb_linclues
         )
         reward_popup.open()
 
