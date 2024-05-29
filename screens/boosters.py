@@ -44,6 +44,10 @@ from screens.custom_widgets import (
 from tools.linconym import (
     AD_CONTAINER
 )
+from tools import (
+    music_mixer,
+    sound_mixer
+)
 
 
 #############
@@ -181,6 +185,8 @@ class BoostersScreen(LinconymScreen):
         mode : Literal["daily", "weekly", "unlimited"]
             Mode according to which it is a daily, unlimited or weekly ad.
         """
+        music_mixer.change_volume(new_volume=0)
+        sound_mixer.change_volume(new_volume=0)
 
         AD_CONTAINER.watch_ad(ad_callback=partial(
             self.display_ad_award, mode), ad_fail=self.display_ad_not_found)
@@ -245,6 +251,9 @@ class BoostersScreen(LinconymScreen):
             number_linclues_won=nb_linclues
         )
         reward_popup.open()
+
+        music_mixer.change_volume(new_volume=USER_DATA.settings["music_volume"])
+        sound_mixer.change_volume(new_volume=USER_DATA.settings["sound_volume"])
 
     def give_ad_award(self, mode: Literal["daily", "weekly", "unlimited"], nb_linclues: int, nb_lincoins: int):
         """
