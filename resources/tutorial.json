@@ -257,7 +257,7 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "TODO Laure"
+                "This page is composed of several options to configure your tree of words.\n\nYou can first reset it; it will only left the completed branches, i.e. the ones which link the start word to the end one. Note this action is irremediable.\n\nYou can also choose to hide the completed branches."
             ]
         ]
     }
