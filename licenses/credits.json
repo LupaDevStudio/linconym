@@ -38,15 +38,15 @@
             "type": "icon",
             "url": "https://www.flaticon.com/free-icons/medal"
         },
-        "galaxy_messier_96": {
-            "title": "Galaxy Messier 96 - Nasa",
-            "type": "background",
-            "url": "https://science.nasa.gov/image-detail/41428774775-243864f71e-o/"
-        },
         "gem": {
             "title": "Gem icons created by Freepik - Flaticon",
             "type": "icon",
             "url": "https://www.flaticon.com/free-icons/gem"
+        },
+        "galaxy_messier_96": {
+            "title": "Galaxy Messier 96 - Nasa",
+            "type": "background",
+            "url": "https://science.nasa.gov/image-detail/41428774775-243864f71e-o/"
         },
         "mystic_mountain": {
             "title": "Mystic Mountain - Nasa",

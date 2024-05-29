@@ -70,8 +70,12 @@ class BoosterLayout(RelativeLayout):
             position = i/(number_circles + 1)
             if position == 0.25:
                 position = 0.2
+            elif position == 1/3:
+                position = 0.3
             elif position == 0.75:
                 position = 0.8
+            elif position == 2/3:
+                position = 0.7
             list_positions_x.append(position)
         for counter in range(len(self.list_infos)):
 

@@ -10,6 +10,16 @@
         outline_color: TITLE_OUTLINE_COLOR
         color: TEXT_FONT_COLOR
 
+    # Stars
+    ThreeStars:
+        id: three_stars
+        pos_hint: {"center_x":0.5, "center_y":0.845}
+        size_hint: (0.3, 0.05)
+        nb_stars: root.nb_stars
+        primary_color: root.primary_color
+        secondary_color: root.secondary_color
+        force_border: True
+
     CustomScrollview:
         id: custom_scrollview
         pos_hint: {"center_x":0.5, "center_y":0.475}

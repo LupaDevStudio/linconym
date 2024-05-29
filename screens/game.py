@@ -106,6 +106,10 @@ class GameScreen(LinconymScreen):
         if self.current_act_id == "1":
             if self.current_level_id in GAME_TUTORIAL_DICT:
                 tutorial_to_display = GAME_TUTORIAL_DICT[self.current_level_id]
+                if tutorial_to_display == "more_complicated_puzzles" and not USER_DATA.tutorial["game"][tutorial_to_display]:
+                    USER_DATA.user_profile["linclues"] += 5
+                    USER_DATA.user_profile["cumulated_linclues"] += 5
+                    USER_DATA.save_changes()
 
         popup = TutorialPopup(
             primary_color=self.primary_color,

@@ -9,7 +9,8 @@ Module to create the levels screen.
 ### Kivy imports ###
 
 from kivy.properties import (
-    StringProperty
+    StringProperty,
+    NumericProperty
 )
 
 ### Local imports ###
@@ -17,7 +18,8 @@ from kivy.properties import (
 from tools.constants import (
     SCREEN_BACK_ARROW,
     SCREEN_BOTTOM_BAR,
-    SCREEN_TUTORIAL
+    SCREEN_TUTORIAL,
+    USER_DATA
 )
 from screens.custom_widgets import (
     LinconymScreen
@@ -43,6 +45,7 @@ class LevelsScreen(LinconymScreen):
         SCREEN_TUTORIAL: ""
     }
     current_act_name = StringProperty()
+    nb_stars = NumericProperty()
 
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
@@ -50,6 +53,7 @@ class LevelsScreen(LinconymScreen):
 
     def reload_kwargs(self, dict_kwargs):
         self.current_act_id = dict_kwargs["current_act_id"]
+        self.nb_stars = USER_DATA.get_mean_nb_stars_on_act(self.current_act_id)
 
     def on_pre_enter(self, *args):
         super().on_pre_enter(*args)
