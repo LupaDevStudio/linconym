@@ -13,14 +13,14 @@
                 "resources/images/rune.png"
             ],
             [
-                "First, let me present the game's money: Lincoins. \n \n You can earn Lincoins by completing puzzles, achievements and quests. \n \n You can use them to buy customization items and boosters. WIP",
+                "First, let me present the game's money: Lincoins. \n \n You can earn Lincoins by completing puzzles, achievements and quests. \n \n You can use them to buy customization items and boosters.",
                 "horizontal",
-                "resources/images/icons/lincoin_1.png"
+                "resources/images/tutorial/rune_lincoin.png"
             ],
             [
-                "Second, let me present the game's hints: Linclues. \n \n You can earn Linclues by completing puzzles, achievements and quests. \n \n You can use them to get hints on puzzles. WIP",
+                "Second, let me present the game's hints: Linclues. \n \n You can earn Linclues by completing puzzles, achievements and quests. \n \n You can use them to get hints on puzzles.",
                 "horizontal",
-                "resources/images/icons/linclue.png"
+                "resources/images/tutorial/rune_linclue.png"
             ],
             [
                 "Choose 'Classic Mode ' to play the game. \n \n In this mode, you have to link two words by applying simple rules. \n \n You'll discover them in the tutorial act !",
