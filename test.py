@@ -22,15 +22,13 @@ Builder.load_string('''
         Image:
             id: my_image
             source: "resources/images/front_daily_wheel.png"
-            size_hint: None, None
-            size: 500, 500
+            size_hint: 0.5, 0.5
             pos_hint: {'center_x': 0.5, "center_y": 0.5}
     
     Image:
         id: image
         source: "resources/images/back_daily_wheel.png"
-        size_hint: None, None
-        size: 500, 500
+        size_hint: 0.5, 0.5
         pos_hint: {'center_x': 0.5, "center_y": 0.5}  
 ''')
 

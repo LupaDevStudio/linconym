@@ -8,22 +8,58 @@
         id: popup_layout
         
         RelativeLayout:
+            size_hint: (0.8, 0.8)
+            pos_hint: {"center_x":0.5, "center_y": 0.625}
+
             canvas.before:
                 PushMatrix
                 Rotate:
                     angle: root.angle
                     axis: 0, 0, 1
-                    origin: root.center
+                    origin: self.width/2, self.height/2
             canvas.after:
                 PopMatrix
 
             Image:
+                id: my_image
                 source: "resources/images/front_daily_wheel.png"
-                size_hint: (0.5, 0.5)
+                size_hint: (1, 1)
                 pos_hint: {'center_x': 0.5, "center_y": 0.5}
         
         Image:
             id: image
             source: "resources/images/back_daily_wheel.png"
-            size_hint: (0.5, 0.5)
-            pos_hint: {'center_x': 0.5, "center_y": 0.5}  
+            size_hint: (0.8, 0.8)
+            pos_hint: {'center_x': 0.5, "center_y": 0.625}
+
+        # # Reward frame for Lincoins
+        # RewardFrame:
+        #     pos_hint: {"center_x": 0.25, "top": 0.45} if root.win_linclues else {"center_x": 0.5, "top": 0.45}
+        #     size_hint: (0.375, 0.15)
+        #     reward: root.number_lincoins_won
+        #     font_ratio: root.font_ratio
+        #     plus_mode: True
+        #     opacity: 1 if root.number_lincoins_won > 0 else 0
+
+        # # Reward frame for Linclues
+        # RewardFrame:
+        #     pos_hint: {"center_x": 0.75, "top": 0.45}
+        #     size_hint: (0.375, 0.15)
+        #     reward: root.number_linclues_won
+        #     font_ratio: root.font_ratio
+        #     unit: "linclue"
+        #     opacity: 1 if root.win_linclues else 0
+        #     plus_mode: True
+
+        ColoredRoundedButton:
+            id: button
+            size_hint: (0.4, 0.15)
+            pos_hint: {"center_x":0.5, "center_y":0.12}
+            font_ratio: root.font_ratio
+            font_size: SMALL_BUTTON_FONT_SIZE
+            text: root.button_label
+            text_font_name: PATH_TEXT_FONT
+            background_color: root.secondary_color
+            touch_color: root.primary_color
+            color_label: root.color_label_button
+            release_function: root.release_function
