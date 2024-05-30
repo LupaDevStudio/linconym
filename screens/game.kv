@@ -21,12 +21,25 @@
         primary_color: root.primary_color
         secondary_color: root.secondary_color
 
+    # Rune
+    Image:
+        source: PATH_IMAGES + "rune.png"
+        size_hint: (None, 0.05)
+        width: self.height
+        pos_hint: {"center_y":0.795}
+        x: root.width/2 - words_to_connect_label.texture_size[0]/2 - self.width - 15 * root.font_ratio
+
     # Words to connect
     Label:
+        id: words_to_connect_label
         text: root.start_to_end_label
         font_name: PATH_TITLE_FONT
         font_size: LABEL_FONT_SIZE * root.font_ratio
         pos_hint: {"center_x":0.5, "center_y":0.795}
+        size: self.texture_size
+        size_hint: (None, None)
+        halign: "center"
+        valign: "middle"
         outline_width: BUTTON_OUTLINE_WIDTH * root.font_ratio
         outline_color: TITLE_OUTLINE_COLOR
         color: TEXT_FONT_COLOR
@@ -71,12 +84,16 @@
         outline_color: root.secondary_color
         disable_button: True
 
-    # Rune
-    Image:
-        source: PATH_IMAGES + "rune.png"
+    # Linclues button
+    RoundedButtonImage:
+        id: linclue_button
+        image_path: PATH_ICONS + "linclue.png"
+        pos_hint: {"right":0.45 -previous_word_label.size_hint_x/2, "y":0.335}
         size_hint: (None, previous_word_label.size_hint_y)
         width: self.height
-        pos_hint: {"right":0.45 -previous_word_label.size_hint_x/2, "y":0.335}
+        colors: root.primary_color
+        release_function: root.ask_to_use_linclues
+        font_ratio: root.font_ratio
 
     # Delete word
     RoundedButtonImage:
@@ -113,17 +130,6 @@
         font_ratio: root.font_ratio
         font_size: BUTTON_FONT_SIZE
         radius: 15
-
-    # Linclues button
-    RoundedButtonImage:
-        id: linclue_button
-        image_path: PATH_ICONS + "linclue.png"
-        pos_hint: POS_HINT_LEFT_BOTTOM_BUTTON
-        size_hint: (0.1, None)
-        height: self.width
-        colors: root.primary_color
-        release_function: root.ask_to_use_linclues
-        font_ratio: root.font_ratio
 
     # # Quests button
     # RoundedButtonImage:
