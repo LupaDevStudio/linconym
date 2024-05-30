@@ -455,7 +455,12 @@ class GameScreen(LinconymScreen):
                 self.reload_for_level_change, next_lvl_id)
         else:
             right_button_label = "Return to menu"
-            next_level_function = self.go_backwards
+            next_level_function = partial(self.go_to_next_screen,
+                screen_name="classic_mode",
+                current_dict_kwargs={
+                    "current_act_id": self.current_act_id,
+                    "current_level_id": self.current_level_id}
+            )
 
         # Create the popup for the completion
         popup = LevelCompletedPopup(
