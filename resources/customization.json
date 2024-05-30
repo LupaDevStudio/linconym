@@ -353,6 +353,26 @@
             "name": "Waterfall",
             "source": "waterfall.mp3",
             "price": 1000
+        },
+        "price_of_freedom": {
+            "name": "Price of freedom",
+            "source": "price_of_freedom.mp3",
+            "price": 1000
+        },
+        "winning_elevation": {
+            "name": "Winning Elevation",
+            "source": "winning_elevation.mp3",
+            "price": 1000
+        },
+        "science_documentary": {
+            "name": "Science documentary",
+            "source": "science_documentary.mp3",
+            "price": 1000
+        },
+        "cinematic_dramatic": {
+            "name": "Dinosaurs' air",
+            "source": "cinematic_dramatic.mp3",
+            "price": 3000
         }
     },
     "categories": {

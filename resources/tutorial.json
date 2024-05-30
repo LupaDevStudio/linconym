@@ -13,14 +13,14 @@
                 "resources/images/rune.png"
             ],
             [
-                "First, let me present the game's money: Lincoins. \n \n You can earn Lincoins by completing puzzles, achievements and quests. \n \n You can use them to buy customization items and boosters. WIP",
+                "First, let me present the game's money: Lincoins. \n \n You can earn Lincoins by completing puzzles, achievements and quests. \n \n You can use them to buy customization items and boosters.",
                 "horizontal",
-                "resources/images/icons/lincoin_1.png"
+                "resources/images/tutorial/rune_lincoin.png"
             ],
             [
-                "Second, let me present the game's hints: Linclues. \n \n You can earn Linclues by completing puzzles, achievements and quests. \n \n You can use them to get hints on puzzles. WIP",
+                "Second, let me present the game's hints: Linclues. \n \n You can earn Linclues by completing puzzles, achievements and quests. \n \n You can use them to get hints on puzzles.",
                 "horizontal",
-                "resources/images/icons/linclue.png"
+                "resources/images/tutorial/rune_linclue.png"
             ],
             [
                 "Choose 'Classic Mode ' to play the game. \n \n In this mode, you have to link two words by applying simple rules. \n \n You'll discover them in the tutorial act !",
@@ -133,6 +133,21 @@
                 ]
             ]
         },
+        "more_complicated_puzzles": {
+            "title": "Tutorial - Complex puzzles",
+            "tutorial_content": [
+                [
+                    "Some puzzles may be harder than other ones, but don't panic if you're feeling uninspired.\n\nIndeed, you can use Linclues by clicking on this icon to get clues to complete the puzzle.",
+                    "vertical",
+                    "resources/images/tutorial/game_linclues.jpg"
+                ],
+                [
+                    "Here is a gift for you, 5 Linclues, if you need some help for this puzzle!",
+                    "horizontal",
+                    "resources/images/tutorial/game_give_linclues.jpg"
+                ]
+            ]
+        },
         "all_rules": {
             "title": "Tutorial - Game rules",
             "tutorial_content": [
@@ -242,7 +257,7 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "TODO Laure"
+                "This page is composed of several options to configure your tree of words.\n\nYou can first reset it; it will only left the completed branches, i.e. the ones which link the start word to the end one. Note this action is irremediable.\n\nYou can also choose to hide the completed branches."
             ]
         ]
     }

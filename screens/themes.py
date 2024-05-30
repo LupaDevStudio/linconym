@@ -155,7 +155,7 @@ class ThemesScreen(LinconymScreen):
                 source=PATH_BACKGROUNDS + THEMES_DICT[theme]["image"],
                 font_ratio=self.font_ratio,
                 size_hint_y=None,
-                height=120 * self.font_ratio)
+                height=110 * self.font_ratio)
             current_theme_button.update_display()
             self.THEME_LAYOUT_DICT[theme] = current_theme_button
             scrollview_layout.add_widget(self.THEME_LAYOUT_DICT[theme])

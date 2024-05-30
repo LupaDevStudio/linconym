@@ -119,6 +119,7 @@ if not os.path.exists(PATH_USER_DATA):
                 "add_letter": False,
                 "practice": False,
                 "reorganize_letters": False,
+                "more_complicated_puzzles": False,
                 "all_rules": True
             },
             "themes": True,
@@ -376,7 +377,8 @@ GAME_TUTORIAL_DICT = {
     "2": "delete_letter",
     "3": "add_letter",
     "4": "practice",
-    "5": "reorganize_letters"
+    "5": "reorganize_letters",
+    "7": "more_complicated_puzzles"
 }
 
 ### Colors ###

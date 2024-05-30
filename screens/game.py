@@ -106,6 +106,10 @@ class GameScreen(LinconymScreen):
         if self.current_act_id == "1":
             if self.current_level_id in GAME_TUTORIAL_DICT:
                 tutorial_to_display = GAME_TUTORIAL_DICT[self.current_level_id]
+                if tutorial_to_display == "more_complicated_puzzles" and not USER_DATA.tutorial["game"][tutorial_to_display]:
+                    USER_DATA.user_profile["linclues"] += 5
+                    USER_DATA.user_profile["cumulated_linclues"] += 5
+                    USER_DATA.save_changes()
 
         popup = TutorialPopup(
             primary_color=self.primary_color,
@@ -451,7 +455,12 @@ class GameScreen(LinconymScreen):
                 self.reload_for_level_change, next_lvl_id)
         else:
             right_button_label = "Return to menu"
-            next_level_function = self.go_backwards
+            next_level_function = partial(self.go_to_next_screen,
+                screen_name="classic_mode",
+                current_dict_kwargs={
+                    "current_act_id": self.current_act_id,
+                    "current_level_id": self.current_level_id}
+            )
 
         # Create the popup for the completion
         popup = LevelCompletedPopup(
