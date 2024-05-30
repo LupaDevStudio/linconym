@@ -301,7 +301,7 @@ class GameScreen(LinconymScreen):
 
         if self.game.get_nb_next_words(self.game.current_position) == 0\
                 and self.current_word != self.start_word.upper() \
-        and self.current_word != self.end_word.upper():
+            and self.current_word != self.end_word.upper():
             self.allow_delete_current_word = True
             self.ids.delete_word_button.opacity = 1
         else:
@@ -440,6 +440,7 @@ class GameScreen(LinconymScreen):
             self.display_success_popup(end_level_dict=end_level_dict)
 
         self.check_delete_current_word()
+        self.on_change_word_position_on_tree()
 
         # Save the data
         self.save_data()
@@ -451,16 +452,16 @@ class GameScreen(LinconymScreen):
         has_next_levels_in_act = next_lvl_id in GAMEPLAY_DICT[self.current_act_id]
         if has_next_levels_in_act:
             right_button_label = "Next puzzle"
-            next_level_function=partial(
+            next_level_function = partial(
                 self.reload_for_level_change, next_lvl_id)
         else:
             right_button_label = "Return to menu"
             next_level_function = partial(self.go_to_next_screen,
-                screen_name="classic_mode",
-                current_dict_kwargs={
-                    "current_act_id": self.current_act_id,
-                    "current_level_id": self.current_level_id}
-            )
+                                          screen_name="classic_mode",
+                                          current_dict_kwargs={
+                                              "current_act_id": self.current_act_id,
+                                              "current_level_id": self.current_level_id}
+                                          )
 
         # Create the popup for the completion
         popup = LevelCompletedPopup(
