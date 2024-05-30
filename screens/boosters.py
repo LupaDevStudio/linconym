@@ -91,6 +91,7 @@ class BoostersScreen(LinconymScreen):
         if last_day_date != current_day_date:
             USER_DATA.ads["current_day_date"] = current_day_date
             USER_DATA.ads["number_daily_ads_left"] = 3
+            USER_DATA.ads["has_seen_daily_wheel"] = False
 
         if last_week_date != current_week_date:
             USER_DATA.ads["current_week_date"] = current_week_date
