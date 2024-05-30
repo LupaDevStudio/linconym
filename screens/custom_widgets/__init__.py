@@ -56,7 +56,8 @@ from screens.custom_widgets.popup import (
     LevelUpPopup,
     LoadingPopup,
     RewardPopup,
-    ConversionPopup
+    ConversionPopup,
+    DailyWheelPopup
 )
 
 ### Other widgets ###

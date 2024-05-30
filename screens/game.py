@@ -49,6 +49,9 @@ from screens import (
 from tools.linconym import (
     ClassicGame
 )
+from tools.levels import (
+    compute_lincoins_when_level_up
+)
 
 #############
 ### Class ###
@@ -502,7 +505,7 @@ class GameScreen(LinconymScreen):
             popup = LevelUpPopup(
                 primary_color=self.primary_color,
                 secondary_color=self.secondary_color,
-                number_lincoins_won=10,  # TODO
+                number_lincoins_won=compute_lincoins_when_level_up(USER_DATA.user_profile["status"]),
                 has_changed_status=has_changed_status,
                 size_hint=size_hint_popup,
                 current_status=current_status,

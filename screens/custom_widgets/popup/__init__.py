@@ -12,3 +12,4 @@ from screens.custom_widgets.popup.level_up_popup import LevelUpPopup
 from screens.custom_widgets.popup.loading_popup import LoadingPopup
 from screens.custom_widgets.popup.reward_popup import RewardPopup
 from screens.custom_widgets.popup.conversion_popup import ConversionPopup
+from screens.custom_widgets.popup.daily_wheel_popup import DailyWheelPopup

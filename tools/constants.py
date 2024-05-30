@@ -64,6 +64,7 @@ BACK_ARROW_SIZE = 0.2
 
 # scale for experience awarded to the user
 XP_PER_LEVEL: int = 100
+LINCOINS_PER_LEVEL: int = 100
 
 # Create the user data json if it does not exist
 if not os.path.exists(PATH_USER_DATA):
@@ -133,7 +134,8 @@ if not os.path.exists(PATH_USER_DATA):
             "current_day_date": "",
             "current_week_date": "",
             "number_daily_ads_left": 3,
-            "number_weekly_ads_left": 1
+            "number_weekly_ads_left": 1,
+            "has_seen_daily_wheel": False
         }
     }
     save_json_file(PATH_USER_DATA, default_user_data)

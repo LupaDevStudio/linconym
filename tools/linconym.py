@@ -1061,8 +1061,8 @@ class ClassicGame(Game):
                     nb_words_previous_best)
                 previous_nb_stars = self.get_nb_stars(nb_words_previous_best)
             # award newly acquired xp
-            self.xp_earned = int(
-                (xp_fraction - previous_xp_fraction) * XP_PER_LEVEL + 0.001)
+            self.xp_earned = int(round(
+                (xp_fraction - previous_xp_fraction) * XP_PER_LEVEL, 0))
             USER_DATA.user_profile[XP_KEY] += self.xp_earned
             # Award newly acquired lincoins
             lincoins_earned_before = NB_LINCOINS_PER_STAR_DICT[previous_nb_stars]
