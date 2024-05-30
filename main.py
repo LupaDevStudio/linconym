@@ -24,7 +24,7 @@ from kivy.uix.screenmanager import (
 )
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
-from kivy.clock import Clock
+from kivy.clock import Clock, mainthread
 
 ### Local imports ###
 
@@ -38,6 +38,7 @@ from tools.constants import (
     MSAA_LEVEL
 )
 import screens.opening
+from screens.custom_widgets import LoadingPopup
 
 ###############
 ### General ###
@@ -109,9 +110,20 @@ class MainApp(App, Widget):
         Window.clearcolor = (0, 0, 0, 1)
         self.icon = PATH_IMAGES + "logo.png"
 
+    @mainthread
     def on_resume(self):
+        print("reloading")
         current_screen_name = self.root_window.children[0].current
-        self.root_window.children[0].get_screen(current_screen_name).refresh()
+        screen = self.root_window.children[0].get_screen(current_screen_name)
+        loading_popup = LoadingPopup(
+            font_ratio=screen.font_ratio,
+            primary_color=screen.primary_color,
+            secondary_color=screen.secondary_color,
+        )
+        print("popup created")
+        loading_popup.open()
+        print("opened")
+        Clock.schedule_once(loading_popup.dismiss, 2)
         return super().on_resume()
 
     def on_stop(self):
