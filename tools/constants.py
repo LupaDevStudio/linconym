@@ -50,7 +50,7 @@ from tools.basic_tools import (
 
 ### Version ###
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 ### Mode ###
 
@@ -266,7 +266,8 @@ class UserData():
         nb_completed_puzzles = 0
 
         for act_id in self.classic_mode:
-            nb_completed_puzzles += self.get_nb_completed_levels_for_act(act_id)
+            nb_completed_puzzles += self.get_nb_completed_levels_for_act(
+                act_id)
 
         return nb_completed_puzzles
 
