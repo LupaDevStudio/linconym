@@ -166,7 +166,7 @@ class BoostersScreen(LinconymScreen):
     def build_list_buy(self):
         temp_list = []
         self.list_buy = []
-        for counter in range(1, len(DICT_AMOUNT_BUY)+1):
+        for counter in range(1, len(DICT_AMOUNT_BUY) + 1):
             temp_list.append({
                 "circle_color": self.primary_color,
                 "reward": [{"lincoin": DICT_AMOUNT_BUY[str(counter)]["reward"]}],
@@ -252,8 +252,10 @@ class BoostersScreen(LinconymScreen):
         )
         reward_popup.open()
 
-        music_mixer.change_volume(new_volume=USER_DATA.settings["music_volume"])
-        sound_mixer.change_volume(new_volume=USER_DATA.settings["sound_volume"])
+        music_mixer.change_volume(
+            new_volume=USER_DATA.settings["music_volume"])
+        sound_mixer.change_volume(
+            new_volume=USER_DATA.settings["sound_volume"])
 
     def give_ad_award(self, mode: Literal["daily", "weekly", "unlimited"], nb_linclues: int, nb_lincoins: int):
         """
@@ -277,6 +279,9 @@ class BoostersScreen(LinconymScreen):
 
         # Update number of ads left
         USER_DATA.change_boosters(mode)
+
+        # Reload an add
+        AD_CONTAINER.load_ad()
 
         # Update the display
         self.update_all_widgets()

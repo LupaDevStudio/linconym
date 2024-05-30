@@ -34,6 +34,7 @@ from tools.constants import (
     DICT_ID_LIST,
     NB_LINCOINS_PER_STAR_DICT,
     REWARD_INTERSTITIAL,
+    REWARD_AD,
     ANDROID_MODE,
     IOS_MODE
 )
@@ -561,7 +562,8 @@ class AdContainer():
         if ANDROID_MODE:
             self.current_ad = RewardedAd(
                 # REWARD_INTERSTITIAL,
-                TestID.REWARD,
+                # TestID.REWARD,
+                REWARD_AD,
                 on_reward=None)
         elif IOS_MODE:
             self.current_ad = autoclass("adInterstitial").alloc().init()
