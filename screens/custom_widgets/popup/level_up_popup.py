@@ -23,6 +23,7 @@ from kivy.properties import (
 ### Local imports ###
 
 from screens.custom_widgets.popup.custom_popup import CustomPopup
+from tools import sound_mixer
 
 
 #############
@@ -47,3 +48,7 @@ class LevelUpPopup(CustomPopup):
             super().__init__(release_function=self.dismiss, **kwargs)
         else:
             super().__init__(**kwargs)
+
+    def open(self, *_args, **kwargs):
+        sound_mixer.play("level_up")
+        return super().open(*_args, **kwargs)

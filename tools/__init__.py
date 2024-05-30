@@ -31,4 +31,4 @@ SOUND_DICT = load_sounds(os.listdir(PATH_SOUNDS),
 
 # Create the mixer
 music_mixer = DynamicMusicMixer(MUSIC_DICT, USER_DATA.settings["music_volume"])
-sound_mixer = DynamicMusicMixer({}, USER_DATA.settings["sound_volume"])
+sound_mixer = DynamicMusicMixer(SOUND_DICT, USER_DATA.settings["sound_volume"])

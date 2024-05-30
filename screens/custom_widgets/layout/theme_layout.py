@@ -26,6 +26,8 @@ from tools.constants import (
     THEMES_DICT,
     THEMES_RARITY_DICT
 )
+from tools import sound_mixer
+
 
 #############
 ### Class ###
@@ -111,8 +113,12 @@ class ThemeLayout(Image):
                 self.get_root_window().children[0].get_screen(
                     "themes").update_coins()
                 self.has_bought_image = True
+                sound_mixer.play("get_star")
+            else:
+                sound_mixer.play("button_click_disabled")
             self.update_display()
         elif self.has_bought_image and not self.is_using_image:
+            sound_mixer.play("button_click")
             USER_DATA.change_theme_image(self.theme_key)
             self.get_root_window().children[0].get_screen(
                 "themes").update_theme_layouts_display()
@@ -128,9 +134,14 @@ class ThemeLayout(Image):
                 self.get_root_window().children[0].get_screen(
                     "themes").update_coins()
                 self.has_bought_colors = True
+                sound_mixer.play("get_star")
+            else:
+                sound_mixer.play("button_click_disabled")
             self.update_display()
         elif self.has_bought_colors and not self.is_using_colors:
+            sound_mixer.play("button_click")
             USER_DATA.change_theme_colors(self.theme_key)
+
         self.update_display()
         self.get_root_window().children[0].get_screen(
             "themes").update_theme_layouts_display()

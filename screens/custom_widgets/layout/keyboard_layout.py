@@ -29,6 +29,9 @@ from tools.path import (
 from tools.constants import (
     LETTER_FONT_SIZE
 )
+from tools import (
+    sound_mixer
+)
 from screens.custom_widgets import (
     ColoredRoundedButton,
     ColoredRoundedButtonImage
@@ -59,7 +62,7 @@ class KeyboardLayout(RelativeLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.horizontal_padding = (1 - 10*self.size_letter) / 9
+        self.horizontal_padding = (1 - 10 * self.size_letter) / 9
 
         self.bind(horizontal_padding=self.update_padding)
         self.bind(size_letter=self.update_padding)
@@ -123,7 +126,8 @@ class KeyboardLayout(RelativeLayout):
                 size_hint=(self.size_letter, height_letter),
                 color_label=(1, 1, 1, 1),
                 outline_color=(1, 1, 1, 1),
-                release_function=partial(self.touch_letter, letter)
+                release_function=partial(self.touch_letter, letter),
+                use_default_sound=False
             )
             self.add_widget(colored_rounded_button)
             self.list_letter_keys.append(colored_rounded_button)
@@ -144,7 +148,8 @@ class KeyboardLayout(RelativeLayout):
                 size_hint=(self.size_letter, height_letter),
                 color_label=(1, 1, 1, 1),
                 outline_color=(1, 1, 1, 1),
-                release_function=partial(self.touch_letter, letter)
+                release_function=partial(self.touch_letter, letter),
+                use_default_sound=False
             )
             self.add_widget(colored_rounded_button)
             self.list_letter_keys.append(colored_rounded_button)
@@ -165,7 +170,8 @@ class KeyboardLayout(RelativeLayout):
                 size_hint=(self.size_letter, height_letter),
                 color_label=(1, 1, 1, 1),
                 outline_color=(1, 1, 1, 1),
-                release_function=partial(self.touch_letter, letter)
+                release_function=partial(self.touch_letter, letter),
+                use_default_sound=False
             )
             self.add_widget(colored_rounded_button)
             self.list_letter_keys.append(colored_rounded_button)
@@ -183,7 +189,8 @@ class KeyboardLayout(RelativeLayout):
             size_hint=(self.size_letter * 2 +
                        self.horizontal_padding, height_letter),
             color_image=(1, 1, 1, 1),
-            release_function=partial(self.touch_letter, "DELETE")
+            release_function=partial(self.touch_letter, "DELETE"),
+            use_default_sound=False
         )
         self.add_widget(self.delete_key)
 
@@ -315,4 +322,9 @@ class KeyboardLayout(RelativeLayout):
         -------
         None
         """
+
+        # Play the sound
+        sound_mixer.play("keyboard")
+
+        # Activate the function
         self.touch_function(letter)

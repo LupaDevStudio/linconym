@@ -31,6 +31,7 @@ from tools.constants import (
     OPACITY_ON_BUTTON_PRESS,
     ACT_BUTTON_FONT_SIZE
 )
+from tools import sound_mixer
 
 #############
 ### Class ###
@@ -77,6 +78,7 @@ class ActButton(ButtonBehavior, RelativeLayout):
     def on_press(self):
         if not self.disable_button:
             self.opacity = OPACITY_ON_BUTTON_PRESS
+            sound_mixer.play("button_click")
 
     def on_release(self):
         if self.collide_point(self.last_touch.x, self.last_touch.y) and not self.disable_button:
