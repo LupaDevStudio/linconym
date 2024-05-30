@@ -28,9 +28,18 @@
         nb_stars: root.nb_stars
         primary_color: root.primary_color
         secondary_color: root.secondary_color
+    
+    # Rune
+    Image:
+        source: PATH_IMAGES + "rune.png"
+        size_hint: (None, 0.05)
+        width: self.height
+        pos_hint: {"center_y":0.795}
+        x: root.width/2 - words_to_connect_label.texture_size[0]/2 - self.width - 15 * root.font_ratio
 
     # Words to connect
     Label:
+        id: words_to_connect_label
         text: root.start_word + " > " + root.end_word
         font_name: PATH_TITLE_FONT
         font_size: LABEL_FONT_SIZE * root.font_ratio
@@ -66,20 +75,20 @@
         release_function: root.open_game
         font_ratio: root.font_ratio
 
-    # Reset screen button
-    CustomButton:
-        text:"Reset the tree"
-        size_hint: (0.3,0.1)
-        pos_hint: {"center_x":0.2, "y":0.025}
-        release_function: root.ask_reset_tree
-        font_size: LETTER_FONT_SIZE
-        text_font_name: PATH_TITLE_FONT
-        font_ratio: root.font_ratio
+    # # Reset screen button
+    # CustomButton:
+    #     text:"Reset the tree"
+    #     size_hint: (0.3,0.1)
+    #     pos_hint: {"center_x":0.2, "y":0.025}
+    #     release_function: root.ask_reset_tree
+    #     font_size: LETTER_FONT_SIZE
+    #     text_font_name: PATH_TITLE_FONT
+    #     font_ratio: root.font_ratio
 
     # Display / hide completed paths
     SelectCircleButtonWithText:
         text: "Hide completed paths"
-        pos_hint: {"center_x":0.7,"y":0.025}
+        pos_hint: {"center_x":0.5,"y":0.025}
         size_hint: (0.5,0.1)
         font_size: LETTER_FONT_SIZE
         font_ratio: root.font_ratio
