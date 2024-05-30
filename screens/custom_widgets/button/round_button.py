@@ -26,6 +26,7 @@ from tools.constants import (
     OPACITY_ON_BUTTON_PRESS,
     DICT_CONVERSION_MONEY
 )
+from tools import sound_mixer
 
 #############
 ### Class ###
@@ -54,6 +55,7 @@ class RoundButton(ButtonBehavior, RelativeLayout):
     def on_press(self):
         if not self.disable_button:
             self.opacity = OPACITY_ON_BUTTON_PRESS
+            sound_mixer.play("button_click")
 
     def on_release(self):
         if not self.disable_button:

@@ -84,7 +84,7 @@ if not os.path.exists(PATH_USER_DATA):
             "1": {}
         },
         "settings": {
-            "sound_volume": 0.5,
+            "sound_volume": 1.0,
             "music_volume": 0.5,
             "keyboard_mode": "QWERTY",
             "current_theme_image": "lupa",

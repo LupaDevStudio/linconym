@@ -23,6 +23,7 @@ from kivy.properties import (
 from tools.path import (
     PATH_TEXT_FONT
 )
+from tools import sound_mixer
 
 #############
 ### Class ###
@@ -44,6 +45,7 @@ class ColoredRoundedButtonImage(ButtonBehavior, RelativeLayout):
     color_image = ColorProperty()
     text_font_name = StringProperty(PATH_TEXT_FONT)
     release_function = ObjectProperty(lambda: 1 + 1)
+    use_default_sound = BooleanProperty(True)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -54,6 +56,8 @@ class ColoredRoundedButtonImage(ButtonBehavior, RelativeLayout):
         if not self.disable_button:
             self.temp_color = self.background_color
             self.background_color = self.touch_color
+            if self.use_default_sound:
+                sound_mixer.play("button_click")
 
     def on_release(self):
         if not self.disable_button:
