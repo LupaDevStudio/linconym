@@ -37,6 +37,7 @@ from tools.constants import (
     LEVEL_BUTTON_SIDE_OFFSET,
     LEVEL_BUTTON_RELATIVE_HEIGHT
 )
+from tools import sound_mixer
 
 
 ###############
@@ -102,6 +103,7 @@ class LevelButton(ButtonBehavior, RelativeLayout):
     def on_press(self):
         if not self.disable_button:
             self.opacity = OPACITY_ON_BUTTON_PRESS
+            sound_mixer.play("button_click")
 
     def on_release(self):
         if not self.disable_button:
@@ -219,7 +221,8 @@ class LevelBranch(RelativeLayout):
                 level_is_unlocked = False
                 level_nb_stars = 0
                 bool_chest_open = False
-            has_chest = "chest" in GAMEPLAY_DICT[self.act_id][level_key] and GAMEPLAY_DICT[self.act_id][level_key]["chest"]
+            has_chest = "chest" in GAMEPLAY_DICT[self.act_id][
+                level_key] and GAMEPLAY_DICT[self.act_id][level_key]["chest"]
             level_button = LevelButton(
                 level_id=level_id,
                 is_unlocked=level_is_unlocked,
@@ -314,7 +317,7 @@ class LevelLayout(MyScrollViewLayout):
         self.act_id = act_id
         self.cols = 1
         self.spacing = 0
-        self.padding = (0, 35*self.font_ratio, 0, 35*self.font_ratio)
+        self.padding = (0, 35 * self.font_ratio, 0, 35 * self.font_ratio)
 
     def build_layout(self):
         nb_levels = len(GAMEPLAY_DICT[self.act_id]) - 1
