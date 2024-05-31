@@ -22,4 +22,6 @@ This game is not distributed yet.
 This game has been developed by :
 
 - Paul Creusy
-- Agathe Aris
+- Agathe Plu
+- Laure-Emilie Martin
+- Nathaël Danesi
