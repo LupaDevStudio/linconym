@@ -2,4 +2,6 @@ Notice of Linconym
 
 This application has been developed by:
 - Paul Creusy
-- Agathe Aris
+- Agathe Plu
+- Laure-Emilie Martin
+- Nathaël Danesi
