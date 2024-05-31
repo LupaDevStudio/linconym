@@ -333,6 +333,49 @@ class UserData():
 
         return nb_completed_levels
 
+    def get_nb_levels_in_act(self, act_id: str):
+        """
+        Compute the number of levels contained in an act.
+
+        Parameters
+        ----------
+        act_id : str
+            Id of the act.
+
+        Returns
+        -------
+        int
+            Number of levels.
+        """
+
+        if act_id not in GAMEPLAY_DICT:
+            return 0
+        else:
+            return len(GAMEPLAY_DICT[act_id]) - 1
+
+    def get_nb_levels_in_all_previous_acts(self, act_id: str):
+        """
+        Compute the number of levels contained in all previous acts.
+
+        Parameters
+        ----------
+        act_id : str
+            Id of the act.
+
+        Returns
+        -------
+        int
+            Number of cumulated levels in the previous acts.
+        """
+
+        act = int(act_id)
+        cum_nb_levels = 0
+        for i in range(1, act):
+            nb_levels = self.get_nb_levels_in_act(str(i))
+            cum_nb_levels += nb_levels
+
+        return cum_nb_levels
+
     def get_nb_words_all_puzzles(self, word_to_find: str):
         nb_words = 0
 
