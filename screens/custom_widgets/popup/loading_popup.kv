@@ -17,11 +17,22 @@
             color: (0,0,0,1)
             halign: "center"
             valign: "middle"
-        
-        Image:
-            id: loading_image
-            size_hint: (0.8,0.7)
-            pos_hint: {"center_x":0.5,"center_y":0.6}
-            fit_mode: "contain"
-            source: PATH_IMAGES + "loading.gif"
-            anim_delay: 0.04
+
+        RelativeLayout:
+            size_hint: (0.7, 0.6)
+            pos_hint: {"center_x":0.5, "center_y": 0.6}
+
+            canvas.before:
+                PushMatrix
+                Rotate:
+                    angle: root.angle
+                    axis: 0, 0, 1
+                    origin: self.width/2, self.height/2
+            canvas.after:
+                PopMatrix
+
+            Image:
+                id: loading_image
+                source: PATH_IMAGES + "loading.png"
+                size_hint: (1, 1)
+                pos_hint: {'center_x': 0.5, "center_y": 0.5}
