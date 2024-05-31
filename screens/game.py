@@ -30,7 +30,8 @@ from tools.constants import (
     GAMEPLAY_DICT,
     TUTORIAL,
     GAME_TUTORIAL_DICT,
-    USER_STATUS_DICT
+    USER_STATUS_DICT,
+    MAX_NB_LETTERS
 )
 from screens.custom_widgets import (
     LinconymScreen,
@@ -182,7 +183,7 @@ class GameScreen(LinconymScreen):
             self.ids.keyboard_layout.activate_delete_button()
 
         # Disable the letters is the word is already filled
-        if len(self.new_word) >= len(self.current_word) + 1:
+        if len(self.new_word) >= len(self.current_word) + 1 or len(self.new_word) >= MAX_NB_LETTERS:
             self.ids.keyboard_layout.disable_letters()
         else:
             self.ids.keyboard_layout.activate_letters()
@@ -225,7 +226,8 @@ class GameScreen(LinconymScreen):
 
         # Add the new letter to the current word
         else:
-            self.new_word += letter
+            if len(self.new_word) < MAX_NB_LETTERS:
+                self.new_word += letter
 
         # Disable/Enable the keyboard and the submit button in consequence
         self.check_disable_keyboard()
@@ -237,7 +239,7 @@ class GameScreen(LinconymScreen):
     def build_word(self):
         x_center = 0.5
         number_mandatory_letters = len(self.current_word) - 1
-        number_letters = number_mandatory_letters + 2
+        number_letters = min(number_mandatory_letters + 2, MAX_NB_LETTERS)
         next_letter_counter = len(self.new_word)
         size_letter = 0.09
         horizontal_padding = 0.1 - size_letter
@@ -505,7 +507,8 @@ class GameScreen(LinconymScreen):
             popup = LevelUpPopup(
                 primary_color=self.primary_color,
                 secondary_color=self.secondary_color,
-                number_lincoins_won=compute_lincoins_when_level_up(USER_DATA.user_profile["status"]),
+                number_lincoins_won=compute_lincoins_when_level_up(
+                    USER_DATA.user_profile["status"]),
                 has_changed_status=has_changed_status,
                 size_hint=size_hint_popup,
                 current_status=current_status,

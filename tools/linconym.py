@@ -36,7 +36,8 @@ from tools.constants import (
     REWARD_INTERSTITIAL,
     REWARD_AD,
     ANDROID_MODE,
-    IOS_MODE
+    IOS_MODE,
+    MAX_NB_LETTERS
 )
 from tools.basic_tools import (
     dichotomy,
@@ -284,13 +285,13 @@ def count_different_letters(word1: str, word2: str) -> int:
     return nb_different_letters
 
 
-def count_common_letters(word1: str, word2: str) -> int:
-    res = len(word1) - count_different_letters(word1, word2)
-    # TEMP
-    res += (len(word2) - len(word1)) // 2
-    if res < 0:
-        res = 0
-    return res
+def compute_similarity_score(word1: str, word2: str) -> int:
+    res = count_different_letters(word1, word2)
+    res += abs(len(word2) - len(word1))
+    score = MAX_NB_LETTERS - res
+    if score < 0:
+        score = 0
+    return score
 
 
 def level_has_saved_data(level_dict: dict):
@@ -329,6 +330,10 @@ def is_valid(new_word: str, current_word: str, skip_in_english_words: bool = Fal
     bool
         True if the word is valid, False otherwise.
     """
+
+    # Limit the number of letters
+    if len(new_word) > MAX_NB_LETTERS:
+        return False
 
     # Check if the new word derives from the current word
     if len(new_word) - len(current_word) == 0:
@@ -418,10 +423,10 @@ def find_solutions(start_word: str, end_word: str, english_words: list = ENGLISH
 
     while not_found:
         current_position = None
-        for i in sorted(pile.keys()):
+        for i in sorted(pile.keys(), reverse=True):
             if len(pile[i]) > 0:
-                # print(i)
-                current_position = pile[i].pop(0)
+                print(i)
+                current_position = pile[i].pop(-1)
                 break
 
         if current_position is None:
@@ -434,7 +439,7 @@ def find_solutions(start_word: str, end_word: str, english_words: list = ENGLISH
 
         for word in next_words:
             if word not in words_found or word == end_word:
-                temp_nb_common_letters = count_common_letters(word, end_word)
+                similarity_score = compute_similarity_score(word, end_word)
                 new_position = current_position + (new_word_id,)
                 position_to_word_id[new_position] = len(words_found)
                 words_found.append(word)
@@ -445,7 +450,7 @@ def find_solutions(start_word: str, end_word: str, english_words: list = ENGLISH
                     print(convert_position_to_wordlist(
                         final_position, position_to_word_id, words_found))
                 else:
-                    pile_id = -temp_nb_common_letters + len(new_position)
+                    pile_id = similarity_score - len(new_position)
                     # print(pile_id)
                     if pile_id in pile:
                         pile[pile_id].append(new_position)
@@ -1171,5 +1176,5 @@ if __name__ == "__main__":
 
     # fill_daily_games_with_solutions()
     # print(is_valid("brain", "crane"))
-    #find_solutions("mermaid", "narwhal", ENGLISH_WORDS_DICTS["34k"])
+    find_solutions("mermaid", "narwhal", ENGLISH_WORDS_DICTS["280k"])
     pass
