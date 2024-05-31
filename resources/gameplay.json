@@ -256,5 +256,367 @@
             "88k": 6,
             "280k": 6
         }
+    },
+    "3": {
+        "name": "Act 3 - Home sweet Home",
+        "1": {
+            "start_word": "loft",
+            "end_word": "door",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "2": {
+            "start_word": "door",
+            "end_word": "room",
+            "10k": 2,
+            "34k": 2,
+            "88k": 2,
+            "280k": 2
+        },
+        "3": {
+            "start_word": "room",
+            "end_word": "home",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "4": {
+            "start_word": "home",
+            "end_word": "house",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "5": {
+            "start_word": "house",
+            "end_word": "table",
+            "chest": true,
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "6": {
+            "start_word": "table",
+            "end_word": "bed",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "7": {
+            "start_word": "bed",
+            "end_word": "garden",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "8": {
+            "start_word": "garden",
+            "end_word": "cave",
+            "chest": true,
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "9": {
+            "start_word": "cave",
+            "end_word": "wall",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "10": {
+            "start_word": "wall",
+            "end_word": "sofa",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "11": {
+            "start_word": "sofa",
+            "end_word": "lamp",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "12": {
+            "start_word": "lamp",
+            "end_word": "floor",
+            "chest": true,
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "13": {
+            "start_word": "floor",
+            "end_word": "chair",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "14": {
+            "start_word": "chair",
+            "end_word": "kitchen",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        }
+    },
+    "4": {
+        "name": "Act 4 - Master the Elements",
+        "1": {
+            "start_word": "air",
+            "end_word": "ice",
+            "10k": 4,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "2": {
+            "start_word": "ice",
+            "end_word": "time",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "3": {
+            "start_word": "time",
+            "end_word": "fire",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "4": {
+            "start_word": "fire",
+            "end_word": "metal",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "5": {
+            "start_word": "metal",
+            "end_word": "earth",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "6": {
+            "start_word": "earth",
+            "end_word": "plant",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "7": {
+            "start_word": "plant",
+            "end_word": "bolt",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "8": {
+            "start_word": "bolt",
+            "end_word": "light",
+            "10k": 6,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4,
+            "chest": true
+        },
+        "9": {
+            "start_word": "light",
+            "end_word": "water",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "10": {
+            "start_word": "water",
+            "end_word": "wood",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "11": {
+            "start_word": "wood",
+            "end_word": "wind",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "12": {
+            "start_word": "wind",
+            "end_word": "ground",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "13": {
+            "start_word": "ground",
+            "end_word": "rock",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "14": {
+            "start_word": "rock",
+            "end_word": "shadow",
+            "10k": 7,
+            "34k": 7,
+            "88k": 6,
+            "280k": 6,
+            "chest": true
+        },
+        "15": {
+            "start_word": "shadow",
+            "end_word": "ether",
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        }
+    },
+    "5": {
+        "name": "Act 5 - TODO TITLE POISSONS",
+        "1": {
+            "start_word": "water",
+            "end_word": "crab",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "2": {
+            "start_word": "crab",
+            "end_word": "ray",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "3": {
+            "start_word": "ray",
+            "end_word": "orca",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "4": {
+            "start_word": "orca",
+            "end_word": "dolphin",
+            "chest": true,
+            "10k": 10,
+            "34k": 8,
+            "88k": 8,
+            "280k": 7
+        },
+        "5": {
+            "start_word": "dolphin",
+            "end_word": "whale",
+            "10k": 9,
+            "34k": 8,
+            "88k": 6,
+            "280k": 6
+        },
+        "6": {
+            "start_word": "whale",
+            "end_word": "shark",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "7": {
+            "start_word": "shark",
+            "end_word": "fish",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "8": {
+            "start_word": "fish",
+            "end_word": "mussel",
+            "chest": true,
+            "10k": 8,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "9": {
+            "start_word": "mussel",
+            "end_word": "oyster",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "10": {
+            "start_word": "oyster",
+            "end_word": "lobster",
+            "10k": 6,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "11": {
+            "start_word": "lobster",
+            "end_word": "octopus",
+            "chest": true,
+            "10k": null,
+            "34k": 7,
+            "88k": 5,
+            "280k": 5
+        },
+        "12": {
+            "start_word": "octopus",
+            "end_word": "shrimp",
+            "10k": null,
+            "34k": 9,
+            "88k": 6,
+            "280k": 6
+        },
+        "13": {
+            "start_word": "shrimp",
+            "end_word": "mermaid",
+            "10k": 8,
+            "34k": 6,
+            "88k": 5,
+            "280k": 5
+        },
+        "14": {
+            "start_word": "mermaid",
+            "end_word": "narwhal",
+            "chest": true,
+            "10k": null,
+            "34k": null,
+            "88k": 7,
+            "280k": 7
+        }
     }
 }
