@@ -635,3 +635,8 @@ def get_lincoin_image_amount(number_lincoins):
         return PATH_ICONS + "lincoin_4.png"
     else:
         return PATH_ICONS + "lincoin_5.png"
+
+
+### Max nb of letters in word ###
+
+MAX_NB_LETTERS = 10
