@@ -501,122 +501,241 @@
         }
     },
     "5": {
-        "name": "Act 5 - TODO TITLE POISSONS",
+        "name": "Act 5 - Space Exploration",
         "1": {
-            "start_word": "water",
-            "end_word": "crab",
+            "start_word": "sun",
+            "end_word": "star",
             "10k": 4,
             "34k": 4,
             "88k": 4,
             "280k": 4
         },
         "2": {
-            "start_word": "crab",
-            "end_word": "ray",
+            "start_word": "star",
+            "end_word": "earth",
             "10k": 3,
             "34k": 3,
             "88k": 3,
             "280k": 3
         },
         "3": {
-            "start_word": "ray",
-            "end_word": "orca",
-            "10k": 3,
-            "34k": 3,
-            "88k": 3,
-            "280k": 3
+            "start_word": "earth",
+            "end_word": "orbit",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
         },
         "4": {
-            "start_word": "orca",
-            "end_word": "dolphin",
-            "chest": true,
-            "10k": 10,
-            "34k": 8,
-            "88k": 8,
-            "280k": 7
+            "start_word": "orbit",
+            "end_word": "moon",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
         },
         "5": {
-            "start_word": "dolphin",
-            "end_word": "whale",
-            "10k": 9,
-            "34k": 8,
+            "start_word": "moon",
+            "end_word": "planet",
+            "10k": 7,
+            "34k": 6,
             "88k": 6,
-            "280k": 6
+            "280k": 6,
+            "chest": true
         },
         "6": {
-            "start_word": "whale",
-            "end_word": "shark",
-            "10k": 5,
+            "start_word": "planet",
+            "end_word": "space",
+            "10k": 4,
             "34k": 4,
             "88k": 4,
             "280k": 4
         },
         "7": {
-            "start_word": "shark",
-            "end_word": "fish",
+            "start_word": "space",
+            "end_word": "travel",
             "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "8": {
+            "start_word": "travel",
+            "end_word": "rocket",
+            "10k": 6,
             "34k": 4,
             "88k": 4,
             "280k": 4
         },
-        "8": {
-            "start_word": "fish",
-            "end_word": "mussel",
+        "9": {
+            "start_word": "rocket",
+            "end_word": "universe",
             "chest": true,
-            "10k": 8,
+            "10k": 9,
+            "34k": 7,
+            "88k": 7,
+            "280k": 7
+        },
+        "10": {
+            "start_word": "universe",
+            "end_word": "asteroid",
+            "chest": true,
+            "10k": 9,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "11": {
+            "start_word": "asteroid",
+            "end_word": "comet",
+            "10k": 6,
+            "34k": 6,
+            "88k": 7,
+            "280k": 6
+        },
+        "12": {
+            "start_word": "comet",
+            "end_word": "cosmic",
+            "chest": true,
+            "10k": 6,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        }
+    },
+    "6": {
+        "name": "Act 6 - 20.000 leagues under the sea",
+        "1": {
+            "start_word": "creature",
+            "end_word": "treasures",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "2": {
+            "start_word": "treasures",
+            "end_word": "pressure",
+            "10k": 12,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "3": {
+            "start_word": "pressure",
+            "end_word": "sailor",
+            "10k": 10,
+            "34k": 7,
+            "88k": 7,
+            "280k": 7,
+            "chest": true
+        },
+        "4": {
+            "start_word": "sailor",
+            "end_word": "deep",
+            "10k": 7,
+            "34k": 7,
+            "88k": 7,
+            "280k": 7
+        },
+        "5": {
+            "start_word": "deep",
+            "end_word": "diver",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "6": {
+            "start_word": "diver",
+            "end_word": "water",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "7": {
+            "start_word": "water",
+            "end_word": "journey",
+            "10k": 9,
+            "34k": 7,
+            "88k": 7,
+            "280k": 6,
+            "chest": true
+        },
+        "8": {
+            "start_word": "journey",
+            "end_word": "under",
+            "10k": 7,
+            "34k": 6,
+            "88k": 5,
+            "280k": 5
+        },
+        "9": {
+            "start_word": "under",
+            "end_word": "depth",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 4
+        },
+        "10": {
+            "start_word": "depth",
+            "end_word": "coral",
+            "10k": 6,
             "34k": 6,
             "88k": 6,
             "280k": 6
         },
-        "9": {
-            "start_word": "mussel",
-            "end_word": "oyster",
+        "11": {
+            "start_word": "coral",
+            "end_word": "captain",
+            "10k": 8,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6,
+            "chest": true
+        },
+        "12": {
+            "start_word": "captain",
+            "end_word": "sea",
+            "10k": 8,
+            "34k": 7,
+            "88k": 7,
+            "280k": 7
+        },
+        "13": {
+            "start_word": "sea",
+            "end_word": "world",
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "14": {
+            "start_word": "world",
+            "end_word": "ocean",
             "10k": 6,
             "34k": 5,
             "88k": 5,
             "280k": 5
         },
-        "10": {
-            "start_word": "oyster",
-            "end_word": "lobster",
-            "10k": 6,
-            "34k": 3,
-            "88k": 3,
-            "280k": 3
+        "15": {
+            "start_word": "ocean",
+            "end_word": "marine",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
         },
-        "11": {
-            "start_word": "lobster",
-            "end_word": "octopus",
-            "chest": true,
-            "10k": null,
-            "34k": 7,
-            "88k": 5,
-            "280k": 5
-        },
-        "12": {
-            "start_word": "octopus",
-            "end_word": "shrimp",
-            "10k": null,
-            "34k": 9,
-            "88k": 6,
-            "280k": 6
-        },
-        "13": {
-            "start_word": "shrimp",
-            "end_word": "mermaid",
-            "10k": 8,
-            "34k": 6,
-            "88k": 5,
-            "280k": 5
-        },
-        "14": {
-            "start_word": "mermaid",
-            "end_word": "narwhal",
-            "chest": true,
-            "10k": null,
-            "34k": null,
-            "88k": 7,
-            "280k": 7
+        "16": {
+            "start_word": "marine",
+            "end_word": "submarine",
+            "10k": 7,
+            "34k": 5,
+            "88k": 4,
+            "280k": 4,
+            "chest": true
         }
     }
 }

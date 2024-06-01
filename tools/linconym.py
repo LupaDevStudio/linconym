@@ -425,7 +425,7 @@ def find_solutions(start_word: str, end_word: str, english_words: list = ENGLISH
         current_position = None
         for i in sorted(pile.keys(), reverse=True):
             if len(pile[i]) > 0:
-                print(i)
+                # print(i)
                 current_position = pile[i].pop(-1)
                 break
 
@@ -1176,5 +1176,5 @@ if __name__ == "__main__":
 
     # fill_daily_games_with_solutions()
     # print(is_valid("brain", "crane"))
-    find_solutions("mermaid", "narwhal", ENGLISH_WORDS_DICTS["280k"])
+    find_solutions("planet", "moon", ENGLISH_WORDS_DICTS["10k"])
     pass
