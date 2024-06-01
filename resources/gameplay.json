@@ -737,5 +737,290 @@
             "280k": 4,
             "chest": true
         }
+    },
+    "7": {
+        "name": "Act 7 - TITRE SPORTS",
+        "1": {
+            "start_word": "run",
+            "end_word": "arena",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "2": {
+            "start_word": "arena",
+            "end_word": "ride",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "3": {
+            "start_word": "ride",
+            "end_word": "race",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "4": {
+            "start_word": "race",
+            "end_word": "lose",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "5": {
+            "start_word": "lose",
+            "end_word": "score",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "6": {
+            "start_word": "score",
+            "end_word": "sport",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "7": {
+            "start_word": "sport",
+            "end_word": "target",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "8": {
+            "start_word": "target",
+            "end_word": "team",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "9": {
+            "start_word": "team",
+            "end_word": "game",
+            "10k": 2,
+            "34k": 2,
+            "88k": 2,
+            "280k": 2
+        },
+        "10": {
+            "start_word": "game",
+            "end_word": "gym",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "11": {
+            "start_word": "gym",
+            "end_word": "tennis",
+            "chest": true,
+            "10k": 8,
+            "34k": 7,
+            "88k": 7,
+            "280k": 7
+        },
+        "12": {
+            "start_word": "tennis",
+            "end_word": "relay",
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "13": {
+            "start_word": "relay",
+            "end_word": "walk",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "14": {
+            "start_word": "walk",
+            "end_word": "win",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "15": {
+            "start_word": "win",
+            "end_word": "swim",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "16": {
+            "start_word": "swim",
+            "end_word": "ski",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "17": {
+            "start_word": "ski",
+            "end_word": "basket",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "18": {
+            "start_word": "basket",
+            "end_word": "catch",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "19": {
+            "start_word": "catch",
+            "end_word": "coach",
+            "10k": 2,
+            "34k": 2,
+            "88k": 2,
+            "280k": 2
+        },
+        "20": {
+            "start_word": "coach",
+            "end_word": "athlete",
+            "chest": true,
+            "10k": 7,
+            "34k": 7,
+            "88k": 6,
+            "280k": 6
+        },
+        "21": {
+            "start_word": "athlete",
+            "end_word": "volley",
+            "chest": true,
+            "10k": 7,
+            "34k": 7,
+            "88k": 8,
+            "280k": 6
+        }
+    },
+    "8": {
+        "name": "Act 8 - TODO TITLE DESERT (dunes des sables)",
+        "1": {
+            "start_word": "sun",
+            "end_word": "sand",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "2": {
+            "start_word": "sand",
+            "end_word": "oasis",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "3": {
+            "start_word": "oasis",
+            "end_word": "desert",
+            "chest": true,
+            "10k": 7,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "4": {
+            "start_word": "desert",
+            "end_word": "snake",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "5": {
+            "start_word": "snake",
+            "end_word": "camel",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "6": {
+            "start_word": "camel",
+            "end_word": "arid",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "7": {
+            "start_word": "arid",
+            "end_word": "wind",
+            "10k": 4,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "8": {
+            "start_word": "wind",
+            "end_word": "dune",
+            "10k": 4,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "9": {
+            "start_word": "dune",
+            "end_word": "dry",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "10": {
+            "start_word": "dry",
+            "end_word": "hot",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "11": {
+            "start_word": "hot",
+            "end_word": "cactus",
+            "chest": true,
+            "10k": null,
+            "34k": 7,
+            "88k": 6,
+            "280k": 6
+        },
+        "12": {
+            "start_word": "cactus",
+            "end_word": "mirage",
+            "chest": true,
+            "10k": null,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "13": {
+            "start_word": "mirage",
+            "end_word": "drought",
+            "chest": true,
+            "10k": 10,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        }
     }
 }

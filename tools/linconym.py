@@ -1176,5 +1176,5 @@ if __name__ == "__main__":
 
     # fill_daily_games_with_solutions()
     # print(is_valid("brain", "crane"))
-    find_solutions("planet", "moon", ENGLISH_WORDS_DICTS["10k"])
+    find_solutions("oasis", "desert", ENGLISH_WORDS_DICTS["10k"])
     pass
