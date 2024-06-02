@@ -56,12 +56,12 @@ class HomeScreen(LinconymScreen):
 
         if not USER_DATA.ads["has_seen_daily_wheel"]:
             USER_DATA.ads["has_seen_daily_wheel"] = True
-            # popup = DailyWheelPopup(
-            #     font_ratio=self.font_ratio,
-            #     primary_color=self.primary_color,
-            #     secondary_color=self.secondary_color
-            # )
-            # popup.open()
+            popup = DailyWheelPopup(
+                font_ratio=self.font_ratio,
+                primary_color=self.primary_color,
+                secondary_color=self.secondary_color
+            )
+            popup.open()
         USER_DATA.save_changes()
         return super().on_enter(*args)
 

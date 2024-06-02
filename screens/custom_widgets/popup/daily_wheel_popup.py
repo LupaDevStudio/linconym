@@ -54,7 +54,7 @@ class DailyWheelPopup(CustomPopup):
             item.angle = 0
 
     def start_animation(self):
-        number_of_turns = rd.randint(4, 8)
+        number_of_turns = rd.randint(4, 7)
         last_angle = rd.randint(0, 360) + 360 * number_of_turns
         anim = Animation(angle=last_angle, duration=number_of_turns,
                          t=AnimationTransition.out_quad)
