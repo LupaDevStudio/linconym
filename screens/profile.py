@@ -73,13 +73,15 @@ class ProfileScreen(LinconymScreen):
         self.user_status = USER_DATA.user_profile["status"].capitalize()
         self.user_status_image = PATH_BADGES + self.user_status.lower() + ".png"
 
-        completed_puzzles = USER_DATA.get_nb_completed_puzzles()
-        completed_acts = USER_DATA.get_nb_completed_acts()
-        stars_won = USER_DATA.get_nb_total_stars()
-        self.classic_mode_achievements = "Completed puzzles: %i\nCompleted acts: %i\nStars won: %i\n\nClick to see all achievements." % (
-            completed_puzzles, completed_acts, stars_won)
-        # self.daily_mode_achievements = "Completed puzzles: %i\n\nClick to see all achievements." % (
-        #     14)
+        completed_puzzles_classic = USER_DATA.get_nb_completed_puzzles()
+        completed_puzzles_legend = USER_DATA.get_nb_completed_puzzles(mode="legend")
+        completed_acts_classic = USER_DATA.get_nb_completed_acts()
+        completed_acts_legend = USER_DATA.get_nb_completed_acts(mode="legend")
+        stars_won_classic = USER_DATA.get_nb_total_stars()
+        stars_won_legend = USER_DATA.get_nb_total_stars(mode="legend")
+        stars_won = stars_won_classic + stars_won_legend
+        self.classic_mode_achievements = "Completed classic puzzles: %i\nCompleted classic acts: %i\nCompleted legend puzzles: %i\nCompleted legend acts: %i\nStars won: %i\n\nClick to see all achievements." % (
+            completed_puzzles_classic, completed_acts_classic, completed_puzzles_legend, completed_acts_legend, stars_won)
 
         self.ids.exp_counter.update_experience(None, None)
 

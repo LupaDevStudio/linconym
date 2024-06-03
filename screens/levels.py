@@ -62,7 +62,11 @@ class LevelsScreen(LinconymScreen):
         self.ids.level_layout.act_id = self.current_act_id
         self.ids.level_layout.mode = self.mode
         self.ids.level_layout.build_layout()
-        self.current_act_name = "Act " + self.current_act_id
+        if self.mode == "legend":
+            self.current_act_name = "Legend "
+        else:
+            self.current_act_name = ""
+        self.current_act_name += "Act " + self.current_act_id
 
     def on_pre_leave(self, *args):
         # Take screenshot for adv

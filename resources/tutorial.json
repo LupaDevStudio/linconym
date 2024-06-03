@@ -3,42 +3,42 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "Welcome to Linconym's tutorial! \n \n This tutorial will guide you through the game's features. \n \n Click 'Next' to continue.",
+                "Welcome to Linconym's tutorial! \n \nThis tutorial will guide you through the game's features. \n \nClick 'Next' to continue.",
                 "horizontal",
                 "resources/images/tutorial/banner.jpg"
             ],
             [
-                "I'm Rune, the guardian of the Linconym's world. \n \n Linconym is a word puzzle game where you have to link two words by applying simple rules. \n \n Let's start with the basics!",
+                "I'm Rune, the guardian of the Linconym's world. \n \nLinconym is a word puzzle game where you have to link two words by applying simple rules. \n \nLet's start with the basics!",
                 "horizontal",
                 "resources/images/rune.png"
             ],
             [
-                "First, let me present the game's money: Lincoins. \n \n You can earn Lincoins by completing puzzles, achievements and quests. \n \n You can use them to buy customization items and boosters.",
+                "First, let me present the game's money: Lincoins. \n \nYou can earn Lincoins by completing puzzles, achievements and quests. \n \nYou can use them to buy customization items and boosters.",
                 "horizontal",
                 "resources/images/tutorial/rune_lincoin.png"
             ],
             [
-                "Second, let me present the game's hints: Linclues. \n \n You can earn Linclues by completing puzzles, achievements and quests. \n \n You can use them to get hints on puzzles.",
+                "Second, let me present the game's hints: Linclues. \n \nYou can earn Linclues by completing puzzles, achievements and quests. \n \nYou can use them to get hints on puzzles.",
                 "horizontal",
                 "resources/images/tutorial/rune_linclue.png"
             ],
             [
-                "Choose 'Classic Mode ' to play the game. \n \n In this mode, you have to link two words by applying simple rules. \n \n You'll discover them in the tutorial act !",
+                "Choose 'Classic Mode' to play the game. \n \nIn this mode, you have to link two words by applying simple rules. \n \nYou'll discover them in the tutorial act !",
                 "horizontal",
                 "resources/images/rune.png"
             ],
             [
-                "By playing the game, you can earn XPs and level up. Leveling up allows you to earn more Lincoins and Linclues ! \n \n You can see your progress in your profile.",
+                "By playing the game, you can earn XPs and level up. Leveling up allows you to earn more Lincoins and Linclues ! \n \nYou can see your progress in your profile.",
                 "horizontal",
                 "resources/images/rune.png"
             ],
             [
-                "Use the bottom bar to navigate through the game's features. \n \n You can access the game, available customization, your profile and the settings.",
+                "Use the bottom bar to navigate through the game's features. \n \nYou can access the game, available customization, your profile and the settings.",
                 "horizontal",
                 "resources/images/rune.png"
             ],
             [
-                "Enjoy the game! \n \n LupaDevStudio's team",
+                "Enjoy the game! \n \nLupaDevStudio's team",
                 "horizontal",
                 "resources/images/tutorial/banner.jpg"
             ]
@@ -68,7 +68,7 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "Chests are positioned at more complex puzzles and allow you to win 3 Linclues once the puzzle is completed. \n \n Reminder : Linclues are hints that help you to find the solution of a puzzle.",
+                "Chests are positioned at more complex puzzles and allow you to win 3 Linclues once the puzzle is completed. \n \nReminder: Linclues are hints that help you to find the solution of a puzzle in classic mode.",
                 "horizontal",
                 "resources/images/tutorial/closed_to_open_chest.png"
             ]
@@ -189,7 +189,7 @@
         "title": "Tutorial - Linconym",
         "tutorial_content": [
             [
-                "Welcome to the legend mode! \n \n Here, you can challenge yourself with more complex puzzles in comparison with the classic mode.\n\nBut beware, there will be no clues in this mode. This is for letters' warriors after all! Good luck!"
+                "Welcome to the legend mode! \n \n Here, you can challenge yourself with more complex puzzles in comparison with the classic mode.\n\nBut beware, there will be no clues in this mode. This is for letters' warriors after all!\n\nYou will win more experience and Lincoins when completing these puzzles, so don't hesitate to try! Good luck!"
             ]
         ]
     },

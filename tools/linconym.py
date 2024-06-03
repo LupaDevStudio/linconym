@@ -31,9 +31,11 @@ from tools.constants import (
     GAMEPLAY_DICT,
     GAMEPLAY_LEGEND_DICT,
     USER_DATA,
-    XP_PER_LEVEL,
+    XP_PER_CLASSIC_PUZZLE,
+    XP_PER_LEGEND_PUZZLE,
     DICT_ID_LIST,
-    NB_LINCOINS_PER_STAR_DICT,
+    NB_LINCOINS_PER_STAR_CLASSIC_DICT,
+    NB_LINCOINS_PER_STAR_LEGEND_DICT,
     REWARD_AD,
     ANDROID_MODE,
     IOS_MODE,
@@ -1067,11 +1069,11 @@ class ClassicGame(Game):
                 previous_nb_stars = self.get_nb_stars(nb_words_previous_best)
             # award newly acquired xp
             self.xp_earned = int(round(
-                (xp_fraction - previous_xp_fraction) * XP_PER_LEVEL, 0))
+                (xp_fraction - previous_xp_fraction) * XP_PER_CLASSIC_PUZZLE, 0))
             USER_DATA.user_profile[XP_KEY] += self.xp_earned
             # Award newly acquired lincoins
-            lincoins_earned_before = NB_LINCOINS_PER_STAR_DICT[previous_nb_stars]
-            lincoins_now = NB_LINCOINS_PER_STAR_DICT[self.nb_stars]
+            lincoins_earned_before = NB_LINCOINS_PER_STAR_CLASSIC_DICT[previous_nb_stars]
+            lincoins_now = NB_LINCOINS_PER_STAR_CLASSIC_DICT[self.nb_stars]
             self.lincoins_earned = lincoins_now - lincoins_earned_before
             USER_DATA.user_profile["lincoins"] += self.lincoins_earned
             USER_DATA.user_profile["cumulated_lincoins"] += self.lincoins_earned
@@ -1098,7 +1100,7 @@ class ClassicGame(Game):
         #     award_quest_word_xp = quest_word_done
         #     USER_DATA.classic_mode[self.act_id][self.lvl_id][QUEST_WORD_KEY] = quest_word_done
         # if (award_quest_word_xp):
-        #     USER_DATA.user_profile[XP_KEY] += XP_PER_LEVEL
+        #     USER_DATA.user_profile[XP_KEY] += XP_PER_CLASSIC_PUZZLE
 
         # Save changes
         USER_DATA.save_changes()
@@ -1315,11 +1317,11 @@ class LegendGame(Game):
                 previous_nb_stars = self.get_nb_stars(nb_words_previous_best)
             # award newly acquired xp
             self.xp_earned = int(round(
-                (xp_fraction - previous_xp_fraction) * XP_PER_LEVEL, 0))
+                (xp_fraction - previous_xp_fraction) * XP_PER_LEGEND_PUZZLE, 0))
             USER_DATA.user_profile[XP_KEY] += self.xp_earned
             # Award newly acquired lincoins
-            lincoins_earned_before = NB_LINCOINS_PER_STAR_DICT[previous_nb_stars]
-            lincoins_now = NB_LINCOINS_PER_STAR_DICT[self.nb_stars]
+            lincoins_earned_before = NB_LINCOINS_PER_STAR_LEGEND_DICT[previous_nb_stars]
+            lincoins_now = NB_LINCOINS_PER_STAR_LEGEND_DICT[self.nb_stars]
             self.lincoins_earned = lincoins_now - lincoins_earned_before
             USER_DATA.user_profile["lincoins"] += self.lincoins_earned
             USER_DATA.user_profile["cumulated_lincoins"] += self.lincoins_earned
@@ -1346,7 +1348,7 @@ class LegendGame(Game):
         #     award_quest_word_xp = quest_word_done
         #     USER_DATA.legend_mode[self.act_id][self.lvl_id][QUEST_WORD_KEY] = quest_word_done
         # if (award_quest_word_xp):
-        #     USER_DATA.user_profile[XP_KEY] += XP_PER_LEVEL
+        #     USER_DATA.user_profile[XP_KEY] += XP_PER_LEGEND_PUZZLE
 
         # Save changes
         USER_DATA.save_changes()

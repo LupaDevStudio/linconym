@@ -328,6 +328,13 @@
         "reward": 200,
         "number_series": 2
     },
+    "legend_acts_1": {
+        "achievement_title": "Legend Act 1 completed",
+        "achievement_content": "Finish all puzzles of Legend Act 1 - Fish Tales.",
+        "series": "legend_acts",
+        "reward": 1000,
+        "number_series": 1
+    },
     "word_rune_1": {
         "achievement_title": "Looking for Rune",
         "achievement_content": "Use the word \"RUNE\" once as an intermediate word in the puzzles.",

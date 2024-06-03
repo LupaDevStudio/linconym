@@ -64,7 +64,8 @@ BACK_ARROW_SIZE = 0.2
 ### Data loading ###
 
 # scale for experience awarded to the user
-XP_PER_LEVEL: int = 100
+XP_PER_CLASSIC_PUZZLE: int = 100
+XP_PER_LEGEND_PUZZLE: int = 300
 LINCOINS_PER_LEVEL: int = 100
 
 # Create the user data json if it does not exist
@@ -707,10 +708,16 @@ CUSTOMIZATION_DICT = load_json_file(PATH_CUSTOMIZATION)
 THEMES_DICT = CUSTOMIZATION_DICT["themes"]
 MUSICS_DICT = CUSTOMIZATION_DICT["musics"]
 THEMES_RARITY_DICT = CUSTOMIZATION_DICT["categories"]
-NB_LINCOINS_PER_STAR_DICT = {
+NB_LINCOINS_PER_STAR_CLASSIC_DICT = {
     3: 100,
     2: 70,
     1: 50,
+    0: 0
+}
+NB_LINCOINS_PER_STAR_LEGEND_DICT = {
+    3: 300,
+    2: 150,
+    1: 100,
     0: 0
 }
 
