@@ -103,7 +103,6 @@ class DailyWheelPopup(CustomPopup):
         portion = int(angle / ANGLE_PORTION)
         if portion != self.previous_portion:
             sound_mixer.change_volume(0.5, "spin_tick")
-            sound_mixer.play("spin_tick")
             self.previous_portion = portion
             print("tick")
         if angle == 360:

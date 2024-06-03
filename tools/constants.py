@@ -56,7 +56,7 @@ __version__ = "1.0.0"
 ### Mode ###
 
 
-DEBUG_MODE = False
+DEBUG_MODE = True
 FPS = 30
 MSAA_LEVEL = 2
 BACK_ARROW_SIZE = 0.2
@@ -151,6 +151,7 @@ if not os.path.exists(PATH_USER_DATA):
     save_json_file(PATH_USER_DATA, default_user_data)
 
 # Load the data of the user
+
 
 class UserData():
     """
@@ -510,6 +511,11 @@ class UserData():
 
 
 USER_DATA = UserData()
+
+# Give extra coins if debug mode
+if DEBUG_MODE:
+    USER_DATA.user_profile["lincoins"] = 99999
+    USER_DATA.user_profile["linclues"] = 200
 
 ### Tutorial ###
 

@@ -16,7 +16,8 @@ from tools.constants import (
     USER_DATA,
     GAMEPLAY_DICT,
     SCREEN_TITLE,
-    SCREEN_BOTTOM_BAR
+    SCREEN_BOTTOM_BAR,
+    DEBUG_MODE
 )
 from screens.custom_widgets import (
     LinconymScreen
@@ -66,6 +67,11 @@ class ClassicModeScreen(LinconymScreen):
                 disable_act_button = True
             else:
                 disable_act_button = False
+
+            # Unlock act if debug mode
+            if DEBUG_MODE:
+                disable_act_button = False
+
             current_act_button.disable_button = disable_act_button
 
     def on_resize(self, *args):
@@ -97,6 +103,10 @@ class ClassicModeScreen(LinconymScreen):
             if nb_total_stars < nb_stars_to_unlock:
                 disable_act_button = True
             else:
+                disable_act_button = False
+
+            # Unlock act if debug mode
+            if DEBUG_MODE:
                 disable_act_button = False
             mean_nb_stars = USER_DATA.get_mean_nb_stars_on_act(act)
 
