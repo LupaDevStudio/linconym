@@ -80,6 +80,13 @@
         title: "Achievements"
         content: root.classic_mode_achievements
         release_function: root.open_achievements_classic
+    
+    Image:
+        size_hint: (0.1, 0.1)
+        pos_hint: {"center_x":0.825, "y":0.36}
+        color: root.primary_color
+        source: PATH_ICONS + "reward.png"
+        opacity: 1 if root.achievement_reward_to_collect else 0
 
     # # Daily mode achievements
     # CustomContentButton:
