@@ -185,6 +185,14 @@
             ]
         }
     },
+    "legend_mode": {
+        "title": "Tutorial - Linconym",
+        "tutorial_content": [
+            [
+                "Welcome to the legend mode! \n \n Here, you can challenge yourself with more complex puzzles in comparison with the classic mode.\n\nBut beware, there will be no clues in this mode. This is for letters' warriors after all! Good luck!"
+            ]
+        ]
+    },
     "themes": {
         "title": "Tutorial - Linconym",
         "tutorial_content": [

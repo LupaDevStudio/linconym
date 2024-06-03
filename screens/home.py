@@ -74,3 +74,9 @@ class HomeScreen(LinconymScreen):
         Open the classic mode screen.
         """
         self.manager.go_to_next_screen(next_screen_name="classic_mode")
+
+    def open_legend_mode(self):
+        """
+        Open the legend mode screen.
+        """
+        self.manager.go_to_next_screen(next_screen_name="legend_mode")
