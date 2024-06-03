@@ -54,6 +54,10 @@ class HomeScreen(LinconymScreen):
             USER_DATA.ads["number_daily_ads_left"] = 3
             USER_DATA.ads["has_seen_daily_wheel"] = False
 
+        # Don't show the daily wheel on the first connexion
+        if not USER_DATA.tutorial["home"]:
+            USER_DATA.ads["has_seen_daily_wheel"] = True
+
         if not USER_DATA.ads["has_seen_daily_wheel"]:
             USER_DATA.ads["has_seen_daily_wheel"] = True
             popup = DailyWheelPopup(
