@@ -26,6 +26,7 @@ from screens.custom_widgets.popup.custom_popup import CustomPopup
 from tools.constants import (
     USER_DATA
 )
+from tools import sound_mixer
 
 #################
 ### Constants ###
@@ -89,6 +90,7 @@ class DailyWheelPopup(CustomPopup):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.title = "Daily Wheel"
+        self.previous_portion = None
 
     def on_open(self):
         self.release_function = self.start_animation
@@ -98,6 +100,11 @@ class DailyWheelPopup(CustomPopup):
         return super().on_open()
 
     def on_angle(self, item, angle):
+        portion = int(angle / ANGLE_PORTION)
+        if portion != self.previous_portion:
+            sound_mixer.change_volume(0.5, "spin_tick")
+            self.previous_portion = portion
+            print("tick")
         if angle == 360:
             item.angle = 0
 

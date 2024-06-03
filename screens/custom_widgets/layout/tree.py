@@ -505,6 +505,13 @@ class TreeLayout(RelativeLayout):
                         end_word=end_word) and key != "0":
                     position_to_word_id.pop(key)
 
+        # Set position to the root of the tree if it is not in the displayed tree
+        if current_position not in position_to_word_id:
+            current_position = "0"
+            self.current_position = "0"
+            # Call a parent function to update
+            self.parent.on_change_word_position_on_tree()
+
         # Init a word button pile
         self.word_button_dict = {}
 

@@ -7,13 +7,14 @@
     canvas.before:
         # Shadow
         Color:
-            rgba: 0, 0, 0, 1        
+            rgba: (0, 0, 0, 1) if not(root.disable_button) and not(root.disabled) else (0,0,0,0)     
         BoxShadow:
             pos: (0, 0)
             size: self.size
-            offset: 5, -5
-            spread_radius: -10, -10
-            blur_radius: 30
+            offset: 5*self.font_ratio, -5*self.font_ratio
+            spread_radius: -10*self.font_ratio, -10*self.font_ratio
+            blur_radius: 20*self.font_ratio
+            border_radius: [12*root.font_ratio,12*root.font_ratio,12*root.font_ratio,12*root.font_ratio]
         # Rounded rectangle
         Color:
             rgba: root.background_color

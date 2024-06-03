@@ -10,7 +10,8 @@ Module to create the profile screen.
 
 from kivy.properties import (
     StringProperty,
-    NumericProperty
+    NumericProperty,
+    BooleanProperty
 )
 
 ### Local imports ###
@@ -22,7 +23,8 @@ from tools.constants import (
     USER_DATA,
     SCREEN_BOTTOM_BAR,
     SCREEN_TITLE,
-    SCREEN_TUTORIAL
+    SCREEN_TUTORIAL,
+    ACHIEVEMENTS_DICT
 )
 from screens.custom_widgets import (
     LinconymScreen
@@ -55,6 +57,7 @@ class ProfileScreen(LinconymScreen):
     lincoins_count = NumericProperty()
     linclues_count = NumericProperty()
     theme_colors = StringProperty()
+    achievement_reward_to_collect = BooleanProperty(False)
 
     classic_mode_achievements = StringProperty()
     # daily_mode_achievements = StringProperty()
@@ -74,7 +77,8 @@ class ProfileScreen(LinconymScreen):
         self.user_status_image = PATH_BADGES + self.user_status.lower() + ".png"
 
         completed_puzzles_classic = USER_DATA.get_nb_completed_puzzles()
-        completed_puzzles_legend = USER_DATA.get_nb_completed_puzzles(mode="legend")
+        completed_puzzles_legend = USER_DATA.get_nb_completed_puzzles(
+            mode="legend")
         completed_acts_classic = USER_DATA.get_nb_completed_acts()
         completed_acts_legend = USER_DATA.get_nb_completed_acts(mode="legend")
         stars_won_classic = USER_DATA.get_nb_total_stars()
@@ -84,6 +88,21 @@ class ProfileScreen(LinconymScreen):
             completed_puzzles_classic, completed_acts_classic, completed_puzzles_legend, completed_acts_legend, stars_won)
 
         self.ids.exp_counter.update_experience(None, None)
+
+        # Update the variable checking if some achievements have rewards to collect
+        achievement_screen = self.manager.get_screen(
+            "achievements")
+        for achievement_id in ACHIEVEMENTS_DICT:
+
+            # Check if the achievement has been reached meanwhile
+            if not achievement_id in USER_DATA.achievements:
+                progression = achievement_screen.update_finished_achievements(
+                    achievement_id)
+        self.achievement_reward_to_collect = False
+        for achievement_id in ACHIEVEMENTS_DICT:
+            if achievement_id in USER_DATA.achievements:
+                if USER_DATA.achievements[achievement_id] is False:
+                    self.achievement_reward_to_collect = True
 
     def go_to_boosters(self):
         self.go_to_next_screen(screen_name="boosters")
