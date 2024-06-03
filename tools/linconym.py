@@ -428,7 +428,7 @@ def find_solutions(start_word: str, end_word: str, english_words: list = ENGLISH
         for i in sorted(pile.keys(), reverse=True):
             if len(pile[i]) > 0:
                 # print(i)
-                current_position = pile[i].pop(-1)
+                current_position = pile[i].pop(0)
                 break
 
         if current_position is None:
@@ -1160,6 +1160,7 @@ class ClassicGame(Game):
 
         return end_level_dict
 
+
 class LegendGame(Game):
     def __init__(
             self,
@@ -1426,5 +1427,5 @@ if __name__ == "__main__":
 
     # fill_daily_games_with_solutions()
     # print(is_valid("brain", "crane"))
-    find_solutions("oasis", "desert", ENGLISH_WORDS_DICTS["10k"])
+    find_solutions("athlete", "volley", ENGLISH_WORDS_DICTS["88k"])
     pass
