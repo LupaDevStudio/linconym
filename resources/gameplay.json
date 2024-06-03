@@ -1022,5 +1022,137 @@
             "88k": 6,
             "280k": 6
         }
+    },
+    "9": {
+        "name": "Act 9 - TODO VETEMENTS",
+        "1": {
+            "start_word": "scarf",
+            "end_word": "bob",
+            "chest": true,
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "2": {
+            "start_word": "bob",
+            "end_word": "top",
+            "10k": 4,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "3": {
+            "start_word": "top",
+            "end_word": "hat",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "4": {
+            "start_word": "hat",
+            "end_word": "coat",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "5": {
+            "start_word": "coat",
+            "end_word": "boots",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "6": {
+            "start_word": "boots",
+            "end_word": "pants",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "7": {
+            "start_word": "pants",
+            "end_word": "dress",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "8": {
+            "start_word": "dress",
+            "end_word": "shoes",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "9": {
+            "start_word": "shoes",
+            "end_word": "short",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "10": {
+            "start_word": "short",
+            "end_word": "shirt",
+            "10k": 2,
+            "34k": 2,
+            "88k": 2,
+            "280k": 2
+        },
+        "11": {
+            "start_word": "shirt",
+            "end_word": "skirt",
+            "10k": 2,
+            "34k": 2,
+            "88k": 2,
+            "280k": 2
+        },
+        "12": {
+            "start_word": "skirt",
+            "end_word": "socks",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "13": {
+            "start_word": "socks",
+            "end_word": "gloves",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "14": {
+            "start_word": "gloves",
+            "end_word": "jacket",
+            "10k": 7,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "15": {
+            "start_word": "jacket",
+            "end_word": "vest",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "16": {
+            "start_word": "vest",
+            "end_word": "bonnet",
+            "10k": null,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        }
     }
 }

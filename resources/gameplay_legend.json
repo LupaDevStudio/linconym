@@ -1,6 +1,122 @@
 {
     "1": {
-        "name": "Act 1 - Fish Tales",
+        "name": "Act 1 - I forgot school was such hard...",
+        "1": {
+            "start_word": "learn",
+            "end_word": "lesson",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "2": {
+            "start_word": "lesson",
+            "end_word": "class",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "3": {
+            "start_word": "class",
+            "end_word": "grade",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "4": {
+            "start_word": "grade",
+            "end_word": "desk",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "5": {
+            "start_word": "desk",
+            "end_word": "book",
+            "10k": 5,
+            "34k": 5,
+            "88k": 4,
+            "280k": 4
+        },
+        "6": {
+            "start_word": "book",
+            "end_word": "pencil",
+            "10k": 8,
+            "34k": 7,
+            "88k": 7,
+            "280k": 7
+        },
+        "7": {
+            "start_word": "pencil",
+            "end_word": "chair",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "8": {
+            "start_word": "chair",
+            "end_word": "teach",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "9": {
+            "start_word": "teach",
+            "end_word": "teacher",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 3
+        },
+        "10": {
+            "start_word": "teacher",
+            "end_word": "marker",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "11": {
+            "start_word": "marker",
+            "end_word": "exam",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "12": {
+            "start_word": "exam",
+            "end_word": "eraser",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "13": {
+            "start_word": "eraser",
+            "end_word": "student",
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "14": {
+            "start_word": "student",
+            "end_word": "homework",
+            "10k": null,
+            "34k": null,
+            "88k": 9,
+            "280k": 8,
+            "chest": true
+        }
+    },
+    "2": {
+        "name": "Act 2 - Fish Tales",
         "1": {
             "start_word": "water",
             "end_word": "crab",
