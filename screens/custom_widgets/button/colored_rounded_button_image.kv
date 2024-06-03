@@ -7,7 +7,7 @@
     canvas.before:
         # Shadow
         Color:
-            rgba: 0, 0, 0, 1        
+            rgba: (0, 0, 0, 1) if not(root.disable_button) and not(root.disabled) else (0,0,0,0)     
         BoxShadow:
             pos: (0, 0)
             size: self.size
