@@ -542,7 +542,7 @@ class TreeLayout(RelativeLayout):
         # Define the initial vertical offset
         current_vertical_offset = 0
 
-        # Define the intial value for the previous rank
+        # Define the initial value for the previous rank
         previous_rank = -1
 
         # Create a dict to store the grid positions to plot the links

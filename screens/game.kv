@@ -94,6 +94,8 @@
         colors: root.primary_color
         release_function: root.ask_to_use_linclues
         font_ratio: root.font_ratio
+        disable_button: True if root.mode == "legend" else False
+        opacity: 0 if root.mode == "legend" else 1
 
     # Delete word
     RoundedButtonImage:

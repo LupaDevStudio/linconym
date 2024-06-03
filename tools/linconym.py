@@ -29,11 +29,11 @@ from tools.path import (
 from tools.constants import (
     ENGLISH_WORDS_DICTS,
     GAMEPLAY_DICT,
+    GAMEPLAY_LEGEND_DICT,
     USER_DATA,
     XP_PER_LEVEL,
     DICT_ID_LIST,
     NB_LINCOINS_PER_STAR_DICT,
-    REWARD_INTERSTITIAL,
     REWARD_AD,
     ANDROID_MODE,
     IOS_MODE,
@@ -1113,6 +1113,254 @@ class ClassicGame(Game):
         if next_lvl_id in GAMEPLAY_DICT[self.act_id] and next_lvl_id not in USER_DATA.classic_mode[self.act_id]:
             # Unlock the next level in the same act
             USER_DATA.classic_mode[self.act_id][next_lvl_id] = {"nb_stars": 0}
+
+        USER_DATA.save_changes()
+
+    def on_level_completed(self):
+        solution_found: list[str] = self.get_word_path(
+            self.current_position)
+        nb_words_found: int = len(solution_found)
+
+        # Save the xp and stars
+        self.award_stars_xp(solution_found)
+
+        # Unlock the next level
+        self.unlock_next_level()
+
+        # Compute the progression for level up
+        previous_level, previous_level_progress = compute_progression(
+            USER_DATA.user_profile[XP_KEY] - self.xp_earned)
+
+        current_level, current_level_progress = compute_progression(
+            USER_DATA.user_profile[XP_KEY])
+
+        if previous_level < current_level:
+            has_level_up = True
+            previous_level_progress = 0
+        else:
+            has_level_up = False
+
+        # Update level in saved data
+        USER_DATA.user_profile["level"] = current_level
+        USER_DATA.save_changes()
+
+        # Create a dict to return the data
+        end_level_dict = {
+            "stars": self.nb_stars,
+            "nb_words": nb_words_found,
+            "xp_earned": self.xp_earned,
+            "lincoins_earned": self.lincoins_earned,
+            "linclues_earned": self.linclues_earned,
+            "has_level_up": has_level_up,
+            "previous_level_progress": previous_level_progress,
+            "current_level_progress": current_level_progress
+        }
+
+        return end_level_dict
+
+class LegendGame(Game):
+    def __init__(
+            self,
+            act_id: str,
+            lvl_id: str,
+            current_position: str = None,
+            position_to_word_id: dict = None,
+            words_found: list = None,
+            quest_word: str = None) -> None:
+        self.act_id: str = act_id
+        self.lvl_id: str = lvl_id
+
+        # Load level data from GAMEPLAY_LEGEND_DICT
+        self.sol_data: dict = None
+        if ((self.act_id in GAMEPLAY_LEGEND_DICT) and (self.lvl_id in GAMEPLAY_LEGEND_DICT[self.act_id])):
+            self.sol_data = GAMEPLAY_LEGEND_DICT[self.act_id][self.lvl_id]
+        else:
+            raise ValueError(
+                "Level data absent from gameplay dict:", act_id + "," + lvl_id)
+
+        # Load first possible solution length and 280k solution length from GAMEPLAY_LEGEND_DICT
+        has_sol: bool = False
+        self.first_sol_dict_id: str = ""
+        self.nb_words_first_sol: int = 0
+        self.nb_words_280k_sol: int = 0
+
+        for dict_id in DICT_ID_LIST:
+            if (not (self.sol_data[dict_id] is None)):
+                self.first_sol_dict_id = dict_id
+                has_sol = True
+                break
+
+        if (not (has_sol)):
+            raise ValueError(
+                "The solution dict does not contain any valid solution:", self.sol_data)
+        else:
+            self.nb_words_first_sol = self.sol_data[self.first_sol_dict_id]
+            self.nb_words_280k_sol = self.sol_data[DICT_ID_LIST[-1]]
+
+        super().__init__(
+            start_word=self.sol_data["start_word"],
+            end_word=self.sol_data["end_word"],
+            current_position=current_position,
+            position_to_word_id=position_to_word_id,
+            words_found=words_found,
+            quest_word=quest_word
+        )
+
+    def get_nb_words_2nd_star(self) -> int:
+        """
+        Returns
+        -------
+        int
+            Maximum number of words in a solution to get the level's second star
+        """
+
+        nb_words_2nd_star: int = 0
+        if (self.first_sol_dict_id == DICT_ID_LIST[0]):
+            # In easy levels (those which have a solution in the 10k dict), the second star is awarded for doing as well as the 10k dict + a margin (25%)
+            nb_words_2nd_star = int(1.25 * self.nb_words_first_sol)
+        else:
+            # In harder levels (no solution in the 10k dict), the second star is awarded for doing as well as the first solution dict + a wider margin (30%)
+            nb_words_2nd_star = int(1.30 * self.nb_words_first_sol)
+        return nb_words_2nd_star
+
+    def get_nb_words_3rd_star(self) -> int:
+        """
+        Returns
+        -------
+        int
+            Maximum number of words in a solution to get the level's third star
+        """
+
+        nb_words_3rd_star: int = 0
+        if (self.first_sol_dict_id == DICT_ID_LIST[0]):
+            # In easy levels (those which have a solution in the 10k dict), the third star is awarded for doing as well as the 10k dict
+            nb_words_3rd_star = self.nb_words_first_sol
+        else:
+            # In harder levels (no solution in the 10k dict), the third star is awarded for doing as well as the first solution dict + a small margin (10%)
+            nb_words_3rd_star = int(1.10 * self.nb_words_first_sol)
+        return nb_words_3rd_star
+
+    def get_xp_fraction(self, nb_words_found: int) -> float:
+        """
+        Computes the fraction of XP awarded for a given solution.
+
+        Parameters
+        ----------
+        nb_words_found: int
+            Length (in words) of one of the level's solutions.
+
+        Returns
+        -------
+        float
+            Fraction of XP awarded for finding said solution.
+        """
+
+        # There's probably a smoother way to compute this, but that's a problem for later
+        xp_fraction: float = self.nb_words_280k_sol / nb_words_found
+        if (xp_fraction > 1):
+            xp_fraction = 1.0
+        return xp_fraction
+
+    def award_stars_xp(self, solution_found) -> None:
+        """
+        Saves the number of stars and the amount of XP earned in this level in the user's data, and increases the user's XP in their profile accordingly.
+        """
+
+        # Solution found by the user
+        solution_found: list[str] = self.get_word_path(
+            self.current_position)
+
+        # Stars
+        nb_words_found: int = len(solution_found)
+        self.nb_stars: int = self.get_nb_stars(nb_words_found)
+
+        # Awards
+        self.xp_earned: int = 0
+        self.lincoins_earned: int = 0
+
+        # xp: get a percentage of a certain constant amount depending on the solution's quality...
+        xp_fraction: float = self.get_xp_fraction(nb_words_found)
+        # ... and get a bonus for passing through the quest word
+        quest_word_done: bool = (not (self.quest_word is None) and (
+            self.quest_word in solution_found))
+
+        # check that the current act has save data
+        if (not (self.act_id in USER_DATA.legend_mode)):
+            USER_DATA.legend_mode[self.act_id] = {}
+
+        # check that current level has save data
+        if (not (self.lvl_id in USER_DATA.legend_mode[self.act_id])):
+            USER_DATA.legend_mode[self.act_id][self.lvl_id] = {}
+
+        # recover previous best number of words
+        nb_words_previous_best: int = 0
+        previous_exists: bool = USER_DATA.legend_mode[self.act_id][self.lvl_id]["nb_stars"] > 0
+        previous_best_exists: bool = False
+        if (NB_WORDS_KEY in USER_DATA.legend_mode[self.act_id][self.lvl_id]):
+            nb_words_previous_best = USER_DATA.legend_mode[self.act_id][self.lvl_id][NB_WORDS_KEY]
+            previous_best_exists = True
+
+        # If the user did better than last time, overwrite everything
+        if ((nb_words_found < nb_words_previous_best) or not (previous_best_exists)):
+            # save best number of words
+            USER_DATA.legend_mode[self.act_id][self.lvl_id][NB_WORDS_KEY] = nb_words_found
+            # save stars
+            USER_DATA.legend_mode[self.act_id][self.lvl_id][STARS_KEY] = self.nb_stars
+            # recover previous xp fraction and stars
+            previous_xp_fraction: float = 0.0
+            previous_nb_stars: int = 0
+            if (previous_best_exists):
+                previous_xp_fraction = self.get_xp_fraction(
+                    nb_words_previous_best)
+                previous_nb_stars = self.get_nb_stars(nb_words_previous_best)
+            # award newly acquired xp
+            self.xp_earned = int(round(
+                (xp_fraction - previous_xp_fraction) * XP_PER_LEVEL, 0))
+            USER_DATA.user_profile[XP_KEY] += self.xp_earned
+            # Award newly acquired lincoins
+            lincoins_earned_before = NB_LINCOINS_PER_STAR_DICT[previous_nb_stars]
+            lincoins_now = NB_LINCOINS_PER_STAR_DICT[self.nb_stars]
+            self.lincoins_earned = lincoins_now - lincoins_earned_before
+            USER_DATA.user_profile["lincoins"] += self.lincoins_earned
+            USER_DATA.user_profile["cumulated_lincoins"] += self.lincoins_earned
+
+        # Set the number of Linclues won in chests
+        self.linclues_earned = 0
+        if "chest" in GAMEPLAY_LEGEND_DICT[self.act_id][self.lvl_id] and GAMEPLAY_LEGEND_DICT[self.act_id][self.lvl_id]["chest"]:
+            # If the user has not already opened the chest
+            if not previous_exists:
+                self.linclues_earned = 3
+                USER_DATA.user_profile["linclues"] += 3
+                USER_DATA.user_profile["cumulated_linclues"] += 3
+                USER_DATA.save_changes()
+
+        # If the user passed through the quest word (if any) for the first time, award bonus xp
+        # award_quest_word_xp: bool = False
+        # if (QUEST_WORD_KEY in USER_DATA.legend_mode[self.act_id][self.lvl_id]):
+        #     already_did_quest_word: bool = USER_DATA.legend_mode[
+        #         self.act_id][self.lvl_id][QUEST_WORD_KEY]
+        #     award_quest_word_xp = quest_word_done and not (
+        #         already_did_quest_word)
+        #     USER_DATA.legend_mode[self.act_id][self.lvl_id][QUEST_WORD_KEY] = already_did_quest_word or quest_word_done
+        # else:
+        #     award_quest_word_xp = quest_word_done
+        #     USER_DATA.legend_mode[self.act_id][self.lvl_id][QUEST_WORD_KEY] = quest_word_done
+        # if (award_quest_word_xp):
+        #     USER_DATA.user_profile[XP_KEY] += XP_PER_LEVEL
+
+        # Save changes
+        USER_DATA.save_changes()
+
+    def unlock_next_level(self):
+        """
+        Unlock the next level in same act or in the next act.
+        """
+
+        # Determine if there is other levels to unlock in the same act
+        next_lvl_id = str(int(self.lvl_id) + 1)
+        if next_lvl_id in GAMEPLAY_LEGEND_DICT[self.act_id] and next_lvl_id not in USER_DATA.legend_mode[self.act_id]:
+            # Unlock the next level in the same act
+            USER_DATA.legend_mode[self.act_id][next_lvl_id] = {"nb_stars": 0}
 
         USER_DATA.save_changes()
 

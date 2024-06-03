@@ -49,7 +49,8 @@ from screens import (
     ColoredRoundedButton
 )
 from tools.linconym import (
-    ClassicGame
+    ClassicGame,
+    LegendGame
 )
 from tools.levels import (
     compute_lincoins_when_level_up
@@ -110,13 +111,14 @@ class GameScreen(LinconymScreen):
 
     def open_tutorial(self, screen_name):
         tutorial_to_display = "all_rules"
-        if self.current_act_id == "1":
-            if self.current_level_id in GAME_TUTORIAL_DICT:
-                tutorial_to_display = GAME_TUTORIAL_DICT[self.current_level_id]
-                if tutorial_to_display == "more_complicated_puzzles" and not USER_DATA.tutorial["game"][tutorial_to_display]:
-                    USER_DATA.user_profile["linclues"] += 5
-                    USER_DATA.user_profile["cumulated_linclues"] += 5
-                    USER_DATA.save_changes()
+        if self.mode == "classic":
+            if self.current_act_id == "1":
+                if self.current_level_id in GAME_TUTORIAL_DICT:
+                    tutorial_to_display = GAME_TUTORIAL_DICT[self.current_level_id]
+                    if tutorial_to_display == "more_complicated_puzzles" and not USER_DATA.tutorial["game"][tutorial_to_display]:
+                        USER_DATA.user_profile["linclues"] += 5
+                        USER_DATA.user_profile["cumulated_linclues"] += 5
+                        USER_DATA.save_changes()
 
         popup = TutorialPopup(
             primary_color=self.primary_color,
@@ -400,13 +402,22 @@ class GameScreen(LinconymScreen):
             position_to_word_id = None
 
         # Create a game instance
-        self.game = ClassicGame(
-            act_id=self.current_act_id,
-            lvl_id=self.current_level_id,
-            current_position=current_position,
-            position_to_word_id=position_to_word_id,
-            words_found=words_found
-        )
+        if self.mode == "classic":
+            self.game = ClassicGame(
+                act_id=self.current_act_id,
+                lvl_id=self.current_level_id,
+                current_position=current_position,
+                position_to_word_id=position_to_word_id,
+                words_found=words_found
+            )
+        elif self.mode == "legend":
+            self.game = LegendGame(
+                act_id=self.current_act_id,
+                lvl_id=self.current_level_id,
+                current_position=current_position,
+                position_to_word_id=position_to_word_id,
+                words_found=words_found
+            )
 
         # Build the tree
         self.build_tree_layout()
