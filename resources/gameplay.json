@@ -1133,6 +1133,7 @@
         "14": {
             "start_word": "gloves",
             "end_word": "jacket",
+            "chest": true,
             "10k": 7,
             "34k": 6,
             "88k": 6,
@@ -1149,6 +1150,7 @@
         "16": {
             "start_word": "vest",
             "end_word": "bonnet",
+            "chest": true,
             "10k": null,
             "34k": 5,
             "88k": 5,
@@ -1156,7 +1158,7 @@
         }
     },
     "10": {
-        "name": "Act 10 - TODO VETEMENTS",
+        "name": "Act 10 - My Precious",
         "1": {
             "start_word": "agate",
             "end_word": "jade",
