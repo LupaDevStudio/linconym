@@ -1427,5 +1427,5 @@ if __name__ == "__main__":
 
     # fill_daily_games_with_solutions()
     # print(is_valid("brain", "crane"))
-    find_solutions("luxury", "chic", ENGLISH_WORDS_DICTS["88k"])
+    find_solutions("luxury", "chic", ENGLISH_WORDS_DICTS["10k"])
     pass
