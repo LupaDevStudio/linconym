@@ -232,5 +232,155 @@
             "88k": 7,
             "280k": 7
         }
+    },
+    "3": {
+        "name": "Act 3 - TODO FESTIVAL DE CANNES",
+        "1": {
+            "start_word": "red",
+            "end_word": "carpet",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "2": {
+            "start_word": "carpet",
+            "end_word": "actor",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "3": {
+            "start_word": "actor",
+            "end_word": "actress",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "4": {
+            "start_word": "actress",
+            "end_word": "hotel",
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "5": {
+            "start_word": "hotel",
+            "end_word": "event",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 4
+        },
+        "6": {
+            "start_word": "event",
+            "end_word": "reviews",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "7": {
+            "start_word": "reviews",
+            "end_word": "reward",
+            "10k": 7,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "8": {
+            "start_word": "reward",
+            "end_word": "director",
+            "10k": 8,
+            "34k": 7,
+            "88k": 6,
+            "280k": 5
+        },
+        "9": {
+            "start_word": "director",
+            "end_word": "script",
+            "10k": 8,
+            "34k": 7,
+            "88k": 5,
+            "280k": 5
+        },
+        "10": {
+            "start_word": "script",
+            "end_word": "contract",
+            "10k": 8,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "11": {
+            "start_word": "contract",
+            "end_word": "critics",
+            "10k": null,
+            "34k": 7,
+            "88k": 6,
+            "280k": 5,
+            "chest": true
+        },
+        "12": {
+            "start_word": "critics",
+            "end_word": "chic",
+            "10k": null,
+            "34k": 6,
+            "88k": 6,
+            "280k": 5
+        },
+        "13": {
+            "start_word": "chic",
+            "end_word": "film",
+            "10k": 5,
+            "34k": 5,
+            "88k": 4,
+            "280k": 4
+        },
+        "14": {
+            "start_word": "film",
+            "end_word": "luxury",
+            "10k": null,
+            "34k": null,
+            "88k": 8,
+            "280k": 8,
+            "chest": true
+        },
+        "15": {
+            "start_word": "luxury",
+            "end_word": "animation",
+            "10k": null,
+            "34k": null,
+            "88k": 11,
+            "280k": 10,
+            "chest": true
+        },
+        "16": {
+            "start_word": "animation",
+            "end_word": "festival",
+            "10k": null,
+            "34k": 8,
+            "88k": 7,
+            "280k": 7
+        },
+        "17": {
+            "start_word": "festival",
+            "end_word": "golden",
+            "10k": null,
+            "34k": 8,
+            "88k": 7,
+            "280k": 7
+        },
+        "18": {
+            "start_word": "golden",
+            "end_word": "palm",
+            "10k": 7,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        }
     }
 }

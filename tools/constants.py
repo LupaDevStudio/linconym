@@ -581,10 +581,10 @@ TEXT_FONT_COLOR = (0, 0, 0, 1)
 BOTTOM_BAR_HEIGHT = 0.12
 
 # Pos hints for icon buttons
-POS_HINT_LEFT_TOP_BUTTON = {"x": 0.02, "top": 0.99}
-POS_HINT_RIGHT_TOP_BUTTON = {"right": 0.98, "top": 0.99}
-POS_HINT_LEFT_BOTTOM_BUTTON = {"x": 0.02, "y": 0.01}
-POS_HINT_RIGHT_BOTTOM_BUTTON = {"right": 0.98, "y": 0.01}
+POS_HINT_LEFT_TOP_BUTTON = {"x": 0.05, "top": 0.97}
+POS_HINT_RIGHT_TOP_BUTTON = {"right": 0.95, "top": 0.97}
+POS_HINT_LEFT_BOTTOM_BUTTON = {"x": 0.05, "y": 0.03}
+POS_HINT_RIGHT_BOTTOM_BUTTON = {"right": 0.95, "y": 0.03}
 
 # Levels configuration
 MAX_NB_LEVELS_PER_BRANCH = 4
