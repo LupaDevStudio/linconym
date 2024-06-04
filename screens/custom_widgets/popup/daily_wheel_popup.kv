@@ -8,8 +8,8 @@
         id: popup_layout
         
         RelativeLayout:
-            size_hint: (0.8, 0.8)
-            pos_hint: {"center_x":0.5, "center_y": 0.625}
+            size_hint: (0.75, 0.75)
+            pos_hint: {"center_x":0.5, "center_y": 0.675}
 
             canvas.before:
                 PushMatrix
@@ -29,13 +29,13 @@
         Image:
             id: image
             source: "resources/images/back_daily_wheel.png"
-            size_hint: (0.8, 0.8)
-            pos_hint: {'center_x': 0.5, "center_y": 0.625}
+            size_hint: (0.75, 0.75)
+            pos_hint: {'center_x': 0.5, "center_y": 0.675}
 
         # Reward frame for Lincoins
         RewardFrame:
-            pos_hint: {"center_x": 0.175, "center_y": 0.12}
-            size_hint: (0.275, 0.15)
+            pos_hint: {"x": 0.05, "top": 0.375}
+            size_hint: (0.35, 0.15)
             reward: root.reward_lincoins
             font_ratio: root.font_ratio
             plus_mode: True
@@ -43,8 +43,8 @@
 
         # Reward frame for Linclues
         RewardFrame:
-            pos_hint: {"center_x": 0.825, "center_y": 0.12}
-            size_hint: (0.275, 0.15)
+            pos_hint: {"right": 0.95, "top": 0.375}
+            size_hint: (0.35, 0.15)
             reward: root.reward_linclues
             font_ratio: root.font_ratio
             unit: "linclue"
@@ -53,7 +53,7 @@
 
         ColoredRoundedButton:
             id: button
-            size_hint: (0.3, 0.15)
+            size_hint: (0.4, 0.15)
             pos_hint: {"center_x":0.5, "center_y":0.12}
             font_ratio: root.font_ratio
             font_size: SMALL_BUTTON_FONT_SIZE

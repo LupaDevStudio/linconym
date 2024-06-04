@@ -330,9 +330,16 @@
     },
     "legend_acts_1": {
         "achievement_title": "Legend Act 1 completed",
-        "achievement_content": "Finish all puzzles of Legend Act 1 - Fish Tales.",
+        "achievement_content": "Finish all puzzles of Legend Act 1 - I forget school was such hard...",
         "series": "legend_acts",
         "reward": 1000,
+        "number_series": 1
+    },
+    "legend_acts_2": {
+        "achievement_title": "Legend Act 2 completed",
+        "achievement_content": "Finish all puzzles of Legend Act 2 - Fish Tales.",
+        "series": "legend_acts",
+        "reward": 2000,
         "number_series": 1
     },
     "word_rune_1": {

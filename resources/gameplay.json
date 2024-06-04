@@ -1022,5 +1022,480 @@
             "88k": 6,
             "280k": 6
         }
+    },
+    "9": {
+        "name": "Act 9 - TODO VETEMENTS",
+        "1": {
+            "start_word": "scarf",
+            "end_word": "bob",
+            "chest": true,
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "2": {
+            "start_word": "bob",
+            "end_word": "top",
+            "10k": 4,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "3": {
+            "start_word": "top",
+            "end_word": "hat",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "4": {
+            "start_word": "hat",
+            "end_word": "coat",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "5": {
+            "start_word": "coat",
+            "end_word": "boots",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "6": {
+            "start_word": "boots",
+            "end_word": "pants",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "7": {
+            "start_word": "pants",
+            "end_word": "dress",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "8": {
+            "start_word": "dress",
+            "end_word": "shoes",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "9": {
+            "start_word": "shoes",
+            "end_word": "short",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "10": {
+            "start_word": "short",
+            "end_word": "shirt",
+            "10k": 2,
+            "34k": 2,
+            "88k": 2,
+            "280k": 2
+        },
+        "11": {
+            "start_word": "shirt",
+            "end_word": "skirt",
+            "10k": 2,
+            "34k": 2,
+            "88k": 2,
+            "280k": 2
+        },
+        "12": {
+            "start_word": "skirt",
+            "end_word": "socks",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "13": {
+            "start_word": "socks",
+            "end_word": "gloves",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "14": {
+            "start_word": "gloves",
+            "end_word": "jacket",
+            "chest": true,
+            "10k": 7,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "15": {
+            "start_word": "jacket",
+            "end_word": "vest",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "16": {
+            "start_word": "vest",
+            "end_word": "bonnet",
+            "chest": true,
+            "10k": null,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        }
+    },
+    "10": {
+        "name": "Act 10 - My Precious",
+        "1": {
+            "start_word": "agate",
+            "end_word": "jade",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "2": {
+            "start_word": "jade",
+            "end_word": "ruby",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "3": {
+            "start_word": "ruby",
+            "end_word": "opal",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "4": {
+            "start_word": "opal",
+            "end_word": "topaz",
+            "10k": 5,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "5": {
+            "start_word": "topaz",
+            "end_word": "gold",
+            "chest": true,
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "6": {
+            "start_word": "gold",
+            "end_word": "pearl",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "7": {
+            "start_word": "pearl",
+            "end_word": "amber",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "8": {
+            "start_word": "amber",
+            "end_word": "emerald",
+            "10k": 6,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "9": {
+            "start_word": "emerald",
+            "end_word": "silver",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "10": {
+            "start_word": "silver",
+            "end_word": "copper",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "11": {
+            "start_word": "copper",
+            "end_word": "diamond",
+            "chest": true,
+            "10k": 10,
+            "34k": 7,
+            "88k": 7,
+            "280k": 7
+        },
+        "12": {
+            "start_word": "diamond",
+            "end_word": "sapphire",
+            "10k": 10,
+            "34k": 7,
+            "88k": 7,
+            "280k": 7
+        },
+        "13": {
+            "start_word": "sapphire",
+            "end_word": "nacre",
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "14": {
+            "start_word": "nacre",
+            "end_word": "citrine",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "15": {
+            "start_word": "citrine",
+            "end_word": "peridot",
+            "10k": 5,
+            "34k": 5,
+            "88k": 4,
+            "280k": 4
+        },
+        "16": {
+            "start_word": "peridot",
+            "end_word": "onyx",
+            "10k": 8,
+            "34k": 7,
+            "88k": 7,
+            "280k": 7
+        },
+        "17": {
+            "start_word": "onyx",
+            "end_word": "amethyst",
+            "chest": true,
+            "10k": null,
+            "34k": 10,
+            "88k": 9,
+            "280k": 9
+        }
+    },
+    "11": {
+        "name": "Act 11 - The 24 words race",
+        "1": {
+            "start_word": "race",
+            "end_word": "track",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "2": {
+            "start_word": "track",
+            "end_word": "car",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "3": {
+            "start_word": "car",
+            "end_word": "cup",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "4": {
+            "start_word": "cup",
+            "end_word": "fuel",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "5": {
+            "start_word": "fuel",
+            "end_word": "engine",
+            "10k": 7,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "6": {
+            "start_word": "engine",
+            "end_word": "tires",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "7": {
+            "start_word": "tires",
+            "end_word": "airbag",
+            "10k": 7,
+            "34k": 6,
+            "88k": 6,
+            "280k": 5
+        },
+        "8": {
+            "start_word": "airbag",
+            "end_word": "seat",
+            "chest": true,
+            "10k": 8,
+            "34k": 7,
+            "88k": 7,
+            "280k": 6
+        },
+        "9": {
+            "start_word": "seat",
+            "end_word": "garage",
+            "10k": 6,
+            "34k": 6,
+            "88k": 5,
+            "280k": 5
+        },
+        "10": {
+            "start_word": "garage",
+            "end_word": "stands",
+            "10k": 7,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "11": {
+            "start_word": "stands",
+            "end_word": "speed",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "12": {
+            "start_word": "speed",
+            "end_word": "gearbox",
+            "chest": true,
+            "10k": null,
+            "34k": 9,
+            "88k": 7,
+            "280k": 7
+        },
+        "13": {
+            "start_word": "gearbox",
+            "end_word": "brake",
+            "chest": true,
+            "10k": null,
+            "34k": 6,
+            "88k": 4,
+            "280k": 4
+        },
+        "14": {
+            "start_word": "brake",
+            "end_word": "wheel",
+            "10k": 6,
+            "34k": 6,
+            "88k": 5,
+            "280k": 5
+        },
+        "15": {
+            "start_word": "wheel",
+            "end_word": "pit",
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "16": {
+            "start_word": "pit",
+            "end_word": "stop",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "17": {
+            "start_word": "stop",
+            "end_word": "drive",
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "18": {
+            "start_word": "drive",
+            "end_word": "fast",
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "19": {
+            "start_word": "fast",
+            "end_word": "curve",
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "20": {
+            "start_word": "curve",
+            "end_word": "rally",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "21": {
+            "start_word": "rally",
+            "end_word": "turn",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "22": {
+            "start_word": "turn",
+            "end_word": "lap",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "23": {
+            "start_word": "lap",
+            "end_word": "finish",
+            "chest": true,
+            "10k": 10,
+            "34k": 9,
+            "88k": 7,
+            "280k": 7
+        },
+        "24": {
+            "start_word": "finish",
+            "end_word": "line",
+            "10k": 8,
+            "34k": 7,
+            "88k": 5,
+            "280k": 5
+        }
     }
 }
