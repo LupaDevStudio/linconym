@@ -328,6 +328,76 @@
         "reward": 200,
         "number_series": 2
     },
+    "acts_3": {
+        "achievement_title": "Act 3 completed",
+        "achievement_content": "Finish all puzzles of Act 3 - Home sweet Home.",
+        "series": "acts",
+        "reward": 300,
+        "number_series": 3
+    },
+    "acts_4": {
+        "achievement_title": "Act 4 completed",
+        "achievement_content": "Finish all puzzles of Act 4 - Master of the Elements.",
+        "series": "acts",
+        "reward": 400,
+        "number_series": 4
+    },
+    "acts_5": {
+        "achievement_title": "Act 5 completed",
+        "achievement_content": "Finish all puzzles of Act 5 - Space Exploration.",
+        "series": "acts",
+        "reward": 500,
+        "number_series": 5
+    },
+    "acts_6": {
+        "achievement_title": "Act 6 completed",
+        "achievement_content": "Finish all puzzles of Act 6 - Athletic hero.",
+        "series": "acts",
+        "reward": 500,
+        "number_series": 6
+    },
+    "acts_7": {
+        "achievement_title": "Act 7 completed",
+        "achievement_content": "Finish all puzzles of Act 7 - 20.000 leagues under the sea.",
+        "series": "acts",
+        "reward": 500,
+        "number_series": 7
+    },
+    "acts_8": {
+        "achievement_title": "Act 8 completed",
+        "achievement_content": "Finish all puzzles of Act 8 - Dress Up!",
+        "series": "acts",
+        "reward": 500,
+        "number_series": 8
+    },
+    "acts_9": {
+        "achievement_title": "Act 9 completed",
+        "achievement_content": "Finish all puzzles of Act 9 - My Precious.",
+        "series": "acts",
+        "reward": 500,
+        "number_series": 9
+    },
+    "acts_10": {
+        "achievement_title": "Act 10 completed",
+        "achievement_content": "Finish all puzzles of Act 10 - TODO.",
+        "series": "acts",
+        "reward": 500,
+        "number_series": 10
+    },
+    "acts_11": {
+        "achievement_title": "Act 11 completed",
+        "achievement_content": "Finish all puzzles of Act 11 - The 24 words race.",
+        "series": "acts",
+        "reward": 500,
+        "number_series": 11
+    },
+    "acts_12": {
+        "achievement_title": "Act 12 completed",
+        "achievement_content": "Finish all puzzles of Act 12 - The Great Beach Adventure.",
+        "series": "acts",
+        "reward": 500,
+        "number_series": 12
+    },
     "legend_acts_1": {
         "achievement_title": "Legend Act 1 completed",
         "achievement_content": "Finish all puzzles of Legend Act 1 - I forget school was such hard...",
@@ -339,8 +409,15 @@
         "achievement_title": "Legend Act 2 completed",
         "achievement_content": "Finish all puzzles of Legend Act 2 - Fish Tales.",
         "series": "legend_acts",
-        "reward": 2000,
-        "number_series": 1
+        "reward": 1000,
+        "number_series": 2
+    },
+    "legend_acts_3": {
+        "achievement_title": "Legend Act 3 completed",
+        "achievement_content": "Finish all puzzles of Legend Act 3 - TODO.",
+        "series": "legend_acts",
+        "reward": 1000,
+        "number_series": 3
     },
     "word_rune_1": {
         "achievement_title": "Looking for Rune",

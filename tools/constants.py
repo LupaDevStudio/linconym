@@ -65,7 +65,7 @@ BACK_ARROW_SIZE = 0.2
 
 # scale for experience awarded to the user
 XP_PER_CLASSIC_PUZZLE: int = 100
-XP_PER_LEGEND_PUZZLE: int = 300
+XP_PER_LEGEND_PUZZLE: int = 200
 LINCOINS_PER_LEVEL: int = 100
 
 # Create the user data json if it does not exist
@@ -721,8 +721,8 @@ NB_LINCOINS_PER_STAR_CLASSIC_DICT = {
     0: 0
 }
 NB_LINCOINS_PER_STAR_LEGEND_DICT = {
-    3: 300,
-    2: 150,
+    3: 200,
+    2: 140,
     1: 100,
     0: 0
 }
