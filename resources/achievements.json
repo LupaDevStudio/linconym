@@ -379,7 +379,7 @@
     },
     "acts_10": {
         "achievement_title": "Act 10 completed",
-        "achievement_content": "Finish all puzzles of Act 10 - TODO.",
+        "achievement_content": "Finish all puzzles of Act 10 - The Sand of Dunes.",
         "series": "acts",
         "reward": 500,
         "number_series": 10
@@ -414,7 +414,7 @@
     },
     "legend_acts_3": {
         "achievement_title": "Legend Act 3 completed",
-        "achievement_content": "Finish all puzzles of Legend Act 3 - TODO.",
+        "achievement_content": "Finish all puzzles of Legend Act 3 - Down the Red Carpet.",
         "series": "legend_acts",
         "reward": 1000,
         "number_series": 3
