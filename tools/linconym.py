@@ -392,7 +392,7 @@ def convert_position_to_wordlist(position: str, position_to_word_id, words_found
     return wordlist
 
 
-def find_solutions(start_word: str, end_word: str, english_words: list = ENGLISH_WORDS_DICTS["280k"]):
+def find_solutions(start_word: str, end_word: str, english_words: list = ENGLISH_WORDS_DICTS["280k"], time_out=None):
     """
     Find solutions for the given start and end words by using a score based on proximity to the end word.
 
@@ -422,8 +422,12 @@ def find_solutions(start_word: str, end_word: str, english_words: list = ENGLISH
     pile[0].append(start_position)
 
     not_found = True
+    start_timer = time.time()
 
     while not_found:
+        if time_out is not None:
+            if time.time() - start_timer > time_out:
+                return None
         current_position = None
         for i in sorted(pile.keys(), reverse=True):
             if len(pile[i]) > 0:
@@ -907,7 +911,7 @@ class Game():
 
             # Find solution
             solution = find_solutions(self.current_word, self.end_word,
-                                      current_words_dict)
+                                      current_words_dict, time_out=10)
             if solution is not None:
                 return solution[1]
 
