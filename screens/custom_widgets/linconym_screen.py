@@ -109,13 +109,14 @@ class LinconymScreen(ImprovedScreen):
                 USER_DATA.save_changes()
         else:
             tutorial_to_display = "all_rules"
-            if self.current_act_id == "1":
-                if self.current_level_id in GAME_TUTORIAL_DICT:
-                    tutorial_to_display = GAME_TUTORIAL_DICT[self.current_level_id]
-            if not USER_DATA.tutorial[self.name][tutorial_to_display]:
-                self.open_tutorial(screen_name=self.name)
-                USER_DATA.tutorial[self.name][tutorial_to_display] = True
-                USER_DATA.save_changes()
+            if self.mode == "classic":
+                if self.current_act_id == "1":
+                    if self.current_level_id in GAME_TUTORIAL_DICT:
+                        tutorial_to_display = GAME_TUTORIAL_DICT[self.current_level_id]
+                if not USER_DATA.tutorial[self.name][tutorial_to_display]:
+                    self.open_tutorial(screen_name=self.name)
+                    USER_DATA.tutorial[self.name][tutorial_to_display] = True
+                    USER_DATA.save_changes()
 
     def open_tutorial(self, screen_name):
         popup = TutorialPopup(

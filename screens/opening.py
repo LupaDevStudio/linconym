@@ -70,7 +70,8 @@ class OpeningScreen(ImprovedScreen):
             MusicsScreen,
             ConfigureTreeScreen,
             AchievementsScreen,
-            BadgesScreen
+            BadgesScreen,
+            LegendModeScreen
         )
 
         screen_files = [file for file in os.listdir(
@@ -105,6 +106,7 @@ class OpeningScreen(ImprovedScreen):
         self.ConfigureTreeScreen = ConfigureTreeScreen
         self.AchievementsScreen = AchievementsScreen
         self.BadgesScreen = BadgesScreen
+        self.LegendModeScreen = LegendModeScreen
 
         Clock.schedule_once(self.load_other_screens)
 
@@ -129,6 +131,9 @@ class OpeningScreen(ImprovedScreen):
 
         classic_mode_screen = self.ClassicModeScreen(name="classic_mode")
         self.manager.add_widget(classic_mode_screen)
+
+        legend_mode_screen = self.LegendModeScreen(name="legend_mode")
+        self.manager.add_widget(legend_mode_screen)
 
         boosters_screen = self.BoostersScreen(name="boosters")
         self.manager.add_widget(boosters_screen)

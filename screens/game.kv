@@ -64,7 +64,7 @@
     # Full screen tree
     RoundedButtonImage:
         image_path: PATH_ICONS + "full_screen.png"
-        pos_hint: {"x": 0.02, "y": 0.4125}
+        pos_hint: {"x": 0.05, "y": 0.4125}
         size_hint: (0.1, None)
         height: self.width
         colors: root.primary_color
@@ -94,6 +94,8 @@
         colors: root.primary_color
         release_function: root.ask_to_use_linclues
         font_ratio: root.font_ratio
+        disable_button: True if root.mode == "legend" else False
+        opacity: 0 if root.mode == "legend" else 1
 
     # Delete word
     RoundedButtonImage:

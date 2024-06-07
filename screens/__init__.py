@@ -44,3 +44,4 @@ from screens.boosters import BoostersScreen
 from screens.badges import BadgesScreen
 from screens.achievements import AchievementsScreen
 from screens.credits import CreditsScreen
+from screens.legend_mode import LegendModeScreen

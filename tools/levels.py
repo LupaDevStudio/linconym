@@ -8,7 +8,7 @@ Module to store the functions related to experience, levels and status.
 
 
 from tools.constants import (
-    XP_PER_LEVEL,
+    XP_PER_CLASSIC_PUZZLE,
     USER_STATUS_DICT,
     LINCOINS_PER_LEVEL
 )
@@ -88,16 +88,16 @@ def compute_xp_to_level_up(current_level: int):
 
     current_rank = get_rank(current_level)
     current_rank_id = convert_rank_name_to_int(current_rank)
-    xp_required = (1 + 2 * current_rank_id) * LINCOINS_PER_LEVEL
+    xp_required = (1 + 2 * current_rank_id) * XP_PER_CLASSIC_PUZZLE
 
     return xp_required
 
 def compute_lincoins_when_level_up(current_rank):
 
     current_rank_id = convert_rank_name_to_int(current_rank)
-    xp_required = (1 + 2 * current_rank_id) * XP_PER_LEVEL
+    lincoins = (1 + 2 * current_rank_id) * LINCOINS_PER_LEVEL
 
-    return xp_required
+    return lincoins
 
 def get_level(total_xp: int, get_remaining_xp: bool = False):
     """

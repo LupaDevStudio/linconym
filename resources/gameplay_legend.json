@@ -1,0 +1,386 @@
+{
+    "1": {
+        "name": "Act 1 - I forgot school was such hard...",
+        "1": {
+            "start_word": "learn",
+            "end_word": "lesson",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "2": {
+            "start_word": "lesson",
+            "end_word": "class",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "3": {
+            "start_word": "class",
+            "end_word": "grade",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "4": {
+            "start_word": "grade",
+            "end_word": "desk",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "5": {
+            "start_word": "desk",
+            "end_word": "book",
+            "10k": 5,
+            "34k": 5,
+            "88k": 4,
+            "280k": 4
+        },
+        "6": {
+            "start_word": "book",
+            "end_word": "pencil",
+            "10k": 8,
+            "34k": 7,
+            "88k": 7,
+            "280k": 7
+        },
+        "7": {
+            "start_word": "pencil",
+            "end_word": "chair",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "8": {
+            "start_word": "chair",
+            "end_word": "teach",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "9": {
+            "start_word": "teach",
+            "end_word": "teacher",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 3
+        },
+        "10": {
+            "start_word": "teacher",
+            "end_word": "marker",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "11": {
+            "start_word": "marker",
+            "end_word": "exam",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "12": {
+            "start_word": "exam",
+            "end_word": "eraser",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "13": {
+            "start_word": "eraser",
+            "end_word": "student",
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "14": {
+            "start_word": "student",
+            "end_word": "homework",
+            "10k": null,
+            "34k": null,
+            "88k": 9,
+            "280k": 8,
+            "chest": true
+        }
+    },
+    "2": {
+        "name": "Act 2 - Fish Tales",
+        "1": {
+            "start_word": "water",
+            "end_word": "crab",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "2": {
+            "start_word": "crab",
+            "end_word": "ray",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "3": {
+            "start_word": "ray",
+            "end_word": "orca",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "4": {
+            "start_word": "orca",
+            "end_word": "dolphin",
+            "10k": 10,
+            "34k": 8,
+            "88k": 8,
+            "280k": 7
+        },
+        "5": {
+            "start_word": "dolphin",
+            "end_word": "whale",
+            "10k": 9,
+            "34k": 8,
+            "88k": 6,
+            "280k": 6
+        },
+        "6": {
+            "start_word": "whale",
+            "end_word": "shark",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "7": {
+            "start_word": "shark",
+            "end_word": "fish",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "8": {
+            "start_word": "fish",
+            "end_word": "mussel",
+            "10k": 8,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "9": {
+            "start_word": "mussel",
+            "end_word": "oyster",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "10": {
+            "start_word": "oyster",
+            "end_word": "lobster",
+            "10k": 6,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "11": {
+            "start_word": "lobster",
+            "end_word": "octopus",
+            "chest": true,
+            "10k": null,
+            "34k": 7,
+            "88k": 5,
+            "280k": 5
+        },
+        "12": {
+            "start_word": "octopus",
+            "end_word": "shrimp",
+            "chest": true,
+            "10k": null,
+            "34k": 9,
+            "88k": 6,
+            "280k": 6
+        },
+        "13": {
+            "start_word": "shrimp",
+            "end_word": "mermaid",
+            "10k": 8,
+            "34k": 6,
+            "88k": 5,
+            "280k": 5
+        },
+        "14": {
+            "start_word": "mermaid",
+            "end_word": "narwhal",
+            "chest": true,
+            "10k": null,
+            "34k": null,
+            "88k": 7,
+            "280k": 7
+        }
+    },
+    "3": {
+        "name": "Act 3 - Down the Red Carpet",
+        "1": {
+            "start_word": "red",
+            "end_word": "carpet",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "2": {
+            "start_word": "carpet",
+            "end_word": "actor",
+            "10k": 3,
+            "34k": 3,
+            "88k": 3,
+            "280k": 3
+        },
+        "3": {
+            "start_word": "actor",
+            "end_word": "actress",
+            "10k": 5,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "4": {
+            "start_word": "actress",
+            "end_word": "hotel",
+            "10k": 6,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "5": {
+            "start_word": "hotel",
+            "end_word": "event",
+            "10k": 5,
+            "34k": 5,
+            "88k": 5,
+            "280k": 4
+        },
+        "6": {
+            "start_word": "event",
+            "end_word": "reviews",
+            "10k": 6,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "7": {
+            "start_word": "reviews",
+            "end_word": "reward",
+            "10k": 7,
+            "34k": 5,
+            "88k": 5,
+            "280k": 5
+        },
+        "8": {
+            "start_word": "reward",
+            "end_word": "director",
+            "10k": 8,
+            "34k": 7,
+            "88k": 6,
+            "280k": 5
+        },
+        "9": {
+            "start_word": "director",
+            "end_word": "script",
+            "10k": 8,
+            "34k": 7,
+            "88k": 5,
+            "280k": 5
+        },
+        "10": {
+            "start_word": "script",
+            "end_word": "contract",
+            "10k": 8,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "11": {
+            "start_word": "contract",
+            "end_word": "critics",
+            "10k": null,
+            "34k": 7,
+            "88k": 6,
+            "280k": 5,
+            "chest": true
+        },
+        "12": {
+            "start_word": "critics",
+            "end_word": "chic",
+            "10k": null,
+            "34k": 6,
+            "88k": 6,
+            "280k": 5
+        },
+        "13": {
+            "start_word": "chic",
+            "end_word": "film",
+            "10k": 5,
+            "34k": 5,
+            "88k": 4,
+            "280k": 4
+        },
+        "14": {
+            "start_word": "film",
+            "end_word": "luxury",
+            "10k": null,
+            "34k": null,
+            "88k": 8,
+            "280k": 8,
+            "chest": true
+        },
+        "15": {
+            "start_word": "luxury",
+            "end_word": "animation",
+            "10k": null,
+            "34k": null,
+            "88k": 11,
+            "280k": 10,
+            "chest": true
+        },
+        "16": {
+            "start_word": "animation",
+            "end_word": "festival",
+            "10k": null,
+            "34k": 8,
+            "88k": 7,
+            "280k": 7
+        },
+        "17": {
+            "start_word": "festival",
+            "end_word": "golden",
+            "10k": null,
+            "34k": 8,
+            "88k": 7,
+            "280k": 7
+        },
+        "18": {
+            "start_word": "golden",
+            "end_word": "palm",
+            "10k": 7,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        }
+    }
+}

@@ -36,6 +36,7 @@ from tools.path import (
     PATH_ACHIEVEMENTS,
     PATH_ICONS,
     PATH_USER_STATUS,
+    PATH_GAMEPLAY_LEGEND,
     IOS_MODE,
     ANDROID_MODE
 )
@@ -55,7 +56,7 @@ __version__ = "1.0.0"
 ### Mode ###
 
 
-DEBUG_MODE = False
+DEBUG_MODE = True
 FPS = 30
 MSAA_LEVEL = 2
 BACK_ARROW_SIZE = 0.2
@@ -63,13 +64,21 @@ BACK_ARROW_SIZE = 0.2
 ### Data loading ###
 
 # scale for experience awarded to the user
-XP_PER_LEVEL: int = 100
+XP_PER_CLASSIC_PUZZLE: int = 100
+XP_PER_LEGEND_PUZZLE: int = 200
 LINCOINS_PER_LEVEL: int = 100
 
 # Create the user data json if it does not exist
 if not os.path.exists(PATH_USER_DATA):
     default_user_data = {
         "classic_mode": {
+            "1": {
+                "1": {
+                    "nb_stars": 0
+                }
+            }
+        },
+        "legend_mode": {
             "1": {
                 "1": {
                     "nb_stars": 0
@@ -123,6 +132,7 @@ if not os.path.exists(PATH_USER_DATA):
                 "more_complicated_puzzles": False,
                 "all_rules": True
             },
+            "legend_mode": False,
             "themes": True,
             "boosters": False,
             "musics": True,
@@ -151,6 +161,16 @@ class UserData():
     def __init__(self) -> None:
         data = load_json_file(PATH_USER_DATA)
         self.classic_mode = data["classic_mode"]
+        if "legend_mode" not in data:
+            self.legend_mode = {
+                "1": {
+                    "1": {
+                        "nb_stars": 0
+                    }
+                }
+            }
+        else:
+            self.legend_mode = data["legend_mode"]
         self.daily_mode = data["daily_mode"]
         self.quests = data["quests"]
         self.achievements = data["achievements"]
@@ -159,6 +179,8 @@ class UserData():
         self.unlocked_musics = data["unlocked_musics"]
         self.user_profile = data["user_profile"]
         self.tutorial = data["tutorial"]
+        if "legend_mode" not in self.tutorial:
+            self.tutorial["legend_mode"] = False
         self.ads = data["ads"]
 
     def save_changes(self) -> None:
@@ -177,6 +199,7 @@ class UserData():
         # Create the dictionary of data
         data = {}
         data["classic_mode"] = self.classic_mode
+        data["legend_mode"] = self.legend_mode
         data["daily_mode"] = self.daily_mode
         data["quests"] = self.quests
         data["achievements"] = self.achievements
@@ -205,9 +228,14 @@ class UserData():
             USER_DATA.ads[f"number_{mode}_ads_left"] -= 1
             self.save_changes()
 
-    def get_nb_total_stars(self):
+    def get_nb_total_stars(self, mode="classic"):
         """
         Compute the total number of stars gathered by the user.
+
+        Parameters
+        ----------
+        mode: str, optional (default is "classic")
+            Mode of game.
 
         Returns
         -------
@@ -216,13 +244,18 @@ class UserData():
         """
 
         total_nb_stars = 0
-        for act in USER_DATA.classic_mode:
-            for level in USER_DATA.classic_mode[act]:
-                total_nb_stars += USER_DATA.classic_mode[act][level]["nb_stars"]
+        if mode == "classic":
+            for act in USER_DATA.classic_mode:
+                for level in USER_DATA.classic_mode[act]:
+                    total_nb_stars += USER_DATA.classic_mode[act][level]["nb_stars"]
+        elif mode == "legend":
+            for act in USER_DATA.legend_mode:
+                for level in USER_DATA.legend_mode[act]:
+                    total_nb_stars += USER_DATA.legend_mode[act][level]["nb_stars"]
 
         return total_nb_stars
 
-    def get_mean_nb_stars_on_act(self, act_id):
+    def get_mean_nb_stars_on_act(self, act_id, mode="classic"):
         """
         Compute the mean number of stars on the given act.
 
@@ -230,36 +263,49 @@ class UserData():
         ----------
         act_id : str
             Id of the act.
+        mode: str, optional (default is "classic")
+            Mode of game.
 
         Returns
         -------
         int
         """
-
         # Check if the user has already played on the level
-        if act_id not in USER_DATA.classic_mode:
-            return 0
+        if mode == "classic":
+            if act_id not in USER_DATA.classic_mode:
+                return 0
+        elif mode == "legend":
+            if act_id not in USER_DATA.legend_mode:
+                return 0
 
         total_nb_stars = 0
         nb_levels = 0
 
-        for level in GAMEPLAY_DICT[act_id]:
-            if level != "name":
-                if level in self.classic_mode[act_id]:
-                    total_nb_stars += self.classic_mode[act_id][level]["nb_stars"]
-                nb_levels += 1
+        if mode == "classic":
+            for level in GAMEPLAY_DICT[act_id]:
+                if level != "name":
+                    if level in self.classic_mode[act_id]:
+                        total_nb_stars += self.classic_mode[act_id][level]["nb_stars"]
+                    nb_levels += 1
+        elif mode == "legend":
+            for level in GAMEPLAY_LEGEND_DICT[act_id]:
+                if level != "name":
+                    if level in self.legend_mode[act_id]:
+                        total_nb_stars += self.legend_mode[act_id][level]["nb_stars"]
+                    nb_levels += 1
 
         mean = total_nb_stars / nb_levels
 
         return int(mean)
 
-    def get_nb_completed_puzzles(self):
+    def get_nb_completed_puzzles(self, mode="classic"):
         """
         Compute the number of completed puzzles.
 
         Parameters
         ----------
-        None
+        mode: str, optional (default is "classic")
+            Mode of game.
 
         Returns
         -------
@@ -268,19 +314,25 @@ class UserData():
         """
         nb_completed_puzzles = 0
 
-        for act_id in self.classic_mode:
-            nb_completed_puzzles += self.get_nb_completed_levels_for_act(
-                act_id)
+        if mode == "classic":
+            for act_id in self.classic_mode:
+                nb_completed_puzzles += self.get_nb_completed_levels_for_act(
+                    act_id)
+        elif mode == "legend":
+            for act_id in self.legend_mode:
+                nb_completed_puzzles += self.get_nb_completed_levels_for_act(
+                    act_id, mode=mode)
 
         return nb_completed_puzzles
 
-    def get_nb_completed_acts(self):
+    def get_nb_completed_acts(self, mode="classic"):
         """
         Compute the number of completed acts.
 
         Parameters
         ----------
-        None
+        mode: str, optional (default is "classic")
+            Mode of game.
 
         Returns
         -------
@@ -289,22 +341,39 @@ class UserData():
         """
         nb_completed_acts = 0
 
-        for act_id in self.classic_mode:
-            has_finished_act = True
+        if mode == "classic":
 
-            for puzzle in GAMEPLAY_DICT[act_id]:
-                if puzzle != "name":
-                    if puzzle not in self.classic_mode[act_id]:
-                        has_finished_act = False
-                    elif self.classic_mode[act_id][puzzle]["nb_stars"] == 0:
-                        has_finished_act = False
+            for act_id in self.classic_mode:
+                has_finished_act = True
 
-            if has_finished_act:
-                nb_completed_acts += 1
+                for puzzle in GAMEPLAY_DICT[act_id]:
+                    if puzzle != "name":
+                        if puzzle not in self.classic_mode[act_id]:
+                            has_finished_act = False
+                        elif self.classic_mode[act_id][puzzle]["nb_stars"] == 0:
+                            has_finished_act = False
+
+                if has_finished_act:
+                    nb_completed_acts += 1
+
+        elif mode == "legend":
+
+            for act_id in self.legend_mode:
+                has_finished_act = True
+
+                for puzzle in GAMEPLAY_LEGEND_DICT[act_id]:
+                    if puzzle != "name":
+                        if puzzle not in self.legend_mode[act_id]:
+                            has_finished_act = False
+                        elif self.legend_mode[act_id][puzzle]["nb_stars"] == 0:
+                            has_finished_act = False
+
+                if has_finished_act:
+                    nb_completed_acts += 1
 
         return nb_completed_acts
 
-    def get_nb_completed_levels_for_act(self, act_id: str):
+    def get_nb_completed_levels_for_act(self, act_id: str, mode="classic"):
         """
         Compute the number of completed levels on the given act.
 
@@ -312,6 +381,8 @@ class UserData():
         ----------
         act_id : str
             Id of the act.
+        mode: str, optional (default is "classic")
+            Mode of game.
 
         Returns
         -------
@@ -320,20 +391,29 @@ class UserData():
         """
 
         # Check if the user has already played on the level
-        if act_id not in self.classic_mode:
-            return 0
+        if mode == "classic":
+            if act_id not in self.classic_mode:
+                return 0
+        elif mode == "legend":
+            if act_id not in self.legend_mode:
+                return 0
 
         # Allocate a variable for the output
         nb_completed_levels = 0
 
         # Iterate over the saved data to count the levels
-        for level_id in self.classic_mode[act_id]:
-            if self.classic_mode[act_id][level_id]["nb_stars"] > 0:
-                nb_completed_levels += 1
+        if mode == "classic":
+            for level_id in self.classic_mode[act_id]:
+                if self.classic_mode[act_id][level_id]["nb_stars"] > 0:
+                    nb_completed_levels += 1
+        elif mode == "legend":
+            for level_id in self.legend_mode[act_id]:
+                if self.legend_mode[act_id][level_id]["nb_stars"] > 0:
+                    nb_completed_levels += 1
 
         return nb_completed_levels
 
-    def get_nb_levels_in_act(self, act_id: str):
+    def get_nb_levels_in_act(self, act_id: str, mode="classic"):
         """
         Compute the number of levels contained in an act.
 
@@ -341,19 +421,24 @@ class UserData():
         ----------
         act_id : str
             Id of the act.
+        mode: str, optional (default is "classic")
+            Mode of game.
 
         Returns
         -------
         int
             Number of levels.
         """
+        current_dict = GAMEPLAY_DICT
+        if mode == "legend":
+            current_dict = GAMEPLAY_LEGEND_DICT
 
-        if act_id not in GAMEPLAY_DICT:
+        if act_id not in current_dict:
             return 0
         else:
-            return len(GAMEPLAY_DICT[act_id]) - 1
+            return len(current_dict[act_id]) - 1
 
-    def get_nb_levels_in_all_previous_acts(self, act_id: str):
+    def get_nb_levels_in_all_previous_acts(self, act_id: str, mode="classic"):
         """
         Compute the number of levels contained in all previous acts.
 
@@ -361,6 +446,8 @@ class UserData():
         ----------
         act_id : str
             Id of the act.
+        mode: str, optional (default is "classic")
+            Mode of game.
 
         Returns
         -------
@@ -371,20 +458,31 @@ class UserData():
         act = int(act_id)
         cum_nb_levels = 0
         for i in range(1, act):
-            nb_levels = self.get_nb_levels_in_act(str(i))
+            nb_levels = self.get_nb_levels_in_act(str(i), mode=mode)
             cum_nb_levels += nb_levels
 
         return cum_nb_levels
 
-    def get_nb_words_all_puzzles(self, word_to_find: str):
+    def get_nb_words_all_puzzles(self, word_to_find: str, mode="classic"):
         nb_words = 0
 
-        for act_id in self.classic_mode:
-            for puzzle in self.classic_mode[act_id]:
-                if puzzle != "name" and "words_found" in self.classic_mode[act_id][puzzle]:
-                    for word in self.classic_mode[act_id][puzzle]["words_found"]:
-                        if word == word_to_find:
-                            nb_words += 1
+        if mode == "classic":
+
+            for act_id in self.classic_mode:
+                for puzzle in self.classic_mode[act_id]:
+                    if puzzle != "name" and "words_found" in self.classic_mode[act_id][puzzle]:
+                        for word in self.classic_mode[act_id][puzzle]["words_found"]:
+                            if word == word_to_find:
+                                nb_words += 1
+
+        elif mode == "legend":
+
+            for act_id in self.legend_mode:
+                for puzzle in self.legend_mode[act_id]:
+                    if puzzle != "name" and "words_found" in self.legend_mode[act_id][puzzle]:
+                        for word in self.legend_mode[act_id][puzzle]["words_found"]:
+                            if word == word_to_find:
+                                nb_words += 1
 
         return nb_words
 
@@ -413,6 +511,11 @@ class UserData():
 
 
 USER_DATA = UserData()
+
+# Give extra coins if debug mode
+if DEBUG_MODE:
+    USER_DATA.user_profile["lincoins"] = 99999
+    USER_DATA.user_profile["linclues"] = 200
 
 ### Tutorial ###
 
@@ -478,10 +581,10 @@ TEXT_FONT_COLOR = (0, 0, 0, 1)
 BOTTOM_BAR_HEIGHT = 0.12
 
 # Pos hints for icon buttons
-POS_HINT_LEFT_TOP_BUTTON = {"x": 0.02, "top": 0.99}
-POS_HINT_RIGHT_TOP_BUTTON = {"right": 0.98, "top": 0.99}
-POS_HINT_LEFT_BOTTOM_BUTTON = {"x": 0.02, "y": 0.01}
-POS_HINT_RIGHT_BOTTOM_BUTTON = {"right": 0.98, "y": 0.01}
+POS_HINT_LEFT_TOP_BUTTON = {"x": 0.05, "top": 0.97}
+POS_HINT_RIGHT_TOP_BUTTON = {"right": 0.95, "top": 0.97}
+POS_HINT_LEFT_BOTTOM_BUTTON = {"x": 0.05, "y": 0.03}
+POS_HINT_RIGHT_BOTTOM_BUTTON = {"right": 0.95, "y": 0.03}
 
 # Levels configuration
 MAX_NB_LEVELS_PER_BRANCH = 4
@@ -600,6 +703,7 @@ DICT_ID_TO_NB_WORDS = {
 ### Levels, quests and achievements ###
 
 GAMEPLAY_DICT = load_json_file(PATH_GAMEPLAY)
+GAMEPLAY_LEGEND_DICT = load_json_file(PATH_GAMEPLAY_LEGEND)
 QUESTS_DICT = load_json_file(PATH_QUESTS)
 CREDITS_DICT = load_json_file(PATH_CREDITS)
 ACHIEVEMENTS_DICT = load_json_file(PATH_ACHIEVEMENTS)
@@ -610,10 +714,16 @@ CUSTOMIZATION_DICT = load_json_file(PATH_CUSTOMIZATION)
 THEMES_DICT = CUSTOMIZATION_DICT["themes"]
 MUSICS_DICT = CUSTOMIZATION_DICT["musics"]
 THEMES_RARITY_DICT = CUSTOMIZATION_DICT["categories"]
-NB_LINCOINS_PER_STAR_DICT = {
+NB_LINCOINS_PER_STAR_CLASSIC_DICT = {
     3: 100,
     2: 70,
     1: 50,
+    0: 0
+}
+NB_LINCOINS_PER_STAR_LEGEND_DICT = {
+    3: 200,
+    2: 140,
+    1: 100,
     0: 0
 }
 

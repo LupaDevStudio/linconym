@@ -62,7 +62,7 @@ class LincluesPopup(CustomPopup):
         self.text = f"Do you want to use {self.number_linclues_to_use} Linclues to have a clue on the current puzzle?\n\nThe clue word will be given from the current position in the tree."
         # Mark the singular
         if self.number_linclues_to_use == 1:
-            self.text.replace("Linclues", "Linclue")
+            self.text = self.text.replace("Linclues", "Linclue")
         
         if self.number_linclues_to_use > self.number_linclues:
             self.ids.right_button.disabled = True

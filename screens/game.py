@@ -28,6 +28,7 @@ from tools.constants import (
     SCREEN_BACK_ARROW,
     SCREEN_TUTORIAL,
     GAMEPLAY_DICT,
+    GAMEPLAY_LEGEND_DICT,
     TUTORIAL,
     GAME_TUTORIAL_DICT,
     USER_STATUS_DICT,
@@ -48,7 +49,8 @@ from screens import (
     ColoredRoundedButton
 )
 from tools.linconym import (
-    ClassicGame
+    ClassicGame,
+    LegendGame
 )
 from tools.levels import (
     compute_lincoins_when_level_up
@@ -79,6 +81,7 @@ class GameScreen(LinconymScreen):
     allow_delete_current_word = BooleanProperty(False)
     list_widgets_letters = []
     keyboard_mode = StringProperty(USER_DATA.settings["keyboard_mode"])
+    mode = StringProperty()
 
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
@@ -89,6 +92,7 @@ class GameScreen(LinconymScreen):
     def reload_kwargs(self, dict_kwargs):
         self.current_act_id = dict_kwargs["current_act_id"]
         self.current_level_id = dict_kwargs["current_level_id"]
+        self.mode = dict_kwargs["mode"]
 
     def on_pre_enter(self, *args):
         super().on_pre_enter(*args)
@@ -107,13 +111,14 @@ class GameScreen(LinconymScreen):
 
     def open_tutorial(self, screen_name):
         tutorial_to_display = "all_rules"
-        if self.current_act_id == "1":
-            if self.current_level_id in GAME_TUTORIAL_DICT:
-                tutorial_to_display = GAME_TUTORIAL_DICT[self.current_level_id]
-                if tutorial_to_display == "more_complicated_puzzles" and not USER_DATA.tutorial["game"][tutorial_to_display]:
-                    USER_DATA.user_profile["linclues"] += 5
-                    USER_DATA.user_profile["cumulated_linclues"] += 5
-                    USER_DATA.save_changes()
+        if self.mode == "classic":
+            if self.current_act_id == "1":
+                if self.current_level_id in GAME_TUTORIAL_DICT:
+                    tutorial_to_display = GAME_TUTORIAL_DICT[self.current_level_id]
+                    if tutorial_to_display == "more_complicated_puzzles" and not USER_DATA.tutorial["game"][tutorial_to_display]:
+                        USER_DATA.user_profile["linclues"] += 5
+                        USER_DATA.user_profile["cumulated_linclues"] += 5
+                        USER_DATA.save_changes()
 
         popup = TutorialPopup(
             primary_color=self.primary_color,
@@ -161,8 +166,14 @@ class GameScreen(LinconymScreen):
     def save_data(self):
 
         self.level_saved_data = {}
-        for key in USER_DATA.classic_mode[self.current_act_id][self.current_level_id]:
-            self.level_saved_data[key] = USER_DATA.classic_mode[self.current_act_id][self.current_level_id][key]
+
+        if self.mode == "classic":
+            for key in USER_DATA.classic_mode[self.current_act_id][self.current_level_id]:
+                self.level_saved_data[key] = USER_DATA.classic_mode[self.current_act_id][self.current_level_id][key]
+
+        elif self.mode == "legend":
+            for key in USER_DATA.legend_mode[self.current_act_id][self.current_level_id]:
+                self.level_saved_data[key] = USER_DATA.legend_mode[self.current_act_id][self.current_level_id][key]
 
         # Insert data in save dict
         self.level_saved_data["current_position"] = self.game.current_position
@@ -170,8 +181,11 @@ class GameScreen(LinconymScreen):
         self.level_saved_data["position_to_word_id"] = self.game.position_to_word_id
 
         # Push changes to user data
-        USER_DATA.classic_mode[self.current_act_id][self.current_level_id] = self.level_saved_data.copy(
-        )
+        if self.mode == "classic":
+            USER_DATA.classic_mode[self.current_act_id][self.current_level_id] = self.level_saved_data.copy()
+        elif self.mode == "legend":
+            USER_DATA.legend_mode[self.current_act_id][self.current_level_id] = self.level_saved_data.copy()
+
         USER_DATA.save_changes()
 
     def check_disable_keyboard(self):
@@ -348,11 +362,16 @@ class GameScreen(LinconymScreen):
         self.new_word = ""
 
         # Store the dict containing the user progress
-        self.level_saved_data = USER_DATA.classic_mode[self.current_act_id][self.current_level_id].copy(
-        )
+        if self.mode == "classic":
+            self.level_saved_data = USER_DATA.classic_mode[self.current_act_id][self.current_level_id].copy()
 
-        # Save the dict containing the level instructions
-        self.level_info = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]
+            # Save the dict containing the level instructions
+            self.level_info = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]
+        elif self.mode == "legend":
+            self.level_saved_data = USER_DATA.legend_mode[self.current_act_id][self.current_level_id].copy()
+
+            # Save the dict containing the level instructions
+            self.level_info = GAMEPLAY_LEGEND_DICT[self.current_act_id][self.current_level_id]
 
         # Extract start word and end word
         self.start_word = self.level_info["start_word"]
@@ -364,7 +383,10 @@ class GameScreen(LinconymScreen):
             self.secondary_color[0], self.secondary_color[1], self.secondary_color[2], 0.3]
         self.ids.keyboard_layout.build_keyboard()
 
-        self.nb_stars = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["nb_stars"]
+        if self.mode == "classic":
+            self.nb_stars = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["nb_stars"]
+        elif self.mode == "legend":
+            self.nb_stars = USER_DATA.legend_mode[self.current_act_id][self.current_level_id]["nb_stars"]
 
         temp = self.current_act_id.replace("Act", "")
         self.current_level_name = "Act " + temp + " – " + self.current_level_id
@@ -380,13 +402,22 @@ class GameScreen(LinconymScreen):
             position_to_word_id = None
 
         # Create a game instance
-        self.game = ClassicGame(
-            act_id=self.current_act_id,
-            lvl_id=self.current_level_id,
-            current_position=current_position,
-            position_to_word_id=position_to_word_id,
-            words_found=words_found
-        )
+        if self.mode == "classic":
+            self.game = ClassicGame(
+                act_id=self.current_act_id,
+                lvl_id=self.current_level_id,
+                current_position=current_position,
+                position_to_word_id=position_to_word_id,
+                words_found=words_found
+            )
+        elif self.mode == "legend":
+            self.game = LegendGame(
+                act_id=self.current_act_id,
+                lvl_id=self.current_level_id,
+                current_position=current_position,
+                position_to_word_id=position_to_word_id,
+                words_found=words_found
+            )
 
         # Build the tree
         self.build_tree_layout()
@@ -454,19 +485,29 @@ class GameScreen(LinconymScreen):
 
         # Check if there is a next puzzle in the same act
         next_lvl_id = str(int(self.current_level_id) + 1)
-        has_next_levels_in_act = next_lvl_id in GAMEPLAY_DICT[self.current_act_id]
+
+        if self.mode == "classic":
+            has_next_levels_in_act = next_lvl_id in GAMEPLAY_DICT[self.current_act_id]
+        elif self.mode == "legend":
+            has_next_levels_in_act = next_lvl_id in GAMEPLAY_LEGEND_DICT[self.current_act_id]
+
         if has_next_levels_in_act:
             right_button_label = "Next puzzle"
             next_level_function = partial(
                 self.reload_for_level_change, next_lvl_id)
         else:
             right_button_label = "Return to menu"
-            next_level_function = partial(self.go_to_next_screen,
-                                          screen_name="classic_mode",
-                                          current_dict_kwargs={
-                                              "current_act_id": self.current_act_id,
-                                              "current_level_id": self.current_level_id}
-                                          )
+            screen_name = "classic_mode"
+            if self.mode == "legend":
+                screen_name = "legend_mode"
+            next_level_function = partial(
+                self.go_to_next_screen,
+                screen_name=screen_name,
+                current_dict_kwargs={
+                    "current_act_id": self.current_act_id,
+                    "current_level_id": self.current_level_id,
+                    "mode": self.mode}
+                )
 
         # Create the popup for the completion
         popup = LevelCompletedPopup(
@@ -537,7 +578,8 @@ class GameScreen(LinconymScreen):
     def go_to_quests_screen(self):
         dict_kwargs = {
             "current_level_id": self.current_level_id,
-            "current_act_id": self.current_act_id
+            "current_act_id": self.current_act_id,
+            "mode": self.mode
         }
         self.go_to_next_screen(
             screen_name="quests",
@@ -547,7 +589,8 @@ class GameScreen(LinconymScreen):
     def go_to_configure_tree_screen(self):
         dict_kwargs = {
             "current_level_id": self.current_level_id,
-            "current_act_id": self.current_act_id
+            "current_act_id": self.current_act_id,
+            "mode": self.mode
         }
         self.save_data()
         self.go_to_next_screen(

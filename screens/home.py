@@ -54,14 +54,18 @@ class HomeScreen(LinconymScreen):
             USER_DATA.ads["number_daily_ads_left"] = 3
             USER_DATA.ads["has_seen_daily_wheel"] = False
 
+        # Don't show the daily wheel on the first connexion
+        if not USER_DATA.tutorial["home"]:
+            USER_DATA.ads["has_seen_daily_wheel"] = True
+
         if not USER_DATA.ads["has_seen_daily_wheel"]:
             USER_DATA.ads["has_seen_daily_wheel"] = True
-            # popup = DailyWheelPopup(
-            #     font_ratio=self.font_ratio,
-            #     primary_color=self.primary_color,
-            #     secondary_color=self.secondary_color
-            # )
-            # popup.open()
+            popup = DailyWheelPopup(
+                font_ratio=self.font_ratio,
+                primary_color=self.primary_color,
+                secondary_color=self.secondary_color
+            )
+            popup.open()
         USER_DATA.save_changes()
         return super().on_enter(*args)
 
@@ -70,3 +74,9 @@ class HomeScreen(LinconymScreen):
         Open the classic mode screen.
         """
         self.manager.go_to_next_screen(next_screen_name="classic_mode")
+
+    def open_legend_mode(self):
+        """
+        Open the legend mode screen.
+        """
+        self.manager.go_to_next_screen(next_screen_name="legend_mode")

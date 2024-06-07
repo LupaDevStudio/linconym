@@ -14,10 +14,10 @@ from functools import partial
 
 from tools.constants import (
     USER_DATA,
-    GAMEPLAY_DICT,
+    GAMEPLAY_LEGEND_DICT,
     SCREEN_TITLE,
-    SCREEN_BOTTOM_BAR,
-    DEBUG_MODE
+    SCREEN_TUTORIAL,
+    SCREEN_BOTTOM_BAR
 )
 from screens.custom_widgets import (
     LinconymScreen
@@ -31,10 +31,11 @@ from screens.custom_widgets import (
 #############
 
 
-class ClassicModeScreen(LinconymScreen):
+class LegendModeScreen(LinconymScreen):
 
     dict_type_screen = {
-        SCREEN_TITLE: "Classic Mode",
+        SCREEN_TITLE: "Legend Mode",
+        SCREEN_TUTORIAL: True,
         SCREEN_BOTTOM_BAR: "none"
     }
 
@@ -47,7 +48,7 @@ class ClassicModeScreen(LinconymScreen):
     def on_pre_enter(self, *args):
         super().on_pre_enter(*args)
         # Recover the total nb of stars of the user
-        nb_total_stars = USER_DATA.get_nb_total_stars()
+        nb_total_stars = USER_DATA.get_nb_total_stars(mode="legend")
 
         # Update the info on the act buttons
         for act in self.ACT_BUTTON_DICT:
@@ -55,23 +56,18 @@ class ClassicModeScreen(LinconymScreen):
             current_act_button.primary_color = self.primary_color
             current_act_button.secondary_color = self.secondary_color
             current_act_button.nb_total_stars = nb_total_stars
-            mean_nb_stars = USER_DATA.get_mean_nb_stars_on_act(act)
+            mean_nb_stars = USER_DATA.get_mean_nb_stars_on_act(act, mode="legend")
             current_act_button.nb_stars = mean_nb_stars
-            if act in USER_DATA.classic_mode:
+            if act in USER_DATA.legend_mode:
                 nb_completed_levels = USER_DATA.get_nb_completed_levels_for_act(
-                    act)
+                    act, mode="legend")
                 current_act_button.nb_completed_levels = nb_completed_levels
             nb_stars_to_unlock = 2 * \
-                USER_DATA.get_nb_levels_in_all_previous_acts(act)
+                USER_DATA.get_nb_levels_in_all_previous_acts(act, mode="legend")
             if nb_total_stars < nb_stars_to_unlock:
                 disable_act_button = True
             else:
                 disable_act_button = False
-
-            # Unlock act if debug mode
-            if DEBUG_MODE:
-                disable_act_button = False
-
             current_act_button.disable_button = disable_act_button
 
     def on_resize(self, *args):
@@ -82,21 +78,21 @@ class ClassicModeScreen(LinconymScreen):
     def fill_scrollview(self):
 
         # Recover the total nb of stars
-        nb_total_stars = USER_DATA.get_nb_total_stars()
+        nb_total_stars = USER_DATA.get_nb_total_stars(mode="legend")
 
         scrollview_layout = self.ids["scrollview_layout"]
         # Load the widgets
         self.ACT_BUTTON_DICT = {}
-        for act in GAMEPLAY_DICT:
+        for act in GAMEPLAY_LEGEND_DICT:
 
             # Extract the act information
-            act_title = GAMEPLAY_DICT[act]["name"]
-            nb_levels = len(GAMEPLAY_DICT[act]) - 1
+            act_title = GAMEPLAY_LEGEND_DICT[act]["name"]
+            nb_levels = len(GAMEPLAY_LEGEND_DICT[act]) - 1
             nb_stars_to_unlock = 2 * \
-                USER_DATA.get_nb_levels_in_all_previous_acts(act)
-            if act in USER_DATA.classic_mode:
+                USER_DATA.get_nb_levels_in_all_previous_acts(act, mode="legend")
+            if act in USER_DATA.legend_mode:
                 nb_completed_levels = USER_DATA.get_nb_completed_levels_for_act(
-                    act)
+                    act, mode="legend")
             else:
                 nb_completed_levels = 0
                 disable_act_button = True
@@ -104,11 +100,7 @@ class ClassicModeScreen(LinconymScreen):
                 disable_act_button = True
             else:
                 disable_act_button = False
-
-            # Unlock act if debug mode
-            if DEBUG_MODE:
-                disable_act_button = False
-            mean_nb_stars = USER_DATA.get_mean_nb_stars_on_act(act)
+            mean_nb_stars = USER_DATA.get_mean_nb_stars_on_act(act, mode="legend")
 
             # Create the act button
             current_act_button = ActButton(
@@ -128,14 +120,14 @@ class ClassicModeScreen(LinconymScreen):
 
     def open_levels_screen(self, act_id):
         # Create data if it is the first time that the play opens the act
-        if act_id not in USER_DATA.classic_mode:
-            USER_DATA.classic_mode[act_id] = {"1": {"nb_stars": 0}}
+        if act_id not in USER_DATA.legend_mode:
+            USER_DATA.legend_mode[act_id] = {"1": {"nb_stars": 0}}
             USER_DATA.save_changes()
 
         # Open the screen
         dict_kwargs = {
             "current_act_id": act_id,
-            "mode": "classic"
+            "mode": "legend"
         }
         self.manager.go_to_next_screen(
             next_screen_name="levels",

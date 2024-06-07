@@ -28,7 +28,8 @@ from tools.constants import (
     USER_DATA,
     USER_STATUS_DICT,
     THEMES_DICT,
-    GAMEPLAY_DICT
+    GAMEPLAY_DICT,
+    GAMEPLAY_LEGEND_DICT
 )
 from screens.custom_widgets import (
     AchievementsLayout
@@ -145,7 +146,9 @@ class AchievementsScreen(LinconymScreen):
         if series == "cumulated_stars":
             number_stars_to_win = int(
                 achievement_id.replace("cumulated_stars_", ""))
-            number_stars_won = USER_DATA.get_nb_total_stars()
+            number_stars_won_classic = USER_DATA.get_nb_total_stars()
+            number_stars_won_legend = USER_DATA.get_nb_total_stars(mode="legend")
+            number_stars_won = number_stars_won_legend + number_stars_won_classic
             if number_stars_to_win <= number_stars_won:
                 USER_DATA.achievements[achievement_id] = False
             else:
@@ -163,11 +166,28 @@ class AchievementsScreen(LinconymScreen):
                     return str(nb_completed_levels) + " / " + str(nb_levels)
             else:
                 return "0 / " + str(nb_levels)
+            
+        if series == "legend_acts":
+            act_name = achievement_id.replace("legend_acts_", "")
+            nb_levels = len(GAMEPLAY_LEGEND_DICT[act_name]) - 1
+            if act_name in USER_DATA.legend_mode:
+                nb_completed_levels = USER_DATA.get_nb_completed_levels_for_act(
+                    act_name, mode="legend")
+                if nb_completed_levels == nb_levels:
+                    USER_DATA.achievements[achievement_id] = False
+                else:
+                    return str(nb_completed_levels) + " / " + str(nb_levels)
+            else:
+                return "0 / " + str(nb_levels)
 
         if series.startswith("word_"):
             word_to_find = series.replace("word_", "")
             number_of_words_to_find = int(achievement_id.replace(series + "_", ""))
-            number_of_words_found = USER_DATA.get_nb_words_all_puzzles(word_to_find)
+            number_of_words_found_classic = USER_DATA.get_nb_words_all_puzzles(
+                word_to_find, mode="classic")
+            number_of_words_found_legend = USER_DATA.get_nb_words_all_puzzles(
+                word_to_find, mode="legend")
+            number_of_words_found = number_of_words_found_classic + number_of_words_found_legend
 
             if number_of_words_to_find <= number_of_words_found:
                 USER_DATA.achievements[achievement_id] = False
@@ -259,6 +279,9 @@ class AchievementsScreen(LinconymScreen):
         if series == "acts":
             act_name = achievement_id.replace("acts_", "")
             return act_name in USER_DATA.classic_mode
+        elif series == "legend_acts":
+            act_name = achievement_id.replace("legend_acts_", "")
+            return act_name in USER_DATA.legend_mode
 
         # Display only the next achievement for most series
         else:

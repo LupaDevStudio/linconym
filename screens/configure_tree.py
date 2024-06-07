@@ -19,7 +19,8 @@ from kivy.properties import (
 from tools.constants import (
     SCREEN_TUTORIAL,
     USER_DATA,
-    GAMEPLAY_DICT
+    GAMEPLAY_DICT,
+    GAMEPLAY_LEGEND_DICT
 )
 from screens.custom_widgets import (
     LinconymScreen
@@ -44,6 +45,7 @@ class ConfigureTreeScreen(LinconymScreen):
     start_word = StringProperty("BOY")
     end_word = StringProperty("TOYS")
     hide_completed_branches = BooleanProperty(False)
+    mode = StringProperty()
 
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
@@ -53,21 +55,37 @@ class ConfigureTreeScreen(LinconymScreen):
     def reload_kwargs(self, dict_kwargs):
         self.current_act_id = dict_kwargs["current_act_id"]
         self.current_level_id = dict_kwargs["current_level_id"]
+        self.mode = dict_kwargs["mode"]
 
     def on_pre_enter(self, *args):
         super().on_pre_enter(*args)
 
-        # Extract info from user data
-        self.nb_stars = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["nb_stars"]
-        position_to_word_id = USER_DATA.classic_mode[self.current_act_id][
-            self.current_level_id]["position_to_word_id"].copy()
-        current_position = USER_DATA.classic_mode[self.current_act_id][
-            self.current_level_id]["current_position"]
-        words_found = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["words_found"]
-        self.start_word = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]["start_word"].upper(
-        )
-        self.end_word = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]["end_word"].upper(
-        )
+        if self.mode == "classic":
+
+            # Extract info from user data
+            self.nb_stars = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["nb_stars"]
+            position_to_word_id = USER_DATA.classic_mode[self.current_act_id][
+                self.current_level_id]["position_to_word_id"].copy()
+            current_position = USER_DATA.classic_mode[self.current_act_id][
+                self.current_level_id]["current_position"]
+            words_found = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["words_found"]
+            self.start_word = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]["start_word"].upper(
+            )
+            self.end_word = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]["end_word"].upper(
+            )
+
+        elif self.mode == "legend":
+
+            # Extract info from user data
+            self.nb_stars = USER_DATA.legend_mode[self.current_act_id][self.current_level_id]["nb_stars"]
+            position_to_word_id = USER_DATA.legend_mode[self.current_act_id][
+                self.current_level_id]["position_to_word_id"].copy()
+            current_position = USER_DATA.legend_mode[self.current_act_id][
+                self.current_level_id]["current_position"]
+            words_found = USER_DATA.legend_mode[self.current_act_id][self.current_level_id]["words_found"]
+            self.start_word = GAMEPLAY_LEGEND_DICT[self.current_act_id][self.current_level_id]["start_word"].upper()
+            self.end_word = GAMEPLAY_LEGEND_DICT[self.current_act_id][self.current_level_id]["end_word"].upper()
+        
         self.hide_completed_branches = USER_DATA.settings["hide_completed_branches"]
 
         self.ids["tree_layout"].build_layout(
@@ -89,12 +107,13 @@ class ConfigureTreeScreen(LinconymScreen):
             self.hide_completed_branches = True
             self.ids.tree_layout.mask_completed_branches()
         USER_DATA.settings["hide_completed_branches"] = self.hide_completed_branches
-        USER_DATA.classic_mode[self.current_act_id][self.current_level_id][
-            "current_position"] = self.ids["tree_layout"].current_position
+        if self.mode == "classic":
+            USER_DATA.classic_mode[self.current_act_id][self.current_level_id][
+                "current_position"] = self.ids["tree_layout"].current_position
+        elif self.mode == "legend":
+            USER_DATA.classic_mode[self.current_act_id][self.current_level_id][
+                "current_position"] = self.ids["tree_layout"].current_position
         USER_DATA.save_changes()
-
-    def ask_reset_tree(self):
-        print("TODO popup")
 
     def open_game(self):
         """
@@ -104,18 +123,24 @@ class ConfigureTreeScreen(LinconymScreen):
 
     def on_change_word_position_on_tree(self):
         # Save the new current position
-        USER_DATA.classic_mode[self.current_act_id][self.current_level_id][
-            "current_position"] = self.ids["tree_layout"].current_position
+        if self.mode == "classic":
+            USER_DATA.classic_mode[self.current_act_id][self.current_level_id][
+                "current_position"] = self.ids["tree_layout"].current_position
+        elif self.mode == "legend":
+            USER_DATA.legend_mode[self.current_act_id][self.current_level_id][
+                "current_position"] = self.ids["tree_layout"].current_position
         USER_DATA.save_changes()
 
     def open_levels_screen(self):
         # Open the screen
         next_dict_kwargs = {
-            "current_act_id": self.current_act_id
+            "current_act_id": self.current_act_id,
+            "mode": self.mode
         }
         current_dict_kwargs = {
             "current_act_id": self.current_act_id,
-            "current_level_id": self.current_level_id
+            "current_level_id": self.current_level_id,
+            "mode": self.mode
         }
         self.go_to_next_screen(
             screen_name="levels",

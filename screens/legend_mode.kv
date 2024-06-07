@@ -1,7 +1,7 @@
 #:kivy 2.2.1
-#:import GAMEPLAY_DICT tools.constants.GAMEPLAY_DICT
+#:import GAMEPLAY_LEGEND_DICT tools.constants.GAMEPLAY_LEGEND_DICT
 
-<ClassicModeScreen>:
+<LegendModeScreen>:
 
     CustomScrollview:
         id: scrollview
@@ -15,5 +15,5 @@
             id: scrollview_layout
             cols:1
             spacing:40
-            height:0.2*root.height * len(GAMEPLAY_DICT)
+            height:0.2*root.height * len(GAMEPLAY_LEGEND_DICT)
             padding: (0.05*root.width, 0,0.05*root.width,40)

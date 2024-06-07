@@ -40,7 +40,8 @@ from screens.custom_widgets.layout import (
     IconCreditLayout,
     GeneralLicensesLayout,
     ImagesCreditLayout,
-    RewardFrame
+    RewardFrame,
+    BadgeLayout
 )
 
 

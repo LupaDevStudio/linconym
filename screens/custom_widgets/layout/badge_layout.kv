@@ -1,0 +1,28 @@
+#:kivy 2.2.1
+
+<BadgeLayout>:
+
+    # Background
+    canvas.before:
+        Color:
+            rgba: self.background_color
+        RoundedRectangle:
+            pos: (0, 0)
+            size: self.size
+
+    Image:
+        source: root.image_source
+        pos_hint: {"center_x": 0.5, "y": 0.4}
+        size_hint: (None, 0.5)
+        width: self.height
+
+    Label:
+        text: root.title
+        pos_hint: {"center_x": 0.5, "y": 0}
+        size_hint: (1, 0.4)
+        font_name: root.text_font_name
+        font_size: root.font_ratio*root.font_size
+        color: (0, 0, 0, 1)
+        text_size: self.size
+        halign: "center"
+        valign: "middle"

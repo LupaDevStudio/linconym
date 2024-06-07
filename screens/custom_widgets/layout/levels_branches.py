@@ -30,12 +30,14 @@ from tools.kivy_tools.tools_kivy import MyScrollViewLayout
 from tools.constants import (
     USER_DATA,
     GAMEPLAY_DICT,
+    GAMEPLAY_LEGEND_DICT,
     OPACITY_ON_BUTTON_PRESS,
     MAX_NB_LEVELS_PER_BRANCH,
     LEVEL_BUTTON_SIZE_HINT,
     LEVEL_BUTTON_SPACING,
     LEVEL_BUTTON_SIDE_OFFSET,
-    LEVEL_BUTTON_RELATIVE_HEIGHT
+    LEVEL_BUTTON_RELATIVE_HEIGHT,
+    DEBUG_MODE
 )
 from tools import sound_mixer
 
@@ -123,10 +125,12 @@ class LevelBranch(RelativeLayout):
             self,
             act_id="1",
             branch_id=0,
+            mode="classic",
             **kw):
         super().__init__(**kw)
         self.act_id = act_id
         self.branch_id = branch_id
+        self.mode = mode
         self.build_layout()
 
     def compute_level_button_pos_hint(self, local_id: int):
@@ -168,13 +172,20 @@ class LevelBranch(RelativeLayout):
         Add all buttons to the layout to build the branch.
         """
         # Find the number of levels contained in the branch, cannot be greater than MAX_NB_LEVELS_PER_BRANCH
-        nb_levels = len(GAMEPLAY_DICT[self.act_id]) - 1
+        if self.mode == "classic":
+            nb_levels = len(GAMEPLAY_DICT[self.act_id]) - 1
+        elif self.mode == "legend":
+            nb_levels = len(GAMEPLAY_LEGEND_DICT[self.act_id]) - 1
         self.local_nb_levels = min(
             nb_levels - self.branch_id * MAX_NB_LEVELS_PER_BRANCH, 4)
         # Add the first branch to link with the previous line
         if self.branch_id > 0:
-            previous_level_is_unlocked = str(self.branch_id * MAX_NB_LEVELS_PER_BRANCH) \
-                in USER_DATA.classic_mode[self.act_id]
+            if self.mode == "classic":
+                previous_level_is_unlocked = str(self.branch_id * MAX_NB_LEVELS_PER_BRANCH) \
+                    in USER_DATA.classic_mode[self.act_id]
+            elif self.mode == "legend":
+                previous_level_is_unlocked = str(self.branch_id * MAX_NB_LEVELS_PER_BRANCH) \
+                    in USER_DATA.legend_mode[self.act_id]
             if previous_level_is_unlocked:
                 branch_color = self.primary_color
             else:
@@ -210,32 +221,70 @@ class LevelBranch(RelativeLayout):
             level_id = local_id + 1 + self.branch_id * MAX_NB_LEVELS_PER_BRANCH
             level_key = str(level_id)
             level_pos_hint = self.compute_level_button_pos_hint(local_id)
-            if level_key in USER_DATA.classic_mode[self.act_id]:
-                level_is_unlocked = True
-                level_nb_stars = USER_DATA.classic_mode[self.act_id][level_key]["nb_stars"]
-                if level_nb_stars > 0:
-                    bool_chest_open = True
+
+            if self.mode == "classic":
+                if level_key in USER_DATA.classic_mode[self.act_id]:
+                    level_is_unlocked = True
+                    level_nb_stars = USER_DATA.classic_mode[self.act_id][level_key]["nb_stars"]
+                    if level_nb_stars > 0:
+                        bool_chest_open = True
+                    else:
+                        bool_chest_open = False
                 else:
+                    level_is_unlocked = False
+                    level_nb_stars = 0
                     bool_chest_open = False
-            else:
-                level_is_unlocked = False
-                level_nb_stars = 0
-                bool_chest_open = False
-            has_chest = "chest" in GAMEPLAY_DICT[self.act_id][
-                level_key] and GAMEPLAY_DICT[self.act_id][level_key]["chest"]
-            level_button = LevelButton(
-                level_id=level_id,
-                is_unlocked=level_is_unlocked,
-                nb_stars=level_nb_stars,
-                pos_hint=level_pos_hint,
-                size_hint=(
-                    LEVEL_BUTTON_SIZE_HINT, LEVEL_BUTTON_RELATIVE_HEIGHT),
-                primary_color=self.primary_color,
-                secondary_color=self.secondary_color,
-                font_ratio=self.font_ratio,
-                has_chest=has_chest,
-                bool_chest_open=bool_chest_open)
-            self.add_widget(level_button)
+
+                # Unlock level in debug mode
+                if DEBUG_MODE and level_is_unlocked is False:
+                    USER_DATA.classic_mode[self.act_id][level_key] = {
+                        "nb_stars": 0}
+                    USER_DATA.save_changes()
+                    level_is_unlocked = True
+
+                has_chest = "chest" in GAMEPLAY_DICT[self.act_id][
+                    level_key] and GAMEPLAY_DICT[self.act_id][level_key]["chest"]
+                level_button = LevelButton(
+                    level_id=level_id,
+                    is_unlocked=level_is_unlocked,
+                    nb_stars=level_nb_stars,
+                    pos_hint=level_pos_hint,
+                    size_hint=(
+                        LEVEL_BUTTON_SIZE_HINT, LEVEL_BUTTON_RELATIVE_HEIGHT),
+                    primary_color=self.primary_color,
+                    secondary_color=self.secondary_color,
+                    font_ratio=self.font_ratio,
+                    has_chest=has_chest,
+                    bool_chest_open=bool_chest_open)
+                self.add_widget(level_button)
+            elif self.mode == "legend":
+                if level_key in USER_DATA.legend_mode[self.act_id]:
+                    level_is_unlocked = True
+                    level_nb_stars = USER_DATA.legend_mode[self.act_id][level_key]["nb_stars"]
+                    if level_nb_stars > 0:
+                        bool_chest_open = True
+                    else:
+                        bool_chest_open = False
+                else:
+                    level_is_unlocked = False
+                    level_nb_stars = 0
+                    bool_chest_open = False
+                has_chest = "chest" in GAMEPLAY_LEGEND_DICT[self.act_id][
+                    level_key] and GAMEPLAY_LEGEND_DICT[self.act_id][level_key]["chest"]
+                level_button = LevelButton(
+                    level_id=level_id,
+                    is_unlocked=level_is_unlocked,
+                    nb_stars=level_nb_stars,
+                    pos_hint=level_pos_hint,
+                    size_hint=(
+                        LEVEL_BUTTON_SIZE_HINT, LEVEL_BUTTON_RELATIVE_HEIGHT),
+                    primary_color=self.primary_color,
+                    secondary_color=self.secondary_color,
+                    font_ratio=self.font_ratio,
+                    has_chest=has_chest,
+                    bool_chest_open=bool_chest_open)
+                self.add_widget(level_button)
+
             # Create the branch
             if level_id < nb_levels:
 
@@ -312,19 +361,25 @@ class LevelLayout(MyScrollViewLayout):
     def __init__(
             self,
             act_id="1",
+            mode="classic",
             **kw):
         super().__init__(**kw)
         self.act_id = act_id
+        self.mode = mode
         self.cols = 1
         self.spacing = 0
         self.padding = (0, 35 * self.font_ratio, 0, 35 * self.font_ratio)
 
     def build_layout(self):
-        nb_levels = len(GAMEPLAY_DICT[self.act_id]) - 1
+        if self.mode == "classic":
+            nb_levels = len(GAMEPLAY_DICT[self.act_id]) - 1
+        elif self.mode == "legend":
+            nb_levels = len(GAMEPLAY_LEGEND_DICT[self.act_id]) - 1
         self.nb_branches = ceil(nb_levels / MAX_NB_LEVELS_PER_BRANCH)
         for branch_id in range(self.nb_branches):
             level_branch = LevelBranch(
                 act_id=self.act_id,
+                mode=self.mode,
                 branch_id=branch_id,
                 primary_color=self.primary_color,
                 secondary_color=self.secondary_color,
