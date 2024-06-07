@@ -56,7 +56,7 @@ __version__ = "1.0.0"
 ### Mode ###
 
 
-DEBUG_MODE = True
+DEBUG_MODE = False
 FPS = 30
 MSAA_LEVEL = 2
 BACK_ARROW_SIZE = 0.2
