@@ -578,7 +578,8 @@ class AdContainer():
                 REWARD_AD,
                 on_reward=None)
         elif IOS_MODE:
-            self.current_ad = autoclass("adRewarded").alloc().init()
+            # self.current_ad = autoclass("adRewarded").alloc().init()
+            self.current_ad = autoclass("adInterstitial").alloc().init()
         else:
             self.current_ad = None
 
