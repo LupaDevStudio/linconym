@@ -28,6 +28,7 @@ from tools.constants import (
 from tools.kivy_tools import (
     ImprovedScreen
 )
+from tools import sound_mixer
 
 
 #############
@@ -61,7 +62,8 @@ class PreviewScreen(ImprovedScreen):
 
     def reload_kwargs(self, dict_kwargs):
         self.theme_key = dict_kwargs["theme_key"]
-        self.set_back_image_path(back_image_path=PATH_BACKGROUNDS + THEMES_DICT[self.theme_key]["image"])
+        self.set_back_image_path(
+            back_image_path=PATH_BACKGROUNDS + THEMES_DICT[self.theme_key]["image"])
         self.primary_color = THEMES_DICT[self.theme_key]["primary"]
         self.secondary_color = THEMES_DICT[self.theme_key]["secondary"]
 
@@ -81,12 +83,12 @@ class PreviewScreen(ImprovedScreen):
             self.has_bought_colors = False
         self.update_display()
         return super().on_pre_enter(*args)
-    
+
     def go_to_boosters(self):
         self.go_to_next_screen(
             screen_name="boosters",
             current_dict_kwargs={"theme_key": self.theme_key})
-        
+
     def click_image(self):
         """
         Function to select the image of the theme.
@@ -96,12 +98,15 @@ class PreviewScreen(ImprovedScreen):
                 self.theme_key, "image", self.image_price)
             if bought_sucessfully:
                 self.has_bought_image = True
+                sound_mixer.play("get_star")
+            else:
+                sound_mixer.play("button_click_disabled")
         elif self.has_bought_image and not self.is_using_image:
+            sound_mixer.play("button_click")
             USER_DATA.change_theme_image(self.theme_key)
             self.is_using_image = True
             self.update_backgrounds()
         self.update_display()
-        
 
     def click_colors(self):
         """
@@ -112,7 +117,11 @@ class PreviewScreen(ImprovedScreen):
                 self.theme_key, "colors", self.colors_price)
             if bought_sucessfully:
                 self.has_bought_colors = True
+                sound_mixer.play("get_star")
+            else:
+                sound_mixer.play("button_click_disabled")
         elif self.has_bought_colors and not self.is_using_colors:
+            sound_mixer.play("button_click")
             USER_DATA.change_theme_colors(self.theme_key)
             self.is_using_colors = True
         self.update_display()
@@ -123,10 +132,10 @@ class PreviewScreen(ImprovedScreen):
         self.ids["buy_image_button"].update_display()
         self.ids["buy_colors_button"].price = self.colors_price
         self.ids["buy_colors_button"].update_display()
-    
+
     def update_backgrounds(self):
         current_theme_image = USER_DATA.settings["current_theme_image"]
         new_image = THEMES_DICT[current_theme_image]["image"]
 
         self.manager.change_all_background_images(
-                PATH_BACKGROUNDS + new_image, include_themes_screen=True)
+            PATH_BACKGROUNDS + new_image, include_themes_screen=True)

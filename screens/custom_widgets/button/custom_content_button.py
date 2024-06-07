@@ -26,6 +26,7 @@ from tools.constants import (
     CONTENT_LABEL_FONT_SIZE,
     LABEL_FONT_SIZE
 )
+from tools import sound_mixer
 
 #############
 ### Class ###
@@ -54,6 +55,7 @@ class CustomContentButton(ButtonBehavior, RelativeLayout):
 
     def on_press(self):
         if not self.disable_button:
+            sound_mixer.play("button_click")
             self.opacity = OPACITY_ON_BUTTON_PRESS
 
     def on_release(self):

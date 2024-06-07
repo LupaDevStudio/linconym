@@ -27,6 +27,7 @@ from tools.constants import (
     OPACITY_ON_BUTTON_PRESS,
     COINS_COUNT_FONT_SIZE
 )
+from tools import sound_mixer
 
 #############
 ### Class ###
@@ -56,6 +57,7 @@ class CoinsCounter(ButtonBehavior, RelativeLayout):
 
     def on_press(self):
         if not self.disable_button:
+            sound_mixer.play("button_click")
             self.opacity = OPACITY_ON_BUTTON_PRESS
 
     def on_release(self):
