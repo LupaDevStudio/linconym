@@ -15,6 +15,7 @@ from functools import partial
 from tools.constants import (
     USER_DATA,
     GAMEPLAY_LEGEND_DICT,
+    DEBUG_MODE,
     SCREEN_TITLE,
     SCREEN_TUTORIAL,
     SCREEN_BOTTOM_BAR
@@ -56,17 +57,22 @@ class LegendModeScreen(LinconymScreen):
             current_act_button.primary_color = self.primary_color
             current_act_button.secondary_color = self.secondary_color
             current_act_button.nb_total_stars = nb_total_stars
-            mean_nb_stars = USER_DATA.get_mean_nb_stars_on_act(act, mode="legend")
+            mean_nb_stars = USER_DATA.get_mean_nb_stars_on_act(
+                act, mode="legend")
             current_act_button.nb_stars = mean_nb_stars
             if act in USER_DATA.legend_mode:
                 nb_completed_levels = USER_DATA.get_nb_completed_levels_for_act(
                     act, mode="legend")
                 current_act_button.nb_completed_levels = nb_completed_levels
             nb_stars_to_unlock = 2 * \
-                USER_DATA.get_nb_levels_in_all_previous_acts(act, mode="legend")
+                USER_DATA.get_nb_levels_in_all_previous_acts(
+                    act, mode="legend")
             if nb_total_stars < nb_stars_to_unlock:
                 disable_act_button = True
             else:
+                disable_act_button = False
+            # Unlock act if debug mode
+            if DEBUG_MODE:
                 disable_act_button = False
             current_act_button.disable_button = disable_act_button
 
@@ -89,7 +95,8 @@ class LegendModeScreen(LinconymScreen):
             act_title = GAMEPLAY_LEGEND_DICT[act]["name"]
             nb_levels = len(GAMEPLAY_LEGEND_DICT[act]) - 1
             nb_stars_to_unlock = 2 * \
-                USER_DATA.get_nb_levels_in_all_previous_acts(act, mode="legend")
+                USER_DATA.get_nb_levels_in_all_previous_acts(
+                    act, mode="legend")
             if act in USER_DATA.legend_mode:
                 nb_completed_levels = USER_DATA.get_nb_completed_levels_for_act(
                     act, mode="legend")
@@ -100,7 +107,11 @@ class LegendModeScreen(LinconymScreen):
                 disable_act_button = True
             else:
                 disable_act_button = False
-            mean_nb_stars = USER_DATA.get_mean_nb_stars_on_act(act, mode="legend")
+            # Unlock act if debug mode
+            if DEBUG_MODE:
+                disable_act_button = False
+            mean_nb_stars = USER_DATA.get_mean_nb_stars_on_act(
+                act, mode="legend")
 
             # Create the act button
             current_act_button = ActButton(

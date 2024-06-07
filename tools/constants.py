@@ -708,6 +708,18 @@ QUESTS_DICT = load_json_file(PATH_QUESTS)
 CREDITS_DICT = load_json_file(PATH_CREDITS)
 ACHIEVEMENTS_DICT = load_json_file(PATH_ACHIEVEMENTS)
 
+### Update the user data if some puzzles have been deleted in the gameplay dict ###
+
+for act_id in USER_DATA.classic_mode:
+    for level_id in list(USER_DATA.classic_mode[act_id].keys()):
+        if level_id not in GAMEPLAY_DICT[act_id]:
+            del USER_DATA.classic_mode[act_id][level_id]
+for act_id in USER_DATA.legend_mode:
+    for level_id in list(USER_DATA.legend_mode[act_id].keys()):
+        if level_id not in GAMEPLAY_LEGEND_DICT[act_id]:
+            del USER_DATA.legend_mode[act_id][level_id]
+USER_DATA.save_changes()
+
 ### Customization with themes and musics ###
 
 CUSTOMIZATION_DICT = load_json_file(PATH_CUSTOMIZATION)

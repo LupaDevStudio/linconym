@@ -222,6 +222,39 @@
             "88k": 5,
             "280k": 4,
             "chest": true
+        },
+        "18": {
+            "start_word": "child",
+            "end_word": "birth",
+            "10k": 6,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "19": {
+            "start_word": "birth",
+            "end_word": "growth",
+            "10k": 4,
+            "34k": 4,
+            "88k": 4,
+            "280k": 4
+        },
+        "20": {
+            "start_word": "growth",
+            "end_word": "magic",
+            "chest": true,
+            "10k": 8,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
+        },
+        "21": {
+            "start_word": "magic",
+            "end_word": "happy",
+            "10k": 7,
+            "34k": 6,
+            "88k": 6,
+            "280k": 6
         }
     },
     "3": {

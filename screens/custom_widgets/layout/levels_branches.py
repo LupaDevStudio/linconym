@@ -269,6 +269,14 @@ class LevelBranch(RelativeLayout):
                     level_is_unlocked = False
                     level_nb_stars = 0
                     bool_chest_open = False
+
+                # Unlock level in debug mode
+                if DEBUG_MODE and level_is_unlocked is False:
+                    USER_DATA.legend_mode[self.act_id][level_key] = {
+                        "nb_stars": 0}
+                    USER_DATA.save_changes()
+                    level_is_unlocked = True
+
                 has_chest = "chest" in GAMEPLAY_LEGEND_DICT[self.act_id][
                     level_key] and GAMEPLAY_LEGEND_DICT[self.act_id][level_key]["chest"]
                 level_button = LevelButton(
