@@ -1,0 +1,94 @@
+
+UIView *gView;
+UIViewController *gViewColtroller;
+
+@interface adInterstitial : NSObject
+/// The interstitial ad.
+@property(nonatomic, strong) GADInterstitial *interstitial;
+@property (strong, nonatomic) GADRequest *request;
+@end
+
+@implementation adInterstitial
+
+-(id)init {
+    [self createAndLoadInterstitial];
+    NSLog(@"adInterstitial init");
+    return self;
+}
+
+- (void)createAndLoadInterstitial {
+    //self.interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-3940256099942544/4411468910"]; // test id
+    self.interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-2909842258525517/2244020698"]; // true id for intersitial
+    //self.interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-2909842258525517/6447133439"]; // true id for reward intersitial
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIViewController *rootViewController = window.rootViewController;
+    self.interstitial.delegate = self;
+
+    GADRequest *request = [GADRequest request];
+    request.testDevices = @[ kGADSimulatorID, @"2077ef9a63d2b398840261c8221a0c9a" ];
+    [self.interstitial loadRequest:request];
+    NSLog(@"createAndLoadInterstitial");
+}
+
+- (void)interstitialWillDismissScreen:(GADInterstitial *)ad {
+    //  Method for reloading the object so that you can show ads again
+    NSLog(@"interstitialWillDismissScreen");
+    [self createAndLoadInterstitial];
+}
+
+- (void)InterstitialView {  // show interstitial ADS
+    if (self.interstitial.isReady) {
+        NSLog(@"Show interstitial ADS!");
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        UIViewController *rootViewController = window.rootViewController;
+        [self.interstitial presentFromRootViewController:rootViewController];
+    } else {
+        NSLog(@"interstitial Ad wasn't ready");
+    }
+}
+@end
+
+
+@interface adRewarded : NSObject
+/// The interstitial ad.
+@property(nonatomic, strong) GADRewardedAd *rewarded;
+@property (strong, nonatomic) GADRequest *request;
+@end
+
+@implementation adRewarded
+
+-(id)init {
+    [self createAndLoadRewarded];
+    NSLog(@"adRewarded init");
+    return self;
+}
+
+- (void)createAndLoadRewarded {
+    self.rewarded = [[GADRewardedAd alloc] initWithAdUnitID:@"ca-app-pub-3940256099942544/4411468910"]; // test id
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIViewController *rootViewController = window.rootViewController;
+    self.rewarded.delegate = self;
+
+    GADRequest *request = [GADRequest request];
+    request.testDevices = @[ kGADSimulatorID, @"2077ef9a63d2b398840261c8221a0c9a" ];
+    [self.rewarded loadRequest:request];
+    NSLog(@"createAndLoadRewarded");
+}
+
+- (void)interstitialWillDismissScreen:(GADRewardedAd *)ad {
+    //  Method for reloading the object so that you can show ads again
+    NSLog(@"rewardedWillDismissScreen");
+    [self createAndLoadRewarded];
+}
+
+- (void)RewardedView {  // show interstitial ADS
+    if (self.rewarded.isReady) {
+        NSLog(@"Show rewarded ADS!");
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        UIViewController *rootViewController = window.rootViewController;
+        [self.rewarded presentFromRootViewController:rootViewController];
+    } else {
+        NSLog(@"rewarded Ad wasn't ready");
+    }
+}
+@end
