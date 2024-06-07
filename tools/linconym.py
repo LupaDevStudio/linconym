@@ -556,7 +556,8 @@ class AdContainer():
                 self.current_ad.on_reward = ad_callback
                 self.current_ad.show()
         elif IOS_MODE:
-            self.current_ad.InterstitialView()
+            #self.current_ad.InterstitialView()
+            self.current_ad.RewardedView()
             ad_callback()
         else:
             print("No ads to show outside mobile mode")
@@ -571,7 +572,7 @@ class AdContainer():
                 REWARD_AD,
                 on_reward=None)
         elif IOS_MODE:
-            self.current_ad = autoclass("adInterstitial").alloc().init()
+            self.current_ad = autoclass("adRewarded").alloc().init()
         else:
             self.current_ad = None
 
