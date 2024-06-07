@@ -63,6 +63,8 @@ class WindowManager(ScreenManager):
             if screen_name != "temp" and (screen_name != "themes" or include_themes_screen):
                 screen = self.get_screen(screen_name)
                 screen.set_back_image_path(new_image_path)
+                if screen_name == "themes":
+                    screen.set_back_image_path(new_image_path, mode="second")
 
     def go_to_previous_screen(self):
         if len(self.list_previous_screens) != 0:
