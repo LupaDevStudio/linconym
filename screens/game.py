@@ -40,7 +40,8 @@ from screens.custom_widgets import (
     LincluesPopup,
     LevelUpPopup,
     TutorialPopup,
-    LoadingPopup
+    LoadingPopup,
+    MessagePopup
 )
 from tools import (
     music_mixer
@@ -182,9 +183,11 @@ class GameScreen(LinconymScreen):
 
         # Push changes to user data
         if self.mode == "classic":
-            USER_DATA.classic_mode[self.current_act_id][self.current_level_id] = self.level_saved_data.copy()
+            USER_DATA.classic_mode[self.current_act_id][self.current_level_id] = self.level_saved_data.copy(
+            )
         elif self.mode == "legend":
-            USER_DATA.legend_mode[self.current_act_id][self.current_level_id] = self.level_saved_data.copy()
+            USER_DATA.legend_mode[self.current_act_id][self.current_level_id] = self.level_saved_data.copy(
+            )
 
         USER_DATA.save_changes()
 
@@ -320,7 +323,7 @@ class GameScreen(LinconymScreen):
 
         if self.game.get_nb_next_words(self.game.current_position) == 0\
                 and self.current_word != self.start_word.upper() \
-            and self.current_word != self.end_word.upper():
+        and self.current_word != self.end_word.upper():
             self.allow_delete_current_word = True
             self.ids.delete_word_button.opacity = 1
         else:
@@ -363,12 +366,14 @@ class GameScreen(LinconymScreen):
 
         # Store the dict containing the user progress
         if self.mode == "classic":
-            self.level_saved_data = USER_DATA.classic_mode[self.current_act_id][self.current_level_id].copy()
+            self.level_saved_data = USER_DATA.classic_mode[self.current_act_id][self.current_level_id].copy(
+            )
 
             # Save the dict containing the level instructions
             self.level_info = GAMEPLAY_DICT[self.current_act_id][self.current_level_id]
         elif self.mode == "legend":
-            self.level_saved_data = USER_DATA.legend_mode[self.current_act_id][self.current_level_id].copy()
+            self.level_saved_data = USER_DATA.legend_mode[self.current_act_id][self.current_level_id].copy(
+            )
 
             # Save the dict containing the level instructions
             self.level_info = GAMEPLAY_LEGEND_DICT[self.current_act_id][self.current_level_id]
@@ -507,7 +512,7 @@ class GameScreen(LinconymScreen):
                     "current_act_id": self.current_act_id,
                     "current_level_id": self.current_level_id,
                     "mode": self.mode}
-                )
+            )
 
         # Create the popup for the completion
         popup = LevelCompletedPopup(
@@ -670,8 +675,35 @@ class GameScreen(LinconymScreen):
         # Get the solution word
         hint_word = self.game.get_hint()
 
-        # Schedule submission
-        Clock.schedule_once(partial(self.submit_hint_word, hint_word))
+        if hint_word is not None:
+            # Schedule submission
+            Clock.schedule_once(partial(self.submit_hint_word, hint_word))
+        else:
+            # No hint word found
+            Clock.schedule_once(self.display_hint_not_found)
+
+    def display_hint_not_found(self, *_):
+        # Close the loading popup
+        self.loading_popup.dismiss()
+
+        # Get the number of lincoins used for the refund
+        nb_lincoins_used = USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["nb_hints_used"]
+
+        # Refund
+        USER_DATA.user_profile["linclues"] += nb_lincoins_used
+
+        # Decrease number of hints used
+        USER_DATA.classic_mode[self.current_act_id][self.current_level_id]["nb_hints_used"] -= 1
+
+        # Apply the changes
+        USER_DATA.save_changes()
+
+        # Display a message for the hint not found
+        MessagePopup(title="Hint not found",
+                     center_label_text="No word has been found with the hint function from the given starting point.\n\nYour lincoins have been refunded.",
+                     font_ratio=self.font_ratio,
+                     primary_color=self.primary_color,
+                     secondary_color=self.secondary_color).open()
 
     def submit_hint_word(self, hint_word: str, *_):
         # Close the loading popup
