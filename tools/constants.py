@@ -51,12 +51,12 @@ from tools.basic_tools import (
 
 ### Version ###
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 ### Mode ###
 
 
-DEBUG_MODE = False
+DEBUG_MODE = True
 FPS = 30
 MSAA_LEVEL = 2
 BACK_ARROW_SIZE = 0.2

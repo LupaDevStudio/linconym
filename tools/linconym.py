@@ -425,9 +425,7 @@ def find_solutions(start_word: str, end_word: str, english_words: list = ENGLISH
     start_timer = time.time()
 
     while not_found:
-        if time_out is not None:
-            if time.time() - start_timer > time_out:
-                return None
+
         current_position = None
         for i in sorted(pile.keys(), reverse=True):
             if len(pile[i]) > 0:
@@ -444,6 +442,9 @@ def find_solutions(start_word: str, end_word: str, english_words: list = ENGLISH
         new_word_id = 0
 
         for word in next_words:
+            if time_out is not None:
+                if time.time() - start_timer > time_out:
+                    return None
             if word not in words_found or word == end_word:
                 similarity_score = compute_similarity_score(word, end_word)
                 new_position = current_position + (new_word_id,)
@@ -562,7 +563,7 @@ class AdContainer():
                 self.current_ad.on_reward = ad_callback
                 self.current_ad.show()
         elif IOS_MODE:
-            #self.current_ad.InterstitialView()
+            # self.current_ad.InterstitialView()
             self.current_ad.RewardedView()
             ad_callback()
         else:
@@ -909,13 +910,16 @@ class Game():
             # Remove the words founds from the dict
             current_words_dict = ENGLISH_WORDS_DICTS[resolution].copy()
             for word in self.words_found:
-                current_words_dict.remove(word)
+                if word in current_words_dict:
+                    current_words_dict.remove(word)
 
             # Find solution
             solution = find_solutions(self.current_word, self.end_word,
                                       current_words_dict, time_out=10)
             if solution is not None:
                 return solution[1]
+
+        return None
 
 
 class ClassicGame(Game):
