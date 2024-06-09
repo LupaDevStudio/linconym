@@ -51,12 +51,16 @@ from tools.basic_tools import (
 
 ### Version ###
 
-__version__ = "1.1.1"
+__version__ = "1.1.3"
 
 ### Mode ###
 
-
-DEBUG_MODE = True
+if not IOS_MODE and not ANDROID_MODE:
+    # To change if needed
+    DEBUG_MODE = False
+else:
+    # Never change
+    DEBUG_MODE = False
 FPS = 30
 MSAA_LEVEL = 2
 BACK_ARROW_SIZE = 0.2
